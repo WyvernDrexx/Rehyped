@@ -1,3 +1,5 @@
+@import "./variables";
+
 /* Colors related */
 
 * {
@@ -8,16 +10,12 @@ p {
   margin: initial;
 }
 
-.primary-color {
-  color: #ff2954;
-}
-
-.secondary-background-color{
-  background-color: rgba(238, 237, 237, 0.692) !important;
+.secondary-background-color {
+  background-color: $secondaryColor !important;
 }
 
 .primary-background-color {
-  background-color: #ff2954 !important;
+  background-color: $primaryColor !important;
 }
 
 .light-button {
@@ -33,20 +31,11 @@ p {
   border-radius: 0px;
 }
 
-/* Defaults */
-
-.default-font-size {
-  font-size: 13px;
+button {
+  &:hover {
+    opacity: 0.89;
+  }
 }
-
-.button-default {
-  padding: 1rem 2rem;
-}
-
-.button-default:hover {
-  opacity: 0.89;
-}
-
 /* Others */
 .item-size-box {
   width: 3.5rem;
@@ -55,13 +44,15 @@ p {
   border: 1px solid lightgray;
   background-color: white;
   color: gray;
+  &:focus {
+    border-color: black;
+    color: rgb(32, 32, 32);
+  }
 }
 
-.item-size-box:focus {
-  border-color: black;
-  color: rgb(32, 32, 32);
+.strikethrough {
+  text-decoration: line-through;
 }
-
 /* Headers/Text related classes */
 
 .header {
@@ -84,34 +75,33 @@ p {
   text-align: center;
 }
 
-.placeholder-center:-moz-placeholder { /* Firefox 18- */
-  text-align: center;  
+.placeholder-center:-moz-placeholder {
+  /* Firefox 18- */
+  text-align: center;
 }
 
-.placeholder-center::-moz-placeholder {  /* Firefox 19+ */
-  text-align: center;  
+.placeholder-center::-moz-placeholder {
+  /* Firefox 19+ */
+  text-align: center;
 }
 
-.placeholder-center:-ms-input-placeholder {  
-  text-align: center; 
+.placeholder-center:-ms-input-placeholder {
+  text-align: center;
 }
 
-.primary-input{
+.primary-input {
   padding: 10px;
   padding-top: 20px;
   padding-bottom: 20px;
   background-color: white;
   border: 1px solid lightgray;
   font-size: 12px;
+  &::placeholder {
+    font-weight: bold;
+    letter-spacing: 5px;
+  }
 }
 
-.primary-input::placeholder{
-  font-weight: bold;
-  letter-spacing: 5px;
-}
-
-
-
-.divider{
+.divider {
   border-bottom: 1px solid lightgray;
 }
