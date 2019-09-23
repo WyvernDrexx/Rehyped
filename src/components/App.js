@@ -4,10 +4,12 @@ import history from "../history";
 import Home from "./pages/Home";
 import "./styles/bootstrap.min.css";
 import "./styles/styles.scss";
+import Header from './Header';
 
 const App = _ => {
   return (
     <Router history={history}>
+      <Header />
       <Route exact path="/" component={Home} />
     </Router>
   );

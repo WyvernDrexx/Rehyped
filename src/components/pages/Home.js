@@ -6,6 +6,7 @@ import ItemSizes from "../ItemSizes";
 import Divider from "../stateless/Divider";
 import Carousel from "../Carousel";
 import ItemColors from "../ItemColors";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Home = props => {
   return (
@@ -16,6 +17,7 @@ const Home = props => {
           title="GO TO STORE"
           className="w-75"
         />
+        <FontAwesomeIcon icon="twitter" />
         <div>
           <LightButton
             className="mt-4 mx-auto d-block w-100"
@@ -66,6 +68,5 @@ const Home = props => {
     </div>
   );
 };
-
 
 export default Home;

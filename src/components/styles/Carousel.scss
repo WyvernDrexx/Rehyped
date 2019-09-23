@@ -22,13 +22,13 @@
   .product-name {
     text-align: center;
     font-weight: bold;
-    letter-spacing: 3px;
+    letter-spacing: $defaultLetterSpacing;
     font-size: $secondaryFontSize;
   }
   .product-price {
     font-size: $secondaryFontSize;
     padding-top: 10px;
-    letter-spacing: 3px;
+    letter-spacing: $defaultLetterSpacing;
   }
   .product-details {
     padding-top: 2rem;

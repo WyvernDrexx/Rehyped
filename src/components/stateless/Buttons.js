@@ -12,7 +12,7 @@ export const DarkButton = props => {
   return (
     <Button
       onClick={_ => onButtonClick(props.onClick)}
-      className={`no-radius default-font-size button-default bg-black ${props.className ||
+      className={`no-radius default-font-size button-default letter-spacing bg-black ${props.className ||
         ""}`}
       variant="dark"
     >
@@ -25,7 +25,7 @@ export const LightButton = props => {
   return (
     <Button
       onClick={_ => onButtonClick(props.onClick)}
-      className={`no-radius default-font-size button-default light-button ${props.className ||
+      className={`no-radius default-font-size button-default letter-spacing light-button ${props.className ||
         ""}`}
       variant="light"
     >
@@ -38,7 +38,7 @@ export const PrimaryButton = props => {
   return (
     <Button
       onClick={_ => onButtonClick(props.onClick)}
-      className={`no-radius default-font-size button-default primary-background-color text-light ${props.className ||
+      className={`no-radius default-font-size button-default letter-spacing primary-background-color text-light ${props.className ||
         ""}`}
       variant="light"
     >
