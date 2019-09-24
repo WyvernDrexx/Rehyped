@@ -20,11 +20,11 @@
 
 /* Position and sizing of burger button */
 .bm-burger-button {
-  position: relative;
-  width: 36px;
-  height: 30px;
-  left: 36px;
-  top: 36px;
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  left: 10px;
+  top: 10px;
 }
 
 /* Color/shape of burger icon bars */
@@ -49,8 +49,9 @@
   background-color: #000000;
   padding: 2.5em 1.5em 0;
   font-size: 1.15em;
-  width: 95%;
-  height: 95% !important;
+  margin-top: -10px;
+  // width: 85vw;
+  height: 102% !important;
 }
 
 /* Morph shape necessary with bubble or elastic */
@@ -62,8 +63,9 @@
 .bm-item-list {
   color: #b8b7ad;
   .social-platforms {
-    bottom: 20px;
+    bottom: 10px;
     position: absolute;
+    margin-bottom: 0px;
     a {
       margin-right: 20px;
       color: white;
@@ -78,5 +80,5 @@
 
 /* Styling of overlay */
 .bm-overlay {
-  background-color: rgba(219, 218, 218, 0.616) !important;
+  background-color: rgba(15, 13, 13, 0.192) !important;
 }

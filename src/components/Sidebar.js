@@ -1,5 +1,5 @@
 import React from "react";
-import { slide as Menu } from "react-burger-menu";
+import { push as Menu } from "react-burger-menu";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faTwitter,
@@ -11,22 +11,37 @@ import "./styles/Sidebar.scss";
 
 const Sidebar = props => {
   return (
-    <Menu>
-      <a className="menu-item" href="/">
-        Home
-      </a>
+    <Menu {...props}>
+      <Link to='/' className="menu-item" href="/">
+        My Account
+      </Link>
 
-      <a className="menu-item" href="/burgers">
-        Burgers
-      </a>
+      <Link to='/' className="menu-item" href="/burgers">
+        Track Orders
+      </Link>
 
-      <a className="menu-item" href="/pizzas">
-        Pizzas
-      </a>
+      <Link to='/' className="menu-item" href="/pizzas">
+        Latest Design
+      </Link>
 
-      <a className="menu-item" href="/desserts">
-        Desserts
-      </a>
+      <Link to='/' className="menu-item" href="/desserts">
+        Rehyped Original
+      </Link>
+      <Link to='/' className="menu-item" href="/desserts">
+        Anime
+      </Link>
+      <Link to='/' className="menu-item" href="/desserts">
+        Merch
+      </Link>
+      <Link to='/' className="menu-item" href="/desserts">
+        Rehyped Original
+      </Link>
+      <Link to='/' className="menu-item" href="/desserts">
+        Return Policy
+      </Link>
+      <Link to='/' className="menu-item" href="/desserts">
+        Contact Us
+      </Link>
       <div className="social-platforms">
         <h4>FOLLOW US ON</h4>
         <Link to="/">
