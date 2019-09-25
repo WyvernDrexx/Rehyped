@@ -10,15 +10,18 @@ import ItemColors from "../ItemColors";
 import Media from "../Media";
 import TriShowCase from "../TriShowcase";
 import CommonHeader from "../stateless/CommonHeader";
+import SlideCarousel from "../SlideCarousel";
 
 const Home = props => {
   return (
     <>
-      <div className="mb-5">
-        <FullScreenContainer
-          style={{ backgroundImage: "url('/imgs/minions.jpg')" }}
-        />
-      </div>
+      <SlideCarousel
+        images={[
+          "https://images.unsplash.com/photo-1532785450622-09a9fa83193a?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=cc5d893956adcb5c46271e26c4a11008&auto=format&fit=crop&w=2250&q=80",
+          "https://images.unsplash.com/photo-1502790671504-542ad42d5189?ixlib=rb-0.3.5&s=da4d3b0a41041f60ee409664746ca2d6&auto=format&fit=crop&w=2250&q=80",
+          "https://images.unsplash.com/photo-1518242340236-fd1dd715ba89?ixlib=rb-0.3.5&s=e71132ec1e8da8b1c33d8075b91dad88&auto=format&fit=crop&w=934&q=80"
+        ]}
+      />
       <Container className="mt-6 mb-4">
         <CommonHeader
           header="NEW ARRIVALS"

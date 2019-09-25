@@ -29,7 +29,7 @@ const Header = props => {
       </div>
       <div className="d-flex justify-content-between align-items-center mt-5 px-2">
         <div className='text-white default-letter-spacing'>
-          R<span className='primary-color font-weight-bolder'>E</span>HYPED
+          R<span className='primary-color font-weight-bolder'>E</span>HYPED™
         </div>
         <div className="social">
           <Link to="/">

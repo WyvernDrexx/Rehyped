@@ -1,13 +1,23 @@
-@import './mixins';
+@import "./mixins";
 
-.carousel-item{
-  overflow: hidden;
+.carousel__dot {
+  border: none;
+  background: transparent;
+  color: white !important;
+  font-size: 20px !important;
 }
-
-.carousel-indicators{
-  li{
-    border-radius: 50%;
-    height: 10px !important;
-    width: 10px !important;
+.kJkwsc{
+  top: 90vh !important;
+  .carousel__dot--selected{
+    color: gray !important;
+  }
+}
+.sc-bwzfXH  {
+  width: 100%;
+  padding: 0px;
+  overflow: hidden;
+  white-space: nowrap;
+  img{
+    height: 100%;
   }
 }
