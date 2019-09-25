@@ -1,0 +1,62 @@
+@import "./variables";
+
+.strikethrough {
+  text-decoration: line-through;
+}
+/* Headers/Text related classes */
+
+.primary-color{
+  color: $primaryColor;
+}
+
+.default-letter-spacing{
+  letter-spacing: $defaultLetterSpacing;
+}
+
+.header {
+  text-align: center;
+  font-size: $primaryFontSize;
+  letter-spacing: $defaultLetterSpacing;
+  font-weight: bold;
+}
+
+.sub-header {
+  text-align: center;
+  font-size: $secondaryFontSize;
+  letter-spacing: $defaultLetterSpacing;
+  color: rgb(68, 67, 67);
+}
+
+/* Inputs related */
+
+.placeholder-center::-webkit-input-placeholder {
+  text-align: center;
+}
+
+.placeholder-center:-moz-placeholder {
+  /* Firefox 18- */
+  text-align: center;
+}
+
+.placeholder-center::-moz-placeholder {
+  /* Firefox 19+ */
+  text-align: center;
+}
+
+.placeholder-center:-ms-input-placeholder {
+  text-align: center;
+}
+
+.primary-input {
+  padding: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: white;
+  @extend .gray-border;
+  font-size: $primaryFontSize;
+  &::placeholder {
+    font-weight: bold;
+    letter-spacing: $defaultLetterSpacing;
+    font-size: $secondaryFontSize;
+  }
+}

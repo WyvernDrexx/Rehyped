@@ -1,5 +1,7 @@
 @import "./variables";
-
+@import "./breakpoints";
+@import "./mixins";
+@import "./text";
 /* Colors related */
 
 * {
@@ -9,18 +11,32 @@
 p {
   margin: initial;
 }
-.fas, .fab, .fa{
+.fas,
+.fab,
+.fa {
   font-family: FontAwesome !important;
 }
-a{
+a {
   outline: none;
 }
 
-button{
+button {
   @extend a;
 }
 
-.gray-border{
+.mt-6{
+  margin-top: 6rem;
+}
+
+.mb-6{
+  margin-bottom: 6rem;
+}
+
+.button-default{
+  font-size: $secondaryFontSize;
+}
+
+.gray-border {
   border: 1px solid lightgray;
 }
 
@@ -32,12 +48,16 @@ button{
   background-color: $primaryColor !important;
 }
 
+.flex-center{
+  @include flexCenter;
+}
+
 .light-button {
   background-color: white;
   @extend .gray-border;
 }
 
-.letter-spacing{
+.letter-spacing {
   letter-spacing: $defaultLetterSpacing;
 }
 
@@ -55,10 +75,11 @@ button {
   }
 }
 /* Others */
+$itemSizePadding : 15px;
 .item-size-box {
-  width: 3.5rem;
-  padding-top: 18px;
-  padding-bottom: 18px;
+  width: 3.3rem;
+  padding-top: $itemSizePadding;
+  padding-bottom: $itemSizePadding;
   @extend .gray-border;
   background-color: white;
   color: gray;
@@ -68,59 +89,25 @@ button {
   }
 }
 
-.strikethrough {
-  text-decoration: line-through;
+.divider {
+  border-bottom: 1px solid lightgray;
 }
-/* Headers/Text related classes */
 
-.header {
-  text-align: center;
-  font-size: $primaryFontSize;
+.footer-link{
+  color: $secondaryColor;
   letter-spacing: $defaultLetterSpacing;
-  font-weight: bold;
-}
-
-.sub-header {
-  text-align: center;
   font-size: $secondaryFontSize;
-  letter-spacing: $defaultLetterSpacing;
-  color: rgb(68, 67, 67);
-}
-
-/* Inputs related */
-
-.placeholder-center::-webkit-input-placeholder {
-  text-align: center;
-}
-
-.placeholder-center:-moz-placeholder {
-  /* Firefox 18- */
-  text-align: center;
-}
-
-.placeholder-center::-moz-placeholder {
-  /* Firefox 19+ */
-  text-align: center;
-}
-
-.placeholder-center:-ms-input-placeholder {
-  text-align: center;
-}
-
-.primary-input {
-  padding: 10px;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  background-color: white;
-  @extend .gray-border;
-  font-size: $primaryFontSize;
-  &::placeholder {
-    font-weight: bold;
-    letter-spacing: $defaultLetterSpacing;
-    font-size: $secondaryFontSize;
+  margin: 10px;
+  text-decoration: none;
+  &:hover{
+    color: $primaryColor;
+    text-decoration: none;
   }
 }
 
-.divider {
-  border-bottom: 1px solid lightgray;
+.social{
+  a{
+    font-size: 25px;
+    margin: 7px;
+  }
 }

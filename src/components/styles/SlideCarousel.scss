@@ -1,0 +1,13 @@
+@import './mixins';
+
+.carousel-item{
+  overflow: hidden;
+}
+
+.carousel-indicators{
+  li{
+    border-radius: 50%;
+    height: 10px !important;
+    width: 10px !important;
+  }
+}

@@ -9,7 +9,7 @@ const ItemSizes = props => {
     });
   };
 
-  return <div className="d-flex justify-content-between">{_renderSizes()}</div>;
+  return <div className={`d-flex justify-content-between ${props.className || ' '}`}>{_renderSizes()}</div>;
 };
 
 const SizeBox = props => {

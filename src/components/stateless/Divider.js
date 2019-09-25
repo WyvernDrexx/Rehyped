@@ -2,7 +2,7 @@ import React from "react";
 
 const Divider = props => {
   return (
-    <div className={`mt-5 mx-3 ${props.className || ""}`}>
+    <div className={`${props.className || ""}`}>
       {renderDividerVariant(props.size)}
     </div>
   );

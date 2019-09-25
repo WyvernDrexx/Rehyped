@@ -5,7 +5,7 @@ const ItemColor = props => {
   const colors = ["black", "pink"];
 
   return (
-    <div>
+    <div className={props.className || ''}>
       {colors.map((color, index) => {
         return <Color key={index} color={color} />;
       })}
@@ -14,7 +14,7 @@ const ItemColor = props => {
 };
 
 const Color = props => {
-  return <button className='item-color' style={{ backgroundColor: props.color }}></button>;
+  return <button className='item-color mr-3' style={{ backgroundColor: props.color }}></button>;
 };
 
 export default ItemColor;
