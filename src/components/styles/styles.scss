@@ -24,16 +24,32 @@ button {
   @extend a;
 }
 
-.mt-6{
+.mt-6 {
   margin-top: 6rem;
 }
 
-.mb-6{
+.mb-6 {
   margin-bottom: 6rem;
 }
 
-.button-default{
+.button-default {
   font-size: $secondaryFontSize;
+}
+
+.bottom-0 {
+  bottom: 0px;
+}
+
+.position-md-absolute {
+  @include md {
+    position: absolute;
+  }
+}
+
+.position-lg-absolute{
+  @include lg{
+    position: absolute;
+  }
 }
 
 .gray-border {
@@ -48,7 +64,7 @@ button {
   background-color: $primaryColor !important;
 }
 
-.flex-center{
+.flex-center {
   @include flexCenter;
 }
 
@@ -75,7 +91,7 @@ button {
   }
 }
 /* Others */
-$itemSizePadding : 15px;
+$itemSizePadding: 15px;
 .item-size-box {
   width: 3.3rem;
   padding-top: $itemSizePadding;
@@ -93,20 +109,20 @@ $itemSizePadding : 15px;
   border-bottom: 1px solid lightgray;
 }
 
-.footer-link{
+.footer-link {
   color: $secondaryColor;
   letter-spacing: $defaultLetterSpacing;
   font-size: $secondaryFontSize;
   margin: 10px;
   text-decoration: none;
-  &:hover{
+  &:hover {
     color: $primaryColor;
     text-decoration: none;
   }
 }
 
-.social{
-  a{
+.social {
+  a {
     font-size: 25px;
     margin: 7px;
   }

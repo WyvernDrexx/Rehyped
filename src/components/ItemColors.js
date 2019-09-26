@@ -3,7 +3,6 @@ import './styles/ItemColors.scss'
 
 const ItemColor = props => {
   const colors = ["black", "pink"];
-
   return (
     <div className={props.className || ''}>
       {colors.map((color, index) => {

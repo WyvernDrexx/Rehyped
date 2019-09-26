@@ -1,16 +1,14 @@
 import React from "react";
+import { Row, Col } from "react-bootstrap";
 import Container from "../stateless/Container";
-import FullScreenContainer from "../stateless/FullScreenContainer";
 import Divider from "../stateless/Divider";
 import { DarkButton, LightButton, PrimaryButton } from "../stateless/Buttons";
 import Carousel from "../Carousel";
-import QuadShowcase from "../QuadShowcase";
-import ItemSizes from "../ItemSizes";
-import ItemColors from "../ItemColors";
 import Media from "../Media";
 import TriShowCase from "../TriShowcase";
 import CommonHeader from "../stateless/CommonHeader";
 import SlideCarousel from "../SlideCarousel";
+import Featured from "../Featured";
 
 const Home = props => {
   return (
@@ -28,39 +26,42 @@ const Home = props => {
           subheader="CHECKOUT OUR LATEST CREATIONS"
         />
         <Divider className="mt-4 mb-5" />
-        <img className="w-100 mt-2 mb-3" src="/imgs/square.jpg" />
-        <Divider className="mt-4 mb-5" />
-        <p className="sub-header mb-3">
-          THE LATEST HANDICRAFT <br /> DESIGNS TO ENHANCE THE <br /> INNER YOU
-        </p>
-        <p className="sub-header mb-4">
-          KNOW EACH ONE OF THE <br /> ASPECTS OF YOUR LIFE, GET <br /> THE{" "}
-          <span className="primary-color">HYPE</span> WITHOUT <br /> EVEN
-          CHASING FOR IT
-        </p>
-        <DarkButton
-          className="mx-auto d-block pt-3 pb-3 mb-5 mt-3"
-          title="GO TO STORE"
-        />
-        <CommonHeader header="MERCH" subheader="ANDROCRUNCH ORIGINALS" />
-        <Divider className="mt-4 mb-4" />
-      </Container>
-      <Carousel />
-      <Container>
+        <Row className="mt-5">
+          <Col md>
+            <img className="w-100" src="/imgs/square.jpg" />
+          </Col>
+          <Col className="position-relative" md>
+            <div>
+              <Divider className="mt-5 d-md-none mb-5" />
+              <p className="sub-header mb-3 text-md-left">
+                THE LATEST HANDICRAFT <br /> DESIGNS TO ENHANCE THE <br /> INNER
+                YOU
+              </p>
+              <p className="sub-header text-md-left mb-5">
+                KNOW EACH ONE OF THE <br /> ASPECTS OF YOUR LIFE, GET <br /> THE{" "}
+                <span className="primary-color">HYPE</span> WITHOUT <br /> EVEN
+                CHASING FOR IT
+              </p>
+            </div>
+            <DarkButton
+              className="d-sm-block mx-auto mx-md-0 pt-3 pb-3 mb-3 mb-md-0 position-md-absolute mt-3 bottom-0 text-center text-md-left"
+              title="GO TO STORE"
+            />
+          </Col>
+        </Row>
+
         <CommonHeader
           className="mt-6"
-          header="FEATURED"
-          subheader="BEST SELLING DESIGNS OF THE WEEK"
+          header="MERCH"
+          subheader="ANDROCRUNCH ORIGINALS"
         />
         <Divider className="mt-4 mb-4" />
-        <QuadShowcase />
-        <Divider className="mb-4 mt-4" size="full" />
-        <h4 className="sub-header mb-4 text-left font-weight-bold">SIZE</h4>
-        <ItemSizes className="mt-2 mb-5" />
-        <h4 className="sub-header mb-4 text-left font-weight-bold">COLOURS</h4>
-        <ItemColors className="mb-6" />
-        <LightButton title="ADD TO CART" className="w-100 pt-3 pb-3 mb-3" />
-        <PrimaryButton title="BUY IT NOW" className="w-100 pt-3 pb-3 mb-5" />
+      </Container>
+      <Container className="px-0">
+        <Carousel />
+      </Container>
+      <Featured />
+      <Container>
         <h4 className="sub-header mb-4 text-left font-weight-bold">
           Est. delivery in 7-10 business days via preferred courier.
         </h4>
@@ -102,7 +103,6 @@ const Home = props => {
           onClick={() => console.log("Clicked subscribe button!")}
           title="SUBSCRIBE"
         />
-        <Divider />
       </Container>
     </>
   );

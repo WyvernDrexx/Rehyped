@@ -9,12 +9,12 @@ const ItemSizes = props => {
     });
   };
 
-  return <div className={`d-flex justify-content-between ${props.className || ' '}`}>{_renderSizes()}</div>;
+  return <div className={` ${props.className || ' '}`}>{_renderSizes()}</div>;
 };
 
 const SizeBox = props => {
   return (
-    <button className="item-size-box item-size-box-selected default-font-size">
+    <button className="mr-3 item-size-box item-size-box-selected default-font-size">
       {props.size}
     </button>
   );

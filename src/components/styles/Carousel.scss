@@ -1,16 +1,26 @@
 @import "./variables";
+@import "./mixins";
 
 .carousel {
   width: 100%;
-  padding: 15px;
-  padding-left: 2rem;
-  padding-right: 2rem;
   overflow-x: auto;
   white-space: nowrap;
+  padding-bottom: 2rem;
   .item {
     max-width: 15rem;
     margin: 15px;
     display: inline-block;
+    @include sm{
+    }
+    @include lg{
+      // &:nth-last-child(-n+2){ Select last three elements
+      //   display: none;
+      // }
+      margin-right: 3.6rem;
+    }
+    @include xl{
+      margin-right: 10rem;
+    }
   }
   img {
     width: 100%;
