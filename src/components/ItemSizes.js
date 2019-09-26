@@ -14,7 +14,7 @@ const ItemSizes = props => {
 
 const SizeBox = props => {
   return (
-    <button className="mr-3 item-size-box item-size-box-selected default-font-size">
+    <button className="mr-2 item-size-box item-size-box-selected default-font-size">
       {props.size}
     </button>
   );

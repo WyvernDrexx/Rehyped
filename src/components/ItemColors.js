@@ -13,7 +13,7 @@ const ItemColor = props => {
 };
 
 const Color = props => {
-  return <button className='item-color mr-3' style={{ backgroundColor: props.color }}></button>;
+  return <button className='item-color mr-2' style={{ backgroundColor: props.color }}></button>;
 };
 
 export default ItemColor;

@@ -33,7 +33,7 @@ const Featured = props => {
               <span className="sub-header">$200</span>
             </p>
           </div>
-          <div className="position-lg-absolute bottom-0">
+          <div className="position-lg-absolute bottom-0 mt-4">
             <h4 className="sub-header mb-4 text-left font-weight-bold">SIZE</h4>
             <ItemSizes className="mt-2 mb-2" />
             <h4 className="sub-header mb-4 text-left font-weight-bold">
