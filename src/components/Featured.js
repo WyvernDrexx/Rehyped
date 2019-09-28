@@ -34,17 +34,23 @@ const Featured = props => {
             </p>
           </div>
           <div className="position-lg-absolute bottom-0 mt-4">
-            <h4 className="sub-header mb-4 text-left font-weight-bold">SIZE</h4>
-            <ItemSizes className="mt-2 mb-2" />
-            <h4 className="sub-header mb-4 text-left font-weight-bold">
+            <h4 className="sub-header mb-1 text-left font-weight-bold">SIZE</h4>
+            <ItemSizes className="mt-2 mb-3" />
+            <h4 className="sub-header mt-2 text-left font-weight-bold">
               COLOURS
             </h4>
             <ItemColors className="" />
-            <LightButton title="ADD TO CART" className="w-100 pt-3 pb-3 mb-3 mt-3" />
-            <PrimaryButton
-              title="BUY IT NOW"
-              className="w-100 pt-3 pb-3"
-            />
+            <Row className='mt-4'>
+              <Col md={true}>
+                <LightButton
+                  title="ADD TO CART"
+                  className="w-100 pt-3 pb-3"
+                />
+              </Col>
+              <Col className='px-lg-0 mt-2 mt-md-0' md={true}>
+                <PrimaryButton title="BUY IT NOW" className="w-100 pt-3 pb-3" />
+              </Col>
+            </Row>
           </div>
         </Col>
       </Row>

@@ -32,15 +32,15 @@ const Header = props => {
           R<span className='primary-color font-weight-bolder'>E</span>HYPED™
         </div>
         <div className="social">
-          <Link to="/">
+          <a href="https://facebook.com/rehypedofficial">
             <FontAwesomeIcon className='text-white' icon={faFacebook} />
-          </Link>
-          <Link to="/">
+          </a>
+          <a href="https://instagram.com/rehypedofficial">
             <FontAwesomeIcon className='text-white' icon={faInstagram} />
-          </Link>
-          <Link to="/">
+          </a>
+          <a href="https://twitter.com/rehypedofficial">
             <FontAwesomeIcon className='text-white' icon={faTwitter} />
-          </Link>
+          </a>
         </div>
       </div>
     </div>

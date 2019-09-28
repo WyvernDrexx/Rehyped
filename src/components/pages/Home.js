@@ -44,7 +44,7 @@ const Home = props => {
               </p>
             </div>
             <DarkButton
-              className="d-sm-block mx-auto mx-md-0 pt-3 pb-3 mb-3 mb-md-0 position-md-absolute mt-3 bottom-0 text-center text-md-left"
+              className="d-block mx-auto mx-md-0 pt-3 pb-3 mb-3 mb-md-0 position-md-absolute mt-3 bottom-0 text-center text-md-left"
               title="GO TO STORE"
             />
           </Col>
@@ -57,15 +57,17 @@ const Home = props => {
         />
         <Divider className="mt-4 mb-4" />
       </Container>
-      <Container className="px-0">
+      <Container className="pr-0">
         <Carousel />
       </Container>
-      <Featured />
       <Container>
-        <h4 className="sub-header mb-4 text-left font-weight-bold">
+      <Featured />
+      </Container>
+      <Container>
+        <h4 className="sub-header mb-4 text-center font-weight-bold">
           Est. delivery in 7-10 business days via preferred courier.
         </h4>
-        <p className="sub-header text-left">
+        <p className="sub-header text-center">
           *Depending on the courier partner available at your pincode.
         </p>
       </Container>
@@ -76,7 +78,7 @@ const Home = props => {
           subheader="WHAT MAKES US UNIQUE"
         />
         <Divider className="mt-4 mb-4" />
-        <Media className="mt-4 mb-6" />
+        <Media className="mt-4 mb-6 w-md-50 mx-auto" />
       </Container>
       <Container className="mb-6">
         <CommonHeader

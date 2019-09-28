@@ -52,6 +52,12 @@ button {
   }
 }
 
+.w-md-50{
+  @include md{
+    width: 50%;
+  }
+}
+
 .gray-border {
   border: 1px solid lightgray;
 }

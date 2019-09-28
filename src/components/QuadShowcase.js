@@ -1,6 +1,5 @@
 import React from "react";
 import { Col, Row } from "react-bootstrap";
-import Container from "./stateless/Container";
 import "./styles/QuadShowcase.scss";
 
 const QuadShowcase = props => {

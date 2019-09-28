@@ -1,17 +1,17 @@
 @import "./variables";
 @import "./mixins";
 
-.carousel {
+.carousel-custom {
   width: 100%;
   overflow-x: auto;
   white-space: nowrap;
   padding-bottom: 2rem;
+  padding-left: 7.5%;
+
   .item {
     max-width: 15rem;
     margin: 15px;
     display: inline-block;
-    @include sm{
-    }
     @include lg{
       // &:nth-last-child(-n+2){ Select last three elements
       //   display: none;
