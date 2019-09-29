@@ -12,34 +12,34 @@ import "./styles/Sidebar.scss";
 const Sidebar = props => {
   return (
     <Menu {...props}>
-      <Link to='/' className="menu-item" href="/">
+      <Link to="/" className="menu-item" href="/">
         My Account
       </Link>
 
-      <Link to='/' className="menu-item" href="/burgers">
-        Track Orders
+      <Link to="/products" className="menu-item">
+        Products
       </Link>
 
-      <Link to='/' className="menu-item" href="/pizzas">
+      <Link to="/" className="menu-item">
         Latest Design
       </Link>
 
-      <Link to='/' className="menu-item" href="/desserts">
+      <Link to="/" className="menu-item">
         Rehyped Original
       </Link>
-      <Link to='/' className="menu-item" href="/desserts">
+      <Link to="/" className="menu-item">
         Anime
       </Link>
-      <Link to='/' className="menu-item" href="/desserts">
+      <Link to="/" className="menu-item">
         Merch
       </Link>
-      <Link to='/' className="menu-item" href="/desserts">
+      <Link to="/" className="menu-item">
         Rehyped Original
       </Link>
-      <Link to='/' className="menu-item" href="/desserts">
+      <Link to="/" className="menu-item">
         Return Policy
       </Link>
-      <Link to='/' className="menu-item" href="/desserts">
+      <Link to="/" className="menu-item">
         Contact Us
       </Link>
       <div className="social-platforms">

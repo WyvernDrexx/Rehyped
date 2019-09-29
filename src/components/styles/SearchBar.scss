@@ -1,0 +1,23 @@
+@import './variables';
+@import './mixins';
+
+.search-icon{
+  font-size: 20px;
+  margin-right: 10px;
+  color: $lightColor;
+  font-weight: 100;
+}
+
+.search-bar-inner{
+  padding: 10px 25px;
+  border-bottom: 1px solid $lightColor;
+}
+
+.search-input{
+  color: $lightColor;
+  border: none;
+  &::placeholder{
+    letter-spacing: $defaultLetterSpacing;
+    font-size: $secondaryFontSize;
+  }
+}
