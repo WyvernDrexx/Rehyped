@@ -23,11 +23,38 @@
 
 // Extra large devices
 @mixin xl {
-  @media (min-width: #{$screen-xl-min}) {
+  @media (max-width: #{$screen-xl-min}) {
     @content;
   }
 }
 
+// Small devices
+@mixin lsm {
+  @media (max-width: #{$screen-sm-min}) {
+    @content;
+  }
+}
+
+// Medium devices
+@mixin lmd {
+  @media (max-width: #{$screen-md-min}) {
+    @content;
+  }
+}
+
+// Large devices
+@mixin llg {
+  @media (max-width: #{$screen-lg-min}) {
+    @content;
+  }
+}
+
+// Extra large devices
+@mixin lxl {
+  @media (max-width: #{$screen-xl-min}) {
+    @content;
+  }
+}
 
 @mixin flexCenter {
   display: flex;

@@ -1,14 +1,12 @@
 import React from "react";
-import Container from "./stateless/Container";
 import { Row, Col } from "react-bootstrap";
 
 import "./styles/ProductsList.scss";
 
 const renderList = (list = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]) => {
-  return(
-    list.map((item, index) => {
-      return (
-        <Col key={index} xs={6} sm={4} lg={3} className="product-item px-2 mb-5">
+  return list.map((item, index) => {
+    return (
+      <Col key={index} xs={6} sm={4} lg={3} className="product-item mb-5">
         <Row>
           <img src="/imgs/500x600.jpeg" />
         </Row>
@@ -24,18 +22,15 @@ const renderList = (list = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]) => {
           </div>
         </Row>
       </Col>
-      );
-    })
-  );
+    );
+  });
 };
 
 const ProductsList = props => {
   return (
-    <Container className='flex-center'>
-      <Row className="products-list justify-content-center">
-        {renderList()}
-      </Row>
-    </Container>
+    <div className="flex-center">
+      <Row className="products-list justify-content-center">{renderList()}</Row>
+    </div>
   );
 };
 
