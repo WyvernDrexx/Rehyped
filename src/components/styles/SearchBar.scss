@@ -1,6 +1,11 @@
 @import './variables';
 @import './mixins';
 
+
+.search-bar{
+  border-bottom: 1px solid $lightColor;
+  padding-bottom: 0.5rem;
+}
 .search-icon{
   font-size: 20px;
   margin-right: 10px;
@@ -10,7 +15,6 @@
 
 .search-bar-inner{
   padding: 10px 25px;
-  border-bottom: 1px solid $lightColor;
 }
 
 .search-input{

@@ -8,9 +8,9 @@ const renderList = (list = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]) => {
   return(
     list.map((item, index) => {
       return (
-        <Col key={index} className="product-item">
+        <Col key={index} xs={6} sm={4} lg={3} className="product-item px-2">
         <Row>
-          <img src="/imgs/minions.jpg" />
+          <img src="/imgs/500x600.jpeg" />
         </Row>
         <Row>
           <div className="mt-4">
@@ -31,8 +31,8 @@ const renderList = (list = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]) => {
 
 const ProductsList = props => {
   return (
-    <Container>
-      <Row className="products-list">
+    <Container className='flex-center'>
+      <Row className="products-list justify-content-center">
         {renderList()}
       </Row>
     </Container>
