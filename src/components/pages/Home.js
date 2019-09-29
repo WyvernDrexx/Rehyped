@@ -58,7 +58,7 @@ const Home = props => {
         <Divider className="mt-4 mb-4" />
       </Container>
       <Container className="pr-0">
-        <Carousel />
+        {/* <Carousel /> */}
       </Container>
       <Container>
       <Featured />

@@ -12,7 +12,7 @@ import "./styles/Featured.scss";
 
 const Featured = props => {
   return (
-    <Container>
+    <>
       <CommonHeader
         className="mt-6"
         header="FEATURED"
@@ -54,14 +54,7 @@ const Featured = props => {
           </div>
         </Col>
       </Row>
-    </Container>
-  );
-
-  return (
-    <Container>
-      <Divider className="mt-4 mb-4" />
-      <Divider className="mb-4 mt-4" size="full" />
-    </Container>
+    </>
   );
 };
 
