@@ -9,6 +9,7 @@ import TriShowCase from "../TriShowcase";
 import CommonHeader from "../stateless/CommonHeader";
 import SlideCarousel from "../SlideCarousel";
 import Featured from "../Featured";
+import history from "../../history";
 
 const Home = props => {
   return (
@@ -46,6 +47,7 @@ const Home = props => {
             <DarkButton
               className="d-block mx-auto mx-md-0 pt-3 pb-3 mb-3 mb-md-0 position-md-absolute mt-3 bottom-0 text-center text-md-left"
               title="GO TO STORE"
+              onClick={_ => history.push("/products")}
             />
           </Col>
         </Row>
@@ -57,11 +59,9 @@ const Home = props => {
         />
         <Divider className="mt-4 mb-4" />
       </Container>
-      <Container className="pr-0">
-        {/* <Carousel /> */}
-      </Container>
+      <Container className="pr-0">{/* <Carousel /> */}</Container>
       <Container>
-      <Featured />
+        <Featured />
       </Container>
       <Container>
         <h4 className="sub-header mb-4 text-center font-weight-bold">

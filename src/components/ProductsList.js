@@ -4,11 +4,11 @@ import { Row, Col } from "react-bootstrap";
 
 import "./styles/ProductsList.scss";
 
-const renderList = (list = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]) => {
+const renderList = (list = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]) => {
   return(
     list.map((item, index) => {
       return (
-        <Col key={index} xs={6} sm={4} lg={3} className="product-item px-2">
+        <Col key={index} xs={6} sm={4} lg={3} className="product-item px-2 mb-5">
         <Row>
           <img src="/imgs/500x600.jpeg" />
         </Row>
