@@ -1,0 +1,19 @@
+@import "../../assets/styles/mixins";
+
+
+.subscribe{
+  input{
+    width: 100%;
+    @include md{
+      width: 42%;
+      display: block;
+      margin: auto;
+    }
+  }
+  button{
+    width: 100%;
+    @include md{
+      width: 42%;
+    }
+  }
+}

@@ -1,6 +1,13 @@
 @import "../../assets/styles/variables";
+@import "../../assets/styles/mixins";
 .media-body {
+  display: block;
+  flex: none;
   position: relative;
+  width: 100%;
+  @include md{
+    width: 50%;
+  }
 }
 
 .media-icon{
