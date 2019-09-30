@@ -20,8 +20,8 @@ const Sidebar = props => {
         Products
       </Link>
 
-      <Link to="/" className="menu-item">
-        Latest Design
+      <Link to="/product" className="menu-item">
+        Single Product
       </Link>
 
       <Link to="/" className="menu-item">

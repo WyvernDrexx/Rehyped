@@ -8,17 +8,19 @@ import Media from "../Media";
 import TriShowCase from "../TriShowcase";
 import CommonHeader from "../stateless/CommonHeader";
 import SlideCarousel from "../SlideCarousel";
-import Featured from "../Featured";
+import SingleProduct from "../SingleProduct";
 import history from "../../history";
+import Subscribe from '../Subscribe';
+
 
 const Home = props => {
   return (
     <>
       <SlideCarousel
         images={[
-          "https://images.unsplash.com/photo-1532785450622-09a9fa83193a?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=cc5d893956adcb5c46271e26c4a11008&auto=format&fit=crop&w=2250&q=80",
-          "https://images.unsplash.com/photo-1502790671504-542ad42d5189?ixlib=rb-0.3.5&s=da4d3b0a41041f60ee409664746ca2d6&auto=format&fit=crop&w=2250&q=80",
-          "https://images.unsplash.com/photo-1518242340236-fd1dd715ba89?ixlib=rb-0.3.5&s=e71132ec1e8da8b1c33d8075b91dad88&auto=format&fit=crop&w=934&q=80"
+          "/imgs/wide1.jpg",
+          "/imgs/wide2.jpg",
+          "/imgs/wide3.jpg"
         ]}
       />
       <Container className="mt-6 mb-4">
@@ -45,7 +47,7 @@ const Home = props => {
               </p>
             </div>
             <DarkButton
-              className="d-block mx-auto mx-md-0 pt-3 pb-3 mb-3 mb-md-0 position-md-absolute mt-3 bottom-0 text-center text-md-left"
+              className="d-block mx-auto mx-md-0 mb-3 mb-md-0 position-md-absolute mt-3 bottom-0 text-center text-md-left"
               title="GO TO STORE"
               onClick={_ => history.push("/products")}
             />
@@ -59,15 +61,15 @@ const Home = props => {
         />
         <Divider className="mt-4 mb-4" />
       </Container>
-      <Container className="pr-0">{/* <Carousel /> */}</Container>
+      <Container className="px-0"><Carousel /></Container>
       <Container>
-        <Featured />
+        <SingleProduct />
       </Container>
       <Container>
-        <h4 className="sub-header mb-4 text-center font-weight-bold">
+        <h4 className="sub-header mb-4 text-left font-weight-bold">
           Est. delivery in 7-10 business days via preferred courier.
         </h4>
-        <p className="sub-header text-center">
+        <p className="sub-header text-left">
           *Depending on the courier partner available at your pincode.
         </p>
       </Container>
@@ -89,23 +91,7 @@ const Home = props => {
         <Divider />
         <TriShowCase className="mt-6" />
       </Container>
-      <Container className="secondary-background-color pt-5 pb-5">
-        <CommonHeader
-          className="mb-3"
-          header="NEWS LETTER"
-          subheader=" SIGN UP TO GET DISCOUNTS ON
-          PREMIUM PRODUCTS"
-        />
-        <input
-          className="placeholder-center primary-input w-100 mt-5"
-          placeholder="ENTER YOUR EMAIL"
-        />
-        <PrimaryButton
-          className="mt-4 pt-3 pb-3 mx-auto d-block font-weight-bold w-100"
-          onClick={() => console.log("Clicked subscribe button!")}
-          title="SUBSCRIBE"
-        />
-      </Container>
+      <Subscribe />
     </>
   );
 };

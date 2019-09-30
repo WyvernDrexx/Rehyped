@@ -50,9 +50,9 @@
 
 
 .primary-input {
-  padding: 10px;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding: $defaultInputPadding;
+  padding-top: $defaultInputPadding;
+  padding-bottom: $defaultInputPadding;
   background-color: white;
   @extend .gray-border;
   font-size: $primaryFontSize;

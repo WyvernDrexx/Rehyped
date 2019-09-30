@@ -33,8 +33,8 @@ button {
 }
 
 .button-default {
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: $defaultButtonPadding;
+  padding-bottom: $defaultButtonPadding;
   font-size: $secondaryFontSize;
 }
 
@@ -57,6 +57,11 @@ button {
 .w-md-50{
   @include md{
     width: 50%;
+  }
+}
+.w-md-25{
+  @include md{
+    width: 25%;
   }
 }
 

@@ -34,7 +34,7 @@ const CustomMedia = props => {
     }
   ];
   return (
-    <div className={`${props.className || ""}`}>
+    <div className={`w-md-50 ${props.className || ""}`}>
       {data.map((media, index) => {
         return (
           <Row key={index} className={`mt-5 mb-5 ${props.mediaStyle || ""}`}>

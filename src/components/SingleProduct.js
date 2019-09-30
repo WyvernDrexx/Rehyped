@@ -1,8 +1,6 @@
 import React from "react";
 import { LightButton, PrimaryButton } from "./stateless/Buttons";
-import Container from "./stateless/Container";
 import CommonHeader from "./stateless/CommonHeader";
-import Divider from "./stateless/Divider";
 import ItemSizes from "./ItemSizes";
 import ItemColors from "./ItemColors";
 import QuadShowcase from "./QuadShowcase";

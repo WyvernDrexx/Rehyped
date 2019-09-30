@@ -8,6 +8,7 @@ import Footer from './Footer';
 
 import Home from "./pages/Home";
 import Products from './pages/Products';
+import Product from './pages/Product';
 
 const App = _ => {
   return (
@@ -15,6 +16,7 @@ const App = _ => {
       <Header />
       <Route exact path="/" component={Home} />
       <Route exact path="/products" component={Products} />
+      <Route exact path="/product" component={Product} />
       <Footer />
     </Router>
   );
