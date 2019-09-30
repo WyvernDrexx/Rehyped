@@ -17,7 +17,7 @@ const CarouselItem = props => {
   return (
     <div className="item">
       <div>
-        <img alt='Placeholder' className="carousel-img" src="/imgs/minions.jpg" />
+        <img alt='Placeholder' className="carousel-img" src="/imgs/500x600-2.jpg" />
       </div>
       <div className="product-details">
         <p className="product-name">MINIONS HOODIE</p>
