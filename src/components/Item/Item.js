@@ -5,6 +5,7 @@ import ItemSizes from "../stateless/ItemSizes";
 import ItemColors from "../stateless/ItemColors";
 import QuadShowcase from "../QuadShowcase";
 import { Row, Col } from "react-bootstrap";
+import Container from '../stateless/Container';
 
 import "./Item.scss";
 
@@ -16,8 +17,8 @@ const Featured = props => {
         header="FEATURED"
         subheader="BEST SELLING DESIGNS OF THE WEEK"
       />
-      <Row className="mt-5 mb-6">
-        <Col lg={true}>
+      <Row className="mt-5 mb-6 item-root">
+        <Col className='px-0 flex-center'>
           <QuadShowcase />
         </Col>
         <Col className="mt-5  mt-lg-0" lg={true}>

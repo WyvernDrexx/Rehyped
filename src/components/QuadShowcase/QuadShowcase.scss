@@ -5,26 +5,39 @@ $quadHeight: 100%;
 
 .quadshowcase {
   width: 100%;
+  height: 100%;
+  margin-left: 0px !important;
+  margin-right: 0px !important;
 }
 
 .primary-image {
-  display: flex;
-  // background-color: aquamarine;
-  height: 100%;
-  @include flexCenter();
+  width: 100%;
+  @include lg{
+    padding-left: 0px;
+  }
+  img{
+    width: 100%;
+  }
 }
 
 .secondary-image {
-  padding-bottom: 10px;
-  height: 100%/3;
-  @include flexCenter();
-  &:last-child{
-    padding-bottom: 0px;
-  }
+  border: 1px solid $lightColor;
+  width: 20%;
+  margin-top: 5px;
+  margin-right: 5px;
+  display: inline-block;
   @include md{
+    margin-top: 0px;
+    margin-bottom: 6px;
+    width: 25%;
     // height: 6rem;
   }
   @include lg{
     // height: 7.34rem;
+    width: 33.335%;
+    display: block;
+  }
+  img{
+    width: 100%;
   }
 }

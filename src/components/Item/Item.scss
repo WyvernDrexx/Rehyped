@@ -1,0 +1,7 @@
+@import "../../assets/styles/mixins";
+
+.item-root{
+  @include md{
+    height: 60%;
+  }
+}
