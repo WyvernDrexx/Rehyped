@@ -1,9 +1,9 @@
 import React from "react";
-import SingleProduct from "../SingleProduct";
+import SingleProduct from "../Item";
 import Container from "../stateless/Container";
 import CommonHeader from "../stateless/CommonHeader";
 import Instructions from "../Media";
-import Carousel from "../Carousel";
+import Carousel from "../Carousel"; 
 import Subscribe from '../Subscribe';
 
 const Product = props => {

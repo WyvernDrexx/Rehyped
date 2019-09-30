@@ -8,7 +8,7 @@ import Media from "../Media";
 import TriShowCase from "../TriShowcase";
 import CommonHeader from "../stateless/CommonHeader";
 import SlideCarousel from "../SlideCarousel";
-import SingleProduct from "../SingleProduct";
+import ProductItem from "../Item";
 import history from "../../history";
 import Subscribe from '../Subscribe';
 
@@ -63,7 +63,7 @@ const Home = props => {
       </Container>
       <Container className="px-0"><Carousel /></Container>
       <Container>
-        <SingleProduct />
+        <ProductItem />
       </Container>
       <Container>
         <h4 className="sub-header mb-4 text-left font-weight-bold">

@@ -1,7 +1,6 @@
 import React from 'react';
 import Container from '../stateless/Container';
 import CommonHeader from "../stateless/CommonHeader";
-import Divider from '../stateless/Divider';
 import SearchBar from '../SearchBar';
 import ProductsList from '../ProductsList';
 import { DarkButton } from "../stateless/Buttons";
