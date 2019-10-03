@@ -43,11 +43,11 @@ const Featured = props => {
               <Col md={true}>
                 <LightButton
                   title="ADD TO CART"
-                  className="w-100 pt-3 pb-3"
+                  className="w-100"
                 />
               </Col>
               <Col className='px-lg-0 mt-2 mt-md-0' md={true}>
-                <PrimaryButton title="BUY IT NOW" className="w-100 pt-3 pb-3" />
+                <PrimaryButton title="BUY IT NOW" className="w-100" />
               </Col>
             </Row>
           </div>
