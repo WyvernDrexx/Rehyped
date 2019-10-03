@@ -3,16 +3,18 @@
 .cart-item {
   width: 100%;
 }
+
+.cart-item-image {
+  width: 100%;
+  img{
+    width: 100% !important;
+  }
+}
+
 .cart-item-info {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  .cart-item-image {
-    img{
-      width: 100%;
-    }
-  }
-
   .cart-item-details {
 
   }
