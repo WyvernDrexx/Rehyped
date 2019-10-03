@@ -9,7 +9,7 @@ const CartItem = props => {
       <Col xs={6} className="flex-center cart-item-image pl-0">
         <img src="/imgs/500x600.jpeg" />
       </Col>
-      <Col className="cart-item-info">
+      <Col className="cart-item-info ml-2">
         <Row className="cart-item-details">
           <Row>
             <Col>
@@ -35,7 +35,7 @@ const CartItem = props => {
           </Col>
         </Row>
         <Row className="cart-item-action">
-          <PrimarySlimButton title="REMOVE" className="rounded" />
+          <PrimarySlimButton title="REMOVE" className="sub-header" />
         </Row>
       </Col>
     </Row>
