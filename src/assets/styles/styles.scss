@@ -65,6 +65,12 @@ button {
   }
 }
 
+.w-md-40{
+  @include md{
+    width: 40% !important;
+  }
+}
+
 .px-sm-0{
   @include sm{
     padding-left: 0px !important;
@@ -77,6 +83,10 @@ button {
     padding-left: 0px !important;
     padding-right: 0px !important;
   }
+}
+
+.small{
+  font-size: 8px;
 }
 
 .gray-border {

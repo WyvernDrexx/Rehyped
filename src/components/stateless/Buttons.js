@@ -47,4 +47,17 @@ export const PrimaryButton = props => {
   );
 };
 
+export const PrimarySlimButton = props => {
+  return (
+    <Button
+    onClick={_ => onButtonClick(props.onClick)}
+    className={`no-radius default-font-size letter-spacing primary-background-color text-light ${props.className ||
+      ""}`}
+    variant="light"
+  >
+    {props.title || "Primary Button"}
+  </Button>
+  );
+}
+
 //To center a button horizontally use class: 'mx-auto d-block'

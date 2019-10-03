@@ -15,17 +15,14 @@ const Sidebar = props => {
       <Link to="/" className="menu-item" href="/">
         My Account
       </Link>
-
       <Link to="/products" className="menu-item">
         Products
       </Link>
-
       <Link to="/product" className="menu-item">
         Single Product
       </Link>
-
-      <Link to="/" className="menu-item">
-        Rehyped Original
+      <Link to="/mycart" className="menu-item">
+        My Cart
       </Link>
       <Link to="/" className="menu-item">
         Anime
