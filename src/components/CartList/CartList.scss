@@ -2,6 +2,18 @@
 
 .cart-item {
   width: 100%;
+  @include md{
+    max-width: 20rem;
+    float: left;
+    margin: auto;
+  }
+}
+
+.cart-list{
+  @include md{
+    position: relative;
+    display: inline-block;
+  }
 }
 
 .cart-item-image {
