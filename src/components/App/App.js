@@ -12,6 +12,8 @@ import Product from "../pages/Product";
 import MyCart from "../pages/MyCart";
 import AboutUs from "../pages/AboutUs";
 import ChangePassword from "../pages/ChangePassword";
+import ContactUs from "../pages/ContactUs";
+
 
 const App = _ => {
   return (
@@ -21,8 +23,9 @@ const App = _ => {
       <Route exact path="/products" component={Products} />
       <Route exact path="/product" component={Product} />
       <Route exact path="/mycart" component={MyCart} />
-      <Route exact path="/about_us" component={AboutUs} />
-      <Route exact path="/change_password" component={ChangePassword} />
+      <Route exact path="/about-us" component={AboutUs} />
+      <Route exact path="/change-password" component={ChangePassword} />
+      <Route exact path="/contact-us" component={ContactUs} />
       <Footer />
     </Router>
   );

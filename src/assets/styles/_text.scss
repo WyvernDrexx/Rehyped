@@ -47,6 +47,24 @@
   text-align: center;
 }
 
+.placeholder-left::-webkit-input-placeholder {
+  text-align: left;
+}
+
+.placeholder-left:-moz-placeholder {
+  /* Firefox 18- */
+  text-align: left;
+}
+
+.placeholder-left::-moz-placeholder {
+  /* Firefox 19+ */
+  text-align: left;
+}
+
+.placeholder-left:-ms-input-placeholder {
+  text-align: left;
+}
+
 
 
 .primary-input {

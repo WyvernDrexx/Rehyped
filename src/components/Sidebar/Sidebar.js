@@ -24,14 +24,14 @@ const Sidebar = props => {
       <Link to="/mycart" className="menu-item">
         My Cart
       </Link>
-      <Link to="/about_us" className="menu-item">
+      <Link to="/about-us" className="menu-item">
         About Us
       </Link>
-      <Link to="/" className="menu-item">
-        Merch
+      <Link to="/change-password" className="menu-item">
+        Change Password
       </Link>
-      <Link to="/" className="menu-item">
-        Rehyped Original
+      <Link to="/contact-us" className="menu-item">
+        Contact Us
       </Link>
       <Link to="/" className="menu-item">
         Return Policy
