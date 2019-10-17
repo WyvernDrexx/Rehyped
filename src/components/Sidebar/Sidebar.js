@@ -24,8 +24,8 @@ const Sidebar = props => {
       <Link to="/mycart" className="menu-item">
         My Cart
       </Link>
-      <Link to="/" className="menu-item">
-        Anime
+      <Link to="/about_us" className="menu-item">
+        About Us
       </Link>
       <Link to="/" className="menu-item">
         Merch

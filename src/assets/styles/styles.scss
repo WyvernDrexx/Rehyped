@@ -89,6 +89,10 @@ button {
   font-size: 8px;
 }
 
+.default-line-height{
+  line-height: $defaultLineHeight;
+}
+
 .gray-border {
   border: 1px solid lightgray;
 }
