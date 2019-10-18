@@ -39,9 +39,6 @@ const Sidebar = props => {
       <Link to="/sign-up" className="menu-item">
         CREATE AN ACCOUNT
       </Link>
-      <Link to="/" className="menu-item">
-        Contact Us
-      </Link>
       <div className="social-platforms">
         <h4>FOLLOW US ON</h4>
         <Link to="/">
