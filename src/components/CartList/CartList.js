@@ -8,8 +8,8 @@ const CartList = props => {
     <div className="cart-list">
       <CartItem />
       <CartItem />
-      <CartItem />
-      <CartItem />
+      {/* <CartItem />
+      <CartItem /> */}
     </div>
   );
 };

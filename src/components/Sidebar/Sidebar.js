@@ -12,7 +12,10 @@ import "./Sidebar.scss";
 const Sidebar = props => {
   return (
     <Menu {...props}>
-      <Link to="/" className="menu-item" href="/">
+      <Link to="/" className="menu-item">
+        Home
+      </Link>
+      <Link to="/my-account" className="menu-item" href="/">
         My Account
       </Link>
       <Link to="/products" className="menu-item">
