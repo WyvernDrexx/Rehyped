@@ -13,6 +13,7 @@ import MyCart from "../pages/MyCart";
 import AboutUs from "../pages/AboutUs";
 import ChangePassword from "../pages/ChangePassword";
 import ContactUs from "../pages/ContactUs";
+import CreateAccount from '../pages/CreateAccount';
 
 
 const App = _ => {
@@ -26,6 +27,7 @@ const App = _ => {
       <Route exact path="/about-us" component={AboutUs} />
       <Route exact path="/change-password" component={ChangePassword} />
       <Route exact path="/contact-us" component={ContactUs} />
+      <Route exact path="/sign-up" component={CreateAccount} />
       <Footer />
     </Router>
   );

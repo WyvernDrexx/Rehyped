@@ -33,8 +33,8 @@ const Sidebar = props => {
       <Link to="/contact-us" className="menu-item">
         Contact Us
       </Link>
-      <Link to="/" className="menu-item">
-        Return Policy
+      <Link to="/sign-up" className="menu-item">
+        CREATE AN ACCOUNT
       </Link>
       <Link to="/" className="menu-item">
         Contact Us
