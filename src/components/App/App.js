@@ -14,6 +14,7 @@ import AboutUs from "../pages/AboutUs";
 import ChangePassword from "../pages/ChangePassword";
 import ContactUs from "../pages/ContactUs";
 import CreateAccount from '../pages/CreateAccount';
+import Login from "../pages/Login";
 
 
 const App = _ => {
@@ -28,6 +29,7 @@ const App = _ => {
       <Route exact path="/change-password" component={ChangePassword} />
       <Route exact path="/contact-us" component={ContactUs} />
       <Route exact path="/sign-up" component={CreateAccount} />
+      <Route exact path="/login" component={Login} />
       <Footer />
     </Router>
   );
