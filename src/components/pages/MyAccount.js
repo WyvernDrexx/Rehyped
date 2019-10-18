@@ -3,12 +3,13 @@ import Container from "../stateless/Container";
 import { PrimaryButton } from "../stateless/Buttons";
 import { Link } from "react-router-dom";
 import CartList from "../CartList";
-import OrdersComplete from '../OrdersComplete';
+import ShippingDetails from "../ShippingDetails";
 
 import "./MyAccount.scss";
 
 const MyAccount = props => {
   const [ordersVisibility, setOrdersVisibility] = useState(false);
+  const [shippingVisibility, setShippingVisibility] = useState(false);
 
   const renderCartList = _ => {
     if (ordersVisibility) {
@@ -21,6 +22,19 @@ const MyAccount = props => {
       return null;
     }
   };
+
+  const renderShippingDetails = _ => {
+    if (shippingVisibility) {
+      return <ShippingDetails />;
+    } else {
+      return null;
+    }
+  };
+
+  const onShippingDetailsClick = _ => {
+    if (shippingVisibility) setShippingVisibility(false);
+    else setShippingVisibility(true);
+  }
 
   const onOrdersClick = _ => {
     if (ordersVisibility) setOrdersVisibility(false);
@@ -45,11 +59,14 @@ const MyAccount = props => {
             {renderCartList()}
           </div>
           <div className="pb-3 options">
-            <p className="sub-header font-weight-bolder text-left mx-4">
+            <p 
+              onClick={onShippingDetailsClick}
+            className="sub-header font-weight-bolder text-left mx-4 pb-3">
               SHIPPING DETAILS
             </p>
+            {renderShippingDetails()}
           </div>
-          <div className="pt-3 pb-3 options">
+          <div className="pb-3 options">
             <p className="sub-header font-weight-bolder text-left mx-4">
               CHANGE PASSWORD
             </p>
