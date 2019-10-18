@@ -1,6 +1,6 @@
 import React from "react";
 import Container from "../stateless/Container";
-import { DarkButton, PrimaryButton } from "../stateless/Buttons";
+import { PrimaryButton } from "../stateless/Buttons";
 import Divider from "../stateless/Divider";
 import CheckBox from "../stateless/Checkbox";
 import CommonHeader from "../stateless/CommonHeader";

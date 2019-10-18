@@ -1,7 +1,6 @@
 import React from "react";
 import "./CartList.scss";
 import CartItem from "./CartItem";
-import {Col} from 'react-bootstrap';
 
 const CartList = props => {
   return (

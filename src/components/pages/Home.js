@@ -2,7 +2,7 @@ import React from "react";
 import { Row, Col } from "react-bootstrap";
 import Container from "../stateless/Container";
 import Divider from "../stateless/Divider";
-import { DarkButton, LightButton, PrimaryButton } from "../stateless/Buttons";
+import { DarkButton } from "../stateless/Buttons";
 import Carousel from "../Carousel";
 import Media from "../Media";
 import TriShowCase from "../TriShowcase";

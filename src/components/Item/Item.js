@@ -5,7 +5,6 @@ import ItemSizes from "../stateless/ItemSizes";
 import ItemColors from "../stateless/ItemColors";
 import QuadShowcase from "../QuadShowcase";
 import { Row, Col } from "react-bootstrap";
-import Container from '../stateless/Container';
 
 import "./Item.scss";
 

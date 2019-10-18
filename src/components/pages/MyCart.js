@@ -4,7 +4,7 @@ import Container from "../stateless/Container";
 import Divider from "../stateless/Divider";
 import { DarkButton, PrimaryButton } from "../stateless/Buttons";
 import CartList from "../CartList";
-import { Row, Col, Button } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 
 const MyCart = props => {
   return (

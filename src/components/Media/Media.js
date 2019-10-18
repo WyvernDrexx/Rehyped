@@ -4,8 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faLock,
   faCheckCircle,
-  faShippingFast,
-  faScroll
+  faShippingFast
 } from "@fortawesome/free-solid-svg-icons";
 
 import "./Media.scss";
