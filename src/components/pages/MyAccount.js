@@ -3,6 +3,7 @@ import Container from "../stateless/Container";
 import { PrimaryButton } from "../stateless/Buttons";
 import { Link } from "react-router-dom";
 import CartList from "../CartList";
+import OrdersComplete from '../OrdersComplete';
 
 import "./MyAccount.scss";
 
