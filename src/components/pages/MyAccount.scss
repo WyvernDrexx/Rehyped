@@ -1,0 +1,15 @@
+@import '../../assets/styles/variables';
+
+.my-account{
+  div{
+    cursor: pointer;
+    padding-left: 8px;
+    border-radius: 5px;
+    &:hover{
+      background-color: $primaryColor;
+      p{
+        color: $secondaryColor;
+      }
+    }
+  }
+}

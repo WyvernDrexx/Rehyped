@@ -18,6 +18,10 @@ p {
 }
 a {
   outline: none;
+  text-decoration: none !important;
+  &:hover{
+    color: $primaryColor;
+  }
 }
 
 button {
