@@ -1,0 +1,9 @@
+.body-header{
+  position: absolute;
+  top: 0;
+  .row{
+    z-index: 9999;
+    position: absolute;
+    width: 100vw;
+  }
+}

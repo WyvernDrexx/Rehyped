@@ -36,6 +36,17 @@ button {
   margin-bottom: 6rem;
 }
 
+.border-none{
+  border: none;
+}
+
+.bg-transparent{
+  background: transparent;
+}
+.primary-font-size{
+  font-size: $primaryFontSize;
+}
+
 .button-default {
   padding-top: $defaultButtonPadding;
   padding-bottom: $defaultButtonPadding;
