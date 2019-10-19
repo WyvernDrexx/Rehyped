@@ -30,7 +30,7 @@ const Header = props => {
       <Row className="bg-black mx-0">
         <Col>
           <button
-            className="border-none bg-transparent text-white primary-font-size"
+            className="px-0 border-none bg-transparent text-white primary-font-size"
             onClick={toggleSideBar}
           >
             <FontAwesomeIcon icon={faBars} />
@@ -42,7 +42,7 @@ const Header = props => {
           </div>
         </Col>
         <Col className="d-flex justify-content-end">
-          <button className="border-none bg-transparent text-white text-left primary-font-size">
+          <button className="px-0 border-none bg-transparent text-white text-left primary-font-size">
             <FontAwesomeIcon icon={faShoppingBag} />
           </button>
         </Col>

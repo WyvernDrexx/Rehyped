@@ -6,7 +6,7 @@ import Checkbox from "../stateless/Checkbox";
 const CreateAccount = props => {
   return (
     <div className="text-center mt-6">
-      <h1 className="header">CREATE AN ACCOUNT</h1>
+      <h1 className="header">SIGN UP</h1>
       <div className="secondary-background-color pt-4 pb-4 mb-5 mt-4">
         <Container className="">
           <input

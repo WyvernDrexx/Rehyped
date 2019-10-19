@@ -9,7 +9,7 @@ import { Row, Col } from "react-bootstrap";
 const MyCart = props => {
   return (
     <>
-      <Container className="pt-5 pb-5">
+      <Container className="pt-6 pb-5">
         <CommonHeader
           header="ITEMS"
           subheader="TOTAL PRODUCTS"
