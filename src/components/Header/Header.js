@@ -1,20 +1,33 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import Sidebar from "../Sidebar";
 import "./Header.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faShoppingBag } from "@fortawesome/free-solid-svg-icons";
+import history from "../../history";
 
 import { Row, Col } from "react-bootstrap";
 
 const Header = props => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [
+    navBarBackgroundTransparent,
+    setNavBarBackgroundTransparent
+  ] = useState("transparent");
 
   const toggleSideBar = _ => {
     console.log(sidebarOpen);
     if (sidebarOpen) setSidebarOpen(false);
     else setSidebarOpen(true);
   };
+
+  useEffect(_ => {
+    if (history.location.pathname !== "/") {
+      setNavBarBackgroundTransparent("black");
+    }else{
+      setNavBarBackgroundTransparent("transparent");
+    }
+  });
 
   return ReactDOM.createPortal(
     <div className="body-header">
@@ -27,7 +40,7 @@ const Header = props => {
           onStateChange={state => setSidebarOpen(state.isOpen)}
         />
       </div>
-      <Row className="bg-black mx-0">
+      <Row className={`bg-${navBarBackgroundTransparent} mx-0`}>
         <Col>
           <button
             className="px-0 border-none bg-transparent text-white primary-font-size"

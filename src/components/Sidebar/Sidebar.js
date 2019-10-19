@@ -12,36 +12,36 @@ import "./Sidebar.scss";
 const Sidebar = props => {
   return (
     <Menu {...props}>
-      <Link to="/" className="menu-item">
+      <Link onClick={props.toggleMenu} to="/" className="menu-item">
         Home
       </Link>
-      <Link to="/my-account" className="menu-item" href="/">
+      <Link onClick={props.toggleMenu} to="/my-account" className="menu-item" href="/">
         My Account
       </Link>
-      <Link to="/products" className="menu-item">
+      <Link onClick={props.toggleMenu} to="/products" className="menu-item">
         Products
       </Link>
-      <Link to="/product" className="menu-item">
+      <Link onClick={props.toggleMenu} to="/product" className="menu-item">
         Single Product
       </Link>
-      <Link to="/mycart" className="menu-item">
+      <Link onClick={props.toggleMenu} to="/mycart" className="menu-item">
         My Cart
       </Link>
-      <Link to="/about-us" className="menu-item">
+      <Link onClick={props.toggleMenu} to="/about-us" className="menu-item">
         About Us
       </Link>
-      <Link to="/change-password" className="menu-item">
+      <Link onClick={props.toggleMenu} to="/change-password" className="menu-item">
         Change Password
       </Link>
-      <Link to="/contact-us" className="menu-item">
+      <Link onClick={props.toggleMenu} to="/contact-us" className="menu-item">
         Contact Us
       </Link>
-      <Link to="/sign-up" className="menu-item">
+      <Link onClick={props.toggleMenu} to="/sign-up" className="menu-item">
         CREATE AN ACCOUNT
       </Link>
       <div className="social-platforms">
         <h4>FOLLOW US ON</h4>
-        <Link to="/">
+        <Link  to="/">
           <FontAwesomeIcon icon={faFacebook} />
         </Link>
         <Link to="/">
