@@ -28,6 +28,10 @@ button {
   @extend a;
 }
 
+.z-index-max{
+  z-index: 9999;
+}
+
 .mt-6 {
   margin-top: 6rem;
 }

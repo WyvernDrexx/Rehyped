@@ -18,17 +18,19 @@ const Header = props => {
 
   return ReactDOM.createPortal(
     <div className="body-header">
-      <Row className="bg-dark">
+      <div className="z-index-max">
+        <Sidebar
+          isOpen={sidebarOpen}
+          pageWrapId={"root"}
+          outerContainerId={"header"}
+          toggleMenu={toggleSideBar}
+          onStateChange={state => setSidebarOpen(state.isOpen)}
+        />
+      </div>
+      <Row className="bg-dark mx-0">
         <Col>
-          <Sidebar
-            isOpen={sidebarOpen}
-            pageWrapId={"root"}
-            outerContainerId={"header"}
-            toggleMenu={toggleSideBar}
-            onStateChange={state => setSidebarOpen(state.isOpen)}
-          />
           <button
-            className="border-none bg-transparent text-white primary-font-size pl-3"
+            className="border-none bg-transparent text-white primary-font-size"
             onClick={toggleSideBar}
           >
             <FontAwesomeIcon icon={faBars} />
@@ -39,7 +41,7 @@ const Header = props => {
             R<span className="primary-color font-weight-bolder">E</span>HYPED
           </div>
         </Col>
-        <Col className="pr-0 d-flex justify-content-end">
+        <Col className="d-flex justify-content-end">
           <button className="border-none bg-transparent text-white text-left primary-font-size">
             <FontAwesomeIcon icon={faShoppingBag} />
           </button>
