@@ -27,7 +27,7 @@ const Header = props => {
           onStateChange={state => setSidebarOpen(state.isOpen)}
         />
       </div>
-      <Row className="bg-dark mx-0">
+      <Row className="bg-black mx-0">
         <Col>
           <button
             className="border-none bg-transparent text-white primary-font-size"
