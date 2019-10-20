@@ -43,7 +43,7 @@ const CustomMedia = props => {
             >
               <FontAwesomeIcon className="media-icon" icon={media.faIcon} />
             </Col>
-            <Col className='pl-5'>
+            <Col className=''>
               <Row>
                 <p className="sub-header text-left font-weight-bold pb-4">
                   {media.top}

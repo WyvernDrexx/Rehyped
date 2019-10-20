@@ -5,6 +5,13 @@ import { Link } from "react-router-dom";
 import CartList from "../CartList";
 import ShippingDetails from "../ShippingDetails";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faChevronDown,
+  faChevronUp,
+  faChevronRight
+} from "@fortawesome/free-solid-svg-icons";
+
 import "./MyAccount.scss";
 
 const MyAccount = props => {
@@ -34,11 +41,19 @@ const MyAccount = props => {
   const onShippingDetailsClick = _ => {
     if (shippingVisibility) setShippingVisibility(false);
     else setShippingVisibility(true);
-  }
+  };
 
   const onOrdersClick = _ => {
     if (ordersVisibility) setOrdersVisibility(false);
     else setOrdersVisibility(true);
+  };
+
+  const renderArrow = val => {
+    if (val) {
+      return <FontAwesomeIcon icon={faChevronUp} />;
+    } else {
+      return <FontAwesomeIcon icon={faChevronDown} />;
+    }
   };
 
   return (
@@ -54,26 +69,30 @@ const MyAccount = props => {
               onClick={onOrdersClick}
               className="sub-header font-weight-bolder text-left mx-4 mb-3"
             >
-              ORDERS
+              ORDERS {renderArrow(ordersVisibility)}
             </p>
-            {renderCartList()}
+            <div className="bg-white">
+            <Container className="bg-white">{renderCartList()}</Container>
+
+            </div>
           </div>
           <div className="pb-3 options">
-            <p 
+            <p
               onClick={onShippingDetailsClick}
-            className="sub-header font-weight-bolder text-left mx-4 pb-3">
-              SHIPPING DETAILS
+              className="sub-header font-weight-bolder text-left mx-4 pb-3"
+            >
+              SHIPPING DETAILS {renderArrow(shippingVisibility)}
             </p>
             {renderShippingDetails()}
           </div>
           <div className="pb-3 options">
             <p className="sub-header font-weight-bolder text-left mx-4">
-              CHANGE PASSWORD
+              CHANGE PASSWORD <FontAwesomeIcon icon={faChevronRight} />
             </p>
           </div>
           <div className="pt-3 pb-3 options">
             <p className="sub-header font-weight-bolder text-left mx-4">
-              TRACK ORDERS
+              TRACK ORDERS <FontAwesomeIcon icon={faChevronRight} />
             </p>
           </div>
         </div>

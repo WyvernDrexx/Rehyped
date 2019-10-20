@@ -13,7 +13,7 @@ const Header = props => {
   const [
     navBarBackgroundTransparent,
     setNavBarBackgroundTransparent
-  ] = useState("transparent");
+  ] = useState("black");
 
   const toggleSideBar = _ => {
     console.log(sidebarOpen);
@@ -50,13 +50,14 @@ const Header = props => {
           </button>
         </Col>
         <Col className="d-flex align-items-center">
-          <div className="text-white font-weight-bold mx-auto default-letter-spacing primary-font-size">
+          <div className="text-white font-weight-bold mx-auto default-letter-spacing user-select-none primary-font-size">
             R<span className="primary-color font-weight-bolder">E</span>HYPED
           </div>
         </Col>
         <Col className="d-flex justify-content-end">
-          <button className="px-0 border-none bg-transparent text-white text-left primary-font-size">
+          <button className="pr-2 border-none bg-transparent text-white text-left primary-font-size">
             <FontAwesomeIcon icon={faShoppingBag} />
+            <span className="cart-item-number"></span>
           </button>
         </Col>
       </Row>

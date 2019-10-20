@@ -47,7 +47,7 @@ const Home = props => {
               </p>
             </div>
             <DarkButton
-              className="d-block mx-auto mx-md-0 mb-3 mb-md-0 position-md-absolute mt-3 bottom-0 text-center text-md-left"
+              className="d-block pt-3 pb-3 mx-auto mx-md-0 mb-3 mb-md-0 position-md-absolute mt-3 bottom-0 text-center text-md-left"
               title="GO TO STORE"
               onClick={_ => history.push("/products")}
             />
