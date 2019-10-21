@@ -1,5 +1,5 @@
 import React from "react";
-
+import './ItemSizes.scss';
 const ItemSizes = props => {
   const _SIZES = ["S", "M", "L", "XL", "XXL"];
 

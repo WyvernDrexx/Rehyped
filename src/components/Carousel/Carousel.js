@@ -21,7 +21,7 @@ const CarouselItem = props => {
       </div>
       <div className="product-details">
         <p className="product-name">MINIONS HOODIE</p>
-        <p className="product-price strikethrough">$500</p>
+        <p className="product-price">$500</p>
       </div>
     </div>
   );

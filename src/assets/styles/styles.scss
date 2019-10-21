@@ -162,20 +162,7 @@ button {
     opacity: 0.89;
   }
 }
-/* Others */
-$itemSizePadding: 15px;
-.item-size-box {
-  width: 3.3rem;
-  padding-top: $itemSizePadding;
-  padding-bottom: $itemSizePadding;
-  @extend .gray-border;
-  background-color: white;
-  color: gray;
-  &:focus {
-    border-color: black;
-    color: rgb(32, 32, 32);
-  }
-}
+
 
 .divider {
   border-bottom: 1px solid lightgray;

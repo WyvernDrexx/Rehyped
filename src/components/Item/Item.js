@@ -16,7 +16,7 @@ const Featured = props => {
         header="FEATURED"
         subheader="BEST SELLING DESIGNS OF THE WEEK"
       />
-      <Row className="mt-5  mx-0 mb-6 item-root">
+      <Row className="mt-5 mx-0 mb-6 item-root">
         <Col className='px-0 flex-center'>
           <QuadShowcase />
         </Col>
@@ -39,7 +39,7 @@ const Featured = props => {
             </h4>
             <ItemColors className="" />
             <Row className='mt-4'>
-              <Col md={true}>
+              <Col className="pr-2" md={true}>
                 <LightButton
                   title="ADD TO CART"
                   className="w-100"

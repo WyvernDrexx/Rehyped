@@ -1,0 +1,17 @@
+/* Others */
+$itemSizePadding: 15px;
+.item-size-box {
+  width: 3.3rem;
+  padding-top: $itemSizePadding;
+  padding-bottom: $itemSizePadding;
+  border: 1px solid lightgray;
+  background-color: white;
+  color: gray;
+  &:focus {
+    border-color: black;
+    color: rgb(32, 32, 32);
+  }
+  &:last-child{
+      margin-right: 0px !important;
+  }
+}

@@ -16,7 +16,7 @@ const Products = props => {
         <SearchBar className='mt-5 mb-6' />
         <ProductsList />
         <DarkButton 
-          className='mt-5 d-block mx-auto mb-6'
+          className='mt-5 pt-3 pb-3 d-block mx-auto mb-6'
           title='LOAD MORE'
         />
     </Container>

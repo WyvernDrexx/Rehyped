@@ -52,14 +52,14 @@ const Header = props => {
                   <FontAwesomeIcon icon={faBars} />
                 </button>
               </Col>
-              <Col className="">
+              <Col className="px-0">
                 <div className=" user-select-none primary-font-size">
                   <p className="text-white text-center font-weight-bold default-letter-spacing">R<span className="primary-color font-weight-bolder">E</span>
                   HYPED</p>
                 </div>
               </Col>
-              <Col className="">
-                <button className="pr-2 float-right border-none bg-transparent text-white primary-font-size">
+              <Col className="px-0">
+                <button className="float-right border-none bg-transparent text-white primary-font-size">
                   <FontAwesomeIcon icon={faShoppingBag} />
                   <span className="cart-item-number"></span>
                 </button>
