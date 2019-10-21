@@ -65,35 +65,43 @@ const MyAccount = props => {
       <div className="secondary-background-color">
         <div className="my-account pt-2 pb-2">
           <div className="pt-3 pb-3 options">
-            <p
-              onClick={onOrdersClick}
-              className="sub-header font-weight-bolder text-left mx-4 mb-3"
-            >
-              ORDERS {renderArrow(ordersVisibility)}
-            </p>
+            <Container>
+              <p
+                onClick={onOrdersClick}
+                className="sub-header font-weight-bolder text-left mb-3"
+              >
+                ORDERS {renderArrow(ordersVisibility)}
+              </p>
+            </Container>
             <div className="bg-white">
-            <Container className="bg-white">{renderCartList()}</Container>
-
+              <Container className="bg-white">{renderCartList()}</Container>
             </div>
           </div>
           <div className="pb-3 options">
-            <p
-              onClick={onShippingDetailsClick}
-              className="sub-header font-weight-bolder text-left mx-4 pb-3"
-            >
-              SHIPPING DETAILS {renderArrow(shippingVisibility)}
-            </p>
+            <Container>
+              <p
+                onClick={onShippingDetailsClick}
+                className="sub-header font-weight-bolder text-left pb-3"
+              >
+                SHIPPING DETAILS {renderArrow(shippingVisibility)}
+              </p>
+            </Container>
+
             {renderShippingDetails()}
           </div>
           <div className="pb-3 options">
-            <p className="sub-header font-weight-bolder text-left mx-4">
-              CHANGE PASSWORD <FontAwesomeIcon icon={faChevronRight} />
-            </p>
+            <Container>
+              <p className="sub-header font-weight-bolder text-left">
+                CHANGE PASSWORD <FontAwesomeIcon icon={faChevronRight} />
+              </p>
+            </Container>
           </div>
           <div className="pt-3 pb-3 options">
-            <p className="sub-header font-weight-bolder text-left mx-4">
-              TRACK ORDERS <FontAwesomeIcon icon={faChevronRight} />
-            </p>
+            <Container>
+              <p className="sub-header font-weight-bolder text-left">
+                TRACK ORDERS <FontAwesomeIcon icon={faChevronRight} />
+              </p>
+            </Container>
           </div>
         </div>
       </div>

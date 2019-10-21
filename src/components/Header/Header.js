@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faShoppingBag } from "@fortawesome/free-solid-svg-icons";
 import history from "../../history";
 
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, Container } from "react-bootstrap";
 
 const Header = props => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -24,13 +24,13 @@ const Header = props => {
   useEffect(_ => {
     if (history.location.pathname !== "/") {
       setNavBarBackgroundTransparent("black");
-    }else{
+    } else {
       setNavBarBackgroundTransparent("transparent");
     }
   });
 
   return ReactDOM.createPortal(
-    <div className="body-header">
+    <>
       <div className="z-index-max">
         <Sidebar
           isOpen={sidebarOpen}
@@ -40,28 +40,37 @@ const Header = props => {
           onStateChange={state => setSidebarOpen(state.isOpen)}
         />
       </div>
-      <Row className={`bg-${navBarBackgroundTransparent} mx-0`}>
-        <Col>
-          <button
-            className="px-0 border-none bg-transparent text-white primary-font-size"
-            onClick={toggleSideBar}
+      <div className={`bg-${navBarBackgroundTransparent} `}>
+        <Container>
+          <Col
+            className={`px-0 nav-bar-head`}
           >
-            <FontAwesomeIcon icon={faBars} />
-          </button>
-        </Col>
-        <Col className="d-flex align-items-center">
-          <div className="text-white font-weight-bold mx-auto default-letter-spacing user-select-none primary-font-size">
-            R<span className="primary-color font-weight-bolder">E</span>HYPED
-          </div>
-        </Col>
-        <Col className="d-flex justify-content-end">
-          <button className="pr-2 border-none bg-transparent text-white text-left primary-font-size">
-            <FontAwesomeIcon icon={faShoppingBag} />
-            <span className="cart-item-number"></span>
-          </button>
-        </Col>
-      </Row>
-    </div>,
+            <Row className="mx-0">
+              <Col className="px-0">
+                <button
+                  className="px-0 border-none bg-transparent text-white primary-font-size"
+                  onClick={toggleSideBar}
+                >
+                  <FontAwesomeIcon icon={faBars} />
+                </button>
+              </Col>
+              <Col className="">
+                <div className="text-white font-weight-bold mx-auto default-letter-spacing user-select-none primary-font-size">
+                  R<span className="primary-color font-weight-bolder">E</span>
+                  HYPED
+                </div>
+              </Col>
+              <Col className="">
+                <button className="pr-2 float-right border-none bg-transparent text-white primary-font-size">
+                  <FontAwesomeIcon icon={faShoppingBag} />
+                  <span className="cart-item-number"></span>
+                </button>
+              </Col>
+            </Row>
+          </Col>
+        </Container>
+      </div>
+    </>,
     document.querySelector("#header")
   );
 };

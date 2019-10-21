@@ -1,12 +1,14 @@
 @import "../../assets/styles/variables";
 
-.body-header{
+#header{
   position: absolute;
   top: 0;
-  .row{
+  width: 100%;
+  z-index: 8;
+  .nav-bar-head{
     z-index: 9;
-    position: absolute;
-    width: 100vw;
+    position: relative;
+    width: 100%;
   }
   svg{
     &:hover{
