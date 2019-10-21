@@ -40,7 +40,7 @@ const Header = props => {
           onStateChange={state => setSidebarOpen(state.isOpen)}
         />
       </div>
-      <div className={`bg-${navBarBackgroundTransparent} `}>
+      <div className={`bg-${navBarBackgroundTransparent} pt-2 pb-2`}>
         <Container>
           <Col className={`px-0 nav-bar-head`}>
             <Row className="mx-0">
@@ -54,8 +54,10 @@ const Header = props => {
               </Col>
               <Col className="px-0">
                 <div className=" user-select-none primary-font-size">
-                  <p className="text-white text-center font-weight-bold default-letter-spacing">R<span className="primary-color font-weight-bolder">E</span>
-                  HYPED</p>
+                  <p className="text-white text-center font-weight-bold default-letter-spacing">
+                    R<span className="primary-color font-weight-bolder">Ǝ</span>
+                    HYPED
+                  </p>
                 </div>
               </Col>
               <Col className="px-0">

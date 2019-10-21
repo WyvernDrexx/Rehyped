@@ -18,6 +18,9 @@ const Sidebar = props => {
       <Link onClick={props.toggleMenu} to="/my-account" className="menu-item" href="/">
         My Account
       </Link>
+      <Link onClick={props.toggleMenu} to="/login" className="menu-item" href="/">
+        Login
+      </Link>
       <Link onClick={props.toggleMenu} to="/products" className="menu-item">
         Products
       </Link>

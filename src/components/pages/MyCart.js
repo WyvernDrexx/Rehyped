@@ -20,7 +20,7 @@ const MyCart = props => {
           <CartList />
         </div>
       </Container>
-      <div className="secondary-background-color pt-4 pb-4 mt-5">
+      <div className="secondary-background-color pt-4 pb-5 mt-5">
         <Container>
           <CommonHeader
             header="COUPON"
@@ -39,7 +39,7 @@ const MyCart = props => {
           </div>
         </Container>
       </div>
-      <Container className="pt-5 pb-5">
+      <Container className="pt-5 pb-5 w-md-40">
         <CommonHeader header="ORDER" subheader="SUMMARY" />
         <Divider className="mt-3 mb-5" />
         <Row className="mx-0">
@@ -54,7 +54,7 @@ const MyCart = props => {
                 </p>
               </Col>
               <Col className="px-0">
-                <p className="sub-header">$199</p>
+                <p className="sub-header text-right">$199</p>
               </Col>
             </Row>
             <Row className="mb-3">
@@ -62,7 +62,7 @@ const MyCart = props => {
                 <p className="sub-header text-left">Shipping Charges</p>
               </Col>
               <Col className="px-0">
-                <p className="sub-header text-success font-weight-bold">FREE</p>
+                <p className="sub-header text-right text-success font-weight-bold">FREE</p>
               </Col>
             </Row>
             <Row className="mb-3">
@@ -70,17 +70,17 @@ const MyCart = props => {
                 <p className="sub-header text-left">Discount</p>
               </Col>
               <Col className="px-0">
-                <p className="sub-header text-success font-weight-bold">-$30</p>
+                <p className="sub-header text-right text-success font-weight-bold">-$30</p>
               </Col>
             </Row>
             <Row className="mb-3">
               <Col xs={8} className="px-0">
-                <p className="sub-header font-weight-bold text-left">
+                <p className="sub-header  font-weight-bold text-left">
                   PAYABLE AMOUNT
                 </p>
               </Col>
               <Col className="px-0">
-                <p className="sub-header font-weight-bold">$159</p>
+                <p className="sub-header text-right font-weight-bold">$159</p>
               </Col>
             </Row>
           </Col>
