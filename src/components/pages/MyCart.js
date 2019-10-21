@@ -16,7 +16,7 @@ const MyCart = props => {
           className="mb-3"
         />
         <Divider />
-        <div className="pt-5">
+        <div className="flex-center pt-5">
           <CartList />
         </div>
       </Container>

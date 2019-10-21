@@ -42,9 +42,7 @@ const Header = props => {
       </div>
       <div className={`bg-${navBarBackgroundTransparent} `}>
         <Container>
-          <Col
-            className={`px-0 nav-bar-head`}
-          >
+          <Col className={`px-0 nav-bar-head`}>
             <Row className="mx-0">
               <Col className="px-0">
                 <button
@@ -55,9 +53,9 @@ const Header = props => {
                 </button>
               </Col>
               <Col className="">
-                <div className="text-white font-weight-bold mx-auto default-letter-spacing user-select-none primary-font-size">
-                  R<span className="primary-color font-weight-bolder">E</span>
-                  HYPED
+                <div className=" user-select-none primary-font-size">
+                  <p className="text-white text-center font-weight-bold default-letter-spacing">R<span className="primary-color font-weight-bolder">E</span>
+                  HYPED</p>
                 </div>
               </Col>
               <Col className="">

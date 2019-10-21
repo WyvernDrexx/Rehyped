@@ -16,7 +16,7 @@ const Featured = props => {
         header="FEATURED"
         subheader="BEST SELLING DESIGNS OF THE WEEK"
       />
-      <Row className="mt-5 mb-6 item-root">
+      <Row className="mt-5  mx-0 mb-6 item-root">
         <Col className='px-0 flex-center'>
           <QuadShowcase />
         </Col>

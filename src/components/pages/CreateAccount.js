@@ -6,8 +6,8 @@ import Checkbox from "../stateless/Checkbox";
 const CreateAccount = props => {
   return (
     <div className="text-center mt-6">
-      <h1 className="header">SIGN UP</h1>
-      <div className="secondary-background-color pt-4 pb-4 mb-5 mt-4">
+      <h1 className="header mb-5">SIGN UP</h1>
+      <div className="secondary-background-color pt-5 pb-5 mb-5 mt-5">
         <Container className="">
           <input
             className="placeholder-center primary-input w-100 w-md-40 d-block mx-auto"
@@ -23,7 +23,7 @@ const CreateAccount = props => {
             placeholder="PASSWORD"
             type="password"
           />
-          <div>
+          <div className="mt-5">
             <Checkbox 
               content="Keep me updated with news and exclusive offers."
             />
@@ -34,7 +34,7 @@ const CreateAccount = props => {
         />
         </Container>
       </div>
-      <Container className="mb-6">
+      <Container className="mb-5">
         <DarkButton
           className="mt-4 mx-auto d-block w-100 w-md-40 font-weight-bold"
           title="ALREADY HAVE AN ACCOUNT?"
