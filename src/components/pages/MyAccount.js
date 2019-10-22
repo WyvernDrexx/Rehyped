@@ -58,7 +58,7 @@ const MyAccount = props => {
 
   return (
     <div>
-      <Container className="mt-6 mb-3">
+      <Container className="mt-6 mb-5">
         <h1 className="header text-left">HEY, JAMES</h1>
         <p className="sub-header text-left">HERE'S ALL THE DETAILS</p>
       </Container>
@@ -105,7 +105,7 @@ const MyAccount = props => {
           </div>
         </div>
       </div>
-      <Container className="mt-6 mb-6">
+      <Container className="mt-5 mb-5">
         <Link className="sub-header d-block mb-2" to="/help">
           NEED HELP?
         </Link>

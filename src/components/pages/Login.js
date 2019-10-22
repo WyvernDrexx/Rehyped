@@ -7,8 +7,8 @@ import { Link } from "react-router-dom";
 const Login = props => {
   return (
     <div className="text-center mt-6">
-      <CommonHeader header="LOGIN" subheader="WELCOME BACK" className="mb-4" />
-      <div className="secondary-background-color pt-4 pb-5 mb-5">
+      <CommonHeader header="LOGIN" subheader="WELCOME BACK" className="mb-5" />
+      <div className="secondary-background-color pt-5 pb-5 mb-5">
         <Container className="w-md-40">
           <input
             className="placeholder-center primary-input w-100 d-block mx-auto"

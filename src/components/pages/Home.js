@@ -61,8 +61,8 @@ const Home = props => {
         />
         <Divider className="mt-4 mb-4" />
       </Container>
-      <Container className="px-0"><Carousel /></Container>
-      <Container>
+      <div><Carousel /></div>
+      <Container className="mt-6">
         <ProductItem />
       </Container>
       <Container>
@@ -82,7 +82,7 @@ const Home = props => {
         <Divider className="mt-4 mb-4" />
         <Media className="mt-4 mb-6 w-md-50 mx-auto" />
       </Container>
-      <Container className="mb-6">
+      <Container className="mb-5 pb-3">
         <CommonHeader
           className="mb-3"
           header="INSTAGRAM"

@@ -10,7 +10,7 @@ const Subscribe = props => {
     <div className="secondary-background-color pt-5 pb-5 subscribe">
       <Container className=''>
         <CommonHeader
-          className="mb-3"
+          className=""
           header="NEWS LETTER"
           subheader=" SIGN UP TO GET DISCOUNTS ON
           PREMIUM PRODUCTS"

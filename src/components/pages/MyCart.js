@@ -20,7 +20,7 @@ const MyCart = props => {
           <CartList />
         </div>
       </Container>
-      <div className="secondary-background-color pt-4 pb-5 mt-5">
+      <div className="secondary-background-color pt-5 pb-5 mt-5">
         <Container>
           <CommonHeader
             header="COUPON"
