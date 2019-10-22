@@ -33,12 +33,12 @@ const CustomMedia = props => {
     }
   ];
   return (
-    <Col className={`media-body ${props.className || ""} w-100`}>
+    <Col className={`media-body ${props.className || ""} w-100 pl-0`}>
       {data.map((media, index) => {
         return (
           <Row key={index} className={`w-md-50 float-md-left mt-5 mb-5 ${props.mediaStyle || ""}`}>
             <Col
-              className="d-flex justify-content-center align-items-center"
+              className="d-flex pl-0 justify-content-center align-items-center"
               xs={3}
             >
               <FontAwesomeIcon className="media-icon" icon={media.faIcon} />

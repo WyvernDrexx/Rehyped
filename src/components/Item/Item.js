@@ -20,7 +20,7 @@ const Featured = props => {
         <Col className='px-0 flex-center'>
           <QuadShowcase />
         </Col>
-        <Col className="mt-5  mt-lg-0" lg={true}>
+        <Col className="mt-5  mt-lg-0 px-0" lg={true}>
           <div className="">
             <p className="sub-header font-weight-bold text-left">
               TOKYO GHOUL Ken Kaneki - Anime

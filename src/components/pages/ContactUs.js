@@ -10,7 +10,7 @@ const ContactUs = props => {
       <CommonHeader
         header="CONTACT US"
         subheader="HIT US UP WITH YOUR QUERIES"
-        className="mb-6"
+        className="mb-5"
       />
       <div className="secondary-background-color pt-5 pb-5 mb-5">
         <Container>
@@ -49,7 +49,7 @@ const ContactUs = props => {
           </Col>
         </Container>
       </div>
-      <Container className="mb-6 pt-4">
+      <Container className="mb-5 ">
         <PrimaryButton title="SEND" className="w-100 w-md-40  d-block" />
         <DarkButton
           title="BACK TO STORE"

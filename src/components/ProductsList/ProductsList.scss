@@ -22,8 +22,21 @@
   .row{
     justify-content: center;
     align-items: center;
-    margin: 3px;
+    margin: 0px;
   }
+  &:nth-child(even) {
+    padding-left: 8px;
+    @include md{
+      padding: 15px;
+    }
+  }
+  &:nth-child(odd) {
+    padding-right: 8px;
+    @include md{
+      padding: 15px;
+    }
+  }
+  
   img{
     width: 100%;
   }

@@ -6,10 +6,10 @@ const QuadShowcase = props => {
   return (
     <>
       <Row className="quadshowcase">
-        <Col lg={true} className="primary-image">
+        <Col lg={true} className="primary-image px-0">
           <img className="" src="/imgs/500x600.jpeg" />
         </Col>
-        <Col md={6} lg={4}className="sm-0">
+        <Col md={6} lg={4}className="sm-0 px-0 pl-md-2">
           <div  className="secondary-image">
             <img className="" src="/imgs/500x600.jpeg" />
           </div>

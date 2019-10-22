@@ -13,10 +13,10 @@ const Products = props => {
           header="MERCH"
           subheader="ANDROCRUNCH ORIGINALS"
         />
-        <SearchBar className='mt-5 mb-6' />
+        <SearchBar className='mt-5 mb-5' />
         <ProductsList />
         <DarkButton 
-          className='mt-5 pt-3 pb-3 d-block mx-auto mb-6'
+          className='mt-5 pt-3 pb-3 d-block mx-auto mb-5'
           title='LOAD MORE'
         />
     </Container>
