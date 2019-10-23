@@ -7,6 +7,7 @@
   .show-p-false {
     font-size: 0px;
     padding: 0px;
+    transition: padding 0.15s ease-out;
     .fa-times {
       font-size: 0px;
     }
