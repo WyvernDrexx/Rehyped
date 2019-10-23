@@ -7,6 +7,7 @@ import { faBars, faShoppingBag } from "@fortawesome/free-solid-svg-icons";
 import history from "../../history";
 
 import { Row, Col, Container } from "react-bootstrap";
+import Alert from "../Alert";
 
 const Header = props => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -31,6 +32,7 @@ const Header = props => {
 
   return ReactDOM.createPortal(
     <>
+      <Alert />
       <div className="z-index-max">
         <Sidebar
           isOpen={sidebarOpen}

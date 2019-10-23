@@ -1,0 +1,30 @@
+@import "../../assets/styles/variables";
+
+.alert-box {
+  background-color: $primaryColor;
+  transition-duration: 500ms;
+
+  .show-p-false {
+    font-size: 0px;
+    padding: 0px;
+    .fa-times {
+      font-size: 0px;
+    }
+  }
+
+  p {
+    color: $secondaryColor;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    padding: 4px 0px;
+  }
+
+  .fa-times {
+    font-size: 15px;
+    margin-right: 10px;
+    &:hover {
+      color: black !important;
+    }
+  }
+}
