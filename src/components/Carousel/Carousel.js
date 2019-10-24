@@ -3,7 +3,7 @@ import "./Carousel.scss";
 
 const Carousel = props => {
   return (
-    <div className="carousel-custom">
+    <div className="carousel-custom container">
       <CarouselItem />
       <CarouselItem />
       <CarouselItem />
