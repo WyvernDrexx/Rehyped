@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
-import Sidebar from "../Sidebar";
-import "./Header.scss";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faShoppingBag } from "@fortawesome/free-solid-svg-icons";
 import history from "../../history";
-
 import { Row, Col, Container } from "react-bootstrap";
+
 import TopBanner from "../TopBanner";
+import Sidebar from "../Sidebar";
+import Alert from '../Alert';
+import "./Header.scss";
+
 
 const Header = props => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -32,6 +35,7 @@ const Header = props => {
 
   return ReactDOM.createPortal(
     <>
+      <Alert />
       <TopBanner />
       <div className="z-index-max">
         <Sidebar

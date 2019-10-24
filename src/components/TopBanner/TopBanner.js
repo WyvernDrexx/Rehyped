@@ -14,7 +14,7 @@ const TopBanner = props => {
   };
 
   return (
-    <div className="alert-box">
+    <div className="banner-box">
       <Container>
         <Row>
           <Col
