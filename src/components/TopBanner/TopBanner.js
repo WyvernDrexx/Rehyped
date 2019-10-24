@@ -1,18 +1,16 @@
 import React, { useState } from "react";
-import "./Alert.scss";
+import "./TopBanner.scss";
 
 import Container from "../stateless/Container";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { Row, Col } from "react-bootstrap";
 
-const Alert = props => {
-  const [alertDisplay, setAlertDisplay] = useState("");
-
-  const renderAlert = _ => {};
+const TopBanner = props => {
+  const [bannerDisplay, setBannerDisplay] = useState("");
 
   const onCrossClick = _ => {
-    setAlertDisplay(" show-p-false ");
+    setBannerDisplay(" show-p-false ");
   };
 
   return (
@@ -20,14 +18,14 @@ const Alert = props => {
       <Container>
         <Row>
           <Col
-            className={`d-flex align-items-center sub-header text-center ${alertDisplay}`}
+            className={`${bannerDisplay}`}
             onClick={onCrossClick}
             xs={1}
           >
             <FontAwesomeIcon icon={faTimes} />
           </Col>
           <Col>
-            <p className={`sub-header text-center ${alertDisplay}`}>
+            <p className={`sub-header text-center ${bannerDisplay}`}>
               EXTRA 50% OFF!
             </p>
           </Col>
@@ -37,4 +35,4 @@ const Alert = props => {
   );
 };
 
-export default Alert;
+export default TopBanner;
