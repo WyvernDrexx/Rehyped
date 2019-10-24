@@ -15,15 +15,13 @@
 
   p {
     color: $secondaryColor;
-    text-align: left;
-    display: flex;
-    align-items: center;
     padding: 4px 0px;
   }
 
   .fa-times {
     font-size: 15px;
     margin-right: 10px;
+    color: $secondaryColor;
     &:hover {
       color: black !important;
     }
