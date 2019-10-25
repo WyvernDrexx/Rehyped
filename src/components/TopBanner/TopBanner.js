@@ -5,19 +5,19 @@ import Container from "../stateless/Container";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { Row, Col } from "react-bootstrap";
-import { Cookies } from "react-cookie";
+
+import Cookies from "../../utils/Cookies";
 
 const TopBanner = props => {
   const [bannerDisplay, setBannerDisplay] = useState("show-p-false");
-  const cookie = new Cookies();
   const onCrossClick = _ => {
     setBannerDisplay(" show-p-false ");
-    cookie.set("bannerClicked", "true");
+    Cookies.set("bannerClicked", true, {}, 10080);
   };
 
   useEffect(_ => {
-    const bannerClicked = cookie.get("bannerClicked");
-    if (bannerClicked !== "true") {
+    const bannerClicked = Cookies.get("bannerClicked");
+    if (bannerClicked !== true) {
       setBannerDisplay("");
     }
   }, []);
