@@ -4,6 +4,7 @@ import { createStore, applyMiddleware, compose } from "redux";
 import { Provider } from "react-redux";
 import reduxThunk from "redux-thunk";
 import reducers from "./reducers";
+import { CookiesProvider } from "react-cookie";
 
 import App from "./components/App/App";
 
@@ -14,8 +15,10 @@ const store = createStore(
 );
 
 ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
+  <CookiesProvider>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </CookiesProvider>,
   document.querySelector("#root")
 );

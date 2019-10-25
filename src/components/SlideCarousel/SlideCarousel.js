@@ -32,7 +32,6 @@ class Carousel extends React.Component {
   }
 
   updateDimensions = _ => {
-    console.log(this.containerRef)
     if (!this.containerRef) return;
     const containerNode = this.containerRef.current;
 

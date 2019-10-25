@@ -11,6 +11,7 @@ import Sidebar from "../Sidebar";
 import Alert from '../Alert';
 import "./Header.scss";
 
+import { connect } from 'react-redux';
 
 const Header = props => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -20,8 +21,10 @@ const Header = props => {
   ] = useState("black");
 
   const toggleSideBar = _ => {
-    console.log(sidebarOpen);
-    if (sidebarOpen) setSidebarOpen(false);
+    if (sidebarOpen) {
+      setSidebarOpen(false);
+
+    }
     else setSidebarOpen(true);
   };
 
@@ -32,6 +35,8 @@ const Header = props => {
       setNavBarBackgroundTransparent("transparent");
     }
   });
+
+  
 
   return ReactDOM.createPortal(
     <>
@@ -81,4 +86,10 @@ const Header = props => {
   );
 };
 
-export default Header;
+const mapStateToProps = (state) => {
+  return { cookies: state.cookies }
+}
+
+export default connect(mapStateToProps, {
+  
+})(Header);

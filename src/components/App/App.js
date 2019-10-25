@@ -19,6 +19,7 @@ import ForgotPassword from "../pages/ForgotPassword";
 import MyAccount from '../pages/MyAccount'
 
 
+
 const App = _ => {
   return (
     <Router history={history}>
