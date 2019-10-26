@@ -1,14 +1,15 @@
-import { SET_COOKIE } from "../actions/types";
+import { ALERT } from "../actions/types";
+
 import { combineReducers } from "redux";
 
-const cookiesReducer = (state = {}, action) => {
-  switch (action.type) {
-    case SET_COOKIE:
-      return { ...state, [action.payload.name]: action.payload.value };
-    default:
-      return state;
+const alertReducer = (state = {}, action) => {
+  if (action.type === ALERT) {
+    const { message, type } = action.payload;
+    return { message, type };
   }
+  return state;
 };
+
 export default combineReducers({
-  cookies: cookiesReducer
+  alert: alertReducer
 });
