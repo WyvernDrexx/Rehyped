@@ -80,8 +80,8 @@ const Home = props => {
           subheader="WHAT MAKES US UNIQUE"
         />
         <Divider className="mt-4 mb-4" />
-        <Media className="mt-4 mb-6 w-md-50 mx-auto" />
       </Container>
+      <Media className="mt-4 mb-6 mx-auto" />
       <Container className="mb-5 pb-3">
         <CommonHeader
           className="mb-3"

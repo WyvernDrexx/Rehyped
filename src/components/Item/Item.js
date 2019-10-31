@@ -22,12 +22,12 @@ const Featured = props => {
         </Col>
         <Col className="mt-5  mt-lg-0 px-0" lg={true}>
           <div className="">
-            <p className="sub-header font-weight-bold text-left">
+            <p className="item-name font-weight-bold text-left">
               TOKYO GHOUL Ken Kaneki - Anime
               <br /> Full Sleeves T-Shirt
             </p>
             <p className="mt-4 mr-4">
-              <span className="strikethrough sub-header mr-4">$500</span>
+              <span className="strikethrough item-price mr-4">$500</span>
               <span className="sub-header">$200</span>
             </p>
           </div>

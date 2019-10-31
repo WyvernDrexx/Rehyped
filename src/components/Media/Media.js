@@ -33,32 +33,37 @@ const CustomMedia = props => {
     }
   ];
   return (
-    <Col className={`media-body ${props.className || ""} w-100 pl-0`}>
-      {data.map((media, index) => {
-        return (
-          <Row key={index} className={`w-md-50 float-md-left mt-5 mb-5 ${props.mediaStyle || ""}`}>
-            <Col
-              className="d-flex pl-0 justify-content-center align-items-center"
-              xs={3}
+    <div className="secondary-background-color p-2 mb-5">
+      <Col className={`media-body ${props.className || ""} w-100 pl-0`}>
+        {data.map((media, index) => {
+          return (
+            <Row
+              key={index}
+              className={`w-md-50 mt-5 mb-5 ${props.mediaStyle || ""}`}
             >
-              <FontAwesomeIcon className="media-icon" icon={media.faIcon} />
-            </Col>
-            <Col className="">
-              <Row>
-                <p className="sub-header text-left font-weight-bold pb-4">
-                  {media.top}
-                </p>
-              </Row>
-              <Row>
-                <p className="sub-header text-left font-weight-bold">
-                  {media.bottom}
-                </p>
-              </Row>
-            </Col>
-          </Row>
-        );
-      })}
-    </Col>
+              <Col
+                className="d-flex pl-0 justify-content-center align-items-center"
+                xs={3}
+              >
+                <FontAwesomeIcon className="media-icon" icon={media.faIcon} />
+              </Col>
+              <Col className="">
+                <Row>
+                  <p className="sub-header text-left font-weight-bold pb-4">
+                    {media.top}
+                  </p>
+                </Row>
+                <Row>
+                  <p className="sub-header text-left font-weight-bold">
+                    {media.bottom}
+                  </p>
+                </Row>
+              </Col>
+            </Row>
+          );
+        })}
+      </Col>
+    </div>
   );
 };
 

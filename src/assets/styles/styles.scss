@@ -65,7 +65,8 @@ button {
 .button-default {
   padding-top: $defaultButtonPadding;
   padding-bottom: $defaultButtonPadding;
-  font-size: $secondaryFontSize;
+  font-size: 14px;
+  letter-spacing: 2.5px;
 }
 
 .bottom-0 {
