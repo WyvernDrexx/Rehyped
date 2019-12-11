@@ -5,7 +5,6 @@ import "./Alert.scss";
 import Container from "../stateless/Container";
 
 const Alert = props => {
-
   if (typeof props.alert.message !== "undefined") {
     return (
       <div className={`alert-box alert-show bg-${props.alert.message}`}>
@@ -17,7 +16,6 @@ const Alert = props => {
   } else {
     return null;
   }
-  
 };
 
 const mapStateToProps = state => {
@@ -26,7 +24,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  {}
-)(Alert);
+export default connect(mapStateToProps, {})(Alert);

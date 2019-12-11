@@ -8,7 +8,7 @@ const CartItem = props => {
     <div className="cart-item">
       <Row md={true}  className= "mx-0 mb-5">
         <Col xs={6} className="flex-center cart-item-image pl-0">
-          <img src="/imgs/500x600.jpeg" />
+          <img alt="placeholder text" src="/imgs/500x600.jpeg" />
         </Col>
         <Col className="cart-item-info ml-2">
           <Row className="cart-item-details">

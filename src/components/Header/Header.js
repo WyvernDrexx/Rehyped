@@ -8,7 +8,6 @@ import { Row, Col, Container } from "react-bootstrap";
 
 import TopBanner from "../TopBanner";
 import Sidebar from "../Sidebar";
-import Alert from '../Alert';
 import "./Header.scss";
 
 import { connect } from 'react-redux';
@@ -34,13 +33,12 @@ const Header = props => {
     } else {
       setNavBarBackgroundTransparent("transparent");
     }
-  });
+  },[ sidebarOpen ]);
 
   
 
   return ReactDOM.createPortal(
     <>
-      <Alert />
       <TopBanner />
       <div className="z-index-max">
         <Sidebar
