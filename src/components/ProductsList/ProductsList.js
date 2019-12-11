@@ -8,7 +8,7 @@ const renderList = (list = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]) => {
     return (
       <Col key={index} xs={6} sm={4} lg={3} className="product-item mb-5">
         <Row>
-          <img src="/imgs/500x600.jpeg" />
+          <img alt="This is null" src="/imgs/500x600.jpeg" />
         </Row>
         <Row>
           <div className="mt-4">

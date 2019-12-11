@@ -31,7 +31,7 @@ const Home = props => {
         <Divider className="mt-4 mb-5" />
         <Row className="mt-5">
           <Col md>
-            <img className="w-100" src="/imgs/500x600.jpeg" />
+            <img  alt="This is null" className="w-100" src="/imgs/500x600.jpeg" />
           </Col>
           <Col className="position-relative" md>
             <div>
