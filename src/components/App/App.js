@@ -23,7 +23,6 @@ import MyAccount from '../pages/MyAccount'
 const App = _ => {
   return (
     <Router history={history}>
-      <Header />
       <Route exact path="/" component={Home} />
       <Route exact path="/products" component={Products} />
       <Route exact path="/product" component={Product} />

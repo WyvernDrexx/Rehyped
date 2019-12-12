@@ -11,10 +11,12 @@ import SlideCarousel from "../SlideCarousel";
 import ProductItem from "../Item";
 import Subscribe from "../Subscribe";
 import { Link } from 'react-router-dom';
+import Header from '../Header';
 
 const Home = props => {
   return (
     <>
+      <Header />
       <SlideCarousel
         images={["/imgs/wide1.jpg", "/imgs/wide2.jpg", "/imgs/wide3.jpg"]}
       />

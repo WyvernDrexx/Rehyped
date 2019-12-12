@@ -3,6 +3,7 @@ import Container from "../stateless/Container";
 import { PrimaryButton } from "../stateless/Buttons";
 import { Link } from "react-router-dom";
 import history from "../../history";
+import Header from "../Header";
 
 import CartList from "../CartList";
 import ShippingDetails from "../ShippingDetails";
@@ -59,70 +60,73 @@ const MyAccount = props => {
   };
 
   return (
-    <div>
-      <Container className="mt-6 mb-5">
-        <h1 className="header text-left">HEY, JAMES</h1>
-        <p className="sub-header text-left">HERE'S ALL THE DETAILS</p>
-      </Container>
-      <div className="secondary-background-color">
-        <div className="my-account pt-2 pb-2">
-          <div className=" options">
-            <Container>
-              <p
-                onClick={onOrdersClick}
-                className="pt-3 pb-3 sub-header font-weight-bolder text-left"
-              >
-                ORDERS {renderArrow(ordersVisibility)}
-              </p>
-            </Container>
-            <div className="bg-white">
-              <Container className="bg-white">{renderCartList()}</Container>
+    <>
+    <Header />
+      <div>
+        <Container className="mt-6 mb-5">
+          <h1 className="header text-left">HEY, JAMES</h1>
+          <p className="sub-header text-left">HERE'S ALL THE DETAILS</p>
+        </Container>
+        <div className="secondary-background-color">
+          <div className="my-account pt-2 pb-2">
+            <div className=" options">
+              <Container>
+                <p
+                  onClick={onOrdersClick}
+                  className="pt-3 pb-3 sub-header font-weight-bolder text-left"
+                >
+                  ORDERS {renderArrow(ordersVisibility)}
+                </p>
+              </Container>
+              <div className="bg-white">
+                <Container className="bg-white">{renderCartList()}</Container>
+              </div>
+            </div>
+            <div className=" options">
+              <Container>
+                <p
+                  onClick={onShippingDetailsClick}
+                  className="sub-header font-weight-bolder text-left pt-3 pb-3"
+                >
+                  SHIPPING DETAILS {renderArrow(shippingVisibility)}
+                </p>
+              </Container>
+              {renderShippingDetails()}
+            </div>
+            <div className="options">
+              <Container>
+                <Link to="/change-password">
+                  <p className="pb-3 pt-3 sub-header font-weight-bolder text-left">
+                    CHANGE PASSWORD <FontAwesomeIcon icon={faChevronRight} />
+                  </p>
+                </Link>
+              </Container>
+            </div>
+            <div className="options">
+              <Container>
+                <p
+                  onClick={() => history.push("/mycart")}
+                  className="pt-3 pb-3 sub-header font-weight-bolder text-left"
+                >
+                  TRACK ORDERS <FontAwesomeIcon icon={faChevronRight} />
+                </p>
+              </Container>
             </div>
           </div>
-          <div className=" options">
-            <Container>
-              <p
-                onClick={onShippingDetailsClick}
-                className="sub-header font-weight-bolder text-left pt-3 pb-3"
-              >
-                SHIPPING DETAILS {renderArrow(shippingVisibility)}
-              </p>
-            </Container>
-            {renderShippingDetails()}
-          </div>
-          <div className="options">
-            <Container>
-              <Link to="/change-password">
-                <p className="pb-3 pt-3 sub-header font-weight-bolder text-left">
-                  CHANGE PASSWORD <FontAwesomeIcon icon={faChevronRight} />
-                </p>
-              </Link>
-            </Container>
-          </div>
-          <div className="options">
-            <Container>
-              <p
-                onClick={() => history.push("/mycart")}
-                className="pt-3 pb-3 sub-header font-weight-bolder text-left"
-              >
-                TRACK ORDERS <FontAwesomeIcon icon={faChevronRight} />
-              </p>
-            </Container>
-          </div>
         </div>
+        <Container className="mt-5 mb-5">
+          <Link className="sub-header d-block mb-2" to="/help">
+            NEED HELP?
+          </Link>
+          <Link to="/contact-us">
+            <PrimaryButton
+              className="w-100 w-md-40 d-block mx-auto"
+              title="CONTACT US"
+            />
+          </Link>
+        </Container>
       </div>
-      <Container className="mt-5 mb-5">
-        <Link className="sub-header d-block mb-2" to="/help">
-          NEED HELP?
-        </Link>
-        <Link to="/contact-us">
-          <PrimaryButton
-            className="w-100 w-md-40 d-block mx-auto"
-            title="CONTACT US"
-          />
-        </Link>
-      </Container>
-    </div>
+    </>
   );
 };
 

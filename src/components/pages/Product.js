@@ -5,10 +5,12 @@ import CommonHeader from "../stateless/CommonHeader";
 import Instructions from "../Media";
 import Carousel from "../Carousel"; 
 import Subscribe from '../Subscribe';
+import Header from "../Header";
 
 const Product = props => {
   return (
     <>
+    <Header />
       <Container className="pt-6">
         <SingleProduct />
         <div className="mb-6">
