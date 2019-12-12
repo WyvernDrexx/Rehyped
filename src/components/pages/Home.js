@@ -10,18 +10,13 @@ import CommonHeader from "../stateless/CommonHeader";
 import SlideCarousel from "../SlideCarousel";
 import ProductItem from "../Item";
 import history from "../../history";
-import Subscribe from '../Subscribe';
-
+import Subscribe from "../Subscribe";
 
 const Home = props => {
   return (
     <>
       <SlideCarousel
-        images={[
-          "/imgs/wide1.jpg",
-          "/imgs/wide2.jpg",
-          "/imgs/wide3.jpg"
-        ]}
+        images={["/imgs/wide1.jpg", "/imgs/wide2.jpg", "/imgs/wide3.jpg"]}
       />
       <Container className="mt-6 mb-4">
         <CommonHeader
@@ -31,7 +26,11 @@ const Home = props => {
         <Divider className="mt-4 mb-5" />
         <Row className="mt-5">
           <Col md>
-            <img  alt="This is null" className="w-100" src="/imgs/500x600.jpeg" />
+            <img
+              alt="This is null"
+              className="w-100"
+              src="/imgs/500x600.jpeg"
+            />
           </Col>
           <Col className="position-relative" md>
             <div>
@@ -61,7 +60,9 @@ const Home = props => {
         />
         <Divider className="mt-4 mb-4" />
       </Container>
-      <div><Carousel /></div>
+      <div>
+        <Carousel />
+      </div>
       <Container className="mt-6">
         <ProductItem />
       </Container>

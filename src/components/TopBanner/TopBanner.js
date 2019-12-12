@@ -9,35 +9,39 @@ import { Row, Col } from "react-bootstrap";
 import Cookies from "../../utils/Cookies";
 
 const TopBanner = props => {
-  const [bannerDisplay, setBannerDisplay] = useState("show-p-false");
+  const [bannerDisplay, setBannerDisplay] = useState("disabled");
   const onCrossClick = _ => {
-    setBannerDisplay(" show-p-false ");
-    Cookies.set("bannerClicked", true, {}, 10080);
+    setBannerDisplay("disabled");
+    Cookies.set("banner", true, {}, 10080);
   };
 
   useEffect(_ => {
-    const bannerClicked = Cookies.get("bannerClicked");
-    if (bannerClicked !== true) {
-      setBannerDisplay("");
+    const banner = Cookies.get("banner");
+    if (banner !== true) {
+      setBannerDisplay("enabled");
     }
   }, []);
 
-  return (
-    <div className="banner-box">
-      <Container>
-        <Row>
-          <Col className={`${bannerDisplay}`} onClick={onCrossClick} xs={1}>
-            <FontAwesomeIcon icon={faTimes} />
-          </Col>
-          <Col>
-            <p className={`sub-header text-center ${bannerDisplay}`}>
-              EXTRA 50% OFF!
-            </p>
-          </Col>
-        </Row>
-      </Container>
-    </div>
-  );
+  if (bannerDisplay === "enabled") {
+    return (
+      <div className="banner-box">
+        <Container>
+          <Row>
+            <Col className={`${bannerDisplay}`} onClick={onCrossClick} xs={1}>
+              <FontAwesomeIcon icon={faTimes} />
+            </Col>
+            <Col>
+              <p className={`user-select-none sub-header text-center ${bannerDisplay}`}>
+                EXTRA 50% OFF!
+              </p>
+            </Col>
+          </Row>
+        </Container>
+      </div>
+    );
+  } else {
+    return null;
+  }
 };
 
 export default TopBanner;

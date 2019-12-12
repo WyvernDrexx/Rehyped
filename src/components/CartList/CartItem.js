@@ -6,7 +6,7 @@ import { PrimarySlimButton } from "../stateless/Buttons";
 const CartItem = props => {
   return (
     <div className="cart-item">
-      <Row md={true}  className= "mx-0 mb-5">
+      <Row md={"true"}  className= "mx-0 mb-5">
         <Col xs={6} className="flex-center cart-item-image pl-0">
           <img alt="placeholder text" src="/imgs/500x600.jpeg" />
         </Col>
@@ -25,7 +25,7 @@ const CartItem = props => {
           </Row>
           <Row className="">
             <Col className="px-0">
-              <p className="sub-header text-left font-weight-bold">
+              <p className="sub-header sm-letter-spacing text-left font-weight-bold">
                 SIZE:<span className="font-weight-normal">M</span>
               </p>
             </Col>
@@ -36,7 +36,7 @@ const CartItem = props => {
             </Col>
           </Row>
           <Row className="cart-item-action">
-            <PrimarySlimButton title="REMOVE" className="sub-header" />
+            <PrimarySlimButton title="REMOVE" className="sub-header pt-2 pb-2" />
           </Row>
         </Col>
       </Row>

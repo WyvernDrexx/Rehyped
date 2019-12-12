@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Container from "../stateless/Container";
 import { PrimaryButton } from "../stateless/Buttons";
 import { Link } from "react-router-dom";
+import history from "../../history";
+
 import CartList from "../CartList";
 import ShippingDetails from "../ShippingDetails";
 
@@ -64,11 +66,11 @@ const MyAccount = props => {
       </Container>
       <div className="secondary-background-color">
         <div className="my-account pt-2 pb-2">
-          <div className="pt-3 pb-3 options">
+          <div className=" options">
             <Container>
               <p
                 onClick={onOrdersClick}
-                className="sub-header font-weight-bolder text-left mb-3"
+                className="pt-3 pb-3 sub-header font-weight-bolder text-left"
               >
                 ORDERS {renderArrow(ordersVisibility)}
               </p>
@@ -77,28 +79,32 @@ const MyAccount = props => {
               <Container className="bg-white">{renderCartList()}</Container>
             </div>
           </div>
-          <div className="pb-3 options">
+          <div className=" options">
             <Container>
               <p
                 onClick={onShippingDetailsClick}
-                className="sub-header font-weight-bolder text-left pb-3"
+                className="sub-header font-weight-bolder text-left pt-3 pb-3"
               >
                 SHIPPING DETAILS {renderArrow(shippingVisibility)}
               </p>
             </Container>
-
             {renderShippingDetails()}
           </div>
-          <div className="pb-3 options">
+          <div className="options">
             <Container>
-              <p className="sub-header font-weight-bolder text-left">
-                CHANGE PASSWORD <FontAwesomeIcon icon={faChevronRight} />
-              </p>
+              <Link to="/change-password">
+                <p className="pb-3 pt-3 sub-header font-weight-bolder text-left">
+                  CHANGE PASSWORD <FontAwesomeIcon icon={faChevronRight} />
+                </p>
+              </Link>
             </Container>
           </div>
-          <div className="pt-3 pb-3 options">
+          <div className="options">
             <Container>
-              <p className="sub-header font-weight-bolder text-left">
+              <p
+                onClick={() => history.push("/mycart")}
+                className="pt-3 pb-3 sub-header font-weight-bolder text-left"
+              >
                 TRACK ORDERS <FontAwesomeIcon icon={faChevronRight} />
               </p>
             </Container>

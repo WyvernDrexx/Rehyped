@@ -7,6 +7,8 @@ import {
   faFacebook
 } from "@fortawesome/free-brands-svg-icons";
 
+import { Row, Col } from "react-bootstrap";
+
 const Header = props => {
   return (
     <div className="bg-black pt-4 pb-4">
@@ -28,20 +30,29 @@ const Header = props => {
         </Link>
       </div>
       <div className="d-flex justify-content-between align-items-center mt-5 px-2">
-        <div className='text-white default-letter-spacing'>
-          R<span className='primary-color font-weight-bolder'>E</span>HYPED™
-        </div>
-        <div className="social">
-          <a href="https://facebook.com/rehypedofficial">
-            <FontAwesomeIcon className='text-white' icon={faFacebook} />
-          </a>
-          <a href="https://instagram.com/rehypedofficial">
-            <FontAwesomeIcon className='text-white' icon={faInstagram} />
-          </a>
-          <a href="https://twitter.com/rehypedofficial">
-            <FontAwesomeIcon className='text-white' icon={faTwitter} />
-          </a>
-        </div>
+        {/* 173.3px width */}
+        <Col>
+          <Row>
+            <Col>
+              <div className="logo">
+                <img className="w-100" src="logo.png" alt="Rehyped Logo" />
+              </div>
+            </Col>
+            <Col>
+              <div className="social float-right">
+                <a href="https://facebook.com/rehypedofficial">
+                  <FontAwesomeIcon className="text-white" icon={faFacebook} />
+                </a>
+                <a href="https://instagram.com/rehypedofficial">
+                  <FontAwesomeIcon className="text-white" icon={faInstagram} />
+                </a>
+                <a href="https://twitter.com/rehypedofficial">
+                  <FontAwesomeIcon className="text-white" icon={faTwitter} />
+                </a>
+              </div>
+            </Col>
+          </Row>
+        </Col>
       </div>
     </div>
   );
