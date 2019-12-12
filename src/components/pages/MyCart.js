@@ -5,12 +5,10 @@ import Divider from "../stateless/Divider";
 import { DarkButton, PrimaryButton } from "../stateless/Buttons";
 import CartList from "../CartList";
 import { Row, Col } from "react-bootstrap";
-import Header from "../Header";
 
 const MyCart = props => {
   return (
     <>
-    <Header />
       <Container className="pt-6 pb-5">
         <CommonHeader
           header="ITEMS"

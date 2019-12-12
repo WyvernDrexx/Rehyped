@@ -2,12 +2,10 @@ import React from "react";
 import Container from "../stateless/Container";
 import { DarkButton, PrimaryButton } from "../stateless/Buttons";
 import Checkbox from "../stateless/Checkbox";
-import Header from "../Header";
 
 const CreateAccount = props => {
   return (
     <>
-      <Header />
       <div className="text-center mt-6">
         <h1 className="header mb-5">SIGN UP</h1>
         <div className="secondary-background-color pt-5 pb-5 mb-5 mt-5">

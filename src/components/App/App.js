@@ -16,13 +16,12 @@ import ContactUs from "../pages/ContactUs";
 import CreateAccount from '../pages/CreateAccount';
 import Login from "../pages/Login";
 import ForgotPassword from "../pages/ForgotPassword";
-import MyAccount from '../pages/MyAccount'
-
-
+import MyAccount from '../pages/MyAccount';
 
 const App = _ => {
   return (
     <Router history={history}>
+      <Header />
       <Route exact path="/" component={Home} />
       <Route exact path="/products" component={Products} />
       <Route exact path="/product" component={Product} />

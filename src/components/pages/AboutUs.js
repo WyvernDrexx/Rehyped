@@ -2,11 +2,9 @@ import React from "react";
 import Container from "../stateless/Container";
 import CommonHeader from "../stateless/CommonHeader";
 import { DarkButton, PrimaryButton } from "../stateless/Buttons";
-import Header from "../Header";
 const AboutUs = props => {
   return (
     <>
-    <Header />
       <Container className="mt-6">
         <CommonHeader
           header="ABOUT US"

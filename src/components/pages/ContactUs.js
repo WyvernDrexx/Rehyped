@@ -4,12 +4,10 @@ import CommonHeader from "../stateless/CommonHeader";
 import { DarkButton, PrimaryButton } from "../stateless/Buttons";
 import { Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import Header from "../Header";
 
 const ContactUs = props => {
   return (
     <>
-      <Header />
       <div className="pt-6">
       <CommonHeader
         header="CONTACT US"

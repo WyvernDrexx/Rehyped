@@ -3,7 +3,6 @@ import Container from "../stateless/Container";
 import CommonHeader from "../stateless/CommonHeader";
 import { DarkButton, PrimaryButton } from "../stateless/Buttons";
 import { Link } from "react-router-dom";
-import Header from "../Header";
 
 import { alert } from "../../actions";
 import { connect } from "react-redux";
@@ -18,7 +17,6 @@ const Login = props => {
   };
   return (
     <>
-      <Header />
       <div className="text-center mt-6">
         <CommonHeader
           header="LOGIN"

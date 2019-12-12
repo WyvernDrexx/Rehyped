@@ -4,7 +4,6 @@ import CommonHeader from "../stateless/CommonHeader";
 import SearchBar from "../SearchBar";
 import ProductsList from "../ProductsList";
 import { DarkButton } from "../stateless/Buttons";
-import Header from "../Header";
 const Products = props => {
   useEffect(_ => {
     setTimeout(_ => {
@@ -14,7 +13,6 @@ const Products = props => {
 
   return (
     <>
-    <Header />
       <Container className="mt-5 pt-5 pb-5">
         <CommonHeader
           className=""

@@ -3,7 +3,6 @@ import Container from "../stateless/Container";
 import { PrimaryButton } from "../stateless/Buttons";
 import { Link } from "react-router-dom";
 import history from "../../history";
-import Header from "../Header";
 
 import CartList from "../CartList";
 import ShippingDetails from "../ShippingDetails";
@@ -61,7 +60,6 @@ const MyAccount = props => {
 
   return (
     <>
-    <Header />
       <div>
         <Container className="mt-6 mb-5">
           <h1 className="header text-left">HEY, JAMES</h1>

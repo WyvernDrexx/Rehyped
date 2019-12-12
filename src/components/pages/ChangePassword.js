@@ -1,11 +1,9 @@
 import React from "react";
 import Container from "../stateless/Container";
 import { PrimaryButton } from "../stateless/Buttons";
-import Header from "../Header";
 const ChangePassword = props => {
   return (
     <>
-    <Header />
       <div className="text-center">
         <Container className="mt-6 mb-5">
           <h5 className="default-letter-spacing font-weight-bolder text-left text-md-center">

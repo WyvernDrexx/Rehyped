@@ -1,40 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faShoppingBag } from "@fortawesome/free-solid-svg-icons";
-import history from "../../history";
 import { Row, Col, Container } from "react-bootstrap";
 
 import TopBanner from "../TopBanner";
 import Sidebar from "../Sidebar";
 import "./Header.scss";
 
-import { connect } from 'react-redux';
 
 const Header = props => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [
-    navBarBackgroundTransparent,
-    setNavBarBackgroundTransparent
-  ] = useState("black");
-
   const toggleSideBar = _ => {
     if (sidebarOpen) {
       setSidebarOpen(false);
     }
     else setSidebarOpen(true);
   };
-
-  useEffect(_ => {
-    if (history.location.pathname !== "/") {
-      setNavBarBackgroundTransparent("black");
-    } else {
-      setNavBarBackgroundTransparent("transparent");
-    }
-  }, [sidebarOpen]);
-
-  
 
   return ReactDOM.createPortal(
     <>
@@ -48,7 +31,7 @@ const Header = props => {
           onStateChange={state => setSidebarOpen(state.isOpen)}
         />
       </div>
-      <div className={`bg-${navBarBackgroundTransparent} pt-2 pb-2`}>
+      <div className={`pt-2 pb-2`}>
         <Container>
           <Col className={`px-0 nav-bar-head`}>
             <Row className="mx-0">
@@ -83,10 +66,4 @@ const Header = props => {
   );
 };
 
-const mapStateToProps = (state) => {
-  return { cookies: state.cookies }
-}
-
-export default connect(mapStateToProps, {
-  
-})(Header);
+export default Header;
