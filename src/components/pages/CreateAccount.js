@@ -11,16 +11,16 @@ const CreateAccount = props => {
         <div className="secondary-background-color pt-5 pb-5 mb-5 mt-5">
           <Container className="">
             <input
-              className="placeholder-center primary-input w-100 w-md-40 d-block mx-auto"
+              className="primary-input w-100 w-md-40 d-block mx-auto"
               placeholder="FULL NAME"
             />
             <input
-              className="placeholder-center primary-input mt-4 mb-3 w-100 w-md-40 d-block mx-auto"
+              className="primary-input mt-4 mb-3 w-100 w-md-40 d-block mx-auto"
               placeholder="EMAIL"
               type="email"
             />
             <input
-              className="placeholder-center primary-input mt-4 mb-3 w-100 w-md-40 d-block mx-auto"
+              className="primary-input mt-4 mb-3 w-100 w-md-40 d-block mx-auto"
               placeholder="PASSWORD"
               type="password"
             />

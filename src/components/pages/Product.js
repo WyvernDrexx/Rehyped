@@ -3,8 +3,8 @@ import SingleProduct from "../Item";
 import Container from "../stateless/Container";
 import CommonHeader from "../stateless/CommonHeader";
 import Instructions from "../Media";
-import Carousel from "../Carousel"; 
-import Subscribe from '../Subscribe';
+import Carousel from "../Carousel";
+import Subscribe from "../Subscribe";
 
 const Product = props => {
   return (
@@ -21,11 +21,13 @@ const Product = props => {
         </div>
         <CommonHeader header="DETAILS" subheader="PRODUCT INSTRUCTION" />
       </Container>
-      <Container className="flex-center">
-        <Instructions />
-      </Container>
+      <div className="secondary-background-color mt-6">
+        <Container className="px-0">
+          <Instructions />
+        </Container>
+      </div>
       <Container className="px-0 mb-6 mt-6">
-        <CommonHeader 
+        <CommonHeader
           header="RELATED"
           subheader="PRODUCTS YOU MAY LIKE"
           className="mb-5"

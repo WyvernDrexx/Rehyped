@@ -4,17 +4,7 @@ import CommonHeader from "../stateless/CommonHeader";
 import { DarkButton, PrimaryButton } from "../stateless/Buttons";
 import { Link } from "react-router-dom";
 
-import { alert } from "../../actions";
-import { connect } from "react-redux";
-
 const Login = props => {
-  let cw = 1;
-  const loginAlert = _ => {
-    cw = cw + 1;
-    console.log(cw);
-    console.log("Hit");
-    props.alert("black");
-  };
   return (
     <>
       <div className="text-center mt-6">
@@ -26,17 +16,16 @@ const Login = props => {
         <div className="secondary-background-color pt-5 pb-5 mb-5">
           <Container className="w-md-40">
             <input
-              className="placeholder-center primary-input w-100 d-block mx-auto"
+              className="primary-input w-100 d-block mx-auto"
               placeholder="EMAIL"
               type="email"
             />
             <input
-              className="placeholder-center primary-input mt-4 mb-3 w-100 d-block mx-auto"
+              className="primary-input mt-4 mb-3 w-100 d-block mx-auto"
               placeholder="PASSWORD"
               type="password"
             />
             <PrimaryButton
-              onClick={loginAlert}
               className="mt-4 mx-auto d-block w-100 font-weight-bold"
               title="LOGIN"
             />
@@ -59,6 +48,4 @@ const Login = props => {
   );
 };
 
-export default connect(null, {
-  alert
-})(Login);
+export default Login;

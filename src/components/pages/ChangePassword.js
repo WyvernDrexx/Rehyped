@@ -16,11 +16,11 @@ const ChangePassword = props => {
         <div className="secondary-background-color pt-5 pb-5 mb-5">
           <Container className="">
             <input
-              className="placeholder-center primary-input w-100 w-md-40 d-block mx-auto"
+              className="primary-input w-100 w-md-40 d-block mx-auto"
               placeholder="NEW PASSWORD"
             />
             <input
-              className="placeholder-center primary-input mt-4 mb-4 w-100 w-md-40 d-block mx-auto"
+              className="primary-input mt-4 mb-4 w-100 w-md-40 d-block mx-auto"
               placeholder="CONFIRM PASSWORD"
             />
             <PrimaryButton

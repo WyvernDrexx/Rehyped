@@ -28,7 +28,7 @@ const Home = props => {
           <Col md>
             <img
               alt="This is null"
-              className="w-100"
+              className="w-100 w-sm-75"
               src="/imgs/500x600.jpeg"
             />
           </Col>

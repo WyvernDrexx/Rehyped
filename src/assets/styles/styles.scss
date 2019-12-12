@@ -105,6 +105,17 @@ button {
     width: 40% !important;
   }
 }
+.w-md-75{
+  @include md{
+    width: 75%;
+  }
+}
+
+.w-sm-75{
+  @include sm{
+    width: 75% !important;
+  }
+}
 
 .px-sm-0{
   @include sm{
