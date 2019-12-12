@@ -22,7 +22,6 @@ const Header = props => {
   const toggleSideBar = _ => {
     if (sidebarOpen) {
       setSidebarOpen(false);
-
     }
     else setSidebarOpen(true);
   };
@@ -33,7 +32,7 @@ const Header = props => {
     } else {
       setNavBarBackgroundTransparent("transparent");
     }
-  },[ sidebarOpen ]);
+  }, [sidebarOpen]);
 
   
 

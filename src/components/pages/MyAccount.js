@@ -115,10 +115,12 @@ const MyAccount = props => {
         <Link className="sub-header d-block mb-2" to="/help">
           NEED HELP?
         </Link>
-        <PrimaryButton
-          className="w-100 w-md-40 d-block mx-auto"
-          title="CONTACT US"
-        />
+        <Link to="/contact-us">
+          <PrimaryButton
+            className="w-100 w-md-40 d-block mx-auto"
+            title="CONTACT US"
+          />
+        </Link>
       </Container>
     </div>
   );

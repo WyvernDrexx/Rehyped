@@ -5,7 +5,7 @@ import { PrimaryButton } from "../stateless/Buttons";
 const ForgotPassword = props => {
   return (
     <div className="text-center">
-      <Container className="mt-5 mb-4">
+      <Container className="mt-6 mb-4">
         <h5 className="default-letter-spacing font-weight-bolder text-left text-md-center">
           FORGOT PASSWORD
         </h5>

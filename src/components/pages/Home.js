@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, Spinner } from "react-bootstrap";
 import Container from "../stateless/Container";
 import Divider from "../stateless/Divider";
 import { DarkButton } from "../stateless/Buttons";
@@ -9,8 +9,8 @@ import TriShowCase from "../TriShowcase";
 import CommonHeader from "../stateless/CommonHeader";
 import SlideCarousel from "../SlideCarousel";
 import ProductItem from "../Item";
-import history from "../../history";
 import Subscribe from "../Subscribe";
+import { Link } from 'react-router-dom';
 
 const Home = props => {
   return (
@@ -45,14 +45,14 @@ const Home = props => {
                 CHASING FOR IT
               </p>
             </div>
+            <Link to="/products">
             <DarkButton
               className="d-block pt-3 pb-3 mx-auto mx-md-0 mb-3 mb-md-0 position-md-absolute mt-3 bottom-0 text-center text-md-left"
               title="GO TO STORE"
-              onClick={_ => history.push("/products")}
             />
+            </Link>
           </Col>
         </Row>
-
         <CommonHeader
           className="mt-6"
           header="MERCH"

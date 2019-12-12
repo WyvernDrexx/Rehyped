@@ -3,6 +3,7 @@ import Container from "../stateless/Container";
 import CommonHeader from "../stateless/CommonHeader";
 import { DarkButton, PrimaryButton } from "../stateless/Buttons";
 import { Row, Col } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const ContactUs = props => {
   return (
@@ -51,10 +52,12 @@ const ContactUs = props => {
       </div>
       <Container className="mb-5 ">
         <PrimaryButton title="SEND" className="w-100 w-md-40  d-block" />
-        <DarkButton
-          title="BACK TO STORE"
-          className="w-100 w-md-40 d-block mt-3"
-        />
+        <Link to="/products">
+          <DarkButton
+            title="BACK TO STORE"
+            className="w-100 w-md-40 d-block mt-3"
+          />
+        </Link>
       </Container>
     </div>
   );
