@@ -25,12 +25,12 @@ class ImageLoader extends React.Component {
       <>
         {this.state.isImageLoaded ? null : (
           <div className={`spin flex-center ${className?className:""}`}>
-            <Spinner variant="danger" animation={`${variant?variant:"grow"}`} />
+            <Spinner variant="danger" animation={`${variant?variant:"border"}`} />
           </div>
         )}
         <img
           ref={this.imageRef}
-          className={`${this.state.isVisible ? "" : " visibility-hidden "}`}
+          className={`${this.state.isVisible ? "" : " d-none "}`}
           onLoad={this.imageLoaded}
           src={src}
           alt={alt}
