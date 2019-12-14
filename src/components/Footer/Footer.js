@@ -35,7 +35,7 @@ const Header = props => {
           <Row>
             <Col>
               <div className="logo">
-                <img className="w-100" src="logo.png" alt="Rehyped Logo" />
+                <img className="w-100" src="/logo.png" alt="Rehyped Logo" />
               </div>
             </Col>
             <Col>

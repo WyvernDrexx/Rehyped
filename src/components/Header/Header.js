@@ -45,7 +45,7 @@ const Header = props => {
               </Col>
               <Col xs={7} md={5} lg={2} className="px-0">
                 <div className=" user-select-none primary-font-size">
-                <img className="w-100" src="logo.png" alt="Rehyped Logo" />
+                <img className="w-100" src="/logo.png" alt="Rehyped Logo" />
                 </div>
               </Col>
               <Col className="px-0">

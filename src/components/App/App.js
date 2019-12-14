@@ -24,7 +24,7 @@ const App = _ => {
       <Header />
       <Route exact path="/" component={Home} />
       <Route exact path="/products" component={Products} />
-      <Route exact path="/product" component={Product} />
+      <Route exact path="/products/:productId" component={Product} />
       <Route exact path="/mycart" component={MyCart} />
       <Route exact path="/about-us" component={AboutUs} />
       <Route exact path="/change-password" component={ChangePassword} />

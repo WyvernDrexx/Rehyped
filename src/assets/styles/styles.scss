@@ -10,6 +10,7 @@ html{
 
 * {
   transition-duration: 300ms;
+  user-select: none;
 }
 
 p {
@@ -211,7 +212,15 @@ button {
   }
 }
 
+.block-center{
+  display: block;
+  margin: auto;
+}
 
 .logo{
   max-width: 173.3px;
+}
+
+.visibility-hidden{
+  visibility: hidden;
 }
