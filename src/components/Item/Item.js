@@ -20,23 +20,20 @@ const Featured = props => {
   const dispatch = useDispatch();
 
   useEffect(_ => {
-    setTimeout(_ => {
-      window.scrollTo(0, 0);
-    }, 100);
     if (product.productId !== productId) dispatch(fetchProduct(productId));
   }, []);
-  if(Object.values(product).length === 0){
+  
+  if (Object.values(product).length === 0) {
     return (
       <>
-        <Spinner 
+        <Spinner
           variant="dark"
           animation="border"
           className="block-center mt-5 mb-5"
         />
       </>
     );
-  }
-  else if (product.error) {
+  } else if (product.error) {
     return (
       <>
         <Alert variant="danger">{product.error}</Alert>

@@ -5,12 +5,6 @@ import SearchBar from "../SearchBar";
 import ProductsList from "../ProductsList";
 import { DarkButton } from "../stateless/Buttons";
 const Products = props => {
-  useEffect(_ => {
-    setTimeout(_ => {
-      window.scrollTo(0, 0);
-    }, 100);
-  }, []);
-
   return (
     <>
       <Container className="mt-5 pt-5 pb-5">

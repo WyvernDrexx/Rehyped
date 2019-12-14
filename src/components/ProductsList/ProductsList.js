@@ -53,6 +53,14 @@ const ProductsList = props => {
     [products, dispatch]
   );
 
+  useEffect(_ => {
+    window.onload = _ => {
+      if (window.pageYOffset > 1650) {
+        window.scrollTo(0, 0);
+      }
+    };
+  }, []);
+
   if (Object.values(products).length === 0) {
     return (
       <>
@@ -66,6 +74,7 @@ const ProductsList = props => {
       </>
     );
   }
+
   return (
     <div className="flex-center">
       <Row className="products-list justify-content-center">

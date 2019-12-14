@@ -11,23 +11,21 @@ class ImageLoader extends React.Component {
   componentDidMount() {
     const img = this.imageRef.current;
     if (img && img.complete) {
-      console.log("loaded");
       this.imageLoaded();
     }
   }
 
   imageLoaded = _ => {
     this.setState({ isImageLoaded: true, isVisible: true });
-    console.log(this.imageRef.current.complete);
   };
 
   render() {
-    const { src, alt } = this.props;
+    const { src, alt, className, variant } = this.props;
     return (
       <>
         {this.state.isImageLoaded ? null : (
-          <div className="spin flex-center">
-            <Spinner variant="danger" animation="grow" />
+          <div className={`spin flex-center ${className?className:""}`}>
+            <Spinner variant="danger" animation={`${variant?variant:"grow"}`} />
           </div>
         )}
         <img
