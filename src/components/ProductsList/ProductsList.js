@@ -27,7 +27,7 @@ const ProductsList = props => {
 
   const renderList = (list = []) => {
     return list.map((item, index) => {
-      return <ListItem item={item} index={index} />
+      return <ListItem key={index} item={item} index={index} />
     })
   }
 

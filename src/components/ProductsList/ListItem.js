@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Row, Col, Spinner } from "react-bootstrap";
-import { fetchProducts } from "../../actions";
-import { useDispatch, useSelector } from "react-redux";
 import history from "../../history";
 
 const ListItem = props => {
@@ -9,9 +7,7 @@ const ListItem = props => {
   const [isLoaded, setIsLoaded] = useState(false);
 
   const divIsLoaded = _ => {
-    setTimeout(_ => {
-      setIsLoaded(true);
-    }, 1000);
+    setIsLoaded(true);
   };
 
   return (
@@ -25,13 +21,16 @@ const ListItem = props => {
       onLoad={divIsLoaded}
     >
       {isLoaded ? null : (
-        <Spinner className="block-center" animation="border" />
+        <Spinner
+          className="absolute-center"
+          animation="border"
+        />
       )}
-      <Row className={`${isLoaded?"":"visibility-hidden"}`}>
-        {/* <ImgLoader alt="This is null" src={item.image} /> */}
+
+      <Row className={`${isLoaded ? "" : "visibility-hidden"}`}>
         <img alt="This is null" src={item.image} />
       </Row>
-      <Row className={`${isLoaded?"":"d-none"}`}>
+      <Row className={`${isLoaded ? "" : "d-none"}`}>
         <div className="mt-4">
           <p className="sub-header font-weight-bold text-left">
             {item.name.length > 23 ? item.name.slice(0, 23) + "..." : item.name}
