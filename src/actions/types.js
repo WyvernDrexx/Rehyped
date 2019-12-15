@@ -5,3 +5,4 @@ export const REMOVE_COOKIE = "REMOVE_COOKIE";
 // ============================================
 export const FETCH_PRODUCTS = "FETCH_PRODUCTS";
 export const FETCH_PRODUCT  = "FETCH_PRODUCT";
+export const FETCH_RELATED = "FETCH_RELATED";

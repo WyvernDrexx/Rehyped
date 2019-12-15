@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import { FETCH_PRODUCTS, FETCH_PRODUCT } from '../actions/types';
+import { FETCH_PRODUCTS, FETCH_PRODUCT, FETCH_RELATED } from '../actions/types';
 
 const productsReducer = (state={}, action) => {
   switch(action.type){
@@ -19,7 +19,17 @@ const productReducer = (state={}, action) => {
   }
 }
 
+const relatedReducers = (state=[], action) => {
+  switch (action.type) {
+    case FETCH_RELATED:
+      return action.payload;  
+    default:
+      return state;
+  }
+}
+
 export default combineReducers({
   products: productsReducer,
-  selectedProduct: productReducer
+  selectedProduct: productReducer,
+  relatedItem: relatedReducers
 });

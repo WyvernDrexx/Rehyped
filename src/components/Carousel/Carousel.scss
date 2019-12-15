@@ -12,12 +12,13 @@
     max-width: 15rem;
     margin: 15px;
     display: inline-block;
+    cursor: pointer;
     @include lg{
       margin-right: 6.5rem;
     }
     @include lmd{
       &:last-child{
-        margin-right: 4rem;
+        margin-right: 3rem;
       }
     }
   }

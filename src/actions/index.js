@@ -1,4 +1,4 @@
-import { FETCH_PRODUCTS, FETCH_PRODUCT } from "./types";
+import { FETCH_PRODUCTS, FETCH_PRODUCT, FETCH_RELATED } from "./types";
 import api from "../api";
 
 export const fetchProducts = _ => async dispatch => {
@@ -15,20 +15,26 @@ export const fetchProduct = id => async (dispatch, getState) => {
     Object.values(products).length < 100
   ) {
     product = products.filter(elem => elem.productId === id)[0];
-    if(!product){
+    if (!product) {
       product = await api.get(`/products?productId=${id}`);
       product = product.data[0];
     }
-  }else{
+  } else {
     product = await api.get(`/products?productId=${id}`);
     product = product.data[0];
   }
 
-  if(!product){
+  if (!product) {
     product = {
       error: "Product not found!"
-    }
+    };
   }
 
   dispatch({ type: FETCH_PRODUCT, payload: product });
 };
+
+export const fetchRelated = _ => async (dispatch, getState) => {
+  let product = await api.get("/related");
+  product = product.data;
+  dispatch({type: FETCH_RELATED, payload: product});
+}

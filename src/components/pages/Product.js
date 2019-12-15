@@ -15,9 +15,9 @@ const Product = props => {
 
   return (
     <>
-      <Container className="pt-6">
+      <div className="pt-6">
         <SingleProduct />
-      </Container>
+      </div>
 
       <Container className="px-0 mb-6 mt-6">
         <CommonHeader
