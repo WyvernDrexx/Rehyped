@@ -39,7 +39,7 @@ const cartReducers = (state = [], action) => {
     case ADD_TO_CART:
       return [...state, action.payload];
     case REMOVE_FROM_CART:
-      break;
+      return [...action.payload];
     default:
       return state;
   }

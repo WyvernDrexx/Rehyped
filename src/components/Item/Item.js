@@ -27,8 +27,8 @@ const Featured = props => {
     _ => {
       if (product.productId !== productId) {
         dispatch(fetchProduct(productId));
-        window.scrollTo(0, 90);
       }
+      window.scrollTo(0, 18);
       console.log(productId);
       if (cartItems.some(item => item.productId === productId)) {
         setItemOnCart(true);

@@ -2,11 +2,19 @@ import React from "react";
 import CommonHeader from "../stateless/CommonHeader";
 import Container from "../stateless/Container";
 import Divider from "../stateless/Divider";
+import { useSelector } from "react-redux";
 import { DarkButton, PrimaryButton } from "../stateless/Buttons";
 import CartList from "../CartList";
 import { Row, Col } from "react-bootstrap";
 
 const MyCart = props => {
+  const cartItems = useSelector(state => state.cart);
+
+  let totalMRP = 0;
+  if (cartItems && cartItems.length > 0) {
+    cartItems.forEach(item => (totalMRP += Number(item.price)));
+  }
+
   return (
     <>
       <Container className="pt-6 pb-5">
@@ -17,7 +25,7 @@ const MyCart = props => {
         />
         <Divider />
         <div className="flex-center pt-5">
-          <CartList />
+          <CartList cartItems={cartItems} />
         </div>
       </Container>
       <div className="secondary-background-color pt-5 pb-5 mt-5">
@@ -54,7 +62,7 @@ const MyCart = props => {
                 </p>
               </Col>
               <Col className="px-0">
-                <p className="sub-header text-right">$199</p>
+                <p className="sub-header text-right">${totalMRP}</p>
               </Col>
             </Row>
             <Row className="mb-3">
@@ -62,7 +70,9 @@ const MyCart = props => {
                 <p className="sub-header text-left">Shipping Charges</p>
               </Col>
               <Col className="px-0">
-                <p className="sub-header text-right text-success font-weight-bold">FREE</p>
+                <p className="sub-header text-right text-success font-weight-bold">
+                  FREE
+                </p>
               </Col>
             </Row>
             <Row className="mb-3">
@@ -70,7 +80,9 @@ const MyCart = props => {
                 <p className="sub-header text-left">Discount</p>
               </Col>
               <Col className="px-0">
-                <p className="sub-header text-right text-success font-weight-bold">-$30</p>
+                <p className="sub-header text-right text-success font-weight-bold">
+                  0
+                </p>
               </Col>
             </Row>
             <Row className="mb-3">
@@ -80,7 +92,9 @@ const MyCart = props => {
                 </p>
               </Col>
               <Col className="px-0">
-                <p className="sub-header text-right font-weight-bold">$159</p>
+                <p className="sub-header text-right font-weight-bold">
+                  ${totalMRP}
+                </p>
               </Col>
             </Row>
           </Col>

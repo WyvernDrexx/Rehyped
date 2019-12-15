@@ -48,4 +48,12 @@ export const fetchRelated = _ => async (dispatch, getState) => {
 
 export const addToCart = product => {
   return { type: ADD_TO_CART, payload: product };
-}
+};
+
+export const removeFromCart = id => (dispatch, getState) => {
+  const { cart } = getState();
+  console.log(`cart: ${cart} id: ${id}`);
+  let newCart = cart.filter(item => item.productId !== id);
+  console.log(newCart);
+  dispatch({ type: REMOVE_FROM_CART, payload: newCart });
+};
