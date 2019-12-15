@@ -17,7 +17,7 @@ const CartList = props => {
   return (
     <>
       <div className="cartList">
-        {cartItems.reverse().map((item, index) => {
+        {cartItems.map((item, index) => {
           return <CartItem item={item} key={index} />;
         })}
       </div>
