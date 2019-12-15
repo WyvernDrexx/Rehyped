@@ -1,4 +1,11 @@
-import { FETCH_PRODUCTS, FETCH_PRODUCT, FETCH_RELATED } from "./types";
+import {
+  FETCH_PRODUCTS,
+  FETCH_PRODUCT,
+  FETCH_RELATED,
+  ADD_TO_CART,
+  REMOVE_FROM_CART
+} from "./types";
+
 import api from "../api";
 
 export const fetchProducts = _ => async dispatch => {
@@ -36,5 +43,9 @@ export const fetchProduct = id => async (dispatch, getState) => {
 export const fetchRelated = _ => async (dispatch, getState) => {
   let product = await api.get("/related");
   product = product.data;
-  dispatch({type: FETCH_RELATED, payload: product});
+  dispatch({ type: FETCH_RELATED, payload: product });
+};
+
+export const addToCart = product => {
+  return { type: ADD_TO_CART, payload: product };
 }

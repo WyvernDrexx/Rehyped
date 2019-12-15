@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { LightButton, PrimaryButton } from "../stateless/Buttons";
 import { Row, Col, Spinner, Alert } from "react-bootstrap";
 
 import { useSelector, useDispatch } from "react-redux";
-import { fetchProduct } from "../../actions";
+import { fetchProduct, addToCart } from "../../actions";
 
 import CommonHeader from "../stateless/CommonHeader";
 import ItemSizes from "../stateless/ItemSizes";
@@ -19,17 +19,30 @@ const Featured = props => {
   let { productId } = useParams();
   productId = productId || props.productId;
   const product = useSelector(state => state.selectedProduct);
+  const cartItems = useSelector(state => state.cart);
   const dispatch = useDispatch();
+  const [itemOnCart, setItemOnCart] = useState(false);
 
   useEffect(
     _ => {
       if (product.productId !== productId) {
         dispatch(fetchProduct(productId));
+        window.scrollTo(0, 90);
       }
-      window.scrollTo(0, 90);
+      console.log(productId);
+      if (cartItems.some(item => item.productId === productId)) {
+        setItemOnCart(true);
+      } else {
+        setItemOnCart(false);
+      }
     },
-    [productId]
+    [productId, cartItems]
   );
+
+  const onAddToCartClick = _ => {
+    dispatch(addToCart(product));
+  };
+
   if (Object.values(product).length === 0) {
     return (
       <>
@@ -86,10 +99,22 @@ const Featured = props => {
                 <ItemColors className="" />
 
                 <Row className="mt-4">
-                  <Col className="pr-3 pr-md-2" md={true}>
-                    <LightButton title="ADD TO CART" className="w-100" />
-                  </Col>
-
+                  {itemOnCart ? (
+                    <Col className="pr-3 pr-md-2" md={true}>
+                      <LightButton
+                        title="ON CART"
+                        className="w-100 disabled cursor-auto"
+                      />
+                    </Col>
+                  ) : (
+                    <Col className="pr-3 pr-md-2" md={true}>
+                      <LightButton
+                        onClick={onAddToCartClick}
+                        title="ADD TO CART"
+                        className="w-100"
+                      />
+                    </Col>
+                  )}
                   <Col className="px-lg-0 pr-3 pr-md-0 mt-4 mt-md-0" md={true}>
                     <PrimaryButton title="BUY IT NOW" className="w-100" />
                   </Col>
