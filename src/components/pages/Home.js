@@ -10,7 +10,7 @@ import CommonHeader from "../stateless/CommonHeader";
 import SlideCarousel from "../SlideCarousel";
 import ProductItem from "../Item";
 import Subscribe from "../Subscribe";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const Home = props => {
   return (
@@ -46,10 +46,10 @@ const Home = props => {
               </p>
             </div>
             <Link to="/products">
-            <DarkButton
-              className="d-block pt-3 pb-3 mx-auto mx-md-0 mb-3 mb-md-0 position-md-absolute mt-3 bottom-0 text-center text-md-left"
-              title="GO TO STORE"
-            />
+              <DarkButton
+                className="d-block pt-3 pb-3 mx-auto mx-md-0 mb-3 mb-md-0 position-md-absolute mt-3 bottom-0 text-center text-md-left"
+                title="GO TO STORE"
+              />
             </Link>
           </Col>
         </Row>
@@ -64,15 +64,7 @@ const Home = props => {
         <Carousel />
       </div>
       <Container className="mt-6">
-        <ProductItem />
-      </Container>
-      <Container>
-        <h4 className="sub-header mb-4 text-left font-weight-bold">
-          Est. delivery in 7-10 business days via preferred courier.
-        </h4>
-        <p className="sub-header text-left">
-          *Depending on the courier partner available at your pincode.
-        </p>
+        <ProductItem instructions={false} productId="1" />
       </Container>
       <Container>
         <CommonHeader
