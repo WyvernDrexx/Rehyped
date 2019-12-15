@@ -29,18 +29,23 @@ const Carousel = props => {
 const CarouselItem = props => {
   const { item } = props;
   const [isLoaded, setIsLoaded] = useState(false);
+  const [isImgLoaded, setIsImgLoaded] = useState(false);
 
-  const onImgLoad = _ => {
+  const onLoad = _ => {
     setIsLoaded(true);
   };
 
+  const onImgLoad = _ => {
+    setIsImgLoaded(true);
+  }
+
   return (
     <div className="item position-relative">
-      {isLoaded ? null : (
+      <div className="position-relative" onLoad={onLoad} >
+      {isImgLoaded ? null : (
           <Spinner className="absolute-center" animation="border" />
         )}
-      <div onLoad={onImgLoad} >
-        <img alt="Placeholder" className={`carousel-img ${isLoaded ? "" : "visibility-hidden"}`} src={`${item.image}`} />
+        <img onLoad={onImgLoad} alt="Placeholder" className={`carousel-img ${isLoaded ? "" : "visibility-hidden"}`} src={`${item.image}`} />
       </div>
       <div className={`product-details ${isLoaded ? "" : "visibility-hidden"}`}>
         <p className="product-name">{item.name}</p>
