@@ -3,6 +3,9 @@ import "./Carousel.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchRelated } from "../../actions";
 import { Spinner } from "react-bootstrap";
+import { Link } from 'react-router-dom';
+
+import history from "../../history";
 
 const Carousel = props => {
   const dispatch = useDispatch();
@@ -40,6 +43,7 @@ const CarouselItem = props => {
   }
 
   return (
+    <Link to={`/products/${item.productId}`}>
     <div className="item position-relative">
       <div className="position-relative" onLoad={onLoad} >
       {isImgLoaded ? null : (
@@ -52,6 +56,8 @@ const CarouselItem = props => {
         <p className="product-price">${item.price}</p>
       </div>
     </div>
+    </Link>
+    
   );
 };
 

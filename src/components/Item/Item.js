@@ -21,7 +21,7 @@ const Featured = props => {
 
   useEffect(_ => {
     if (product.productId !== productId) dispatch(fetchProduct(productId));
-  }, []);
+  });
 
   if (Object.values(product).length === 0) {
     return (
