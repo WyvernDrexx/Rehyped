@@ -57,7 +57,6 @@ const CarouselItem = props => {
       </div>
     </div>
     </Link>
-    
   );
 };
 

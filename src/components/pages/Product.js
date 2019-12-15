@@ -8,7 +8,6 @@ import Subscribe from "../Subscribe";
 const Product = props => {
   useEffect(_ => {
     window.onload = _ => {
-      console.log("hi");
       window.scrollTo(0, 0);
     };
   }, []);

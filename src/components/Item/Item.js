@@ -19,9 +19,16 @@ const Featured = props => {
   const product = useSelector(state => state.selectedProduct);
   const dispatch = useDispatch();
 
-  useEffect(_ => {
-    if (product.productId !== productId) dispatch(fetchProduct(productId));
-  });
+  useEffect(
+    _ => {
+      if (product.productId !== productId) {
+        dispatch(fetchProduct(productId));
+        console.log("product event!");
+        window.scrollTo(0,90);
+      }
+    },
+    [productId]
+  );
 
   if (Object.values(product).length === 0) {
     return (
@@ -94,7 +101,11 @@ const Featured = props => {
           </div>
         </Container>
         <div className="secondary-background-color mt-6">
-          <CommonHeader className="pt-6" header="DETAILS" subheader="PRODUCT INSTRUCTION" />
+          <CommonHeader
+            className="pt-6"
+            header="DETAILS"
+            subheader="PRODUCT INSTRUCTION"
+          />
           <div className="px-0">
             <Instructions className="mx-0" />
           </div>
