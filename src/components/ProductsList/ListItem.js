@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Row, Col, Spinner } from "react-bootstrap";
 import history from "../../history";
-
+import './ProductsList.scss';
 const ListItem = props => {
   const { index, item } = props;
   const [isLoaded, setIsLoaded] = useState(false);
@@ -30,7 +30,7 @@ const ListItem = props => {
       <Row className={`${isLoaded ? "" : "visibility-hidden"}`}>
         <img alt="This is null" src={item.image} />
       </Row>
-      <Row className={`${isLoaded ? "" : "d-none"}`}>
+      <Row className={`${isLoaded ? "" : "visibility-hidden"}`}>
         <div className="mt-4">
           <p className="sub-header font-weight-bold text-left">
             {item.name.length > 23 ? item.name.slice(0, 23) + "..." : item.name}

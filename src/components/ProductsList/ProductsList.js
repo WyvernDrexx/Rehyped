@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
-import { Row, Col, Spinner } from "react-bootstrap";
+import { Row, Spinner } from "react-bootstrap";
 import { fetchProducts } from "../../actions";
 import { useDispatch, useSelector } from "react-redux";
-import history from "../../history";
 import ListItem from './ListItem'
 import "./ProductsList.scss";
 
