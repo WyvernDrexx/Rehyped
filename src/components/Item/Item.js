@@ -28,16 +28,17 @@ const Featured = props => {
       if (product.productId !== productId) {
         dispatch(fetchProduct(productId));
       }
-      window.scrollTo(0, 18);
-      console.log(productId);
-      if (cartItems.some(item => item.productId === productId)) {
-        setItemOnCart(true);
-      } else {
-        setItemOnCart(false);
-      }
     },
-    [productId, cartItems]
+    [productId]
   );
+
+  useEffect(_ => {
+    if (cartItems.some(item => item.productId === productId)) {
+      setItemOnCart(true);
+    } else {
+      setItemOnCart(false);
+    }
+  }, [cartItems,productId])
 
   const onAddToCartClick = _ => {
     dispatch(addToCart(product));

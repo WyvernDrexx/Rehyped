@@ -52,8 +52,6 @@ export const addToCart = product => {
 
 export const removeFromCart = id => (dispatch, getState) => {
   const { cart } = getState();
-  console.log(`cart: ${cart} id: ${id}`);
   let newCart = cart.filter(item => item.productId !== id);
-  console.log(newCart);
   dispatch({ type: REMOVE_FROM_CART, payload: newCart });
 };

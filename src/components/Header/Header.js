@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
+import history from "../../history";
 
+import { useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faShoppingBag } from "@fortawesome/free-solid-svg-icons";
 import { Row, Col, Container } from "react-bootstrap";
@@ -9,15 +11,26 @@ import TopBanner from "../TopBanner";
 import Sidebar from "../Sidebar";
 import "./Header.scss";
 
-
 const Header = props => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [isCartEmpty, setIsCartEmpty] = useState(true);
+  const cart = useSelector(state => state.cart);
   const toggleSideBar = _ => {
     if (sidebarOpen) {
       setSidebarOpen(false);
-    }
-    else setSidebarOpen(true);
+    } else setSidebarOpen(true);
   };
+
+  useEffect(
+    _ => {
+      if (cart && cart.length === 0) {
+        setIsCartEmpty(true);
+      } else {
+        setIsCartEmpty(false);
+      }
+    },
+    [cart]
+  );
 
   return ReactDOM.createPortal(
     <>
@@ -45,13 +58,18 @@ const Header = props => {
               </Col>
               <Col xs={7} md={5} lg={2} className="px-0">
                 <div className=" user-select-none primary-font-size">
-                <img className="w-100" src="/logo.png" alt="Rehyped Logo" />
+                  <img className="w-100" src="/logo.png" alt="Rehyped Logo" />
                 </div>
               </Col>
               <Col className="px-0">
-                <button className="float-right border-none bg-transparent text-white primary-font-size">
+                <button
+                  onClick={_ => history.push("/mycart")}
+                  className="float-right border-none bg-transparent text-white primary-font-size"
+                >
                   <FontAwesomeIcon icon={faShoppingBag} />
-                  <span className="cart-item-number"></span>
+                  {isCartEmpty ? null : (
+                    <span className="cart-item-number"></span>
+                  )}
                 </button>
               </Col>
             </Row>
