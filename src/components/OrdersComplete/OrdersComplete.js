@@ -1,7 +1,7 @@
 import React from "react";
 import Container from "../stateless/Container";
 import { DarkButton, PrimaryButton } from "../stateless/Buttons";
-import Divider from "../stateless/Divider";
+import { Divider } from "../stateless";
 
 const OrdersComplete = props => {
   return (

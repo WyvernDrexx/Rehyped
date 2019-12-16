@@ -1,16 +1,16 @@
 import React from "react";
+
+import { Link } from "react-router-dom";
 import { Row, Col } from "react-bootstrap";
-import Container from "../stateless/Container";
-import Divider from "../stateless/Divider";
+import { Container, CommonHeader, Divider } from "../stateless/Container";
 import { DarkButton } from "../stateless/Buttons";
+
 import Carousel from "../Carousel";
 import Media from "../Media";
 import TriShowCase from "../TriShowcase";
-import CommonHeader from "../stateless/CommonHeader";
 import SlideCarousel from "../SlideCarousel";
 import ProductItem from "../Item";
 import Subscribe from "../Subscribe";
-import { Link } from "react-router-dom";
 
 const Home = props => {
   return (

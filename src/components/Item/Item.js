@@ -6,12 +6,10 @@ import { Row, Col, Spinner, Alert } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchProduct, addToCart } from "../../actions";
 
-import CommonHeader from "../stateless/CommonHeader";
-import ItemSizes from "../stateless/ItemSizes";
-import ItemColors from "../stateless/ItemColors";
 import QuadShowcase from "../QuadShowcase";
 import Instructions from "../Media";
-import Container from "../stateless/Container";
+
+import { CommonHeader, ItemColors, ItemSizes, Container } from "../stateless";
 
 import "./Item.scss";
 
@@ -32,13 +30,16 @@ const Featured = props => {
     [productId]
   );
 
-  useEffect(_ => {
-    if (cartItems.some(item => item.productId === productId)) {
-      setItemOnCart(true);
-    } else {
-      setItemOnCart(false);
-    }
-  }, [cartItems,productId])
+  useEffect(
+    _ => {
+      if (cartItems.some(item => item.productId === productId)) {
+        setItemOnCart(true);
+      } else {
+        setItemOnCart(false);
+      }
+    },
+    [cartItems, productId]
+  );
 
   const onAddToCartClick = _ => {
     dispatch(addToCart(product));

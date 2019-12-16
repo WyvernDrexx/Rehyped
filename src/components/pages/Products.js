@@ -1,9 +1,10 @@
-import React, { useEffect } from "react";
-import Container from "../stateless/Container";
-import CommonHeader from "../stateless/CommonHeader";
+import React from "react";
+import { Container, CommonHeader } from "../stateless/Container";
+import { DarkButton } from "../stateless/Buttons";
+
 import SearchBar from "../SearchBar";
 import ProductsList from "../ProductsList";
-import { DarkButton } from "../stateless/Buttons";
+
 const Products = props => {
   return (
     <>

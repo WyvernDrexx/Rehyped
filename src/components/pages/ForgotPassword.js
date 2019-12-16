@@ -1,5 +1,5 @@
 import React from "react";
-import Container from "../stateless/Container";
+import { Container } from "../stateless";
 import { PrimaryButton } from "../stateless/Buttons";
 
 const ForgotPassword = props => {

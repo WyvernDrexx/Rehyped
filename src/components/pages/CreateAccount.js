@@ -1,7 +1,6 @@
 import React from "react";
-import Container from "../stateless/Container";
 import { DarkButton, PrimaryButton } from "../stateless/Buttons";
-import Checkbox from "../stateless/Checkbox";
+import { Container, Checkbox } from "../stateless";
 
 const CreateAccount = props => {
   return (

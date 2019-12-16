@@ -1,16 +1,19 @@
 import React, { useEffect } from "react";
+import { useParams } from "react-router-dom";
+
+import { Container, CommonHeader } from "../stateless";
 import SingleProduct from "../Item";
-import Container from "../stateless/Container";
-import CommonHeader from "../stateless/CommonHeader";
 import Carousel from "../Carousel";
 import Subscribe from "../Subscribe";
-import { useParams } from "react-router-dom";
 
 const Product = props => {
   const { productId } = useParams();
-  useEffect(_ => {
-    window.scrollTo(0, 90);
-  }, [productId]);
+  useEffect(
+    _ => {
+      window.scrollTo(0, 90);
+    },
+    [productId]
+  );
 
   return (
     <>

@@ -1,11 +1,10 @@
 import React from "react";
-import CommonHeader from "../stateless/CommonHeader";
-import Container from "../stateless/Container";
-import Divider from "../stateless/Divider";
+import { CommonHeader, Container, Divider } from "../stateless";
 import { useSelector } from "react-redux";
 import { DarkButton, PrimaryButton } from "../stateless/Buttons";
-import CartList from "../CartList";
 import { Row, Col } from "react-bootstrap";
+
+import CartList from "../CartList";
 
 const MyCart = props => {
   const cartItems = useSelector(state => state.cart);

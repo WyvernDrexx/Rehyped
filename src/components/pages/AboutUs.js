@@ -1,7 +1,7 @@
 import React from "react";
-import Container from "../stateless/Container";
-import CommonHeader from "../stateless/CommonHeader";
+import { Container, CommonHeader } from "../stateless";
 import { DarkButton, PrimaryButton } from "../stateless/Buttons";
+
 const AboutUs = props => {
   return (
     <>
@@ -33,9 +33,10 @@ const AboutUs = props => {
             title="SEND US A DM"
             className="w-100 w-md-40 mx-auto d-block mt-5"
           />
-          <DarkButton 
+          <DarkButton
             className="w-100 w-md-40 mx-auto d-block mt-5 mb-5"
-          title="STORE" />
+            title="STORE"
+          />
         </div>
       </Container>
     </>

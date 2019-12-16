@@ -1,11 +1,4 @@
 import React, { useState } from "react";
-import Container from "../stateless/Container";
-import { PrimaryButton } from "../stateless/Buttons";
-import { Link } from "react-router-dom";
-import history from "../../history";
-
-import CartList from "../CartList";
-import ShippingDetails from "../ShippingDetails";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -13,6 +6,13 @@ import {
   faChevronUp,
   faChevronRight
 } from "@fortawesome/free-solid-svg-icons";
+import { Container } from "../stateless";
+import { PrimaryButton } from "../stateless/Buttons";
+import { Link } from "react-router-dom";
+
+import history from "../../history";
+import CartList from "../CartList";
+import ShippingDetails from "../ShippingDetails";
 
 import "./MyAccount.scss";
 

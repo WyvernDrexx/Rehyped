@@ -1,6 +1,6 @@
 import React from "react";
-import Container from "../stateless/Container";
-import CommonHeader from "../stateless/CommonHeader";
+
+import { Container, CommonHeader } from "../stateless";
 import { DarkButton, PrimaryButton } from "../stateless/Buttons";
 import { Link } from "react-router-dom";
 
