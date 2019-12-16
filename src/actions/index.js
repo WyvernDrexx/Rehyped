@@ -1,57 +1,13 @@
-import {
-  FETCH_PRODUCTS,
-  FETCH_PRODUCT,
-  FETCH_RELATED,
-  ADD_TO_CART,
-  REMOVE_FROM_CART
-} from "./types";
+import fetch from './fetch';
+import cart from "./cart";
 
-import api from "../api";
+// Fetch related
+export const fetchProducts = fetch.products;
+export const fetchProduct  = fetch.product;
+export const fetchRelated  = fetch.related;
 
-export const fetchProducts = _ => async dispatch => {
-  let products = await api.get("/products");
-  products = products.data;
-  dispatch({ type: FETCH_PRODUCTS, payload: products });
-};
+// cart related
+export const addToCart     = cart.add;
+export const removeFromCart = cart.remove;
 
-export const fetchProduct = id => async (dispatch, getState) => {
-  const { products } = getState();
-  let product;
-  if (
-    Object.values(products).length > 0 &&
-    Object.values(products).length < 100
-  ) {
-    product = products.filter(elem => elem.productId === id)[0];
-    if (!product) {
-      product = await api.get(`/products?productId=${id}`);
-      product = product.data[0];
-    }
-  } else {
-    product = await api.get(`/products?productId=${id}`);
-    product = product.data[0];
-  }
 
-  if (!product) {
-    product = {
-      error: "Product not found!"
-    };
-  }
-
-  dispatch({ type: FETCH_PRODUCT, payload: product });
-};
-
-export const fetchRelated = _ => async (dispatch, getState) => {
-  let product = await api.get("/related");
-  product = product.data;
-  dispatch({ type: FETCH_RELATED, payload: product });
-};
-
-export const addToCart = product => {
-  return { type: ADD_TO_CART, payload: product };
-};
-
-export const removeFromCart = id => (dispatch, getState) => {
-  const { cart } = getState();
-  let newCart = cart.filter(item => item.productId !== id);
-  dispatch({ type: REMOVE_FROM_CART, payload: newCart });
-};
