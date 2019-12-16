@@ -33,7 +33,7 @@ const product = id => async (dispatch, getState) => {
   dispatch({ type: FETCH_PRODUCT, payload: product });
 };
 
-const related = _ => async (dispatch, getState) => {
+const related = _ => async dispatch => {
   let product = await api.get("/related");
   product = product.data;
   dispatch({ type: FETCH_RELATED, payload: product });
