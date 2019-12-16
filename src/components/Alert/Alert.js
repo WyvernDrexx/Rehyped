@@ -10,12 +10,12 @@ const Alert = props => {
   const dispatch = useDispatch();
   useEffect(
     _ => {
-      if (alert.length !== 0) {
+      if (alert && alert.length !== 0) {
         document.getElementById("alert").classList.add("alert-animate");
         setTimeout(_ => {
           document.getElementById("alert").classList.remove("alert-animate");
           dispatch(showAlert(""));
-        }, 3000);
+        }, 2000);
       }
     },
     [alert]

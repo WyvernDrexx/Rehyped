@@ -12,7 +12,7 @@ const CartItem = props => {
 
   const onRemoveClick = _ => {
     dispatch(removeFromCart(item.productId));
-    dispatch(showAlert("Item Successfully removed!"));
+    dispatch(showAlert("Item Removed Successfully!"));
   }
 
   return (

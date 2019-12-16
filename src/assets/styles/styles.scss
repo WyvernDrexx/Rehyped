@@ -29,7 +29,9 @@ a {
     color: $primaryColor;
   }
 }
-
+.bg-success{
+  background-color: #428BCA !important;
+}
 button {
   @extend a;
 }
