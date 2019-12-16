@@ -1,4 +1,3 @@
-import Buttons from "./Buttons";
 import Checkbox from "./Checkbox";
 import CommonHeader from "./CommonHeader";
 import Container from "./Container";
@@ -8,7 +7,6 @@ import ItemSizes from "./ItemSizes";
 import Divider from "./Divider";
 
 export {
-  Buttons,
   Checkbox,
   CommonHeader,
   Container,

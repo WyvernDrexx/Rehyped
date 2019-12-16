@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, CommonHeader } from "../stateless/Container";
+import { Container, CommonHeader } from "../stateless";
 import { DarkButton } from "../stateless/Buttons";
 
 import SearchBar from "../SearchBar";

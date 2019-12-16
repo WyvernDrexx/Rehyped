@@ -2,7 +2,7 @@ import React from "react";
 
 import { Link } from "react-router-dom";
 import { Row, Col } from "react-bootstrap";
-import { Container, CommonHeader, Divider } from "../stateless/Container";
+import { Container, CommonHeader, Divider } from "../stateless";
 import { DarkButton } from "../stateless/Buttons";
 
 import Carousel from "../Carousel";
