@@ -3,7 +3,7 @@ import "./CartList.scss";
 import { Col, Row } from "react-bootstrap";
 import { PrimarySlimButton } from "../stateless/Buttons";
 import { useDispatch } from 'react-redux';
-import { removeFromCart } from "../../actions";
+import { removeFromCart,showAlert } from "../../actions";
 import history from '../../history';
 
 const CartItem = props => {
@@ -12,6 +12,7 @@ const CartItem = props => {
 
   const onRemoveClick = _ => {
     dispatch(removeFromCart(item.productId));
+    dispatch(showAlert("Item Successfully removed!"));
   }
 
   return (

@@ -2,15 +2,15 @@
 
 .cart-item {
   width: 100%;
-  @include md{
+  @include md {
     max-width: 20rem;
     float: left;
     margin: auto;
   }
 }
 
-.cart-list{
-  @include md{
+.cart-list {
+  @include md {
     position: relative;
     display: inline-block;
   }
@@ -18,7 +18,7 @@
 
 .cart-item-image {
   width: 100%;
-  img{
+  img {
     width: 100% !important;
   }
 }
@@ -27,4 +27,18 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+.item-enter {
+  opacity: 0;
+}
+.item-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+.item-exit {
+  opacity: 1;
+}
+.item-exit-active {
+  opacity: 0;
+  transition: opacity 500ms ease-in;
 }

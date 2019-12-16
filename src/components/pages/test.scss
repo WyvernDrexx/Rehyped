@@ -1,0 +1,25 @@
+#animate{
+  position: absolute;
+  z-index: 100;
+  transform: translateY(-900px);
+  padding: 100px;
+}
+.animate {
+  background-color: brown;
+  animation: remove 3s 1;
+}
+
+@keyframes remove {
+  0% {
+    background-color: chartreuse;
+    transform: translateY(-700px);
+  }
+  50% {
+    background-color: chocolate;
+    transform: translateY(0px);
+  }
+  100% {
+    background-color: cornflowerblue;
+    transform: translateY(-900px);
+  }
+}

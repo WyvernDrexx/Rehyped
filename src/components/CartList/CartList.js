@@ -1,6 +1,7 @@
 import React from "react";
 import "./CartList.scss";
 import CartItem from "./CartItem";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 const CartList = props => {
   const cartItems = props.cartItems;
@@ -17,9 +18,19 @@ const CartList = props => {
   return (
     <>
       <div className="cartList">
-        {cartItems.map((item, index) => {
-          return <CartItem item={item} key={index} />;
-        })}
+        <TransitionGroup>
+          {cartItems.map((item, index) => {
+            return (
+              <CSSTransition
+                key={index}
+                timeout={500}
+                classNames="item"
+              >
+                <CartItem item={item} key={index} />
+              </CSSTransition>
+            );
+          })}
+        </TransitionGroup>
       </div>
     </>
   );

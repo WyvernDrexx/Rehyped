@@ -4,7 +4,8 @@ import {
   FETCH_PRODUCT,
   FETCH_RELATED,
   ADD_TO_CART,
-  REMOVE_FROM_CART
+  REMOVE_FROM_CART,
+  ALERT_SHOW
 } from "../actions/types";
 
 const productsReducer = (state = {}, action) => {
@@ -45,9 +46,19 @@ const cartReducers = (state = [], action) => {
   }
 };
 
+const alertReducer = (state = "", action) => {
+  switch (action.type) {
+    case ALERT_SHOW:
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
 export default combineReducers({
   products: productsReducer,
   selectedProduct: productReducer,
   relatedItem: relatedReducers,
-  cart: cartReducers
+  cart: cartReducers,
+  alert: alertReducer
 });

@@ -4,7 +4,7 @@ import { LightButton, PrimaryButton } from "../stateless/Buttons";
 import { Row, Col, Spinner, Alert } from "react-bootstrap";
 
 import { useSelector, useDispatch } from "react-redux";
-import { fetchProduct, addToCart } from "../../actions";
+import { fetchProduct, addToCart, showAlert } from "../../actions";
 
 import QuadShowcase from "../QuadShowcase";
 import Instructions from "../Media";
@@ -43,6 +43,7 @@ const Featured = props => {
 
   const onAddToCartClick = _ => {
     dispatch(addToCart(product));
+    dispatch(showAlert("Item Added To Cart!"));
   };
 
   if (Object.values(product).length === 0) {
