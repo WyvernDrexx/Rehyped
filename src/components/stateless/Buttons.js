@@ -43,6 +43,7 @@ export const PrimaryButton = props => {
       variant="light"
     >
       {props.title || "Primary Button"}
+      {props.children}
     </Button>
   );
 };

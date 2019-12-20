@@ -5,7 +5,10 @@ import {
   FETCH_RELATED,
   ADD_TO_CART,
   REMOVE_FROM_CART,
-  ALERT_SHOW
+  ALERT_SHOW,
+  INPUT_CHANGE,
+  CREATE_ACCOUNT_SUBMIT,
+  REQUEST_STATUS
 } from "../actions/types";
 
 const productsReducer = (state = {}, action) => {
@@ -55,10 +58,24 @@ const alertReducer = (state = "", action) => {
   }
 };
 
+const formReducer = (state = {}, action) => {
+  switch (action.type) {
+    case INPUT_CHANGE:
+      return { ...state, [action.payload.name]: action.payload.value };
+    case CREATE_ACCOUNT_SUBMIT:
+      return {...state, status:action.payload.status, message: action.payload.message};
+    case REQUEST_STATUS:
+      return {...state, requestStatus: action.payload};
+    default:
+      return state;
+  }
+};
+
 export default combineReducers({
   products: productsReducer,
   selectedProduct: productReducer,
   relatedItem: relatedReducers,
   cart: cartReducers,
-  alert: alertReducer
+  alert: alertReducer,
+  createAccountForm: formReducer
 });
