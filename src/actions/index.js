@@ -2,6 +2,7 @@ import fetch from './fetch';
 import cart from "./cart";
 import { ALERT_SHOW } from './types';
 import forms from './forms';
+import token from "./token";
 // Fetch related
 export const fetchProducts = fetch.products;
 export const fetchProduct  = fetch.product;
@@ -15,3 +16,4 @@ export const showAlert = message => {
 }
 
 export const { onInputChange, onFormSubmit } = forms;
+export const { setToken, getToken, verifyToken, removeToken } = token;

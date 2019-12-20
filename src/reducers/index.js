@@ -8,7 +8,11 @@ import {
   ALERT_SHOW,
   INPUT_CHANGE,
   FORM_SUBMIT,
-  REQUEST_STATUS
+  REQUEST_STATUS,
+  SET_TOKEN,
+  GET_TOKEN,
+  REMOVE_TOKEN,
+  VERIFY_TOKEN
 } from "../actions/types";
 
 const productsReducer = (state = {}, action) => {
@@ -63,9 +67,24 @@ const formReducer = (state = {}, action) => {
     case INPUT_CHANGE:
       return { ...state, ...action.payload };
     case FORM_SUBMIT:
-      return {...state, status:action.payload.status, message: action.payload.message};
+      return { ...state, ...action.payload };
     case REQUEST_STATUS:
-      return {...state, requestStatus: action.payload};
+      return { ...state, requestStatus: action.payload };
+    default:
+      return state;
+  }
+};
+
+const tokenReducer = (state = {}, action) => {
+  switch (action.type) {
+    case SET_TOKEN:
+      return { ...state, token: action.payload };
+    case GET_TOKEN:
+      return { ...state, token: action.payload };
+    case VERIFY_TOKEN:
+      return { ...state, ...action.payload };
+    case REMOVE_TOKEN:
+      return { token: "" };
     default:
       return state;
   }
@@ -77,5 +96,6 @@ export default combineReducers({
   relatedItem: relatedReducers,
   cart: cartReducers,
   alert: alertReducer,
-  form: formReducer
+  form: formReducer,
+  token: tokenReducer
 });

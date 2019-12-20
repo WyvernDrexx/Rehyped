@@ -1,16 +1,15 @@
 import { INPUT_CHANGE, FORM_SUBMIT, REQUEST_STATUS } from "./types";
 import api from "../api";
 
-const onInputChange = event => {
-  return { type: INPUT_CHANGE, payload: event };
+const onInputChange = target => {
+  return { type: INPUT_CHANGE, payload: target };
 };
 
-const onFormSubmit = _ => async (dispatch, getState) => {
+const onFormSubmit = route => async (dispatch, getState) => {
   const { form } = getState();
   dispatch({ type: REQUEST_STATUS, payload: "running" });
-
   await api
-    .post("/signup", form)
+    .post(route, form)
     .then(resp => {
       dispatch({ type: FORM_SUBMIT, payload: resp.data });
     })

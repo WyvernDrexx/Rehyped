@@ -17,3 +17,8 @@ export const ALERT_SHOW = "ALERT_SHOW";
 export const INPUT_CHANGE = "INPUT_CHANGE";
 export const FORM_SUBMIT = "FORM_SUBMIT";
 export const REQUEST_STATUS = "REQUEST_STATUS";
+
+export const SET_TOKEN = "SET_TOKEN";
+export const REMOVE_TOKEN = "REMOVE_TOKEN";
+export const GET_TOKEN = "GET_TOKEN";
+export const VERIFY_TOKEN = "VERIFY_TOKEN";

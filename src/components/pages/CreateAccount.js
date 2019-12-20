@@ -10,13 +10,7 @@ const CreateAccount = props => {
   const dispatch = useDispatch();
   const [isChecked, setIsChecked] = useState(false);
   const formState = useSelector(state => state.form);
-  const { status, message } = useSelector(state => ({
-    status: state.form.status,
-    message: state.form.message
-  }));
-  const requestStatus = useSelector(
-    state => state.form.requestStatus
-  );
+
   const onChange = ({ name, value }) => {
     dispatch(onInputChange({ [name]: value }));
   };
@@ -27,35 +21,28 @@ const CreateAccount = props => {
   };
 
   const onFormSubmitClick = _ => {
-    dispatch(onFormSubmit());
+    dispatch(onFormSubmit("/signup"));
   };
-
-  useEffect(
-    _ => {
-      console.log("change");
-    },
-    [status, message]
-  );
 
   useEffect(_ => {
     dispatch(onInputChange({"isChecked":isChecked }));
-  }, []);
+  }, [isChecked]);
 
   const renderResponse = _ => {
     return (
       <div className="w-100 w-md-40 block-center mt-4">
-        {status && status !== 200 ? (
-          <ErrorBlock message={`${message}`.toUpperCase()} />
+        {formState.status && formState.status !== 200 ? (
+          <ErrorBlock message={`${formState.message}`.toUpperCase()} />
         ) : null}
-        {status && status === 200 ? (
-          <SuccessBlock message={`${message}`.toUpperCase()} />
+        {formState.status && formState.status === 200 ? (
+          <SuccessBlock message={`${formState.message}`.toUpperCase()} />
         ) : null}
       </div>
     );
   };
 
   const renderForm = _ => {
-    if (status !== 200)
+    if (formState.status !== 200)
       return (
         <form>
           <input
@@ -100,7 +87,7 @@ const CreateAccount = props => {
             title="SIGN UP"
             onClick={onFormSubmitClick}
           >
-            {requestStatus && requestStatus === "running" ? (
+            {formState.requestStatus && formState.requestStatus === "running" ? (
               <Spinner className="ml-2" animation="border" size="sm" />
             ) : null}
           </PrimaryButton>

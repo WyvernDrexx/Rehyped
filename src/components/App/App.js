@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Route, Router } from "react-router-dom";
 import history from "../../history";
 import "..//..//assets/styles/bootstrap.min.css";
@@ -13,12 +13,38 @@ import MyCart from "../pages/MyCart";
 import AboutUs from "../pages/AboutUs";
 import ChangePassword from "../pages/ChangePassword";
 import ContactUs from "../pages/ContactUs";
-import CreateAccount from '../pages/CreateAccount';
+import CreateAccount from "../pages/CreateAccount";
 import Login from "../pages/Login";
 import ForgotPassword from "../pages/ForgotPassword";
-import MyAccount from '../pages/MyAccount';
+import MyAccount from "../pages/MyAccount";
+import { useDispatch, useSelector } from "react-redux";
+import { getToken, verifyToken, removeToken } from "../../actions";
+import { useEffect } from "react";
 
 const App = _ => {
+  const dispatch = useDispatch();
+  const { token, isVerified } = useSelector(state => state.token);
+
+  useEffect(_ => {
+    dispatch(getToken());
+  }, []);
+
+  useEffect(
+    _ => {
+      if (token && token.length > 0) dispatch(verifyToken());
+    },
+    [token]
+  );
+
+  useEffect(
+    _ => {
+      if (typeof isVerified !== "undefined" && !isVerified) {
+        dispatch(removeToken());
+      }
+    },
+    [isVerified]
+  );
+
   return (
     <Router history={history}>
       <Header />
