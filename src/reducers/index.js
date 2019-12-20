@@ -7,7 +7,7 @@ import {
   REMOVE_FROM_CART,
   ALERT_SHOW,
   INPUT_CHANGE,
-  CREATE_ACCOUNT_SUBMIT,
+  FORM_SUBMIT,
   REQUEST_STATUS
 } from "../actions/types";
 
@@ -61,8 +61,8 @@ const alertReducer = (state = "", action) => {
 const formReducer = (state = {}, action) => {
   switch (action.type) {
     case INPUT_CHANGE:
-      return { ...state, [action.payload.name]: action.payload.value };
-    case CREATE_ACCOUNT_SUBMIT:
+      return { ...state, ...action.payload };
+    case FORM_SUBMIT:
       return {...state, status:action.payload.status, message: action.payload.message};
     case REQUEST_STATUS:
       return {...state, requestStatus: action.payload};
@@ -77,5 +77,5 @@ export default combineReducers({
   relatedItem: relatedReducers,
   cart: cartReducers,
   alert: alertReducer,
-  createAccountForm: formReducer
+  form: formReducer
 });

@@ -1,33 +1,33 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { DarkButton, PrimaryButton, PrimarySlimButton } from "../stateless/Buttons";
+import { DarkButton, PrimaryButton } from "../stateless/Buttons";
 import { Container, Checkbox, ErrorBlock, SuccessBlock } from "../stateless";
-import { onInputChange, onCreateAccountFormSubmit } from "../../actions";
+import { onInputChange, onFormSubmit } from "../../actions";
 import { Spinner } from "react-bootstrap";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const CreateAccount = props => {
   const dispatch = useDispatch();
   const [isChecked, setIsChecked] = useState(false);
-  const formState = useSelector(state => state.createAccountForm);
+  const formState = useSelector(state => state.form);
   const { status, message } = useSelector(state => ({
-    status: state.createAccountForm.status,
-    message: state.createAccountForm.message
+    status: state.form.status,
+    message: state.form.message
   }));
   const requestStatus = useSelector(
-    state => state.createAccountForm.requestStatus
+    state => state.form.requestStatus
   );
-  const onChange = target => {
-    dispatch(onInputChange(target));
+  const onChange = ({ name, value }) => {
+    dispatch(onInputChange({ [name]: value }));
   };
 
   const onCheckboxChange = _ => {
-    dispatch(onInputChange({ name: "isChecked", value: !isChecked }));
+    dispatch(onInputChange({ isChecked: !isChecked }));
     setIsChecked(!isChecked);
   };
 
-  const onFormSubmit = _ => {
-    dispatch(onCreateAccountFormSubmit());
+  const onFormSubmitClick = _ => {
+    dispatch(onFormSubmit());
   };
 
   useEffect(
@@ -38,7 +38,7 @@ const CreateAccount = props => {
   );
 
   useEffect(_ => {
-    dispatch(onInputChange({ name: "isChecked", value: isChecked }));
+    dispatch(onInputChange({"isChecked":isChecked }));
   }, []);
 
   const renderResponse = _ => {
@@ -98,7 +98,7 @@ const CreateAccount = props => {
           <PrimaryButton
             className="mt-4 mx-auto d-block w-100 w-md-40 font-weight-bold"
             title="SIGN UP"
-            onClick={onFormSubmit}
+            onClick={onFormSubmitClick}
           >
             {requestStatus && requestStatus === "running" ? (
               <Spinner className="ml-2" animation="border" size="sm" />
@@ -106,13 +106,10 @@ const CreateAccount = props => {
           </PrimaryButton>
         </form>
       );
-    else{
+    else {
       return (
         <Link to="/login">
-          <DarkButton
-          title="GO TO SIGN IN"
-          className="mt-4"
-        />
+          <DarkButton title="GO TO SIGN IN" className="mt-4" />
         </Link>
       );
     }

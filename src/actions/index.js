@@ -14,4 +14,4 @@ export const showAlert = message => {
   return { type: ALERT_SHOW, payload: message };
 }
 
-export const { onInputChange, onCreateAccountFormSubmit } = forms;
+export const { onInputChange, onFormSubmit } = forms;

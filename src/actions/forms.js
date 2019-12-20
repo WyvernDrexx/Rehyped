@@ -1,18 +1,18 @@
-import { INPUT_CHANGE, CREATE_ACCOUNT_SUBMIT, REQUEST_STATUS } from "./types";
+import { INPUT_CHANGE, FORM_SUBMIT, REQUEST_STATUS } from "./types";
 import api from "../api";
 
 const onInputChange = event => {
   return { type: INPUT_CHANGE, payload: event };
 };
 
-const onCreateAccountFormSubmit = _ => async (dispatch, getState) => {
-  const { createAccountForm } = getState();
+const onFormSubmit = _ => async (dispatch, getState) => {
+  const { form } = getState();
   dispatch({ type: REQUEST_STATUS, payload: "running" });
 
   await api
-    .post("/signup", createAccountForm)
+    .post("/signup", form)
     .then(resp => {
-      dispatch({ type: CREATE_ACCOUNT_SUBMIT, payload: resp.data });
+      dispatch({ type: FORM_SUBMIT, payload: resp.data });
     })
     .catch(err =>
       dispatch({ type: "API_ERROR", payload: "Error sending request!" })
@@ -22,5 +22,5 @@ const onCreateAccountFormSubmit = _ => async (dispatch, getState) => {
 
 export default {
   onInputChange,
-  onCreateAccountFormSubmit
+  onFormSubmit
 };

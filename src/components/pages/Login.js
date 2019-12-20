@@ -1,5 +1,4 @@
 import React from "react";
-
 import { Container, CommonHeader } from "../stateless";
 import { DarkButton, PrimaryButton } from "../stateless/Buttons";
 import { Link } from "react-router-dom";
