@@ -15,5 +15,5 @@ export const showAlert = message => {
   return { type: ALERT_SHOW, payload: message };
 }
 
-export const { onInputChange, onFormSubmit } = forms;
+export const { onInputChange, onFormSubmit, clearForm } = forms;
 export const { setToken, getToken, verifyToken, removeToken } = token;

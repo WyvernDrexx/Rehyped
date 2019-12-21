@@ -12,7 +12,8 @@ import {
   SET_TOKEN,
   GET_TOKEN,
   REMOVE_TOKEN,
-  VERIFY_TOKEN
+  VERIFY_TOKEN,
+  CLEAR_FORM
 } from "../actions/types";
 
 const productsReducer = (state = {}, action) => {
@@ -70,6 +71,8 @@ const formReducer = (state = {}, action) => {
       return { ...state, ...action.payload };
     case REQUEST_STATUS:
       return { ...state, requestStatus: action.payload };
+    case CLEAR_FORM:
+      return { ...state, message: "", status: null };
     default:
       return state;
   }

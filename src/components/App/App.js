@@ -18,7 +18,7 @@ import Login from "../pages/Login";
 import ForgotPassword from "../pages/ForgotPassword";
 import MyAccount from "../pages/MyAccount";
 import { useDispatch, useSelector } from "react-redux";
-import { getToken, verifyToken, removeToken } from "../../actions";
+import { getToken, verifyToken, removeToken, showAlert } from "../../actions";
 import { useEffect } from "react";
 
 const App = _ => {

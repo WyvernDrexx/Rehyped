@@ -6,9 +6,11 @@ import {
   faChevronUp,
   faChevronRight
 } from "@fortawesome/free-solid-svg-icons";
-import { Container } from "../stateless";
-import { PrimaryButton } from "../stateless/Buttons";
+import { Container, UnauthorizedError } from "../stateless";
+import { PrimaryButton, DarkButton } from "../stateless/Buttons";
 import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { removeToken, showAlert } from "../../actions";
 
 import history from "../../history";
 import CartList from "../CartList";
@@ -17,8 +19,15 @@ import ShippingDetails from "../ShippingDetails";
 import "./MyAccount.scss";
 
 const MyAccount = props => {
+  const fullName = useSelector(state => state.token.fullName);
+  const isVerified = useSelector(state => state.token.isVerified);
   const [ordersVisibility, setOrdersVisibility] = useState(false);
   const [shippingVisibility, setShippingVisibility] = useState(false);
+  const dispatch = useDispatch();
+  const logout = _ => {
+    dispatch(removeToken());
+    history.push("/products");
+  };
 
   const renderCartList = _ => {
     if (ordersVisibility) {
@@ -58,11 +67,15 @@ const MyAccount = props => {
     }
   };
 
+  if (!isVerified) {
+    return <UnauthorizedError />;
+  }
+
   return (
     <>
       <div>
         <Container className="mt-6 mb-5">
-          <h1 className="header text-left">HEY, JAMES</h1>
+          <h1 className="header text-left">HEY, {fullName}</h1>
           <p className="sub-header text-left">HERE'S ALL THE DETAILS</p>
         </Container>
         <div className="secondary-background-color">
@@ -113,6 +126,11 @@ const MyAccount = props => {
           </div>
         </div>
         <Container className="mt-5 mb-5">
+          <DarkButton
+            className="w-100 mb-5 w-md-40 d-block mx-auto"
+            title="LOGOUT"
+            onClick={logout}
+          />
           <Link className="sub-header d-block mb-2" to="/help">
             NEED HELP?
           </Link>

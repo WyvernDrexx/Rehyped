@@ -1,5 +1,5 @@
 import React from "react";
-import { CommonHeader, Container, Divider } from "../stateless";
+import { CommonHeader, Container, Divider, UnauthorizedError } from "../stateless";
 import { useSelector } from "react-redux";
 import { DarkButton, PrimaryButton } from "../stateless/Buttons";
 import { Row, Col } from "react-bootstrap";
@@ -12,6 +12,14 @@ const MyCart = props => {
   let totalMRP = 0;
   if (cartItems && cartItems.length > 0) {
     cartItems.forEach(item => (totalMRP += Number(item.price)));
+  }
+
+  const isVerified = useSelector(state => state.token.isVerified);
+  
+  if (!isVerified) {
+    return (
+      <UnauthorizedError />
+    );
   }
 
   return (

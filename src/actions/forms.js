@@ -1,4 +1,4 @@
-import { INPUT_CHANGE, FORM_SUBMIT, REQUEST_STATUS } from "./types";
+import { INPUT_CHANGE, FORM_SUBMIT, REQUEST_STATUS, CLEAR_FORM } from "./types";
 import api from "../api";
 
 const onInputChange = target => {
@@ -19,7 +19,12 @@ const onFormSubmit = route => async (dispatch, getState) => {
   dispatch({ type: REQUEST_STATUS, payload: "complete" });
 };
 
+const clearForm = _ => {
+  return { type: CLEAR_FORM };
+}
+
 export default {
   onInputChange,
-  onFormSubmit
+  onFormSubmit,
+  clearForm
 };

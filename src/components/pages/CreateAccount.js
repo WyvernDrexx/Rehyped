@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { DarkButton, PrimaryButton } from "../stateless/Buttons";
 import { Container, Checkbox, ErrorBlock, SuccessBlock } from "../stateless";
-import { onInputChange, onFormSubmit } from "../../actions";
+import { onInputChange, onFormSubmit, clearForm } from "../../actions";
 import { Spinner } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
@@ -23,6 +23,10 @@ const CreateAccount = props => {
   const onFormSubmitClick = _ => {
     dispatch(onFormSubmit("/signup"));
   };
+
+  useEffect(_ => {
+    dispatch(clearForm());
+  }, [])
 
   useEffect(_ => {
     dispatch(onInputChange({"isChecked":isChecked }));

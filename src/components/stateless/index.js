@@ -7,6 +7,7 @@ import ItemSizes from "./ItemSizes";
 import Divider from "./Divider";
 import ErrorBlock from './ErrorBlock';
 import SuccessBlock from './SuccessBlock';
+import UnauthorizedError from './UnauthorizedError';
 
 export {
   Checkbox,
@@ -17,5 +18,6 @@ export {
   ItemSizes,
   Divider,
   ErrorBlock,
-  SuccessBlock
+  SuccessBlock,
+  UnauthorizedError
 };

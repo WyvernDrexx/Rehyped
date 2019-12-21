@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import {
   Container,
   CommonHeader,
   ErrorBlock,
-  SuccessBlock
+  SuccessBlock,
+  UnauthorizedError
 } from "../stateless";
 import { DarkButton, PrimaryButton } from "../stateless/Buttons";
 import { Link } from "react-router-dom";
-import { onFormSubmit, onInputChange, setToken } from "../../actions";
+import { onFormSubmit, onInputChange, setToken, clearForm } from "../../actions";
 import { Spinner } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -18,16 +19,11 @@ const Login = props => {
     dispatch(onInputChange({ [name]: value }));
   };
 
+  const isVerified = useSelector(state => state.token.isVerified);
+
   const onSubmit = _ => {
     dispatch(onFormSubmit("/login"));
   };
-
-  useEffect(_ => {
-    if(formState.token){
-      console.log(formState.token);
-      dispatch(setToken(formState.token))
-    }
-  }, [formState.token])
 
   const renderResponse = _ => {
     return (
@@ -79,6 +75,23 @@ const Login = props => {
       </form>
     );
   };
+
+  useEffect(
+    _ => {
+      if (formState.token) {
+        dispatch(setToken(formState.token));
+      }
+    },
+    [formState.token]
+  );
+
+  useEffect(_ => {
+    dispatch(clearForm());
+  }, [])
+
+  if (isVerified) {
+    return <UnauthorizedError isVerified={isVerified} />;
+  }
 
   return (
     <>

@@ -8,43 +8,70 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { Link } from "react-router-dom";
 import "./Sidebar.scss";
+import { useSelector } from "react-redux";
 
 const Sidebar = props => {
+  const token = useSelector(state => state.token);
   return (
     <Menu {...props}>
       <Link onClick={props.toggleMenu} to="/" className="menu-item">
         Home
       </Link>
-      <Link onClick={props.toggleMenu} to="/my-account" className="menu-item" href="/">
-        My Account
-      </Link>
-      <Link onClick={props.toggleMenu} to="/login" className="menu-item" href="/">
-        Login
-      </Link>
+      {token.isVerified ? (
+        <Link
+          onClick={props.toggleMenu}
+          to="/my-account"
+          className="menu-item"
+          href="/"
+        >
+          My Account
+        </Link>
+      ) : null}
+      {!token.isVerified ? (
+        <Link
+          onClick={props.toggleMenu}
+          to="/login"
+          className="menu-item"
+          href="/"
+        >
+          Login
+        </Link>
+      ) : null}
+
       <Link onClick={props.toggleMenu} to="/products" className="menu-item">
         Products
       </Link>
-      <Link onClick={props.toggleMenu} to="/product" className="menu-item">
-        Single Product
-      </Link>
-      <Link onClick={props.toggleMenu} to="/mycart" className="menu-item">
-        My Cart
-      </Link>
+      {token.isVerified ? (
+        <Link onClick={props.toggleMenu} to="/mycart" className="menu-item">
+          My Cart
+        </Link>
+      ) : null}
+
       <Link onClick={props.toggleMenu} to="/about-us" className="menu-item">
         About Us
       </Link>
-      <Link onClick={props.toggleMenu} to="/change-password" className="menu-item">
-        Change Password
-      </Link>
+      {token.isVerified ? (
+        <Link
+          onClick={props.toggleMenu}
+          to="/change-password"
+          className="menu-item"
+        >
+          Change Password
+        </Link>
+      ) : null}
+
       <Link onClick={props.toggleMenu} to="/contact-us" className="menu-item">
         Contact Us
       </Link>
-      <Link onClick={props.toggleMenu} to="/sign-up" className="menu-item">
-        CREATE AN ACCOUNT
-      </Link>
+      {!token.isVerified ? (
+        <Link onClick={props.toggleMenu} to="/sign-up" className="menu-item">
+          CREATE AN ACCOUNT
+        </Link>
+      ) : null}
+  
       <div className="social-platforms">
         <h4>FOLLOW US ON</h4>
-        <Link  to="/">
+        <Link to="/">
           <FontAwesomeIcon icon={faFacebook} />
         </Link>
         <Link to="/">

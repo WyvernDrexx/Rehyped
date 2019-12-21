@@ -1,8 +1,17 @@
 import React from "react";
-import { Container } from "../stateless";
+import { Container, UnauthorizedError } from "../stateless";
 import { PrimaryButton } from "../stateless/Buttons";
+import { useSelector } from "react-redux";
 
 const ChangePassword = props => {
+  const isVerified = useSelector(state => state.token.isVerified);
+
+    if (!isVerified) {
+    return (
+      <UnauthorizedError />
+    );
+  }
+
   return (
     <>
       <div className="text-center">
