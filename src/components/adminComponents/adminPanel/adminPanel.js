@@ -36,7 +36,7 @@ export default _ => {
                   <h2 className="text-center mb-0">REMOVE PRODUCT</h2>
                 </td>
                 <td className="p-0">
-                  <Link to="/">
+                  <Link to="/admin-pannexa/remove-product">
                     <PrimaryButton className="w-100 pb-4" title="REMOVE" />
                   </Link>
                 </td>

@@ -13,7 +13,7 @@ const ProductsList = props => {
     _ => {
       if (Object.values(products).length === 0) dispatch(fetchProducts());
     },
-    [products, dispatch]
+    [products]
   );
 
   useEffect(_ => {

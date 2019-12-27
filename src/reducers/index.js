@@ -13,13 +13,16 @@ import {
   GET_TOKEN,
   REMOVE_TOKEN,
   VERIFY_TOKEN,
-  CLEAR_FORM
+  CLEAR_FORM,
+  REMOVE_PRODUCT
 } from "../actions/types";
 
 const productsReducer = (state = {}, action) => {
   switch (action.type) {
     case FETCH_PRODUCTS:
       return action.payload;
+    case REMOVE_PRODUCT:
+      return action.payload.products;
     default:
       return state;
   }
@@ -62,12 +65,13 @@ const alertReducer = (state = "", action) => {
       return state;
   }
 };
-const INITIAL_FORM_STATE = _ =>{
+const INITIAL_FORM_STATE = _ => {
   return {
     stock: 10,
     category: "shirt"
-  }
-}
+  };
+};
+
 const formReducer = (state = INITIAL_FORM_STATE(), action) => {
   switch (action.type) {
     case INPUT_CHANGE:
@@ -77,7 +81,7 @@ const formReducer = (state = INITIAL_FORM_STATE(), action) => {
     case REQUEST_STATUS:
       return { ...state, requestStatus: action.payload };
     case CLEAR_FORM:
-      return { };
+      return {};
     default:
       return state;
   }
@@ -98,6 +102,7 @@ const tokenReducer = (state = {}, action) => {
   }
 };
 
+
 export default combineReducers({
   products: productsReducer,
   selectedProduct: productReducer,
@@ -105,5 +110,5 @@ export default combineReducers({
   cart: cartReducers,
   alert: alertReducer,
   form: formReducer,
-  token: tokenReducer
+  token: tokenReducer,
 });

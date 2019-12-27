@@ -1,13 +1,18 @@
-import { FETCH_PRODUCT, FETCH_PRODUCTS, FETCH_RELATED } from "./types";
+import {
+  FETCH_PRODUCT,
+  FETCH_PRODUCTS,
+  FETCH_RELATED,
+  REMOVE_PRODUCT
+} from "./types";
 import api from "../api";
 
-const products = _ => async dispatch => {
+const fetchProducts = _ => async dispatch => {
   let products = await api.get("/products");
   products = products.data;
   dispatch({ type: FETCH_PRODUCTS, payload: products });
 };
 
-const product = id => async (dispatch, getState) => {
+const fetchProduct = id => async (dispatch, getState) => {
   const { products } = getState();
   let product;
   if (
@@ -33,14 +38,38 @@ const product = id => async (dispatch, getState) => {
   dispatch({ type: FETCH_PRODUCT, payload: product });
 };
 
-const related = _ => async dispatch => {
+const fetchRelated = _ => async dispatch => {
   let product = await api.get("/related");
   product = product.data;
   dispatch({ type: FETCH_RELATED, payload: product });
 };
 
+const removeProduct = id => async (dispatch, getState) => {
+  const {
+    token: { token },
+  } = getState();
+
+  await api
+    .post(
+      "/products/remove",
+      { id },
+      {
+        headers: {
+          Authorization: "Bearer " + token
+        }
+      }
+    )
+    .then(resp => {
+      dispatch({ type: REMOVE_PRODUCT, payload: resp.data });
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};
+
 export default {
-  products,
-  product,
-  related
+  removeProduct,
+  fetchProduct,
+  fetchProducts,
+  fetchRelated
 };

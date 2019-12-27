@@ -3,11 +3,9 @@ import cart from "./cart";
 import { ALERT_SHOW } from './types';
 import forms from './forms';
 import token from "./token";
-// Fetch related
-export const fetchProducts = fetch.products;
-export const fetchProduct  = fetch.product;
-export const fetchRelated  = fetch.related;
-// cart related
+
+
+export const { fetchProduct, fetchRelated, fetchProducts, removeProduct } = fetch;
 export const addToCart     = cart.add;
 export const removeFromCart = cart.remove;
 

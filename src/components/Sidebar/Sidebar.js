@@ -68,7 +68,15 @@ const Sidebar = props => {
           CREATE AN ACCOUNT
         </Link>
       ) : null}
-  
+      {token.isVerified && token.isAdmin ? (
+        <Link
+          onClick={props.toggleMenu}
+          to="/admin-pannexa"
+          className="menu-item"
+        >
+          ADMIN PANEL
+        </Link>
+      ) : null}
       <div className="social-platforms">
         <h4>FOLLOW US ON</h4>
         <Link to="/">
