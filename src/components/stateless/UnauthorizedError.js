@@ -9,7 +9,7 @@ const UnauthorizedError = props => {
   const to = props.to || "/login";
   const isVerified = props.isVerified;
   const redirectTo = _ => {
-    history.push("/");
+    history.push(props.to || "/");
   };
   if (!isVerified) {
     return (

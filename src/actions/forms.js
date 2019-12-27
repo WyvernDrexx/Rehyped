@@ -6,10 +6,17 @@ const onInputChange = target => {
 };
 
 const onFormSubmit = route => async (dispatch, getState) => {
-  const { form } = getState();
+  const {
+    form,
+    token: { token }
+  } = getState();
   dispatch({ type: REQUEST_STATUS, payload: "running" });
   await api
-    .post(route, form)
+    .post(route, form, {
+      headers: {
+        Authorization: "Bearer " + token
+      }
+    })
     .then(resp => {
       dispatch({ type: FORM_SUBMIT, payload: resp.data });
     })
@@ -21,7 +28,7 @@ const onFormSubmit = route => async (dispatch, getState) => {
 
 const clearForm = _ => {
   return { type: CLEAR_FORM };
-}
+};
 
 export default {
   onInputChange,

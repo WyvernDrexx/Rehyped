@@ -90,7 +90,7 @@ const Login = props => {
   }, [])
 
   if (isVerified) {
-    return <UnauthorizedError isVerified={isVerified} />;
+    return <UnauthorizedError to="/products" isVerified={isVerified} />;
   }
 
   return (

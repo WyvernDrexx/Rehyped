@@ -28,7 +28,7 @@ const ListItem = props => {
       )}
 
       <Row className={`${isLoaded ? "" : "visibility-hidden"}`}>
-        <img alt="This is null" src={item.image} />
+        <img alt="This is null" src={item.image || "/products/1.jpg"} />
       </Row>
       <Row className={`${isLoaded ? "" : "visibility-hidden"}`}>
         <div className="mt-4">

@@ -62,8 +62,13 @@ const alertReducer = (state = "", action) => {
       return state;
   }
 };
-
-const formReducer = (state = {}, action) => {
+const INITIAL_FORM_STATE = _ =>{
+  return {
+    stock: 10,
+    category: "shirt"
+  }
+}
+const formReducer = (state = INITIAL_FORM_STATE(), action) => {
   switch (action.type) {
     case INPUT_CHANGE:
       return { ...state, ...action.payload };
@@ -72,7 +77,7 @@ const formReducer = (state = {}, action) => {
     case REQUEST_STATUS:
       return { ...state, requestStatus: action.payload };
     case CLEAR_FORM:
-      return { ...state, message: "", status: null };
+      return { };
     default:
       return state;
   }

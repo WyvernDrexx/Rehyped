@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Route, Router } from "react-router-dom";
 import history from "../../history";
 import "..//..//assets/styles/bootstrap.min.css";
@@ -18,7 +18,9 @@ import Login from "../pages/Login";
 import ForgotPassword from "../pages/ForgotPassword";
 import MyAccount from "../pages/MyAccount";
 import { useDispatch, useSelector } from "react-redux";
-import { getToken, verifyToken, removeToken, showAlert } from "../../actions";
+import { adminPanel } from '../adminComponents';
+import { addProduct } from '../adminComponents';
+import { getToken, verifyToken, removeToken } from "../../actions";
 import { useEffect } from "react";
 
 const App = _ => {
@@ -59,6 +61,8 @@ const App = _ => {
       <Route exact path="/login" component={Login} />
       <Route exact path="/forgot-password" component={ForgotPassword} />
       <Route exact path="/my-account" component={MyAccount} />
+      <Route exact path="/admin-pannexa" component={adminPanel} />
+      <Route exact path="/admin-pannexa/add-product" component={addProduct} />
       <Footer />
     </Router>
   );
