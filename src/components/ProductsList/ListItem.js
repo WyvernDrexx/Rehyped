@@ -12,7 +12,7 @@ const ListItem = props => {
 
   return (
     <Col
-      onClick={_ => history.push(`/products/${item.productId}`)}
+      onClick={_ => history.push(`/products/${item._id}`)}
       key={index}
       xs={6}
       sm={4}
@@ -28,7 +28,11 @@ const ListItem = props => {
       )}
 
       <Row className={`${isLoaded ? "" : "visibility-hidden"}`}>
-        <img alt="This is null" src={item.image || "/products/1.jpg"} />
+        <img alt="This is null" src={
+          item.image
+            ? `http://localhost:8000/images/products/${item.image}`
+            : "http://localhost:8000/images/products/IMAGE-1577517957411.jpg"
+        } />
       </Row>
       <Row className={`${isLoaded ? "" : "visibility-hidden"}`}>
         <div className="mt-4">

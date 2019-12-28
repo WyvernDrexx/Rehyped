@@ -18,7 +18,7 @@ import Login from "../pages/Login";
 import ForgotPassword from "../pages/ForgotPassword";
 import MyAccount from "../pages/MyAccount";
 import { useDispatch, useSelector } from "react-redux";
-import { adminPanel, addProduct, removeProduct } from '../adminComponents';
+import { adminPanel, addProduct, ListProducts } from '../adminComponents';
 import { getToken, verifyToken, removeToken } from "../../actions";
 import { useEffect } from "react";
 
@@ -62,7 +62,7 @@ const App = _ => {
       <Route exact path="/my-account" component={MyAccount} />
       <Route exact path="/admin-pannexa" component={adminPanel} />
       <Route exact path="/admin-pannexa/add-product" component={addProduct} />
-      <Route exact path="/admin-pannexa/remove-product" component={removeProduct} />
+      <Route exact path="/admin-pannexa/list-products" component={ListProducts} />
       <Footer />
     </Router>
   );

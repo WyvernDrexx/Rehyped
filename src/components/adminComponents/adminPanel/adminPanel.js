@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Container } from "../../stateless";
-import { PrimaryButton } from "../../stateless/Buttons";
-import { useSelector, useDispatch } from "react-redux";
+import { PrimaryButton, DarkButton } from "../../stateless/Buttons";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { Table } from "react-bootstrap";
 
@@ -33,11 +33,11 @@ export default _ => {
               <tr>
                 <td><p className="flex-center pt-2">2</p></td>
                 <td>
-                  <h2 className="text-center mb-0">REMOVE PRODUCT</h2>
+                  <h2 className="text-center mb-0">PRODUCT LIST</h2>
                 </td>
                 <td className="p-0">
-                  <Link to="/admin-pannexa/remove-product">
-                    <PrimaryButton className="w-100 pb-4" title="REMOVE" />
+                  <Link to="/admin-pannexa/list-products">
+                    <DarkButton className="w-100 pb-4" title="GO TO" />
                   </Link>
                 </td>
               </tr>

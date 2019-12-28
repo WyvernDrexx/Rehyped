@@ -3,7 +3,7 @@ import { Container } from "../../stateless";
 import { fetchProducts } from "../../../actions";
 import { useDispatch, useSelector } from "react-redux";
 import { Spinner } from "react-bootstrap";
-import "./removeProduct.scss";
+import "./ListProducts.scss";
 import SingleItem from "./SingleItem";
 
 export default _ => {

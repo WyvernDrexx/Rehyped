@@ -21,11 +21,11 @@ const fetchProduct = id => async (dispatch, getState) => {
   ) {
     product = products.filter(elem => elem.productId === id)[0];
     if (!product) {
-      product = await api.get(`/products?productId=${id}`);
+      product = await api.get(`/products/${id}`);
       product = product.data[0];
     }
   } else {
-    product = await api.get(`/products?productId=${id}`);
+    product = await api.get(`/products/${id}`);
     product = product.data[0];
   }
 

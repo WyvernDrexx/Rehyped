@@ -1,9 +1,9 @@
 import  adminPanel from "./adminPanel";
 import  addProduct from "./addProduct";
-import  removeProduct from "./removeProduct";
+import  ListProducts from "./ListProducts";
 
 export {
   adminPanel,
   addProduct,
-  removeProduct
+  ListProducts
 }

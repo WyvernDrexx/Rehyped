@@ -23,7 +23,7 @@ const Featured = props => {
 
   useEffect(
     _ => {
-      if (product.productId !== productId) {
+      if (product._id !== productId) {
         dispatch(fetchProduct(productId));
       }
     },

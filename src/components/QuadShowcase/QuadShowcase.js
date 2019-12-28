@@ -19,17 +19,49 @@ const QuadShowcase = props => {
           className={`quadshowcase ${divIsLoaded ? "" : "visibility-hidden"}`}
         >
           <Col lg={true} className="primary-image px-0">
-            <img alt="This is null" className="" src={props.image} />
+            <img
+              alt="This is null"
+              className=""
+              src={
+                props.image
+                  ? `http://localhost:8000/images/products/${props.image}`
+                  : "http://localhost:8000/images/products/IMAGE-1577517957411.jpg"
+              }
+            />
           </Col>
           <Col md={6} lg={4} className="sm-0 px-0 pl-md-2">
             <div className="secondary-image">
-              <img alt="This is null" className="" src={props.image} />
+              <img
+                alt="This is null"
+                className=""
+                src={
+                  props.image
+                    ? `http://localhost:8000/images/products/${props.image}`
+                    : "http://localhost:8000/images/products/IMAGE-1577517957411.jpg"
+                }
+              />
             </div>
             <div className="secondary-image">
-              <img alt="This is null" className="" src={props.image} />
+              <img
+                alt="This is null"
+                className=""
+                src={
+                  props.image
+                    ? `http://localhost:8000/images/products/${props.image}`
+                    : "http://localhost:8000/images/products/IMAGE-1577517957411.jpg"
+                }
+              />
             </div>
             <div className="secondary-image">
-              <img alt="This is null" className="" src={props.image} />
+              <img
+                alt="This is null"
+                className=""
+                src={
+                  props.image
+                    ? `http://localhost:8000/images/products/${props.image}`
+                    : "http://localhost:8000/images/products/IMAGE-1577517957411.jpg"
+                }
+              />
             </div>
           </Col>
         </Row>
