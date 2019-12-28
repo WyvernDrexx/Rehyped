@@ -15,10 +15,9 @@ const AddImages = props => {
 
   const onFileUpload = _ => {
     const fd = new FormData();
-    console.log(selectedFile);
     fd.append("image", selectedFile, selectedFile.name);
     api
-      .post( `/products/image/upload/${props.id}`, fd, {
+      .post(`/products/image/upload/${props.id}`, fd, {
         onUploadProgress: progressEvent => {
           setUploadProgress(
             Math.floor((progressEvent.loaded / progressEvent.total) * 100)
@@ -37,22 +36,30 @@ const AddImages = props => {
   };
 
   const renderResponse = _ => {
-    if(uploadResponse && uploadResponse.message && uploadResponse.status === 200){
+    if (
+      uploadResponse &&
+      uploadResponse.message &&
+      uploadResponse.status === 200
+    ) {
       return (
         <div>
           <SuccessBlock message={uploadResponse.message} />
         </div>
       );
-    }else if(uploadResponse && uploadResponse.message && uploadResponse.status !== 200){
+    } else if (
+      uploadResponse &&
+      uploadResponse.message &&
+      uploadResponse.status !== 200
+    ) {
       return (
         <div>
           <ErrorBlock message={uploadResponse.message} />
         </div>
       );
-    }else{
+    } else {
       return null;
     }
-  }
+  };
 
   return (
     <div className="add-images">
@@ -68,7 +75,10 @@ const AddImages = props => {
               className="custom-file-input "
               id="inputGroupFile04"
             />
-            <label className="custom-file-label overflow-hidden" for="inputGroupFile04">
+            <label
+              className="custom-file-label overflow-hidden"
+              for="inputGroupFile04"
+            >
               {selectedFile ? selectedFile.name : "Choose file"}
             </label>
           </div>
