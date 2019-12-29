@@ -2,25 +2,49 @@ import React, { useEffect } from "react";
 import { PrimaryButton } from "../../stateless/Buttons";
 import { Container, ErrorBlock, SuccessBlock } from "../../stateless";
 import { useDispatch, useSelector } from "react-redux";
-import { onInputChange, onFormSubmit, clearForm } from "../../../actions";
+import {
+  onInputChange,
+  onFormSubmit,
+  clearForm,
+  fetchProduct
+} from "../../../actions";
+import { useParams } from "react-router-dom";
 import { Spinner } from "react-bootstrap";
 
 export default props => {
   const dispatch = useDispatch();
   const productForm = useSelector(state => state.form);
+  const selectedProduct = useSelector(state => state.selectedProduct);
+  const { id } = useParams();
 
   useEffect(_ => {
-    dispatch(clearForm());
+    return _ => {
+      dispatch(clearForm());
+    };
   }, []);
 
+  useEffect(
+    _ => {
+      if (id) {
+        dispatch(fetchProduct(id));
+        if (selectedProduct) {
+          dispatch(onInputChange(selectedProduct));
+        }
+      }
+    },
+    [id, selectedProduct._id]
+  );
+
   const onChange = ({ name, value }) => {
-    console.log(name, value);
     dispatch(onInputChange({ [name]: value }));
   };
 
   const onSubmit = _ => {
-    console.log(productForm);
-    dispatch(onFormSubmit("/products"));
+    if (id) {
+      dispatch(onFormSubmit(`/products/${id}`));
+    } else {
+      dispatch(onFormSubmit("/products"));
+    }
   };
 
   const renderResponse = _ => {
@@ -35,7 +59,7 @@ export default props => {
       </div>
     );
   };
-
+  console.log("render");
   return (
     <div className="mt-5 pt-5 pb-5">
       <Container>
@@ -46,7 +70,7 @@ export default props => {
             placeholder="PRODUCT NAME"
             type="text"
             name="name"
-            value={productForm.productName}
+            value={productForm.name}
             onChange={({ target }) => onChange(target)}
           />
           <div className="input-group mt-4 mb-4">
@@ -59,6 +83,19 @@ export default props => {
               className="form-control primary-input"
               placeholder="PRICE"
               value={productForm.price}
+              onChange={({ target }) => onChange(target)}
+            />
+          </div>
+          <div className="input-group mt-4 mb-4">
+            <div className="input-group-prepend">
+              <span className="input-group-text text-danger">₹</span>
+            </div>
+            <input
+              type="number"
+              name="discount"
+              className="form-control primary-input"
+              placeholder="DISCOUNT PRICE"
+              value={productForm.discount}
               onChange={({ target }) => onChange(target)}
             />
           </div>

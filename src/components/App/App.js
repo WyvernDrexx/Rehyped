@@ -62,6 +62,7 @@ const App = _ => {
       <Route exact path="/my-account" component={MyAccount} />
       <Route exact path="/admin-pannexa" component={adminPanel} />
       <Route exact path="/admin-pannexa/add-product" component={addProduct} />
+      <Route exact path="/admin-pannexa/add-product/:id" component={addProduct} />
       <Route exact path="/admin-pannexa/list-products" component={ListProducts} />
       <Footer />
     </Router>

@@ -34,7 +34,6 @@ const fetchProduct = id => async (dispatch, getState) => {
       error: "Product not found!"
     };
   }
-
   dispatch({ type: FETCH_PRODUCT, payload: product });
 };
 
@@ -46,7 +45,7 @@ const fetchRelated = _ => async dispatch => {
 
 const removeProduct = id => async (dispatch, getState) => {
   const {
-    token: { token },
+    token: { token }
   } = getState();
 
   await api

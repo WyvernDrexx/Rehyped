@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Card, Button, Spinner } from "react-bootstrap";
 import { removeProduct } from "../../../actions";
+import { Link } from "react-router-dom";
 import AddImages from "../AddImages";
 
 import "./ListProducts.scss";
@@ -84,6 +85,12 @@ const SingleItem = props => {
         >
           {!showAddImages ? "Add Images" : "Close"}
         </Button>
+        <Link to={`/admin-pannexa/add-product/${_id}`}>
+          <Button className="mt-3" variant="success">
+            Edit
+          </Button>
+        </Link>
+
         {renderConfirmation()}
         {renderAddImages()}
       </Card.Body>
