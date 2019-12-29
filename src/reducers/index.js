@@ -14,7 +14,8 @@ import {
   REMOVE_TOKEN,
   VERIFY_TOKEN,
   CLEAR_FORM,
-  REMOVE_PRODUCT
+  REMOVE_PRODUCT,
+  CLEAR_SELECTED
 } from "../actions/types";
 
 const productsReducer = (state = {}, action) => {
@@ -32,6 +33,8 @@ const productReducer = (state = {}, action) => {
   switch (action.type) {
     case FETCH_PRODUCT:
       return action.payload;
+    case CLEAR_SELECTED:
+      return {};
     default:
       return state;
   }

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchRelated } from "../../actions";
+import { fetchRelated, clearSelected } from "../../actions";
 import { Spinner } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import history from "../../history";
 
 import "./Carousel.scss";
 
@@ -17,7 +17,7 @@ const Carousel = props => {
   if (relatedItem.length === 0) {
     return <Spinner animation="border" className="block-center" />;
   }
-  
+
   return (
     <>
       <div className="carousel-custom container">
@@ -30,6 +30,11 @@ const Carousel = props => {
 };
 
 const CarouselItem = props => {
+  const dispatch = useDispatch();
+  const onClick = _ => {
+    dispatch(clearSelected());
+    history.push(`/products/${item._id}`);
+  };
   const { item } = props;
   const [isLoaded, setIsLoaded] = useState(false);
   const [isImgLoaded, setIsImgLoaded] = useState(false);
@@ -43,7 +48,7 @@ const CarouselItem = props => {
   };
 
   return (
-    <Link to={`/products/${item.productId}`}>
+    <div className="d-inline" onClick={onClick}>
       <div className="item position-relative">
         <div className="position-relative" onLoad={onLoad}>
           {isImgLoaded ? null : (
@@ -53,7 +58,7 @@ const CarouselItem = props => {
             onLoad={onImgLoad}
             alt="Placeholder"
             className={`carousel-img ${isLoaded ? "" : "visibility-hidden"}`}
-            src={`${item.image}`}
+            src={`http://localhost:8000/images/products/${item.image}`}
           />
         </div>
         <div
@@ -63,7 +68,7 @@ const CarouselItem = props => {
           <p className="product-price">${item.price}</p>
         </div>
       </div>
-    </Link>
+    </div>
   );
 };
 

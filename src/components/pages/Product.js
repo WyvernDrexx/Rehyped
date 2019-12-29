@@ -7,14 +7,6 @@ import Carousel from "../Carousel";
 import Subscribe from "../Subscribe";
 
 const Product = props => {
-  const { productId } = useParams();
-  useEffect(
-    _ => {
-      window.scrollTo(0, 90);
-    },
-    [productId]
-  );
-
   return (
     <>
       <div className="pt-6">

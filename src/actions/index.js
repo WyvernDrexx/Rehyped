@@ -5,7 +5,7 @@ import forms from './forms';
 import token from "./token";
 
 
-export const { fetchProduct, fetchRelated, fetchProducts, removeProduct } = fetch;
+export const { fetchProduct, fetchRelated, fetchProducts, removeProduct, clearSelected } = fetch;
 export const addToCart     = cart.add;
 export const removeFromCart = cart.remove;
 

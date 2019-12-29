@@ -8,6 +8,15 @@ const QuadShowcase = props => {
     setDivIsLoaded(true);
   };
 
+  useEffect(
+    _ => {
+      if (divIsLoaded) {
+        window.scrollTo(0, 90);
+      }
+    },
+    [divIsLoaded]
+  );
+
   if (props.image) {
     return (
       <>

@@ -2,7 +2,8 @@ import {
   FETCH_PRODUCT,
   FETCH_PRODUCTS,
   FETCH_RELATED,
-  REMOVE_PRODUCT
+  REMOVE_PRODUCT,
+  CLEAR_SELECTED
 } from "./types";
 import api from "../api";
 
@@ -38,7 +39,7 @@ const fetchProduct = id => async (dispatch, getState) => {
 };
 
 const fetchRelated = _ => async dispatch => {
-  let product = await api.get("/related");
+  let product = await api.get("/products/related/get");
   product = product.data;
   dispatch({ type: FETCH_RELATED, payload: product });
 };
@@ -62,13 +63,19 @@ const removeProduct = id => async (dispatch, getState) => {
       dispatch({ type: REMOVE_PRODUCT, payload: resp.data });
     })
     .catch(err => {
-      console.log(err);
     });
 };
+
+export const clearSelected = _ => {
+  return {
+    type: CLEAR_SELECTED
+  }
+}
 
 export default {
   removeProduct,
   fetchProduct,
   fetchProducts,
-  fetchRelated
+  fetchRelated,
+  clearSelected
 };

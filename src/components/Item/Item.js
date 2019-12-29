@@ -4,7 +4,12 @@ import { LightButton, PrimaryButton } from "../stateless/Buttons";
 import { Row, Col, Spinner, Alert } from "react-bootstrap";
 
 import { useSelector, useDispatch } from "react-redux";
-import { fetchProduct, addToCart, showAlert } from "../../actions";
+import {
+  fetchProduct,
+  addToCart,
+  showAlert,
+  clearSelected
+} from "../../actions";
 
 import QuadShowcase from "../QuadShowcase";
 import Instructions from "../Media";
@@ -30,9 +35,13 @@ const Featured = props => {
     [productId]
   );
 
+  useEffect(_ => {
+    return _ => dispatch(clearSelected());
+  }, []);
+
   useEffect(
     _ => {
-      if (cartItems.some(item => item.productId === productId)) {
+      if (cartItems.some(item => item._id === productId)) {
         setItemOnCart(true);
       } else {
         setItemOnCart(false);
