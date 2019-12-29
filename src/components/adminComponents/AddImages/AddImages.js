@@ -13,10 +13,10 @@ const AddImages = props => {
     setSelectedFile(target.files[0]);
   };
 
-  const onFileUpload = _ => {
+   const onFileUpload = async _ => {
     const fd = new FormData();
     fd.append("image", selectedFile, selectedFile.name);
-    api
+    await api
       .post(`/products/image/upload/${props.id}`, fd, {
         onUploadProgress: progressEvent => {
           setUploadProgress(

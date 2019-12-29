@@ -86,7 +86,7 @@ const Login = props => {
   );
 
   useEffect(_ => {
-    dispatch(clearForm());
+    return _ => dispatch(clearForm());
   }, [])
 
   if (isVerified) {
