@@ -41,6 +41,9 @@ const Featured = props => {
   useEffect(
     _ => {
       console.log("cart changed");
+      if(productId === "featured"){
+        productId = product._id;
+      }
       if (cartItems.some(item => item._id === productId)) {
         setItemOnCart(true);
       } else {
