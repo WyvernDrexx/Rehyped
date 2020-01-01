@@ -1,6 +1,4 @@
-import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
-
+import React from "react";
 import { Container, CommonHeader } from "../stateless";
 import SingleProduct from "../Item";
 import Carousel from "../Carousel";

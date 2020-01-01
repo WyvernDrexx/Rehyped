@@ -46,9 +46,6 @@ const Subscribe = props => {
     ) : null;
   };
 
-  const renderSpinner = _ => {
-    return showSpinner ? <Spinner className="ml-2" animation="border" size="sm" /> : null;
-  };
 
   return (
     <div className="secondary-background-color pt-5 pb-5 subscribe">
@@ -69,11 +66,10 @@ const Subscribe = props => {
           onChange={({ target }) => onChange(target)}
         />
         <PrimaryButton
-          className="mt-4 mx-auto d-block font-weight-bold"
+          className={`mt-4 mx-auto d-block font-weight-bold ${showSpinner?"pointer-disabled progress-bar-striped progress-bar-animated":""}`}
           onClick={() => onSubscribe()}
           title="SUBSCRIBE"
         >
-          {renderSpinner()}
         </PrimaryButton>
       </Container>
     </div>

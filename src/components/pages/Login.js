@@ -8,7 +8,12 @@ import {
 } from "../stateless";
 import { DarkButton, PrimaryButton } from "../stateless/Buttons";
 import { Link } from "react-router-dom";
-import { onFormSubmit, onInputChange, setToken, clearForm } from "../../actions";
+import {
+  onFormSubmit,
+  onInputChange,
+  setToken,
+  clearForm
+} from "../../actions";
 import { Spinner } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -58,14 +63,14 @@ const Login = props => {
           onChange={({ target }) => onChange(target)}
         />
         <PrimaryButton
-          className="mt-4 mx-auto d-block w-100 font-weight-bold"
+          className={`mt-4 mx-auto d-block w-100 font-weight-bold ${
+            formState.requestStatus && formState.requestStatus === "running"
+              ? "pointer-disabled progress-bar-striped progress-bar-animated"
+              : ""
+          }`}
           title="LOGIN"
           onClick={onSubmit}
-        >
-          {formState.requestStatus && formState.requestStatus === "running" ? (
-            <Spinner className="ml-2" animation="border" size="sm" />
-          ) : null}
-        </PrimaryButton>
+        ></PrimaryButton>
         <Link
           className="sub-header text-left  d-block mt-3"
           to="/forgot-password"
@@ -87,7 +92,7 @@ const Login = props => {
 
   useEffect(_ => {
     return _ => dispatch(clearForm());
-  }, [])
+  }, []);
 
   if (isVerified) {
     return <UnauthorizedError to="/products" isVerified={isVerified} />;

@@ -7,7 +7,6 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   fetchProduct,
   addToCart,
-  showAlert,
   clearSelected
 } from "../../actions";
 
@@ -41,6 +40,7 @@ const Featured = props => {
 
   useEffect(
     _ => {
+      console.log("cart changed");
       if (cartItems.some(item => item._id === productId)) {
         setItemOnCart(true);
       } else {
@@ -52,7 +52,6 @@ const Featured = props => {
 
   const onAddToCartClick = _ => {
     dispatch(addToCart(product));
-    dispatch(showAlert("Item Added To Cart!"));
   };
 
   if (Object.values(product).length === 0) {

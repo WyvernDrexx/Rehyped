@@ -52,7 +52,10 @@ const relatedReducers = (state = [], action) => {
 const cartReducers = (state = [], action) => {
   switch (action.type) {
     case ADD_TO_CART:
-      return [action.payload, ...state];
+      if(action.payload.status === 200)
+        return [action.payload.product, ...state];
+      else
+        return state;
     case REMOVE_FROM_CART:
       return [...action.payload];
     default:

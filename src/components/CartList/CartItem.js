@@ -18,8 +18,8 @@ const CartItem = props => {
   return (
     <div className="cart-item">
       <Row md={"true"} className="mx-0 mb-5">
-        <Col onClick={_ => history.push(`/products/${item.productId}`)} xs={6} className="flex-center cart-item-image pl-0">
-          <img alt="placeholder text" src={item.image} />
+        <Col onClick={_ => history.push(`/products/${item._id}`)} xs={6} className="cursor-pointer flex-center cart-item-image pl-0">
+          <img alt="placeholder text" src={`http://localhost:8000/images/products/${item.image}`} />
         </Col>
         <Col className="cart-item-info ml-2">
           <Row className="cart-item-details">
