@@ -14,12 +14,12 @@ import {
   setToken,
   clearForm
 } from "../../actions";
-import { Spinner } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 
 const Login = props => {
   const dispatch = useDispatch();
   const formState = useSelector(state => state.form);
+  const isRunning = useSelector(state => state.requestStatus.onFormSubmit);
   const onChange = ({ name, value }) => {
     dispatch(onInputChange({ [name]: value }));
   };
@@ -64,9 +64,7 @@ const Login = props => {
         />
         <PrimaryButton
           className={`mt-4 mx-auto d-block w-100 font-weight-bold ${
-            formState.requestStatus && formState.requestStatus === "running"
-              ? "pointer-disabled progress-bar-striped progress-bar-animated"
-              : ""
+            isRunning ? "status-running" : ""
           }`}
           title="LOGIN"
           onClick={onSubmit}

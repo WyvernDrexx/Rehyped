@@ -2,23 +2,30 @@ import React from "react";
 import "./CartList.scss";
 import { Col, Row } from "react-bootstrap";
 import { PrimarySlimButton } from "../stateless/Buttons";
-import { useDispatch } from 'react-redux';
-import { removeFromCart,showAlert } from "../../actions";
-import history from '../../history';
+import { useDispatch, useSelector } from "react-redux";
+import { removeFromCart, showAlert } from "../../actions";
+import history from "../../history";
 
 const CartItem = props => {
   const dispatch = useDispatch();
   const { item } = props;
-
+  const isRunning = useSelector(state => state.requestStatus.removeFromCart);
   const onRemoveClick = _ => {
     dispatch(removeFromCart(item._id));
-  }
+  };
 
   return (
     <div className="cart-item">
       <Row md={"true"} className="mx-0 mb-5">
-        <Col onClick={_ => history.push(`/products/${item._id}`)} xs={6} className="cursor-pointer flex-center cart-item-image pl-0">
-          <img alt="placeholder text" src={`http://localhost:8000/images/products/${item.image}`} />
+        <Col
+          onClick={_ => history.push(`/products/${item._id}`)}
+          xs={6}
+          className="cursor-pointer flex-center cart-item-image pl-0"
+        >
+          <img
+            alt="placeholder text"
+            src={`http://localhost:8000/images/products/${item.image}`}
+          />
         </Col>
         <Col className="cart-item-info ml-2">
           <Row className="cart-item-details">
@@ -48,7 +55,9 @@ const CartItem = props => {
           <Row className="cart-item-action">
             <PrimarySlimButton
               title="REMOVE"
-              className="sub-header pt-2 pb-2"
+              className={`sub-header pt-2 pb-2 ${
+                isRunning ? "status-running" : ""
+              }`}
               onClick={onRemoveClick}
             />
           </Row>

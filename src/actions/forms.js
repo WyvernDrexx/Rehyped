@@ -1,6 +1,12 @@
-import { INPUT_CHANGE, FORM_SUBMIT, REQUEST_STATUS, CLEAR_FORM } from "./types";
-import api from "../api";
+import {
+  INPUT_CHANGE,
+  FORM_SUBMIT,
+  REQUEST_STATUS,
+  CLEAR_FORM
+} from "./types";
 
+import api from "../api";
+import { setRequestStatus } from '../actions';
 const onInputChange = target => {
   return { type: INPUT_CHANGE, payload: target };
 };
@@ -10,7 +16,7 @@ const onFormSubmit = route => async (dispatch, getState) => {
     form,
     token: { token }
   } = getState();
-  dispatch({ type: REQUEST_STATUS, payload: "running" });
+  dispatch(setRequestStatus("onFormSubmit", true));
   await api
     .post(route, form, {
       headers: {
@@ -23,7 +29,7 @@ const onFormSubmit = route => async (dispatch, getState) => {
     .catch(err =>
       dispatch({ type: "API_ERROR", payload: "Error sending request!" })
     );
-  dispatch({ type: REQUEST_STATUS, payload: "complete" });
+  dispatch(setRequestStatus("onFormSubmit"));
 };
 
 const clearForm = _ => {

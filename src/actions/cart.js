@@ -1,12 +1,15 @@
 import { ADD_TO_CART, REMOVE_FROM_CART, FETCH_CART } from "./types";
 
 import api from "../api";
-import { showAlert } from "../actions";
+import { showAlert, setRequestStatus } from "../actions";
 
 const addToCart = product => async (dispatch, getState) => {
   const {
     token: { token }
   } = getState();
+
+  dispatch(setRequestStatus("addToCart", true));
+
   await api
     .post(
       "/cart",
@@ -23,11 +26,14 @@ const addToCart = product => async (dispatch, getState) => {
         type: ADD_TO_CART,
         payload: { product, status: resp.data.status }
       });
+      dispatch(setRequestStatus("addToCart"));
       dispatch(showAlert(resp.data.message));
     })
     .catch(err => {
+      dispatch(setRequestStatus("addToCart"));
       dispatch(showAlert("Error: Please try again!"));
     });
+  console.log("addtocart");
 };
 
 const fetchCartItems = _ => async (dispatch, getState) => {
@@ -57,7 +63,7 @@ const removeFromCart = id => async (dispatch, getState) => {
   const {
     token: { token }
   } = getState();
-
+  dispatch(setRequestStatus("removeFromCart", true));
   await api
     .post(
       "/cart",
@@ -78,6 +84,7 @@ const removeFromCart = id => async (dispatch, getState) => {
     .catch(err => {
       dispatch(showAlert("Error Removing Item!"));
     });
+  dispatch(setRequestStatus("removeFromCart"));
 };
 
 export default { addToCart, removeFromCart, fetchCartItems };

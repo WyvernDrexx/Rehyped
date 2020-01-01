@@ -10,6 +10,7 @@ const CreateAccount = props => {
   const dispatch = useDispatch();
   const [isChecked, setIsChecked] = useState(false);
   const formState = useSelector(state => state.form);
+  const isRunning = useSelector(state => state.requestStatus.onFormSubmit);
 
   const onChange = ({ name, value }) => {
     dispatch(onInputChange({ [name]: value }));
@@ -26,11 +27,14 @@ const CreateAccount = props => {
 
   useEffect(_ => {
     dispatch(clearForm());
-  }, [])
+  }, []);
 
-  useEffect(_ => {
-    dispatch(onInputChange({"isChecked":isChecked }));
-  }, [isChecked]);
+  useEffect(
+    _ => {
+      dispatch(onInputChange({ isChecked: isChecked }));
+    },
+    [isChecked]
+  );
 
   const renderResponse = _ => {
     return (
@@ -87,14 +91,12 @@ const CreateAccount = props => {
           </div>
 
           <PrimaryButton
-            className="mt-4 mx-auto d-block w-100 w-md-40 font-weight-bold"
+            className={`mt-4 mx-auto d-block w-100 w-md-40 font-weight-bold ${
+              isRunning ? "status-running" : ""
+            }`}
             title="SIGN UP"
             onClick={onFormSubmitClick}
-          >
-            {formState.requestStatus && formState.requestStatus === "running" ? (
-              <Spinner className="ml-2" animation="border" size="sm" />
-            ) : null}
-          </PrimaryButton>
+          ></PrimaryButton>
         </form>
       );
     else {

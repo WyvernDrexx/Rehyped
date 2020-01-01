@@ -26,3 +26,6 @@ export const SET_TOKEN = "SET_TOKEN";
 export const REMOVE_TOKEN = "REMOVE_TOKEN";
 export const GET_TOKEN = "GET_TOKEN";
 export const VERIFY_TOKEN = "VERIFY_TOKEN";
+
+// Network Request Status
+export const SET_REQUEST_STATUS = "SET_REQUEST_STATUS";

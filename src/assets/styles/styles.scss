@@ -29,8 +29,8 @@ a {
     color: $primaryColor;
   }
 }
-.bg-success{
-  background-color: #428BCA !important;
+.bg-success {
+  background-color: #428bca !important;
 }
 button {
   @extend a;
@@ -239,14 +239,41 @@ button {
   cursor: auto !important;
 }
 
-.display-grid{
+.display-grid {
   display: grid;
 }
 
-.pointer-disabled{
+.pointer-disabled {
   cursor: not-allowed !important;
 }
 
-.cursor-pointer{
+.cursor-pointer {
   cursor: pointer;
+}
+
+// pointer-disabled progress-bar-striped progress-bar-animated
+
+.progress-bar-striped {
+  background-image: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.15) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0.15) 75%,
+    transparent 75%,
+    transparent
+  );
+  background-size: 1rem 1rem;
+}
+
+.progress-bar-animated {
+  -webkit-animation: progress-bar-stripes 1s linear infinite;
+  animation: progress-bar-stripes 1s linear infinite;
+}
+
+.status-running{
+  @extend .progress-bar-animated;
+  @extend .progress-bar-striped;
+  @extend .pointer-disabled;
 }

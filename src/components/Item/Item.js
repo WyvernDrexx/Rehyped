@@ -24,6 +24,7 @@ const Featured = props => {
   const cartItems = useSelector(state => state.cart);
   const dispatch = useDispatch();
   const [itemOnCart, setItemOnCart] = useState(false);
+  const isRunning = useSelector(state => state.requestStatus.addToCart);
 
   useEffect(
     _ => {
@@ -125,7 +126,7 @@ const Featured = props => {
                       <LightButton
                         onClick={onAddToCartClick}
                         title="ADD TO CART"
-                        className="w-100"
+                        className={`w-100 ${isRunning?"status-running":""}`}
                       />
                     </Col>
                   )}

@@ -16,7 +16,8 @@ import {
   CLEAR_FORM,
   REMOVE_PRODUCT,
   CLEAR_SELECTED,
-  FETCH_CART
+  FETCH_CART,
+  SET_REQUEST_STATUS
 } from "../actions/types";
 
 const productsReducer = (state = {}, action) => {
@@ -53,16 +54,15 @@ const relatedReducers = (state = [], action) => {
 const cartReducers = (state = [], action) => {
   switch (action.type) {
     case ADD_TO_CART:
-      if(action.payload.status === 200)
+      if (action.payload.status === 200)
         return [action.payload.product, ...state];
-      else
-        return state;
+      else return state;
     case REMOVE_FROM_CART:
       return [...action.payload];
     case FETCH_CART:
-      if(action.payload.status === 200){
+      if (action.payload.status === 200) {
         return [...action.payload.cartItems];
-      }else{
+      } else {
         return state;
       }
     default:
@@ -115,6 +115,15 @@ const tokenReducer = (state = {}, action) => {
   }
 };
 
+export const requestStatusReducer = (state = {}, action) => {
+  switch (action.type) {
+    case SET_REQUEST_STATUS:
+      console.log(action.payload);
+      return { ...state, ...action.payload };
+    default:
+      return state;
+  }
+};
 
 export default combineReducers({
   products: productsReducer,
@@ -124,4 +133,5 @@ export default combineReducers({
   alert: alertReducer,
   form: formReducer,
   token: tokenReducer,
+  requestStatus: requestStatusReducer
 });
