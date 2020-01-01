@@ -6,8 +6,7 @@ import token from "./token";
 
 
 export const { fetchProduct, fetchRelated, fetchProducts, removeProduct, clearSelected } = fetch;
-export const addToCart     = cart.add;
-export const removeFromCart = cart.remove;
+export const { addToCart, fetchCartItems, removeFromCart } = cart;
 
 export const showAlert = message => {
   return { type: ALERT_SHOW, payload: message };

@@ -11,8 +11,7 @@ const CartItem = props => {
   const { item } = props;
 
   const onRemoveClick = _ => {
-    dispatch(removeFromCart(item.productId));
-    dispatch(showAlert("Item Removed Successfully!"));
+    dispatch(removeFromCart(item._id));
   }
 
   return (

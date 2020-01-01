@@ -15,7 +15,8 @@ import {
   VERIFY_TOKEN,
   CLEAR_FORM,
   REMOVE_PRODUCT,
-  CLEAR_SELECTED
+  CLEAR_SELECTED,
+  FETCH_CART
 } from "../actions/types";
 
 const productsReducer = (state = {}, action) => {
@@ -58,6 +59,12 @@ const cartReducers = (state = [], action) => {
         return state;
     case REMOVE_FROM_CART:
       return [...action.payload];
+    case FETCH_CART:
+      if(action.payload.status === 200){
+        return [...action.payload.cartItems];
+      }else{
+        return state;
+      }
     default:
       return state;
   }

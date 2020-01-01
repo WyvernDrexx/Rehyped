@@ -19,7 +19,7 @@ import ForgotPassword from "../pages/ForgotPassword";
 import MyAccount from "../pages/MyAccount";
 import { useDispatch, useSelector } from "react-redux";
 import { adminPanel, addProduct, ListProducts } from '../adminComponents';
-import { getToken, verifyToken, removeToken } from "../../actions";
+import { getToken, verifyToken, removeToken, fetchCartItems } from "../../actions";
 import { useEffect } from "react";
 
 const App = _ => {
@@ -41,6 +41,9 @@ const App = _ => {
     _ => {
       if (typeof isVerified !== "undefined" && !isVerified) {
         dispatch(removeToken());
+      }
+      if(isVerified){
+        dispatch(fetchCartItems());
       }
     },
     [isVerified]

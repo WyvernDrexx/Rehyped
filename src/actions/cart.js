@@ -1,20 +1,21 @@
-import { ADD_TO_CART, REMOVE_FROM_CART } from "./types";
+import { ADD_TO_CART, REMOVE_FROM_CART, FETCH_CART } from "./types";
 
 import api from "../api";
 import { showAlert } from "../actions";
 
-const add = product => async (dispatch, getState) => {
+const addToCart = product => async (dispatch, getState) => {
   const {
     token: { token }
   } = getState();
   await api
     .post(
-      "/cart/add",
+      "/cart",
       { product },
       {
         headers: {
           Authorization: "Bearer " + token
-        }
+        },
+        method: "POST"
       }
     )
     .then(resp => {
@@ -29,10 +30,54 @@ const add = product => async (dispatch, getState) => {
     });
 };
 
-const remove = id => (dispatch, getState) => {
-  const { cart } = getState();
-  let newCart = cart.filter(item => item.productId !== id);
-  dispatch({ type: REMOVE_FROM_CART, payload: newCart });
+const fetchCartItems = _ => async (dispatch, getState) => {
+  const {
+    token: { token }
+  } = getState();
+
+  if (!token) {
+    dispatch({ type: FETCH_CART, payload: [] });
+  } else {
+    await api
+      .get("/cart", {
+        headers: {
+          Authorization: "Bearer " + token
+        }
+      })
+      .then(resp => {
+        dispatch({ type: FETCH_CART, payload: resp.data });
+      })
+      .catch(err => {
+        dispatch({ type: FETCH_CART, payload: [] });
+      });
+  }
 };
 
-export default { add, remove };
+const removeFromCart = id => async (dispatch, getState) => {
+  const {
+    token: { token }
+  } = getState();
+
+  await api
+    .post(
+      "/cart",
+      {
+        id
+      },
+      {
+        headers: {
+          Authorization: "Bearer " + token,
+          "X-HTTP-Method-Override": "DELETE"
+        }
+      }
+    )
+    .then(resp => {
+      dispatch({ type: REMOVE_FROM_CART, payload: resp.data.cartItems || [] });
+      dispatch(showAlert(resp.data.message || "Error Removing Item"));
+    })
+    .catch(err => {
+      dispatch(showAlert("Error Removing Item!"));
+    });
+};
+
+export default { addToCart, removeFromCart, fetchCartItems };

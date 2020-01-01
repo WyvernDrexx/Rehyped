@@ -4,7 +4,7 @@
   width: 100%;
   @include md {
     max-width: 20rem;
-    float: left;
+    display: inline-block;
     margin: auto;
   }
 }

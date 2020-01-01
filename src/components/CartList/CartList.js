@@ -18,19 +18,9 @@ const CartList = props => {
   return (
     <>
       <div className="cartList">
-        <TransitionGroup>
-          {cartItems.map((item, index) => {
-            return (
-              <CSSTransition
-                key={index}
-                timeout={500}
-                classNames="item"
-              >
-                <CartItem item={item} key={index} />
-              </CSSTransition>
-            );
-          })}
-        </TransitionGroup>
+        {cartItems.map((item, index) => {
+          return <CartItem item={item} key={index} />;
+        })}
       </div>
     </>
   );
