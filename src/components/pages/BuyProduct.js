@@ -23,7 +23,7 @@ export default _ => {
           <Card className="block-center" style={{ width: "18rem" }}>
             <Card.Img
               variant="top"
-              src="http://localhost:8000/images/products/1577593160106.jpg"
+              src={`http://localhost:8000/images/products/${toBuyProduct.image}`}
             />
             <Card.Body>
               <Card.Title>{toBuyProduct.name}</Card.Title>

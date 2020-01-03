@@ -13,7 +13,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { removeToken, getOrders } from "../../actions";
 
 import history from "../../history";
-import CartList from "../CartList";
+import OrdersList from '../Orders';
 import ShippingDetails from "../ShippingDetails";
 
 import "./MyAccount.scss";
@@ -40,8 +40,8 @@ const MyAccount = props => {
   const renderCartList = _ => {
     if (ordersVisibility) {
       return (
-        <div className="bg-white pt-5 pb-1">
-          <CartList cartItems={orders} className="mt-5" />
+        <div className="bg-white pt-2 pb-1">
+          <OrdersList orders={orders} className="mt-5" />
         </div>
       );
     } else {

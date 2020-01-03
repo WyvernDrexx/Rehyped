@@ -54,6 +54,7 @@ export const PrimarySlimButton = props => {
     onClick={_ => onButtonClick(props.onClick)}
     className={`no-radius button-default  primary-background-color text-light ${props.className ||
       ""}`}
+    title={props.tooltip||""}
     variant="light"
   >
     {props.title || "Primary Button"}
