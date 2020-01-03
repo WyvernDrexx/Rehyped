@@ -1,7 +1,7 @@
 import { BUY_NOW, ORDER_SUCCESS, FETCH_ORDERS } from "./types";
 import history from "../history";
 import api from "../api";
-import { showAlert } from ".";
+import { showAlert, setRequestStatus } from ".";
 
 const buyNow = product => {
   history.push("/buy-product");
@@ -10,10 +10,12 @@ const buyNow = product => {
 
 const placeOrder = _ => async (dispatch, getState) => {
   const {
-    orders: { buyNow:{_id, size, color} },
+    orders: {
+      buyNow: { _id, size, color }
+    },
     token: { token }
   } = getState();
-
+  dispatch(setRequestStatus("placeOrder", true));
   await api
     .post(
       "/orders",
@@ -35,13 +37,14 @@ const placeOrder = _ => async (dispatch, getState) => {
       dispatch(showAlert(resp.data.message));
       history.push("/products");
     });
+  dispatch(setRequestStatus("placeOrder"));
 };
 
 const getOrders = _ => async (dispatch, getState) => {
   const {
     token: { token }
   } = getState();
-
+  dispatch(setRequestStatus("getOrders", true));
   await api
     .get("/orders", {
       headers: {
@@ -54,6 +57,7 @@ const getOrders = _ => async (dispatch, getState) => {
     .catch(err => {
       dispatch({ type: FETCH_ORDERS, payload: { status: 400 } });
     });
+  dispatch(setRequestStatus("getOrders"));
 };
 
 export default {

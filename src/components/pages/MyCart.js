@@ -14,16 +14,25 @@ import CartList from "../CartList";
 const MyCart = props => {
   const cartItems = useSelector(state => state.cart);
   const isRunning = useSelector(state => state.requestStatus.fetchCartItems);
-
-  let totalMRP = 0;
-  if (cartItems && cartItems.length > 0) {
-    cartItems.forEach(item => (totalMRP += Number(item.price)));
-  }
-
   const isVerified = useSelector(state => state.token.isVerified);
 
-  if ( typeof isRunning  === 'undefined' || isRunning) {
-    return <div className="mt-6 mb-5"><Spinner animation="border" className="block-center" /></div>;
+  let totalMRP = 0;
+  let totalDiscount = 0;
+
+  if (cartItems && cartItems.length > 0) {
+    cartItems.forEach(item => {
+      totalMRP += Number(item.price);
+      totalDiscount += Number(item.discount);
+    });
+  }
+
+
+  if (typeof isRunning === "undefined" || isRunning) {
+    return (
+      <div className="mt-6 mb-5">
+        <Spinner animation="border" className="block-center" />
+      </div>
+    );
   } else if (!isVerified) {
     return <UnauthorizedError />;
   }
@@ -94,7 +103,7 @@ const MyCart = props => {
               </Col>
               <Col className="px-0">
                 <p className="sub-header text-right text-success font-weight-bold">
-                  0
+                  {totalDiscount - totalMRP}
                 </p>
               </Col>
             </Row>
@@ -106,7 +115,7 @@ const MyCart = props => {
               </Col>
               <Col className="px-0">
                 <p className="sub-header text-right font-weight-bold">
-                  ${totalMRP}
+                  ${totalDiscount}
                 </p>
               </Col>
             </Row>

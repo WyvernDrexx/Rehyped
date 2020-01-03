@@ -13,10 +13,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { removeToken, getOrders } from "../../actions";
 
 import history from "../../history";
-import OrdersList from '../Orders';
+import OrdersList from "../Orders";
 import ShippingDetails from "../ShippingDetails";
 
 import "./MyAccount.scss";
+import { Spinner } from "react-bootstrap";
 
 const MyAccount = props => {
   const fullName = useSelector(state => state.token.fullName);
@@ -24,6 +25,7 @@ const MyAccount = props => {
   const orders = useSelector(state => state.orders.list);
   const [ordersVisibility, setOrdersVisibility] = useState(false);
   const [shippingVisibility, setShippingVisibility] = useState(false);
+  const isOrderFetching = useSelector(state => state.requestStatus.getOrders);
   const dispatch = useDispatch();
   const logout = _ => {
     dispatch(removeToken());
@@ -39,6 +41,13 @@ const MyAccount = props => {
   );
   const renderCartList = _ => {
     if (ordersVisibility) {
+      if (typeof isOrderFetching === "undefined" || isOrderFetching) {
+        return (
+          <div className="pt-4 pb-4">
+            <Spinner animation="border" className="block-center" />
+          </div>
+        );
+      }
       return (
         <div className="bg-white pt-2 pb-1">
           <OrdersList orders={orders} className="mt-5" />

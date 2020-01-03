@@ -17,9 +17,11 @@ const Header = props => {
   const [isCartEmpty, setIsCartEmpty] = useState(true);
   const cart = useSelector(state => state.cart);
   const toggleSideBar = _ => {
-    if (sidebarOpen) {
-      setSidebarOpen(false);
-    } else setSidebarOpen(true);
+    setTimeout(_ => {
+      if (sidebarOpen) {
+        setSidebarOpen(false);
+      } else setSidebarOpen(true);
+    },100)
   };
 
   useEffect(
