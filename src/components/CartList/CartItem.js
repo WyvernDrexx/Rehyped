@@ -3,7 +3,7 @@ import "./CartList.scss";
 import { Col, Row } from "react-bootstrap";
 import { PrimarySlimButton } from "../stateless/Buttons";
 import { useDispatch, useSelector } from "react-redux";
-import { removeFromCart, showAlert } from "../../actions";
+import { removeFromCart } from "../../actions";
 import history from "../../history";
 
 const CartItem = props => {
@@ -35,7 +35,7 @@ const CartItem = props => {
                   {item.name}
                 </h5>
                 <p className="sub-header text-left">
-                  <span className="strikethrough pr-2">${item.price}</span>$1800
+                  <span className="strikethrough pr-2">${item.price}</span>${item.discount}
                 </p>
               </Col>
             </Row>
@@ -43,7 +43,7 @@ const CartItem = props => {
           <Row className="">
             <Col className="px-0">
               <p className="sub-header sm-letter-spacing text-left font-weight-bold">
-                SIZE:<span className="font-weight-normal">M</span>
+                SIZE:<span className="font-weight-normal">{item.size}</span>
               </p>
             </Col>
             <Col>

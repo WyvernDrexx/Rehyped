@@ -30,3 +30,7 @@ export const VERIFY_TOKEN = "VERIFY_TOKEN";
 
 // Network Request Status
 export const SET_REQUEST_STATUS = "SET_REQUEST_STATUS";
+// Orders 
+export const BUY_NOW = "BUY_NOW";
+export const ORDER_SUCCESS = "ORDER_SUCCESS";
+export const FETCH_ORDERS = "FETCH_ORDERS";

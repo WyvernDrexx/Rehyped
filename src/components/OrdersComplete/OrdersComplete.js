@@ -1,12 +1,18 @@
-import React from "react";
+import React, {useEffect} from "react";
 import Container from "../stateless/Container";
 import { DarkButton, PrimaryButton } from "../stateless/Buttons";
 import { Divider } from "../stateless";
+import { Link } from "react-router-dom";
 
 const OrdersComplete = props => {
+
+  useEffect(_ => {
+    
+  }, [])
+
   return (
     <>
-      <div className="pt-5 secondary-background-color">
+      <div className="pt-5 mt-6 secondary-background-color">
         <Container>
           <h1 className="header pb-3">THANK YOU</h1>
           <Divider />
@@ -16,15 +22,19 @@ const OrdersComplete = props => {
           </p>
         </Container>
       </div>
-      <Container className="pt-3">
-        <DarkButton
-          title="CONTINUE SHOPPING"
-          className="w-100 w-md-40 d-block mx-auto"
-        />
-        <PrimaryButton
-          title="MY ORDERS"
-          className="w-100 w-md-40 d-block mx-auto mt-3 mb-6"
-        />
+      <Container className="pt-5">
+        <Link to="/products">
+          <DarkButton
+            title="CONTINUE SHOPPING"
+            className="w-100 w-md-40 d-block mx-auto"
+          />
+        </Link>
+        <Link to="/my-account">
+          <PrimaryButton
+            title="MY ACCOUNT"
+            className="w-100 w-md-40 d-block mx-auto mt-3 mb-5"
+          />
+        </Link>
       </Container>
     </>
   );

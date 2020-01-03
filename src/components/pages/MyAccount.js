@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -10,7 +10,7 @@ import { Container, UnauthorizedError } from "../stateless";
 import { PrimaryButton, DarkButton } from "../stateless/Buttons";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { removeToken, showAlert } from "../../actions";
+import { removeToken, getOrders } from "../../actions";
 
 import history from "../../history";
 import CartList from "../CartList";
@@ -21,6 +21,7 @@ import "./MyAccount.scss";
 const MyAccount = props => {
   const fullName = useSelector(state => state.token.fullName);
   const isVerified = useSelector(state => state.token.isVerified);
+  const orders = useSelector(state => state.orders.list);
   const [ordersVisibility, setOrdersVisibility] = useState(false);
   const [shippingVisibility, setShippingVisibility] = useState(false);
   const dispatch = useDispatch();
@@ -28,12 +29,19 @@ const MyAccount = props => {
     dispatch(removeToken());
     history.push("/products");
   };
-
+  useEffect(
+    _ => {
+      if (isVerified) {
+        dispatch(getOrders());
+      }
+    },
+    [isVerified]
+  );
   const renderCartList = _ => {
     if (ordersVisibility) {
       return (
         <div className="bg-white pt-5 pb-1">
-          <CartList className="mt-5" />
+          <CartList cartItems={orders} className="mt-5" />
         </div>
       );
     } else {

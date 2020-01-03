@@ -16,7 +16,10 @@ import ContactUs from "../pages/ContactUs";
 import CreateAccount from "../pages/CreateAccount";
 import Login from "../pages/Login";
 import ForgotPassword from "../pages/ForgotPassword";
+import BuyProduct from "../pages/BuyProduct";
 import MyAccount from "../pages/MyAccount";
+import OrdersComplete from '../OrdersComplete';
+
 import { useDispatch, useSelector } from "react-redux";
 import { adminPanel, addProduct, ListProducts } from '../adminComponents';
 import { getToken, verifyToken, removeToken, fetchCartItems } from "../../actions";
@@ -63,10 +66,13 @@ const App = _ => {
       <Route exact path="/login" component={Login} />
       <Route exact path="/forgot-password" component={ForgotPassword} />
       <Route exact path="/my-account" component={MyAccount} />
+      <Route exact path="/buy-product" component={BuyProduct} />
+      <Route exact path="/orders-succesfull" component={OrdersComplete} />
       <Route exact path="/admin-pannexa" component={adminPanel} />
       <Route exact path="/admin-pannexa/add-product" component={addProduct} />
       <Route exact path="/admin-pannexa/add-product/:id" component={addProduct} />
       <Route exact path="/admin-pannexa/list-products" component={ListProducts} />
+      
       <Footer />
     </Router>
   );

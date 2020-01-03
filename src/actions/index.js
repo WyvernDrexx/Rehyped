@@ -4,6 +4,7 @@ import forms from "./forms";
 import token from "./token";
 import requestStatus from "./requestStatus";
 import { ALERT_SHOW } from "./types";
+import orders from "./orders";
 
 export const {
   fetchProduct,
@@ -23,3 +24,4 @@ export const showAlert = message => {
 export const { onInputChange, onFormSubmit, clearForm } = forms;
 export const { setToken, getToken, verifyToken, removeToken } = token;
 export const { setRequestStatus } = requestStatus;
+export const { buyNow, placeOrder, getOrders } = orders;

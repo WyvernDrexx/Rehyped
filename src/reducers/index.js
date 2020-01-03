@@ -18,7 +18,9 @@ import {
   CLEAR_SELECTED,
   FETCH_CART,
   SET_REQUEST_STATUS,
-  SET_SELECTED
+  SET_SELECTED,
+  BUY_NOW,
+  FETCH_ORDERS
 } from "../actions/types";
 
 const productsReducer = (state = {}, action) => {
@@ -37,7 +39,7 @@ const productReducer = (state = {}, action) => {
     case FETCH_PRODUCT:
       return action.payload;
     case SET_SELECTED:
-      return {...state, ...action.payload};
+      return { ...state, ...action.payload };
     case CLEAR_SELECTED:
       return {};
     default:
@@ -118,11 +120,22 @@ const tokenReducer = (state = {}, action) => {
   }
 };
 
-export const requestStatusReducer = (state = {}, action) => {
+const requestStatusReducer = (state = {}, action) => {
   switch (action.type) {
     case SET_REQUEST_STATUS:
       console.log(action.payload);
       return { ...state, ...action.payload };
+    default:
+      return state;
+  }
+};
+
+const buyNowReducer = (state = {}, action) => {
+  switch (action.type) {
+    case BUY_NOW:
+      return { ...state, buyNow: action.payload };
+    case FETCH_ORDERS:
+      return { ...state, list: action.payload.orders };
     default:
       return state;
   }
@@ -136,5 +149,6 @@ export default combineReducers({
   alert: alertReducer,
   form: formReducer,
   token: tokenReducer,
-  requestStatus: requestStatusReducer
+  requestStatus: requestStatusReducer,
+  orders: buyNowReducer
 });

@@ -8,15 +8,17 @@ import {
   fetchProduct,
   addToCart,
   clearSelected,
-  setSelected
+  setSelected,
+  showAlert,
+  buyNow
 } from "../../actions";
 
 import QuadShowcase from "../QuadShowcase";
 import Instructions from "../Media";
 
 import { CommonHeader, Container } from "../stateless";
-import ItemColors from './ItemColors';
-import ItemSizes from './ItemSizes';
+import ItemColors from "./ItemColors";
+import ItemSizes from "./ItemSizes";
 
 import "./Item.scss";
 
@@ -65,6 +67,18 @@ const Featured = props => {
     dispatch(addToCart(product));
   };
 
+  const onBuyItNowClick = _ => {
+    if (product.size && product.color) {
+      dispatch(buyNow(product));
+    } else {
+      dispatch(
+        showAlert(
+          "Please select the color and size of the product you are ordering."
+        )
+      );
+    }
+  };
+
   if (Object.values(product).length === 0) {
     return (
       <>
@@ -78,7 +92,9 @@ const Featured = props => {
   } else if (product.error) {
     return (
       <>
-        <Alert variant="danger">{product.error}</Alert>
+        <Container>
+          <Alert variant="danger">{product.error}</Alert>
+        </Container>
       </>
     );
   } else {
@@ -150,7 +166,11 @@ const Featured = props => {
                     </Col>
                   )}
                   <Col className="px-lg-0 pr-3 pr-md-0 mt-4 mt-md-0" md={true}>
-                    <PrimaryButton title="BUY IT NOW" className="w-100" />
+                    <PrimaryButton
+                      onClick={onBuyItNowClick}
+                      title="BUY IT NOW"
+                      className="w-100"
+                    />
                   </Col>
                 </Row>
               </div>
