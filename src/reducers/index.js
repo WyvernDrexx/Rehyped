@@ -17,7 +17,8 @@ import {
   REMOVE_PRODUCT,
   CLEAR_SELECTED,
   FETCH_CART,
-  SET_REQUEST_STATUS
+  SET_REQUEST_STATUS,
+  SET_SELECTED
 } from "../actions/types";
 
 const productsReducer = (state = {}, action) => {
@@ -35,6 +36,8 @@ const productReducer = (state = {}, action) => {
   switch (action.type) {
     case FETCH_PRODUCT:
       return action.payload;
+    case SET_SELECTED:
+      return {...state, ...action.payload};
     case CLEAR_SELECTED:
       return {};
     default:

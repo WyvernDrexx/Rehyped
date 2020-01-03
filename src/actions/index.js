@@ -10,7 +10,8 @@ export const {
   fetchRelated,
   fetchProducts,
   removeProduct,
-  clearSelected
+  clearSelected,
+  setSelected
 } = fetch;
 
 export const { addToCart, fetchCartItems, removeFromCart } = cart;

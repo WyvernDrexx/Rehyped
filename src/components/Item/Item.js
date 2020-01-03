@@ -7,13 +7,16 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   fetchProduct,
   addToCart,
-  clearSelected
+  clearSelected,
+  setSelected
 } from "../../actions";
 
 import QuadShowcase from "../QuadShowcase";
 import Instructions from "../Media";
 
-import { CommonHeader, ItemColors, ItemSizes, Container } from "../stateless";
+import { CommonHeader, Container } from "../stateless";
+import ItemColors from './ItemColors';
+import ItemSizes from './ItemSizes';
 
 import "./Item.scss";
 
@@ -25,6 +28,10 @@ const Featured = props => {
   const dispatch = useDispatch();
   const [itemOnCart, setItemOnCart] = useState(false);
   const isRunning = useSelector(state => state.requestStatus.addToCart);
+  const { selectedSize, selectedColor } = useSelector(state => ({
+    selectedSize: state.selectedProduct.size,
+    selectedColor: state.selectedProduct.color
+  }));
 
   useEffect(
     _ => {
@@ -42,7 +49,7 @@ const Featured = props => {
   useEffect(
     _ => {
       console.log("cart changed");
-      if(productId === "featured"){
+      if (productId === "featured") {
         productId = product._id;
       }
       if (cartItems.some(item => item._id === productId)) {
@@ -106,12 +113,24 @@ const Featured = props => {
                 <h4 className="sub-header mb-1 text-left font-weight-bold">
                   SIZE
                 </h4>
-                <ItemSizes className="mt-2 mb-3" />
+                <ItemSizes
+                  onClickFunc={(name, value) =>
+                    dispatch(setSelected({ [name]: value }))
+                  }
+                  selectedSize={selectedSize}
+                  className="mt-2 mb-3"
+                />
                 <h4 className="sub-header mt-2 text-left font-weight-bold">
                   COLOURS
                 </h4>
 
-                <ItemColors className="" />
+                <ItemColors
+                  onClickFunc={(name, value) =>
+                    dispatch(setSelected({ [name]: value }))
+                  }
+                  selectedColor={selectedColor}
+                  className=""
+                />
 
                 <Row className="mt-4">
                   {itemOnCart ? (
@@ -126,7 +145,7 @@ const Featured = props => {
                       <LightButton
                         onClick={onAddToCartClick}
                         title="ADD TO CART"
-                        className={`w-100 ${isRunning?"status-running":""}`}
+                        className={`w-100 ${isRunning ? "status-running" : ""}`}
                       />
                     </Col>
                   )}

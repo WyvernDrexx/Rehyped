@@ -3,7 +3,8 @@ import {
   FETCH_PRODUCTS,
   FETCH_RELATED,
   REMOVE_PRODUCT,
-  CLEAR_SELECTED
+  CLEAR_SELECTED,
+  SET_SELECTED
 } from "./types";
 import api from "../api";
 
@@ -20,7 +21,7 @@ const fetchProduct = id => async (dispatch, getState) => {
     Object.values(products).length > 0 &&
     Object.values(products).length < 100
   ) {
-    product = products.filter(elem => elem.productId === id)[0];
+    product = products.filter(elem => elem._id === id)[0];
     if (!product) {
       product = await api.get(`/products/${id}`);
       product = product.data[0];
@@ -62,20 +63,24 @@ const removeProduct = id => async (dispatch, getState) => {
     .then(resp => {
       dispatch({ type: REMOVE_PRODUCT, payload: resp.data });
     })
-    .catch(err => {
-    });
+    .catch(err => {});
+};
+
+export const setSelected = data => {
+  return { type: SET_SELECTED, payload: data };
 };
 
 export const clearSelected = _ => {
   return {
     type: CLEAR_SELECTED
-  }
-}
+  };
+};
 
 export default {
   removeProduct,
   fetchProduct,
   fetchProducts,
   fetchRelated,
-  clearSelected
+  clearSelected,
+  setSelected
 };

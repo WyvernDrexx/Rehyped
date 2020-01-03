@@ -8,6 +8,7 @@ export const FETCH_PRODUCT = "FETCH_PRODUCT";
 export const FETCH_RELATED = "FETCH_RELATED";
 export const REMOVE_PRODUCT = "REMOVE_PRODUCT";
 export const CLEAR_SELECTED = "CLEAR_SELECTED";
+export const SET_SELECTED = "SET_SELECTED";
 // ============================================
 
 export const ADD_TO_CART = "ADD_TO_CART";
