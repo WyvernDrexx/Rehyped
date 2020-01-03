@@ -41,6 +41,8 @@ const fetchCartItems = _ => async (dispatch, getState) => {
     token: { token }
   } = getState();
 
+  dispatch(setRequestStatus("fetchCartItems", true));
+
   if (!token) {
     dispatch({ type: FETCH_CART, payload: [] });
   } else {
@@ -57,6 +59,7 @@ const fetchCartItems = _ => async (dispatch, getState) => {
         dispatch({ type: FETCH_CART, payload: [] });
       });
   }
+  dispatch(setRequestStatus("fetchCartItems"));
 };
 
 const removeFromCart = id => async (dispatch, getState) => {

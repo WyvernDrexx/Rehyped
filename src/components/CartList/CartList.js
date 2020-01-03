@@ -1,10 +1,10 @@
 import React from "react";
 import "./CartList.scss";
 import CartItem from "./CartItem";
-import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 const CartList = props => {
   const cartItems = props.cartItems;
+  
   if (cartItems && cartItems.length === 0) {
     return (
       <div className="cartList">

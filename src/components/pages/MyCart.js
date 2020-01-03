@@ -1,13 +1,19 @@
 import React from "react";
-import { CommonHeader, Container, Divider, UnauthorizedError } from "../stateless";
+import {
+  CommonHeader,
+  Container,
+  Divider,
+  UnauthorizedError
+} from "../stateless";
 import { useSelector } from "react-redux";
 import { DarkButton, PrimaryButton } from "../stateless/Buttons";
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, Spinner } from "react-bootstrap";
 
 import CartList from "../CartList";
 
 const MyCart = props => {
   const cartItems = useSelector(state => state.cart);
+  const isRunning = useSelector(state => state.requestStatus.fetchCartItems);
 
   let totalMRP = 0;
   if (cartItems && cartItems.length > 0) {
@@ -15,11 +21,11 @@ const MyCart = props => {
   }
 
   const isVerified = useSelector(state => state.token.isVerified);
-  
-  if (!isVerified) {
-    return (
-      <UnauthorizedError />
-    );
+
+  if ( typeof isRunning  === 'undefined' || isRunning) {
+    return <div className="mt-6 mb-5"><Spinner animation="border" className="block-center" /></div>;
+  } else if (!isVerified) {
+    return <UnauthorizedError />;
   }
 
   return (
@@ -43,8 +49,8 @@ const MyCart = props => {
           />
           <div>
             <input
-              className="placeholder-center d-block mx-auto primary-input mt-5 w-100 w-md-40"
-              placeholder="ENTER YOUR EMAIL"
+              className="d-block mx-auto primary-input mt-5 w-100 w-md-40"
+              placeholder="ENTER COUPON CODE"
             />
             <DarkButton
               className="mt-4 d-block mx-auto font-weight-bold w-100 w-md-40"
