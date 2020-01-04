@@ -1,4 +1,10 @@
-import { BUY_NOW, ORDER_SUCCESS, FETCH_ORDERS } from "./types";
+import {
+  BUY_NOW,
+  ORDER_SUCCESS,
+  FETCH_ORDERS,
+  PLACE_ORDERS,
+  REMOVE_FROM_CART
+} from "./types";
 import history from "../history";
 import api from "../api";
 import { showAlert, setRequestStatus } from ".";
@@ -63,17 +69,45 @@ const getOrders = _ => async (dispatch, getState) => {
 };
 
 const placeOrders = _ => async (dispatch, getState) => {
-
-  const { cart } = getState();
-  if(!cart || cart.length === 0){
+  const {
+    cart,
+    token: { token }
+  } = getState();
+  if (!cart || cart.length === 0) {
+    dispatch(
+      showAlert("Your Cart is empty! Please add some items in order to buy.")
+    );
     return;
   }
-  await api.post("/orders")
 
-}
+  dispatch(setRequestStatus("placeOrders", true));
+  await api
+    .post(
+      "/orders/all",
+      { cart },
+      {
+        headers: {
+          Authorization: "Bearer " + token
+        }
+      }
+    )
+    .then(resp => {
+      if (resp.status === 200) {
+        history.push("/orders-succesfull");
+        dispatch({ type: PLACE_ORDERS, payload: resp.data.orders });
+        dispatch({ type: REMOVE_FROM_CART, payload: [] });
+      }
+      dispatch(showAlert(resp.data.message));
+    })
+    .catch(err => {
+      dispatch(showAlert("Error, please check your internet connection."));
+    });
+  dispatch(setRequestStatus("placeOrders"));
+};
 
 export default {
   buyNow,
   placeOrder,
-  getOrders
+  getOrders,
+  placeOrders
 };

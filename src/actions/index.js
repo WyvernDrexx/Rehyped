@@ -24,4 +24,4 @@ export const showAlert = message => {
 export const { onInputChange, onFormSubmit, clearForm } = forms;
 export const { setToken, getToken, verifyToken, removeToken } = token;
 export const { setRequestStatus } = requestStatus;
-export const { buyNow, placeOrder, getOrders } = orders;
+export const { buyNow, placeOrder, getOrders, placeOrders } = orders;

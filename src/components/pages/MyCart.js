@@ -5,9 +5,10 @@ import {
   Divider,
   UnauthorizedError
 } from "../stateless";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { DarkButton, PrimaryButton } from "../stateless/Buttons";
 import { Row, Col, Spinner } from "react-bootstrap";
+import { placeOrders } from "../../actions";
 
 import CartList from "../CartList";
 
@@ -15,6 +16,10 @@ const MyCart = props => {
   const cartItems = useSelector(state => state.cart);
   const isRunning = useSelector(state => state.requestStatus.fetchCartItems);
   const isVerified = useSelector(state => state.token.isVerified);
+  const dispatch = useDispatch();
+  const isPlaceOrdersRunning = useSelector(
+    state => state.requestStatus.placeOrders
+  );
 
   let totalMRP = 0;
   let totalDiscount = 0;
@@ -26,7 +31,6 @@ const MyCart = props => {
     });
   }
 
-
   if (typeof isRunning === "undefined" || isRunning) {
     return (
       <div className="mt-6 mb-5">
@@ -36,6 +40,10 @@ const MyCart = props => {
   } else if (!isVerified) {
     return <UnauthorizedError />;
   }
+
+  const onCheckoutClick = _ => {
+    dispatch(placeOrders());
+  };
 
   return (
     <>
@@ -123,7 +131,10 @@ const MyCart = props => {
         </Row>
         <PrimaryButton
           title="CHECKOUT"
-          className="w-100 w-md-40 mx-auto d-block mt-5"
+          className={`w-100 w-md-40 mx-auto d-block mt-5 ${
+            isPlaceOrdersRunning ? "status-running" : ""
+          }`}
+          onClick={onCheckoutClick}
         />
       </Container>
     </>

@@ -6,6 +6,9 @@ import { PrimaryButton } from "../stateless/Buttons";
 import { placeOrder } from "../../actions";
 export default _ => {
   const toBuyProduct = useSelector(state => state.orders.buyNow);
+  const isPlaceOrderRunning = useSelector(
+    state => state.requestStatus.placeOrder
+  );
   const dispatch = useDispatch();
 
   const onPlacingOrder = _ => {
@@ -13,10 +16,10 @@ export default _ => {
   };
 
   useEffect(_ => {
-    window.scrollTo(0,550);
-  }, [])
+    window.scrollTo(0, 550);
+  }, []);
 
-  if ( toBuyProduct && toBuyProduct._id) {
+  if (toBuyProduct && toBuyProduct._id) {
     return (
       <div className="mt-6 mb-5">
         <Container>
@@ -83,7 +86,9 @@ export default _ => {
           <PrimaryButton
             onClick={onPlacingOrder}
             title="CHECKOUT"
-            className="w-100 w-md-40 mx-auto d-block mt-5"
+            className={`w-100 w-md-40 mx-auto d-block mt-5 ${
+              isPlaceOrderRunning ? "status-running" : ""
+            }`}
           />
         </Container>
       </div>
