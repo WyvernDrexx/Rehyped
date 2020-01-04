@@ -1,12 +1,12 @@
 import {
   INPUT_CHANGE,
   FORM_SUBMIT,
-  REQUEST_STATUS,
   CLEAR_FORM
 } from "./types";
 
 import api from "../api";
 import { setRequestStatus } from '../actions';
+
 const onInputChange = target => {
   return { type: INPUT_CHANGE, payload: target };
 };
@@ -31,6 +31,7 @@ const onFormSubmit = route => async (dispatch, getState) => {
     );
   dispatch(setRequestStatus("onFormSubmit"));
 };
+
 
 const clearForm = _ => {
   return { type: CLEAR_FORM };
