@@ -3,11 +3,14 @@ import { ADD_TO_CART, REMOVE_FROM_CART, FETCH_CART } from "./types";
 import api from "../api";
 import { showAlert, setRequestStatus } from "../actions";
 
-const addToCart = product => async (dispatch, getState) => {
+const addToCart = () => async (dispatch, getState) => {
   const {
-    token: { token }
+    token: { token },
+    selectedProduct
   } = getState();
 
+  const product = selectedProduct;
+  
   dispatch(setRequestStatus("addToCart", true));
 
   await api
@@ -22,10 +25,12 @@ const addToCart = product => async (dispatch, getState) => {
       }
     )
     .then(resp => {
-      dispatch({
-        type: ADD_TO_CART,
-        payload: { product, status: resp.data.status }
-      });
+      if (resp.data.status === 200) {
+        dispatch({
+          type: ADD_TO_CART,
+          payload: { product, status: resp.data.status }
+        });
+      }
       dispatch(setRequestStatus("addToCart"));
       dispatch(showAlert(resp.data.message));
     })

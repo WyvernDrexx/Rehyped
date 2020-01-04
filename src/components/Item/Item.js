@@ -64,7 +64,15 @@ const Featured = props => {
   );
 
   const onAddToCartClick = _ => {
-    dispatch(addToCart(product));
+    if (product.size && product.color) {
+      dispatch(addToCart(product));
+    } else {
+      dispatch(
+        showAlert(
+          "Please select the color and size of the product you are ordering."
+        )
+      );
+    }
   };
 
   const onBuyItNowClick = _ => {

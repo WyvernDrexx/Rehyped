@@ -15,7 +15,9 @@ const placeOrder = _ => async (dispatch, getState) => {
     },
     token: { token }
   } = getState();
+
   dispatch(setRequestStatus("placeOrder", true));
+
   await api
     .post(
       "/orders",
@@ -59,6 +61,16 @@ const getOrders = _ => async (dispatch, getState) => {
     });
   dispatch(setRequestStatus("getOrders"));
 };
+
+const placeOrders = _ => async (dispatch, getState) => {
+
+  const { cart } = getState();
+  if(!cart || cart.length === 0){
+    return;
+  }
+  await api.post("/orders")
+
+}
 
 export default {
   buyNow,
