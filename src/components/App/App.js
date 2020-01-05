@@ -66,6 +66,7 @@ const App = _ => {
       <Route exact path="/login" component={Login} />
       <Route exact path="/forgot-password" component={ForgotPassword} />
       <Route exact path="/my-account" component={MyAccount} />
+      <Route exact path="/my-account/:section" component={MyAccount} />
       <Route exact path="/buy-product" component={BuyProduct} />
       <Route exact path="/orders-succesfull" component={OrdersComplete} />
       <Route exact path="/admin-pannexa" component={adminPanel} />

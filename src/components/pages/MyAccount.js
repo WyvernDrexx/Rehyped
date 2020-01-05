@@ -8,7 +8,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { Container, UnauthorizedError } from "../stateless";
 import { PrimaryButton, DarkButton } from "../stateless/Buttons";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { removeToken, getOrders } from "../../actions";
 
@@ -27,10 +27,24 @@ const MyAccount = props => {
   const [shippingVisibility, setShippingVisibility] = useState(false);
   const isOrderFetching = useSelector(state => state.requestStatus.getOrders);
   const dispatch = useDispatch();
+  const { section } = useParams();
+
   const logout = _ => {
     dispatch(removeToken());
     history.push("/products");
   };
+
+  useEffect(
+    _ => {
+      if (section && section === "orders") {
+        setOrdersVisibility(true);
+      } else if (section && section === "shipping-details") {
+        setShippingVisibility(true);
+      }
+    },
+    [section]
+  );
+
   useEffect(
     _ => {
       if (isVerified) {
