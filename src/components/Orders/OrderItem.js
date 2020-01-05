@@ -2,12 +2,10 @@ import React from "react";
 import "./Orders.scss";
 import { Col, Row } from "react-bootstrap";
 import { PrimarySlimButton } from "../stateless/Buttons";
-import { useDispatch, useSelector } from "react-redux";
-import { removeFromCart } from "../../actions";
+import {useSelector } from "react-redux";
 import history from "../../history";
 
 const CartItem = props => {
-  const dispatch = useDispatch();
   const { item } = props;
   const isRunning = useSelector(state => state.requestStatus.removeFromCart);
 

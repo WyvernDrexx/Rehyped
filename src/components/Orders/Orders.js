@@ -9,8 +9,8 @@ const Orders = props => {
 
   if(!orders || orders.length === 0){
     return (
-      <div>
-        No orders placed! Go shopping now!
+      <div className="mt-3 mb-3">
+        <p className="sub-header text-center">NO ORDERS PLACED CURRENTLY! GO SHOPPING NOW!</p>
       </div>
     );
   }

@@ -118,7 +118,7 @@ const tokenReducer = (state = {}, action) => {
     case VERIFY_TOKEN:
       return { ...state, ...action.payload };
     case REMOVE_TOKEN:
-      return { token: "" };
+      return { };
     default:
       return state;
   }

@@ -94,12 +94,14 @@ const placeOrders = _ => async (dispatch, getState) => {
       }
     )
     .then(resp => {
-      if (resp.status === 200) {
+      dispatch(showAlert(resp.data.message));
+      if (resp.data.status === 200) {
         history.push("/orders-succesfull");
         dispatch({ type: PLACE_ORDERS, payload: resp.data.orders });
         dispatch({ type: REMOVE_FROM_CART, payload: [] });
+      }else if(resp.data.status === 406){
+        history.push("/my-account/shipping-details");
       }
-      dispatch(showAlert(resp.data.message));
     })
     .catch(err => {
       dispatch(showAlert("Error, please check your internet connection."));
