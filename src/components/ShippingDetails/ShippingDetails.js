@@ -21,10 +21,11 @@ import { useDispatch, useSelector } from "react-redux";
 const ShippingDetails = props => {
   const dispatch = useDispatch();
   const formState = useSelector(state => state.user.shippingDetails);
-
+  
   const isFetching = useSelector(
     state => state.requestStatus.fetchShippingDetails
   );
+  
   const isSubmitting = useSelector(state => state.requestStatus.onUserSubmit);
 
   const onChange = ({ name, value }) => {
@@ -50,12 +51,18 @@ const ShippingDetails = props => {
 
   useEffect(
     _ => {
-      if (formState && formState.status && formState.status !== 200) {
-        window.scrollTo(0, 250);
+      if( typeof isSubmitting !== "undefined" && !isSubmitting){
+        window.scrollTo(0,400);
       }
     },
-    [formState]
+    [isSubmitting]
   );
+
+  useEffect(_ => {
+    if(!isFetching || !isSubmitting){
+      window.scrollTo(0,250);
+    }
+  }, [isSubmitting, isFetching])
 
   useEffect(_ => {
     dispatch(fetchShippingDetails());

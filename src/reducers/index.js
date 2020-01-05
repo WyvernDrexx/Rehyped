@@ -23,7 +23,8 @@ import {
   FETCH_ORDERS,
   PLACE_ORDERS,
   FETCH_SHIPPING_DETAILS,
-  USER_INPUT_CHANGE
+  USER_INPUT_CHANGE,
+  UPDATE_USER_RESPONSE
 } from "../actions/types";
 
 const productsReducer = (state = {}, action) => {
@@ -150,11 +151,21 @@ const userReducer = (state = {}, action) => {
     case FETCH_SHIPPING_DETAILS:
       return { ...state, shippingDetails: action.payload };
     case USER_INPUT_CHANGE:
-      const { target, data } = action.payload;
+      let { target, data } = action.payload;
       const targetPrevData = state[target];
       return {
         ...state,
         [target]: { ...targetPrevData, ...data }
+      };
+    case UPDATE_USER_RESPONSE:
+      let { message, status } = action.payload;
+      return {
+        ...state,
+        [action.payload.target]: {
+          ...state[action.payload.target],
+          message,
+          status
+        }
       };
     default:
       return state;

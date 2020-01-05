@@ -39,6 +39,8 @@ const placeOrder = _ => async (dispatch, getState) => {
       if (resp.data.status === 200) {
         history.push("/orders-succesfull");
         dispatch({ type: ORDER_SUCCESS });
+      }else if(resp.data.status === 406){
+        history.push("/my-account/shipping-details");
       }
     })
     .catch(resp => {

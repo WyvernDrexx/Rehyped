@@ -1,4 +1,8 @@
-import { FETCH_SHIPPING_DETAILS, USER_INPUT_CHANGE } from "./types";
+import {
+  FETCH_SHIPPING_DETAILS,
+  USER_INPUT_CHANGE,
+  UPDATE_USER_RESPONSE
+} from "./types";
 import api from "../api";
 import { setRequestStatus, showAlert } from ".";
 
@@ -25,7 +29,7 @@ const fetchShippingDetails = _ => async (dispatch, getState) => {
     .catch(err => {
       console.log(err);
     });
-    dispatch(setRequestStatus("fetchShippingDetails"));
+  dispatch(setRequestStatus("fetchShippingDetails"));
 };
 
 const onUserInputChange = (target, data) => {
@@ -56,12 +60,26 @@ const onUserSubmit = (target, route) => async (dispatch, getState) => {
       }
     )
     .then(resp => {
-      dispatch(showAlert(resp.data.message));
+      dispatch({
+        type: UPDATE_USER_RESPONSE,
+        payload: {
+          target,
+          message: resp.data.message || "Unable to receive response.",
+          status: resp.data.status || 500
+        }
+      });
     })
     .catch(err => {
-      dispatch(showAlert("Network Error: Check your Internet Connection!"));
+      dispatch({
+        type: UPDATE_USER_RESPONSE,
+        payload: {
+          target,
+          message: "Error: Please check your Internet connection!",
+          status: 500
+        }
+      });
     });
-    dispatch(setRequestStatus("onUserSubmit"));
+  dispatch(setRequestStatus("onUserSubmit"));
 };
 
 export default {
