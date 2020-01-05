@@ -21,7 +21,9 @@ import {
   SET_SELECTED,
   BUY_NOW,
   FETCH_ORDERS,
-  PLACE_ORDERS
+  PLACE_ORDERS,
+  FETCH_SHIPPING_DETAILS,
+  USER_INPUT_CHANGE
 } from "../actions/types";
 
 const productsReducer = (state = {}, action) => {
@@ -143,6 +145,22 @@ const ordersReducer = (state = {}, action) => {
   }
 };
 
+const userReducer = (state = {}, action) => {
+  switch (action.type) {
+    case FETCH_SHIPPING_DETAILS:
+      return { ...state, shippingDetails: action.payload };
+    case USER_INPUT_CHANGE:
+      const { target, data } = action.payload;
+      const targetPrevData = state[target];
+      return {
+        ...state,
+        [target]: { ...targetPrevData, ...data }
+      };
+    default:
+      return state;
+  }
+};
+
 export default combineReducers({
   products: productsReducer,
   selectedProduct: productReducer,
@@ -152,5 +170,6 @@ export default combineReducers({
   form: formReducer,
   token: tokenReducer,
   requestStatus: requestStatusReducer,
-  orders: ordersReducer
+  orders: ordersReducer,
+  user: userReducer
 });
