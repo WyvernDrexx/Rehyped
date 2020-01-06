@@ -7,7 +7,7 @@ import {
   SET_SELECTED
 } from "./types";
 import api from "../api";
-import { showAlert } from ".";
+import { showAlert, setRequestStatus } from ".";
 
 const fetchProducts = _ => async dispatch => {
   await api
@@ -88,14 +88,35 @@ const removeProduct = id => async (dispatch, getState) => {
     .catch(err => {});
 };
 
-export const setSelected = data => {
+const setSelected = data => {
   return { type: SET_SELECTED, payload: data };
 };
 
-export const clearSelected = _ => {
+const clearSelected = _ => {
   return {
     type: CLEAR_SELECTED
   };
+};
+
+const fetchMore = (slot = 1) => async (dispatch, getState) => {
+  let { products } = getState();
+  dispatch(setRequestStatus("fetchMore", true));
+  await api
+    .get(`/products/more/${slot}`)
+    .then(resp => {
+      if (resp.data.status && resp.data.status === 200) {
+        dispatch({
+          type: FETCH_PRODUCTS,
+          payload: [...products, ...resp.data.products]
+        });
+      } else {
+        dispatch(showAlert(resp.data.message, "failure"));
+      }
+    })
+    .catch(err => {
+      dispatch(showAlert("Unable to send requests."));
+    });
+  dispatch(setRequestStatus("fetchMore"));
 };
 
 export default {
@@ -104,5 +125,6 @@ export default {
   fetchProducts,
   fetchRelated,
   clearSelected,
-  setSelected
+  setSelected,
+  fetchMore
 };

@@ -126,10 +126,11 @@ const Featured = props => {
                   {product.name}
                 </p>
                 <p className="mt-4 mr-4">
+                
                   <span className="strikethrough item-price mr-4">
-                    {product.price}
+                  ₹{product.price}
                   </span>
-                  <span className="sub-header">$200</span>
+                  <span className="sub-header">₹{product.discount}</span>
                 </p>
               </div>
 

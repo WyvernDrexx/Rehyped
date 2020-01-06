@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Row, Spinner } from "react-bootstrap";
-import { fetchProducts } from "../../actions";
+import { fetchMore } from "../../actions";
 import { useDispatch, useSelector } from "react-redux";
 import ListItem from "./ListItem";
 import { Container, ErrorBlock } from "../stateless";
@@ -10,14 +10,8 @@ const ProductsList = props => {
   const products = useSelector(state => state.products);
   const dispatch = useDispatch();
 
-  useEffect(
-    _ => {
-      if (Object.values(products).length === 0) dispatch(fetchProducts());
-    },
-    [products]
-  );
-
   useEffect(_ => {
+    if (Object.values(products).length === 0) dispatch(fetchMore());
     window.onload = _ => {
       if (window.pageYOffset > 1650) {
         window.scrollTo(0, 0);

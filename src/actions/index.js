@@ -13,7 +13,8 @@ export const {
   fetchProducts,
   removeProduct,
   clearSelected,
-  setSelected
+  setSelected,
+  fetchMore
 } = fetch;
 
 export const { addToCart, fetchCartItems, removeFromCart } = cart;

@@ -27,7 +27,7 @@ import {
   UPDATE_USER_RESPONSE
 } from "../actions/types";
 
-const productsReducer = (state = {}, action) => {
+const productsReducer = (state = [], action) => {
   switch (action.type) {
     case FETCH_PRODUCTS:
       return action.payload;

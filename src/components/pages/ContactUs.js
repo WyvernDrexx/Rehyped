@@ -1,12 +1,45 @@
 import React from "react";
-import { Container, CommonHeader } from "../stateless";
+import { Container, CommonHeader, ErrorBlock, SuccessBlock } from "../stateless";
 import { DarkButton, PrimaryButton } from "../stateless/Buttons";
 import { Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { onFormSubmit, onInputChange } from "../../actions";
+import { useDispatch, useSelector } from "react-redux";
 
 const ContactUs = props => {
-
+  const { isVerified } = useSelector(state => state.token);
+  const formState = useSelector(state => state.form);
+  const dispatch = useDispatch();
+  
   const onSubmit = _ => {
+    dispatch(onFormSubmit("/contact-us"));
+  };
+  
+  const onChange = ({name, value}) => {
+    dispatch(onInputChange({[name]: value}));
+  }
+
+  if (!isVerified) {
+    return (
+      <div className="pt-6 pb-5">
+        <Container>
+          <ErrorBlock message="Please login to continue." />
+        </Container>
+      </div>
+    );
+  }
+
+  const renderResponse = _ => {
+    return (
+      <div className="block-center mt-4">
+        {formState.status && formState.status !== 200 ? (
+          <ErrorBlock message={`${formState.message}`.toUpperCase()} />
+        ) : null}
+        {formState.status && formState.status === 200 ? (
+          <SuccessBlock message={`${formState.message}`.toUpperCase()} />
+        ) : null}
+      </div>
+    );
   };
 
   return (
@@ -19,27 +52,8 @@ const ContactUs = props => {
         />
         <div className="secondary-background-color pt-5 pb-5 mb-5">
           <Container>
+            {renderResponse()}
             <Col className="px-0">
-              <Row>
-                <Col md={true}>
-                  <input
-                    className="placeholder-left primary-input w-100 mb-4 mb-md-0"
-                    placeholder="NAME"
-                  />
-                </Col>
-                <Col md={true}>
-                  <input
-                    className="placeholder-left primary-input w-100 mb-4 mb-md-0"
-                    placeholder="EMAIL"
-                  />
-                </Col>
-                <Col md={true}>
-                  <input
-                    className="placeholder-left primary-input w-100 mb-4"
-                    placeholder="PHONE NUMBER"
-                  />
-                </Col>
-              </Row>
               <Row>
                 <Col>
                   <textarea
@@ -48,6 +62,9 @@ const ContactUs = props => {
                     }}
                     className="primary-input w-100"
                     placeholder="YOUR MESSAGE"
+                    name="contactMessage"
+                    value={formState.contactMessage}
+                    onChange={({target}) => onChange(target)}
                   ></textarea>
                 </Col>
               </Row>

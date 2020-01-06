@@ -60,9 +60,6 @@ const Sidebar = props => {
         </Link>
       ) : null}
 
-      <Link onClick={props.toggleMenu} to="/contact-us" className="menu-item">
-        Contact Us
-      </Link>
       {!token.isVerified ? (
         <Link onClick={props.toggleMenu} to="/sign-up" className="menu-item">
           CREATE AN ACCOUNT
@@ -75,6 +72,11 @@ const Sidebar = props => {
           className="menu-item"
         >
           ADMIN PANEL
+        </Link>
+      ) : null}
+      {token.isVerified ? (
+        <Link onClick={props.toggleMenu} to="/contact-us" className="menu-item">
+          Contact Us
         </Link>
       ) : null}
       <div className="social-platforms">

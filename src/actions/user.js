@@ -10,7 +10,9 @@ const fetchShippingDetails = _ => async (dispatch, getState) => {
   const {
     token: { token }
   } = getState();
+
   dispatch(setRequestStatus("fetchShippingDetails", true));
+
   await api
     .get("/user/shipping-details", {
       headers: {
@@ -29,6 +31,7 @@ const fetchShippingDetails = _ => async (dispatch, getState) => {
     .catch(err => {
       dispatch(showAlert("Please try again later."))
     });
+
   dispatch(setRequestStatus("fetchShippingDetails"));
 };
 
@@ -48,7 +51,9 @@ const onUserSubmit = (target, route) => async (dispatch, getState) => {
   const {
     token: { token }
   } = getState();
+
   dispatch(setRequestStatus("onUserSubmit", true));
+  
   await api
     .post(
       route,
@@ -79,6 +84,7 @@ const onUserSubmit = (target, route) => async (dispatch, getState) => {
         }
       });
     });
+    
   dispatch(setRequestStatus("onUserSubmit"));
 };
 
