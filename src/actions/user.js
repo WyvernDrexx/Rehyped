@@ -27,7 +27,7 @@ const fetchShippingDetails = _ => async (dispatch, getState) => {
       }
     })
     .catch(err => {
-      console.log(err);
+      dispatch(showAlert("Please try again later."))
     });
   dispatch(setRequestStatus("fetchShippingDetails"));
 };

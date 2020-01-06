@@ -35,16 +35,17 @@ const placeOrder = _ => async (dispatch, getState) => {
       }
     )
     .then(resp => {
-      dispatch(showAlert(resp.data.message));
       if (resp.data.status === 200) {
         history.push("/orders-succesfull");
+        dispatch(showAlert(resp.data.message, "success"));
         dispatch({ type: ORDER_SUCCESS });
-      }else if(resp.data.status === 406){
+      } else if (resp.data.status === 406) {
+        dispatch(showAlert(resp.data.message, "failure"));
         history.push("/my-account/shipping-details");
       }
     })
-    .catch(resp => {
-      dispatch(showAlert(resp.data.message));
+    .catch(err => {
+      dispatch(showAlert("Please try again later."));
       history.push("/products");
     });
   dispatch(setRequestStatus("placeOrder"));
@@ -62,7 +63,9 @@ const getOrders = _ => async (dispatch, getState) => {
       }
     })
     .then(resp => {
-      dispatch({ type: FETCH_ORDERS, payload: resp.data });
+      if (resp.data.status !== 200)
+        dispatch(showAlert(resp.data.message, "failure"));
+      else dispatch({ type: FETCH_ORDERS, payload: resp.data });
     })
     .catch(err => {
       dispatch({ type: FETCH_ORDERS, payload: { status: 400 } });
@@ -99,7 +102,8 @@ const placeOrders = _ => async (dispatch, getState) => {
         history.push("/orders-succesfull");
         dispatch({ type: PLACE_ORDERS, payload: resp.data.orders });
         dispatch({ type: REMOVE_FROM_CART, payload: [] });
-      }else if(resp.data.status === 406){
+      } else if (resp.data.status === 406) {
+        dispatch(showAlert(resp.data.message));
         history.push("/my-account/shipping-details");
       }
     })

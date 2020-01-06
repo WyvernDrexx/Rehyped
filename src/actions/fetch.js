@@ -7,11 +7,33 @@ import {
   SET_SELECTED
 } from "./types";
 import api from "../api";
+import { showAlert } from ".";
 
 const fetchProducts = _ => async dispatch => {
-  let products = await api.get("/products");
-  products = products.data;
-  dispatch({ type: FETCH_PRODUCTS, payload: products });
+  await api
+    .get("/products")
+    .then(resp => {
+      if (resp.data.status !== 200) {
+        dispatch({
+          type: FETCH_PRODUCTS,
+          payload: { message: resp.data.message }
+        });
+      } else dispatch({ type: FETCH_PRODUCTS, payload: resp.data.products });
+    })
+    .catch(err => {
+      dispatch(
+        showAlert(
+          "Unable to perform request. Check your internet connection.",
+          "failure"
+        )
+      );
+      dispatch({
+        type: FETCH_PRODUCTS,
+        payload: {
+          message: "Please check your internet connection, or try again later."
+        }
+      });
+    });
 };
 
 const fetchProduct = id => async (dispatch, getState) => {

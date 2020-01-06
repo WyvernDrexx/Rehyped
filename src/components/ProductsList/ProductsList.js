@@ -2,7 +2,8 @@ import React, { useEffect } from "react";
 import { Row, Spinner } from "react-bootstrap";
 import { fetchProducts } from "../../actions";
 import { useDispatch, useSelector } from "react-redux";
-import ListItem from './ListItem'
+import ListItem from "./ListItem";
+import { Container, ErrorBlock } from "../stateless";
 import "./ProductsList.scss";
 
 const ProductsList = props => {
@@ -26,8 +27,16 @@ const ProductsList = props => {
 
   const renderList = (list = []) => {
     return list.map((item, index) => {
-      return <ListItem key={index} item={item} index={index} />
-    })
+      return <ListItem key={index} item={item} index={index} />;
+    });
+  };
+
+  if (products.message) {
+    return (
+      <Container>
+        <ErrorBlock message={products.message} />
+      </Container>
+    );
   }
 
   if (Object.values(products).length === 0) {

@@ -3,13 +3,10 @@ import { Container, CommonHeader } from "../stateless";
 import { DarkButton, PrimaryButton } from "../stateless/Buttons";
 import { Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { showAlert } from "../../actions";
+
 const ContactUs = props => {
-  const dispatch = useDispatch();
 
   const onSubmit = _ => {
-    dispatch(showAlert("Hello, this is an alert! Unable to perform request. Try again later. Plesee try again.", "success"));
   };
 
   return (
