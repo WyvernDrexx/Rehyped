@@ -1,31 +1,75 @@
+$leftBorderWidth: 12px;
+$failureColor: #ff2638;
+$successColor: #28a745;
+$neutralColor: black;
+
 .alert-snackbar {
-  background-color: rgb(20, 20, 20);
   position: fixed;
-  padding: 20px;
+  padding: 15px;
   overflow: hidden;
-  border-radius: 5px;
-  color: rgb(252, 250, 250);
-  width: 70vw;
+  border-radius: 2px;
+  background-color: rgb(252, 250, 250);
+  width: 95vw;
   height: auto;
   font-size: 1rem;
   z-index: 600;
   margin: auto;
-  transform: translateY(-300px);
+  border-left: $leftBorderWidth solid $neutralColor;
+  box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.2);
+  transform: translateY(-100px);
   top: 0;
   left: 0;
   right: 0;
+
   p {
-    letter-spacing: 1.5px;
+    letter-spacing: 1.3px;
+    font-size: 14.7px;
+    color: rgb(37, 37, 37);
+  }
+  svg {
+    font-size: 25px;
+
+  }
+  span {
+    font-weight: bold;
+    font-size: 20px;
   }
 }
 
-@keyframes alert-animation {
+.alert-failure {
+  border-left: $leftBorderWidth solid $failureColor !important;
+  color: $failureColor;
+}
+
+.alert-success {
+  border-left: $leftBorderWidth solid $successColor !important;
+  color: $successColor;
+}
+
+.alert-neutral {
+  border-left: $leftBorderWidth solid $neutralColor !important;
+}
+
+.alert-close{
+  &:hover{
+    color: black;
+  }
+}
+
+@keyframes alert-fadein {
   0% {
     transform: translateY(-100px);
     z-index: 600;
   }
-  50% {
-    transform: translateY(50%);
+  100% {
+    transform: translateY(54px);
+    z-index: 600;
+  }
+}
+
+@keyframes alert-fadeout {
+  0% {
+    transform: translateY(54px);
     z-index: 600;
   }
   100% {
@@ -34,6 +78,10 @@
   }
 }
 
-.alert-animate {
-  animation: alert-animation 1.8s 1 ease;
+.alert-fadein {
+  animation: alert-fadein 300ms 1 ease forwards;
+}
+
+.alert-fadeout{
+  animation: alert-fadeout 300ms 1 ease;
 }

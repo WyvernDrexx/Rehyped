@@ -18,8 +18,8 @@ export const {
 
 export const { addToCart, fetchCartItems, removeFromCart } = cart;
 
-export const showAlert = message => {
-  return { type: ALERT_SHOW, payload: message };
+export const showAlert = (message, status="neutral") => {
+  return { type: ALERT_SHOW, payload: {message,status} };
 };
 
 export const { onInputChange, onFormSubmit, clearForm } = forms;

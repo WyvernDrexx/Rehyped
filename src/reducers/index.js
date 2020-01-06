@@ -79,10 +79,10 @@ const cartReducers = (state = [], action) => {
   }
 };
 
-const alertReducer = (state = "", action) => {
+const alertReducer = (state = {}, action) => {
   switch (action.type) {
     case ALERT_SHOW:
-      return action.payload;
+      return {...action.payload};
     default:
       return state;
   }

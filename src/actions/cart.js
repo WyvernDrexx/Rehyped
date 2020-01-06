@@ -10,7 +10,7 @@ const addToCart = () => async (dispatch, getState) => {
   } = getState();
 
   const product = selectedProduct;
-  
+
   dispatch(setRequestStatus("addToCart", true));
 
   await api
@@ -26,19 +26,18 @@ const addToCart = () => async (dispatch, getState) => {
     )
     .then(resp => {
       if (resp.data.status === 200) {
+        dispatch(showAlert(resp.data.message, "success"));
         dispatch({
           type: ADD_TO_CART,
           payload: { product, status: resp.data.status }
         });
-      }
-      dispatch(setRequestStatus("addToCart"));
-      dispatch(showAlert(resp.data.message));
+      } else dispatch(showAlert(resp.data.message, "failure"));
     })
     .catch(err => {
-      dispatch(setRequestStatus("addToCart"));
-      dispatch(showAlert("Error: Please try again!"));
+      dispatch(showAlert("Please try again!", "failure"));
     });
-  console.log("addtocart");
+
+  dispatch(setRequestStatus("addToCart"));
 };
 
 const fetchCartItems = _ => async (dispatch, getState) => {
@@ -58,10 +57,17 @@ const fetchCartItems = _ => async (dispatch, getState) => {
         }
       })
       .then(resp => {
-        dispatch({ type: FETCH_CART, payload: resp.data });
+        if (resp.data.status !== 200)
+          dispatch(showAlert(resp.data.message, "failure"));
+        else dispatch({ type: FETCH_CART, payload: resp.data });
       })
       .catch(err => {
-        dispatch({ type: FETCH_CART, payload: [] });
+        dispatch(
+          showAlert(
+            "Unable to remove item. Make sure you are connected to the internet.",
+            "failure"
+          )
+        );
       });
   }
   dispatch(setRequestStatus("fetchCartItems"));
@@ -71,6 +77,10 @@ const removeFromCart = id => async (dispatch, getState) => {
   const {
     token: { token }
   } = getState();
+
+  if (!token)
+    dispatch(showAlert("Please login in order to remove.", "failure"));
+    
   dispatch(setRequestStatus("removeFromCart", true));
   await api
     .post(
@@ -86,11 +96,23 @@ const removeFromCart = id => async (dispatch, getState) => {
       }
     )
     .then(resp => {
-      dispatch({ type: REMOVE_FROM_CART, payload: resp.data.cartItems || [] });
-      dispatch(showAlert(resp.data.message || "Error Removing Item"));
+      if (!resp.data || resp.data.status !== 200)
+        dispatch(showAlert(resp.data.message, "failure"));
+      else {
+        dispatch({
+          type: REMOVE_FROM_CART,
+          payload: resp.data.cartItems || []
+        });
+        dispatch(showAlert(resp.data.message, "success"));
+      }
     })
     .catch(err => {
-      dispatch(showAlert("Error Removing Item!"));
+      dispatch(
+        showAlert(
+          "Unable to remove item. Make sure you are connected to the internet.",
+          "failure"
+        )
+      );
     });
   dispatch(setRequestStatus("removeFromCart"));
 };
