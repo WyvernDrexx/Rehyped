@@ -9,7 +9,7 @@ const CartItem = props => {
   const { item } = props;
   const isRunning = useSelector(state => state.requestStatus.removeFromCart);
 
-  const baseURL = process.env.REACT_APP_BASE_URL || "http://localhost:8000";
+  const imagesSrc = process.env.REACT_APP_IMAGES_SRC;
 
   return (
     <div className="cart-item">
@@ -21,7 +21,7 @@ const CartItem = props => {
         >
           <img
             alt="placeholder text"
-            src={`${baseURL}/images/products/${item.image}`}
+            src={`${imagesSrc + item.image}`}
           />
         </Col>
         <Col className="cart-item-info">

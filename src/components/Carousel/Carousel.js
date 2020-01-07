@@ -30,6 +30,7 @@ const Carousel = props => {
 };
 
 const CarouselItem = props => {
+  const imagesSrc = process.env.REACT_APP_IMAGES_SRC;
   const dispatch = useDispatch();
   const onClick = _ => {
     dispatch(clearSelected());
@@ -58,7 +59,7 @@ const CarouselItem = props => {
             onLoad={onImgLoad}
             alt="Placeholder"
             className={`carousel-img ${isLoaded ? "" : "visibility-hidden"}`}
-            src={`http://localhost:8000/images/products/${item.image}`}
+            src={`${imagesSrc + item.image}`}
           />
         </div>
         <div

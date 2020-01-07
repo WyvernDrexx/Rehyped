@@ -14,8 +14,7 @@ const CartItem = props => {
     dispatch(removeFromCart(item._id));
   };
 
-  const baseURL = process.env.REACT_APP_BASE_URL || "http://localhost:8000";
-  const imageURL = imagePath => `${baseURL}/${imagePath}`;
+  const imagesSrc = process.env.REACT_APP_IMAGES_SRC;
 
   return (
     <div className="cart-item">
@@ -27,7 +26,7 @@ const CartItem = props => {
         >
           <img
             alt="placeholder text"
-            src={`${imageURL("/images/products/" + item.image)}`}
+            src={`${imagesSrc + item.image}`}
           />
         </Col>
         <Col className="cart-item-info ml-2">

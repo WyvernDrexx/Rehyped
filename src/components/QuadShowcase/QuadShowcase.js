@@ -8,8 +8,7 @@ const QuadShowcase = props => {
     setDivIsLoaded(true);
   };
 
-  const baseURL = process.env.REACT_APP_BASE_URL || "http://localhost:8000";
-  const imageURL = imagePath => `${baseURL}/${imagePath}`;
+  const imagesSrc = process.env.REACT_APP_IMAGES_SRC;
 
   useEffect(
     _ => {
@@ -34,11 +33,7 @@ const QuadShowcase = props => {
             <img
               alt="This is null"
               className=""
-              src={
-                props.image
-                  ? `${imageURL("/images/products/" + props.image)}`
-                  : `${imageURL("/images/products/IMAGE-1577517957411.jpg")}`
-              }
+              src={`${imagesSrc + props.image}`}
             />
           </Col>
           <Col md={6} lg={4} className="sm-0 px-0 pl-md-2">
@@ -47,9 +42,7 @@ const QuadShowcase = props => {
                 alt="This is null"
                 className=""
                 src={
-                  props.image
-                    ? `${imageURL("/images/products/" + props.image)}`
-                    : `${imageURL("/images/products/IMAGE-1577517957411.jpg")}`
+                  `${imagesSrc + props.image}`
                 }
               />
             </div>
@@ -58,9 +51,7 @@ const QuadShowcase = props => {
                 alt="This is null"
                 className=""
                 src={
-                  props.image
-                    ? `${imageURL("/images/products/" + props.image)}`
-                    : `${imageURL("/images/products/IMAGE-1577517957411.jpg")}`
+                  `${imagesSrc + props.image}`
                 }
               />
             </div>
@@ -69,9 +60,7 @@ const QuadShowcase = props => {
                 alt="This is null"
                 className=""
                 src={
-                  props.image
-                    ? `${imageURL("/images/products/" + props.image)}`
-                    : `${imageURL("/images/products/IMAGE-1577517957411.jpg")}`
+                  `${imagesSrc + props.image}`
                 }
               />
             </div>

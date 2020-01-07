@@ -10,8 +10,7 @@ const ListItem = props => {
     setIsLoaded(true);
   };
 
-  const baseURL = process.env.REACT_APP_BASE_URL || "http://localhost:8000";
-  const imageURL = imagePath => `${baseURL}/${imagePath}`;
+  const imagesSrc = process.env.REACT_APP_IMAGES_SRC;;
 
   return (
     <Col
@@ -33,8 +32,8 @@ const ListItem = props => {
       <Row className={`${isLoaded ? "" : "visibility-hidden"}`}>
         <img alt="This is null" src={
           item.image
-          ? `${imageURL("/images/products/" + item.image)}`
-          : `${imageURL("/images/products/IMAGE-1577517957411.jpg")}`
+          ? `${imagesSrc + item.image}`
+          : `${imagesSrc + ""}`
         } />
       </Row>
       <Row className={`${isLoaded ? "" : "visibility-hidden"}`}>
