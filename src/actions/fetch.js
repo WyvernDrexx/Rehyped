@@ -44,29 +44,36 @@ const fetchProduct = id => async (dispatch, getState) => {
     Object.values(products).length < 100
   ) {
     product = products.filter(elem => elem._id === id)[0];
-    if (!product) {
-      product = await api.get(`/products/${id}`);
-      product = product.data[0];
-    }
+    await api
+      .get(`/products/${id}`)
+      .then(resp => {
+        if (resp.data) {
+          product = resp.data[0];
+        }
+      })
+      .catch(err => {});
   } else {
-    product = await api.get(`/products/${id}`);
-    product = product.data[0];
+    await api
+      .get(`/products/${id}`)
+      .then(resp => {
+        if (resp.data) {
+          product = resp.data[0];
+        }
+      })
+      .catch(err => {});
   }
 
   if (!product) {
     product = {
       error: "Product not found!"
     };
-  }else{
-    dispatch({ type: FETCH_PRODUCT, payload: product });
-  }
+  dispatch({ type: FETCH_PRODUCT, payload: product });
 };
 
 const fetchRelated = _ => async dispatch => {
   let product = await api.get("/products/related/get");
   product = product.data;
-  if(product)
-    dispatch({ type: FETCH_RELATED, payload: product });
+  if (product) dispatch({ type: FETCH_RELATED, payload: product });
 };
 
 const removeProduct = id => async (dispatch, getState) => {
