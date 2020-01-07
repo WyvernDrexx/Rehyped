@@ -64,7 +64,8 @@ const fetchProduct = id => async (dispatch, getState) => {
 const fetchRelated = _ => async dispatch => {
   let product = await api.get("/products/related/get");
   product = product.data;
-  dispatch({ type: FETCH_RELATED, payload: product });
+  if(product)
+    dispatch({ type: FETCH_RELATED, payload: product });
 };
 
 const removeProduct = id => async (dispatch, getState) => {
