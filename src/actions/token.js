@@ -30,7 +30,7 @@ const verifyToken = _ => async (dispatch, getState) => {
     .then(resp => {
       dispatch({ type: VERIFY_TOKEN, payload: resp.data });
     })
-    .catch(err => console.log(err));
+    .catch(err => );
 };
 
 const removeToken = _ => {

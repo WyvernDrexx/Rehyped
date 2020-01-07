@@ -20,7 +20,6 @@ const fetchShippingDetails = _ => async (dispatch, getState) => {
       }
     })
     .then(resp => {
-      console.log(resp.data);
       if (resp.data.status === 200) {
         dispatch({
           type: FETCH_SHIPPING_DETAILS,

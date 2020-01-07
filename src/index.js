@@ -8,7 +8,6 @@ import { CookiesProvider } from "react-cookie";
 
 import App from "./components/App/App";
 
-console.log(process.env);
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(
   reducers,

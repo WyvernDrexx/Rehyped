@@ -59,7 +59,6 @@ export default props => {
       </div>
     );
   };
-  console.log("render");
   return (
     <div className="mt-5 pt-5 pb-5">
       <Container>

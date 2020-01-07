@@ -71,7 +71,6 @@ const MyCart = props => {
             />
             <DarkButton
               className="mt-4 d-block mx-auto font-weight-bold w-100 w-md-40"
-              onClick={() => console.log("Clicked subscribe button!")}
               title="CHECK"
             />
           </div>

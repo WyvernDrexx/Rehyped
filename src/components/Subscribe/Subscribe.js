@@ -28,7 +28,6 @@ const Subscribe = props => {
       })
       .catch(err => {
         setShowSpinner(false);
-        // console.log(err);
       });
   };
 

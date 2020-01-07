@@ -13,7 +13,6 @@ import Alert from '../Alert';
 import "./Header.scss";
 
 const Header = props => {
-  console.log(process.env);
 
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [isCartEmpty, setIsCartEmpty] = useState(true);

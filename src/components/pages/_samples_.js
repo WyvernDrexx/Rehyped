@@ -13,7 +13,6 @@ const Samples = props => {
     <div>
       <Container className="mt-5">
         <DarkButton
-          onClick={() => console.log("Clicked dark button!")}
           title="GO TO STORE"
           className="w-75"
         />
@@ -21,14 +20,12 @@ const Samples = props => {
         <div>
           <LightButton
             className="mt-4 mx-auto d-block w-100"
-            onClick={() => console.log("Clicked light button!")}
             title="ADD TO CART"
           />
         </div>
         <div>
           <PrimaryButton
             className="mt-4 mx-auto d-block w-100"
-            onClick={() => console.log("Clicked primary button!")}
             title="BUY IT NOW"
           />
         </div>
@@ -54,7 +51,6 @@ const Samples = props => {
           />
           <PrimaryButton
             className="mt-4 mx-auto d-block font-weight-bold w-100"
-            onClick={() => console.log("Clicked subscribe button!")}
             title="SUBSCRIBE"
           />
           <Divider />
