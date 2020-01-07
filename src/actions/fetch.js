@@ -57,8 +57,9 @@ const fetchProduct = id => async (dispatch, getState) => {
     product = {
       error: "Product not found!"
     };
+  }else{
+    dispatch({ type: FETCH_PRODUCT, payload: product });
   }
-  dispatch({ type: FETCH_PRODUCT, payload: product });
 };
 
 const fetchRelated = _ => async dispatch => {
