@@ -67,9 +67,10 @@ const fetchProduct = id => async (dispatch, getState) => {
     product = {
       error: "Product not found!"
     };
+  }
   dispatch({ type: FETCH_PRODUCT, payload: product });
-};
 
+};
 const fetchRelated = _ => async dispatch => {
   let product = await api.get("/products/related/get");
   product = product.data;
