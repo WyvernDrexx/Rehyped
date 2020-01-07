@@ -8,6 +8,9 @@ const QuadShowcase = props => {
     setDivIsLoaded(true);
   };
 
+  const baseURL = process.env.REACT_APP_BASE_URL || "http://localhost:8000";
+  const imageURL = imagePath => `${baseURL}/${imagePath}`;
+
   useEffect(
     _ => {
       if (divIsLoaded) {
@@ -33,8 +36,8 @@ const QuadShowcase = props => {
               className=""
               src={
                 props.image
-                  ? `http://localhost:8000/images/products/${props.image}`
-                  : "http://localhost:8000/images/products/IMAGE-1577517957411.jpg"
+                  ? `${imageURL("/images/products/" + props.image)}`
+                  : `${imageURL("/images/products/IMAGE-1577517957411.jpg")}`
               }
             />
           </Col>
@@ -45,8 +48,8 @@ const QuadShowcase = props => {
                 className=""
                 src={
                   props.image
-                    ? `http://localhost:8000/images/products/${props.image}`
-                    : "http://localhost:8000/images/products/IMAGE-1577517957411.jpg"
+                    ? `${imageURL("/images/products/" + props.image)}`
+                    : `${imageURL("/images/products/IMAGE-1577517957411.jpg")}`
                 }
               />
             </div>
@@ -56,8 +59,8 @@ const QuadShowcase = props => {
                 className=""
                 src={
                   props.image
-                    ? `http://localhost:8000/images/products/${props.image}`
-                    : "http://localhost:8000/images/products/IMAGE-1577517957411.jpg"
+                    ? `${imageURL("/images/products/" + props.image)}`
+                    : `${imageURL("/images/products/IMAGE-1577517957411.jpg")}`
                 }
               />
             </div>
@@ -67,8 +70,8 @@ const QuadShowcase = props => {
                 className=""
                 src={
                   props.image
-                    ? `http://localhost:8000/images/products/${props.image}`
-                    : "http://localhost:8000/images/products/IMAGE-1577517957411.jpg"
+                    ? `${imageURL("/images/products/" + props.image)}`
+                    : `${imageURL("/images/products/IMAGE-1577517957411.jpg")}`
                 }
               />
             </div>
