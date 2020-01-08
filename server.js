@@ -17,23 +17,20 @@ app.get("/*", function(req, res) {
 if (process.env.NODE_ENV && process.env.NODE_ENV === "production") {
   PORT = 443;
   var key = fs.readFileSync(
-    "/etc/letsencrypt/live/rehyped.com/privkey.pem",
-    "utf-8"
+    "/etc/letsencrypt/live/rehyped.com/privkey.pem"
   );
 
-  var certificate = fs.readFileSync(
-    "/etc/letsencrypt/live/rehyped.com/cert.pem",
-    "utf-8"
+  var cert = fs.readFileSync(
+    "/etc/letsencrypt/live/rehyped.com/cert.pem"
   );
 
   var ca = fs.readFileSync(
-    "/etc/letsencrypt/live/rehyped.com/chain.pem",
-    "utf-8"
+    "/etc/letsencrypt/live/rehyped.com/chain.pem"
   );
 
   const credentials = {
     key,
-    certificate,
+    cert,
     ca
   };
   const httpsServer = https.createServer(credentials, app);
