@@ -17,17 +17,17 @@ app.get("/*", function(req, res) {
 if (process.env.NODE_ENV && process.env.NODE_ENV === "production") {
   PORT = 443;
   var key = fs.readFileSync(
-    "/etc/letsencrypt/live/rehyped.com/privkey1.pem",
+    "/etc/letsencrypt/live/rehyped.com/privkey.pem",
     "utf-8"
   );
 
   var certificate = fs.readFileSync(
-    "/etc/letsencrypt/live/rehyped.com/cert1.pem",
+    "/etc/letsencrypt/live/rehyped.com/cert.pem",
     "utf-8"
   );
 
   var ca = fs.readFileSync(
-    "/etc/letsencrypt/live/rehyped.com/chain1.pem",
+    "/etc/letsencrypt/live/rehyped.com/chain.pem",
     "utf-8"
   );
 
