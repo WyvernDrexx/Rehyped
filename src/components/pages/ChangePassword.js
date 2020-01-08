@@ -19,12 +19,12 @@ const ChangePassword = props => {
     status
   } = useSelector(state => state.form);
   const isRunning = useSelector(state => state.requestStatus.onFormSubmit);
+  const dispatch = useDispatch();
 
   useEffect(_ => {
     return dispatch(clearForm());
-  }, []);
+  }, [dispatch]);
 
-  const dispatch = useDispatch();
   if (!isVerified) {
     return <UnauthorizedError />;
   }

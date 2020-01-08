@@ -30,6 +30,19 @@ const Login = props => {
     dispatch(onFormSubmit("/login"));
   };
 
+  useEffect(
+    _ => {
+      if (formState.token) {
+        dispatch(setToken(formState.token));
+      }
+    },
+    [formState.token, dispatch]
+  );
+
+  useEffect(_ => {
+    return _ => dispatch(clearForm());
+  }, [dispatch]);
+
   const renderResponse = _ => {
     return (
       <div className="block-center mt-4">
@@ -79,18 +92,6 @@ const Login = props => {
     );
   };
 
-  useEffect(
-    _ => {
-      if (formState.token) {
-        dispatch(setToken(formState.token));
-      }
-    },
-    [formState.token]
-  );
-
-  useEffect(_ => {
-    return _ => dispatch(clearForm());
-  }, []);
 
   if (isVerified) {
     return <UnauthorizedError to="/products" isVerified={isVerified} />;

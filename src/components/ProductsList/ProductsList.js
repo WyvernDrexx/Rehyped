@@ -17,7 +17,7 @@ const ProductsList = props => {
         window.scrollTo(0, 0);
       }
     };
-  }, []);
+  }, [products, dispatch]);
 
   const renderList = (list = []) => {
     return list.map((item, index) => {

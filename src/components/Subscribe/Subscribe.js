@@ -7,7 +7,6 @@ import {
   ErrorBlock,
   SuccessBlock
 } from "../stateless";
-import { Spinner } from "react-bootstrap";
 import api from "../../api";
 import "./Subscribe.scss";
 
@@ -60,7 +59,7 @@ const Subscribe = props => {
         <input
           className="placeholder-center primary-input"
           placeholder="ENTER YOUR EMAIL"
-          value={email}
+          value={email || ""}
           type="email"
           onChange={({ target }) => onChange(target)}
         />

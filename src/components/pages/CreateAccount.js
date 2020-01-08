@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { DarkButton, PrimaryButton } from "../stateless/Buttons";
 import { Container, Checkbox, ErrorBlock, SuccessBlock } from "../stateless";
 import { onInputChange, onFormSubmit, clearForm } from "../../actions";
-import { Spinner } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 const CreateAccount = props => {
@@ -27,13 +26,13 @@ const CreateAccount = props => {
 
   useEffect(_ => {
     dispatch(clearForm());
-  }, []);
+  }, [dispatch]);
 
   useEffect(
     _ => {
-      dispatch(onInputChange({ isChecked: isChecked }));
+      dispatch(onInputChange({ isChecked}));
     },
-    [isChecked]
+    [isChecked, dispatch]
   );
 
   const renderResponse = _ => {

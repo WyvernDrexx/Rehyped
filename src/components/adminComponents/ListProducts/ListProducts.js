@@ -12,7 +12,7 @@ export default _ => {
   const token = useSelector(state => state.token);
   useEffect(_ => {
     dispatch(fetchProducts());
-  }, []);
+  }, [dispatch]);
 
   if(token.isVerified){
     if (products && products.length > 0) {

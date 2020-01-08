@@ -66,7 +66,7 @@ const ShippingDetails = props => {
 
   useEffect(_ => {
     dispatch(fetchShippingDetails());
-  }, []);
+  }, [dispatch]);
 
   if(typeof isFetching === 'undefined' || isFetching){
     return (<div className="bg-white pt-3 pb-3">

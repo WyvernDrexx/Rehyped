@@ -12,11 +12,12 @@ const Carousel = props => {
 
   useEffect(_ => {
     dispatch(fetchRelated());
-  }, []);
-
-  if (relatedItem.length === 0) {
+  }, [dispatch]);
+  
+  if (!relatedItem ||  relatedItem.length === 0) {
     return <Spinner animation="border" className="block-center" />;
   }
+
 
   return (
     <>

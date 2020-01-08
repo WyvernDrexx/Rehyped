@@ -31,13 +31,13 @@ const App = _ => {
 
   useEffect(_ => {
     dispatch(getToken());
-  }, []);
+  }, [dispatch]);
 
   useEffect(
     _ => {
       if (token && token.length > 0) dispatch(verifyToken());
     },
-    [token]
+    [token, dispatch]
   );
 
   useEffect(
@@ -49,7 +49,7 @@ const App = _ => {
         dispatch(fetchCartItems());
       }
     },
-    [isVerified]
+    [isVerified, dispatch]
   );
 
   return (

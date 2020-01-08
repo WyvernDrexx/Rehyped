@@ -39,7 +39,7 @@ const CustomMedia = props => {
           return (
             <Row
               key={index}
-              className={`w-md-50 mt-5 mb-5 ${props.mediaStyle || ""}`}
+              className={`w-md-50 mt-5 mb-5 mx-auto ${props.mediaStyle || ""}`}
             >
               <Col
                 className="d-flex pl-0 justify-content-center align-items-center"

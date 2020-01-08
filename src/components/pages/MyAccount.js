@@ -51,7 +51,7 @@ const MyAccount = props => {
         dispatch(getOrders());
       }
     },
-    [isVerified]
+    [isVerified, dispatch]
   );
   const renderCartList = _ => {
     if (ordersVisibility) {

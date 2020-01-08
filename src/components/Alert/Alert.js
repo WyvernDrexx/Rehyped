@@ -35,7 +35,7 @@ const Alert = props => {
         }, 3500);
       }
     },
-    [message]
+    [message,dispatch]
   );
 
   const renderClassStatus = _ => {

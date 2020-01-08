@@ -72,9 +72,17 @@ const fetchProduct = id => async (dispatch, getState) => {
 
 };
 const fetchRelated = _ => async dispatch => {
-  let product = await api.get("/products/related/get");
-  product = product.data;
-  if (product) dispatch({ type: FETCH_RELATED, payload: product });
+  await api.get("/products/related/get")
+  .then(resp => {
+    if(!resp.data || resp.data.status){
+      dispatch(showAlert(resp.message, "failure"));
+    }else{
+      dispatch({ type: FETCH_RELATED, payload: resp.data });
+    }
+  })
+  .catch(err => {
+    dispatch(showAlert("Unable to send request try again later.", "failure"));
+  })
 };
 
 const removeProduct = id => async (dispatch, getState) => {

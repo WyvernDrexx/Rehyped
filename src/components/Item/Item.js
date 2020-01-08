@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { LightButton, PrimaryButton } from "../stateless/Buttons";
 import { Row, Col, Spinner, Alert } from "react-bootstrap";
-
 import { useSelector, useDispatch } from "react-redux";
 import {
   fetchProduct,
@@ -12,10 +11,8 @@ import {
   showAlert,
   buyNow
 } from "../../actions";
-
 import QuadShowcase from "../QuadShowcase";
 import Instructions from "../Media";
-
 import { CommonHeader, Container } from "../stateless";
 import ItemColors from "./ItemColors";
 import ItemSizes from "./ItemSizes";
@@ -35,24 +32,28 @@ const Featured = props => {
     selectedColor: state.selectedProduct.color
   }));
 
+  if (productId === "featured") {
+    productId = product._id;
+  }
+  
   useEffect(
     _ => {
       if (product._id !== productId) {
         dispatch(fetchProduct(productId));
       }
     },
-    [productId]
+    [productId, dispatch, product._id]
   );
-
-  useEffect(_ => {
-    return _ => dispatch(clearSelected());
-  }, []);
 
   useEffect(
     _ => {
-      if (productId === "featured") {
-        productId = product._id;
-      }
+      return _ => dispatch(clearSelected());
+    },
+    [dispatch]
+  );
+
+  useEffect(
+    _ => {
       if (cartItems.some(item => item._id === productId)) {
         setItemOnCart(true);
       } else {
@@ -125,9 +126,8 @@ const Featured = props => {
                   {product.name}
                 </p>
                 <p className="mt-4 mr-4">
-                
                   <span className="strikethrough item-price mr-4">
-                  ₹{product.price}
+                    ₹{product.price}
                   </span>
                   <span className="sub-header">₹{product.discount}</span>
                 </p>

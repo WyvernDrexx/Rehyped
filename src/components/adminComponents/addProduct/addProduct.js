@@ -17,11 +17,14 @@ export default props => {
   const selectedProduct = useSelector(state => state.selectedProduct);
   const { id } = useParams();
 
-  useEffect(_ => {
-    return _ => {
-      dispatch(clearForm());
-    };
-  }, []);
+  useEffect(
+    _ => {
+      return _ => {
+        dispatch(clearForm());
+      };
+    },
+    [dispatch]
+  );
 
   useEffect(
     _ => {
@@ -32,7 +35,7 @@ export default props => {
         }
       }
     },
-    [id, selectedProduct._id]
+    [id, selectedProduct._id, dispatch, selectedProduct]
   );
 
   const onChange = ({ name, value }) => {
