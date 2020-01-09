@@ -15,9 +15,6 @@ import Subscribe from "../Subscribe";
 const Home = props => {
   return (
     <>
-      <SlideCarousel
-        images={["/imgs/wide1.jpg", "/imgs/wide2.jpg", "/imgs/wide3.jpg"]}
-      />
       <Container className="mt-6 mb-4">
         <CommonHeader
           header="NEW ARRIVALS"
