@@ -31,13 +31,14 @@ const Featured = props => {
     selectedColor: state.selectedProduct.color
   }));
 
-  if (productId === "featured") {
-    productId = product._id;
-  }
+
   useEffect(
     _ => {
       if (product._id !== productId) {
         dispatch(fetchProduct(productId));
+      }
+      if (productId === "featured") {
+        productId = product._id;
       }
     },
     [productId, dispatch, product._id]

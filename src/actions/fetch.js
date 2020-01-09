@@ -44,14 +44,16 @@ const fetchProduct = id => async (dispatch, getState) => {
     Object.values(products).length < 100
   ) {
     product = products.filter(elem => elem._id === id)[0];
-    await api
-      .get(`/products/${id}`)
-      .then(resp => {
-        if (resp.data) {
-          product = resp.data[0];
-        }
-      })
-      .catch(err => {});
+    if (!product) {
+      await api
+        .get(`/products/${id}`)
+        .then(resp => {
+          if (resp.data) {
+            product = resp.data[0];
+          }
+        })
+        .catch(err => {});
+    }
   } else {
     await api
       .get(`/products/${id}`)
@@ -69,20 +71,20 @@ const fetchProduct = id => async (dispatch, getState) => {
     };
   }
   dispatch({ type: FETCH_PRODUCT, payload: product });
-
 };
 const fetchRelated = _ => async dispatch => {
-  await api.get("/products/related/get")
-  .then(resp => {
-    if(!resp.data || resp.data.status){
-      dispatch(showAlert(resp.message, "failure"));
-    }else{
-      dispatch({ type: FETCH_RELATED, payload: resp.data });
-    }
-  })
-  .catch(err => {
-    dispatch(showAlert("Unable to send request try again later.", "failure"));
-  })
+  await api
+    .get("/products/related/get")
+    .then(resp => {
+      if (!resp.data || resp.data.status) {
+        dispatch(showAlert(resp.message, "failure"));
+      } else {
+        dispatch({ type: FETCH_RELATED, payload: resp.data });
+      }
+    })
+    .catch(err => {
+      dispatch(showAlert("Unable to send request try again later.", "failure"));
+    });
 };
 
 const removeProduct = id => async (dispatch, getState) => {
