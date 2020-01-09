@@ -12,11 +12,11 @@ const ProductsList = props => {
 
   useEffect(_ => {
     if (Object.values(products).length === 0) dispatch(fetchMore());
-    window.onload = _ => {
-      if (window.pageYOffset > 1650) {
-        window.scrollTo(0, 0);
-      }
-    };
+    // window.onload = _ => {
+    //   if (window.pageYOffset > 1650) {
+    //     window.scrollTo(0, 0);
+    //   }
+    // };
   }, [products, dispatch]);
 
   const renderList = (list = []) => {

@@ -10,14 +10,14 @@ const QuadShowcase = props => {
 
   const imagesSrc = process.env.REACT_APP_IMAGES_SRC;
 
-  useEffect(
-    _ => {
-      if (divIsLoaded) {
-        window.scrollTo(0, 90);
-      }
-    },
-    [divIsLoaded]
-  );
+  // useEffect(
+  //   _ => {
+  //     if (divIsLoaded) {
+  //       window.scrollTo(0, 90);
+  //     }
+  //   },
+  //   [divIsLoaded]
+  // );
 
   if (props.image) {
     return (
