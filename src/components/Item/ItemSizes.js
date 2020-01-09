@@ -1,13 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import "./ItemSizes.scss";
+import { setSelected } from "../../actions";
+
 const ItemSizes = props => {
   const _SIZES = ["S", "M", "L", "XL", "XXL"];
+  const dispatch = useDispatch();
+  const selectedSize = useSelector(state => state.selectedProduct.size);
   const _renderSizes = _ => {
     return _SIZES.map((size, index) => {
       return (
         <SizeBox
-          selectedSize={props.selectedSize}
-          onClickFunc={props.onClickFunc}
+          selectedSize={selectedSize}
+          onClickFunc={(name, value) =>
+            dispatch(setSelected({ [name]: value }))
+          }
           key={index}
           size={size}
         />

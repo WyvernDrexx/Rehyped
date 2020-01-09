@@ -27,15 +27,13 @@ const Featured = props => {
   const dispatch = useDispatch();
   const [itemOnCart, setItemOnCart] = useState(false);
   const isRunning = useSelector(state => state.requestStatus.addToCart);
-  const { selectedSize, selectedColor } = useSelector(state => ({
-    selectedSize: state.selectedProduct.size,
+  const { selectedColor } = useSelector(state => ({
     selectedColor: state.selectedProduct.color
   }));
 
   if (productId === "featured") {
     productId = product._id;
   }
-  
   useEffect(
     _ => {
       if (product._id !== productId) {
@@ -137,13 +135,7 @@ const Featured = props => {
                 <h4 className="sub-header mb-1 text-left font-weight-bold">
                   SIZE
                 </h4>
-                <ItemSizes
-                  onClickFunc={(name, value) =>
-                    dispatch(setSelected({ [name]: value }))
-                  }
-                  selectedSize={selectedSize}
-                  className="mt-2 mb-3"
-                />
+                <ItemSizes className="mt-2 mb-3" />
                 <h4 className="sub-header mt-2 text-left font-weight-bold">
                   COLOURS
                 </h4>
