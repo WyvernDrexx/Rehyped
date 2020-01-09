@@ -60,7 +60,7 @@ class Carousel extends React.Component {
         naturalSlideHeight={this.state.heightProportion}
         totalSlides={images.length}
       >
-        <Wrapper innerRef={this.containerRef} {...other}>
+        <Wrapper ref={this.containerRef} {...other}>
           <Slider {...other}>
             {images.map((src, index) => (
               <Slide index={index} key={src}>
