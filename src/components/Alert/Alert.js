@@ -18,8 +18,10 @@ const Alert = props => {
 
   useEffect(
     _ => {
+      console.log("Effect");
       if (message && message !== "") {
         document.getElementById("alert").classList.add("alert-fadein");
+        document.getElementById("timer").classList.add("bottom-timer-bar");
         setIsCrossedClick(false);
         setTimeout(_ => {
           if (!isCrossedClickRef.current) {
@@ -28,14 +30,16 @@ const Alert = props => {
               dispatch(showAlert(""));
               document
                 .getElementById("alert")
-                .classList.remove("alert-fadeout");
-              document.getElementById("alert").classList.remove("alert-fadein");
+                .classList.remove("alert-fadeout", "alert-fadein");
+              document
+                .getElementById("timer")
+                .classList.remove("bottom-timer-bar");
             }, 500);
           }
         }, 3500);
       }
     },
-    [message,dispatch]
+    [message, dispatch]
   );
 
   const renderClassStatus = _ => {
@@ -67,11 +71,11 @@ const Alert = props => {
   const onCrossClick = _ => {
     setIsCrossedClick(true);
     document.getElementById("alert").classList.add("alert-fadeout");
-    setTimeout(_ => {
-      dispatch(showAlert(""));
-      document.getElementById("alert").classList.remove("alert-fadeout");
-      document.getElementById("alert").classList.remove("alert-fadein");
-    }, 500);
+    dispatch(showAlert(""));
+    document
+      .getElementById("alert")
+      .classList.remove("alert-fadeout", "alert-fadein");
+    document.getElementById("timer").classList.remove("bottom-timer-bar");
   };
 
   return ReactDOM.createPortal(
@@ -89,12 +93,13 @@ const Alert = props => {
           <Col
             onClick={onCrossClick}
             xs={1}
-            className="flex-center justify-content-end cursor-pointer alert-close"
+            className="flex-center pr-0 cursor-pointer alert-close"
           >
             <FontAwesomeIcon icon={faTimes} />
           </Col>
         </Row>
       </Col>
+      <div id="timer" className=""></div>
     </div>,
     document.getElementById("alert-root")
   );
