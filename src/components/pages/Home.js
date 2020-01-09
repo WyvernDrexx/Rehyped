@@ -8,7 +8,6 @@ import { DarkButton } from "../stateless/Buttons";
 import Carousel from "../Carousel";
 import Media from "../Media";
 import TriShowCase from "../TriShowcase";
-import SlideCarousel from "../SlideCarousel";
 import ProductItem from "../Item";
 import Subscribe from "../Subscribe";
 
