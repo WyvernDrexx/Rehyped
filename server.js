@@ -6,9 +6,11 @@ const http = require("http");
 const https = require("https");
 const fs = require("fs");
 const compression = require("compression");
+const helmet = require("helmet");
 
 let PORT = process.env.PORT || 3000;
 
+app.use(helmet());
 app.use(express.static(path.join(__dirname, "build")));
 app.use(compression())
 app.get("/*", function(req, res) {

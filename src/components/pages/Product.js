@@ -1,9 +1,8 @@
-import React, {useEffect} from "react";
+import React from "react";
 import { Container, CommonHeader } from "../stateless";
 import SingleProduct from "../Item";
 import Carousel from "../Carousel";
 import Subscribe from "../Subscribe";
-import { useSelector } from "react-redux";
 
 const Product = props => {
   return (

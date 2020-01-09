@@ -22,6 +22,8 @@ import "./Item.scss";
 const Featured = props => {
   let { productId } = useParams();
   productId = productId || props.productId;
+  const productIdRef = React.useRef();
+  productIdRef.current = productId;
   const product = useSelector(state => state.selectedProduct);
   const cartItems = useSelector(state => state.cart);
   const dispatch = useDispatch();
@@ -34,14 +36,14 @@ const Featured = props => {
 
   useEffect(
     _ => {
-      if (product._id !== productId) {
-        dispatch(fetchProduct(productId));
+      if (product._id !== productIdRef.current) {
+        dispatch(fetchProduct(productIdRef.current));
       }
-      if (productId === "featured") {
-        productId = product._id;
+      if (productIdRef.current === "featured") {
+        productIdRef.current = product._id;
       }
     },
-    [productId, dispatch, product._id]
+    [dispatch, product._id]
   );
 
   useEffect(
@@ -53,7 +55,7 @@ const Featured = props => {
 
   useEffect(
     _ => {
-      if (cartItems.some(item => item._id === productId)) {
+      if (cartItems.some(item => item._id === productIdRef.current)) {
         setItemOnCart(true);
       } else {
         setItemOnCart(false);
