@@ -18,28 +18,20 @@ import Login from "../pages/Login";
 import ForgotPassword from "../pages/ForgotPassword";
 import BuyProduct from "../pages/BuyProduct";
 import MyAccount from "../pages/MyAccount";
-import OrdersComplete from "../OrdersComplete";
+import OrdersComplete from '../OrdersComplete';
 
 import { useDispatch, useSelector } from "react-redux";
-import { adminPanel, addProduct, ListProducts } from "../adminComponents";
-import {
-  getToken,
-  verifyToken,
-  removeToken,
-  fetchCartItems
-} from "../../actions";
+import { adminPanel, addProduct, ListProducts } from '../adminComponents';
+import { getToken, verifyToken, removeToken, fetchCartItems } from "../../actions";
 import { useEffect } from "react";
 
 const App = _ => {
   const dispatch = useDispatch();
   const { token, isVerified } = useSelector(state => state.token);
 
-  useEffect(
-    _ => {
-      dispatch(getToken());
-    },
-    [dispatch]
-  );
+  useEffect(_ => {
+    dispatch(getToken());
+  }, [dispatch]);
 
   useEffect(
     _ => {
@@ -53,7 +45,7 @@ const App = _ => {
       if (typeof isVerified !== "undefined" && !isVerified) {
         dispatch(removeToken());
       }
-      if (isVerified) {
+      if(isVerified){
         dispatch(fetchCartItems());
       }
     },
@@ -64,16 +56,7 @@ const App = _ => {
     <Router history={history}>
       <Header />
       <Route exact path="/" component={Home} />
-      <Route
-        onChange={(prevState, nextState) => {
-          if (nextState.location.action !== "POP") {
-            window.scrollTo(0, 0);
-          }
-        }}
-        exact
-        path="/products"
-        component={Products}
-      />
+      <Route exact path="/products" component={Products} />
       <Route exact path="/products/:productId" component={Product} />
       <Route exact path="/mycart" component={MyCart} />
       <Route exact path="/about-us" component={AboutUs} />
@@ -88,17 +71,9 @@ const App = _ => {
       <Route exact path="/orders-succesfull" component={OrdersComplete} />
       <Route exact path="/admin-pannexa" component={adminPanel} />
       <Route exact path="/admin-pannexa/add-product" component={addProduct} />
-      <Route
-        exact
-        path="/admin-pannexa/add-product/:id"
-        component={addProduct}
-      />
-      <Route
-        exact
-        path="/admin-pannexa/list-products"
-        component={ListProducts}
-      />
-
+      <Route exact path="/admin-pannexa/add-product/:id" component={addProduct} />
+      <Route exact path="/admin-pannexa/list-products" component={ListProducts} />
+      
       <Footer />
     </Router>
   );
