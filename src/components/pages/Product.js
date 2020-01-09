@@ -6,12 +6,6 @@ import Subscribe from "../Subscribe";
 import { useSelector } from "react-redux";
 
 const Product = props => {
-  const productId = useSelector(state => state.selectedProduct._id);
-  useEffect( _ => {
-    if(productId){
-      window.scrollTo(0,98);
-    }
-  },[productId])
   return (
     <>
       <div className="pt-6">
