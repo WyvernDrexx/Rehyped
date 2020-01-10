@@ -26,7 +26,7 @@ const Alert = props => {
           setAlertState("alert-fadein");
           setTimerState("bottom-timer-bar");
           setIsAlertRunning(true);
-        }, 400);
+        }, 200);
         setTimeout(_ => {
           setIsAlertRunning(false);
           setAlertState("alert-fadeout");

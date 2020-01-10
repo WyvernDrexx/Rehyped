@@ -42,10 +42,11 @@ $neutralColor: black;
   border-radius: 5px;
   background-color: black;
   margin-top: 14px;
-  animation: timer-bar 3.2s linear 1;
   animation-delay: 300ms;
+  animation: timer-bar 3600ms linear forwards 1;
   width: 0%;
 }
+
 .alert-failure {
   border-left: $leftBorderWidth solid $failureColor !important;
   color: $failureColor;
@@ -111,5 +112,5 @@ $neutralColor: black;
 }
 
 .alert-fadeout {
-  animation: alert-fadeout 300ms 1 ease;
+  animation: alert-fadeout 300ms 1 ease forwards;
 }
