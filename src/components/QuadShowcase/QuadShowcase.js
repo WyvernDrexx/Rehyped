@@ -22,46 +22,42 @@ const QuadShowcase = props => {
   if (props.image) {
     return (
       <>
-        {divIsLoaded ? null : (
+        {/* {divIsLoaded ? null : (
           <Spinner className="absolute-center" animation="border" />
-        )}
+        )} */}
         <Row
           onLoad={divIsMounted}
-          className={`quadshowcase ${divIsLoaded ? "" : "visibility-hidden"}`}
+          className={`quadshowcase `}
         >
           <Col lg={true} className="primary-image px-0">
-            <img
-              alt="This is null"
-              className=""
-              src={`${imagesSrc + props.image}`}
-            />
+            <div className="image-wrapper">
+              <img
+                alt="This is null"
+                className=""
+                src={`${imagesSrc + props.image}`}
+              />
+            </div>
           </Col>
           <Col md={6} lg={4} className="sm-0 px-0 pl-md-2">
             <div className="secondary-image">
               <img
                 alt="This is null"
                 className=""
-                src={
-                  `${imagesSrc + props.image}`
-                }
+                src={`${imagesSrc + props.image}`}
               />
             </div>
             <div className="secondary-image">
               <img
                 alt="This is null"
                 className=""
-                src={
-                  `${imagesSrc + props.image}`
-                }
+                src={`${imagesSrc + props.image}`}
               />
             </div>
             <div className="secondary-image">
               <img
                 alt="This is null"
                 className=""
-                src={
-                  `${imagesSrc + props.image}`
-                }
+                src={`${imagesSrc + props.image}`}
               />
             </div>
           </Col>

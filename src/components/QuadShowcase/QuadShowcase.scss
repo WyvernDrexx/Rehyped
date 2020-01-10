@@ -20,6 +20,19 @@ $quadHeight: 100%;
   }
 }
 
+.image-wrapper{
+  height: 0;
+  position: relative;
+  padding-top: 120%;
+  img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    max-width: 100%;
+    height: auto;
+  }
+}
+
 .secondary-image {
   border: 1px solid $lightColor;
   width: 20%;
