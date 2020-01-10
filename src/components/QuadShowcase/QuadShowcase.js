@@ -3,31 +3,15 @@ import { Col, Row, Spinner } from "react-bootstrap";
 import "./QuadShowcase.scss";
 
 const QuadShowcase = props => {
-  const [divIsLoaded, setDivIsLoaded] = useState(false);
-  const divIsMounted = _ => {
-    setDivIsLoaded(true);
-  };
+
 
   const imagesSrc = process.env.REACT_APP_IMAGES_SRC;
-
-  // useEffect(
-  //   _ => {
-  //     if (divIsLoaded) {
-  //       window.scrollTo(0, 90);
-  //     }
-  //   },
-  //   [divIsLoaded]
-  // );
 
   if (props.image) {
     return (
       <>
-        {/* {divIsLoaded ? null : (
-          <Spinner className="absolute-center" animation="border" />
-        )} */}
         <Row
-          onLoad={divIsMounted}
-          className={`quadshowcase `}
+          className={`quadshowcase`}
         >
           <Col lg={true} className="primary-image px-0">
             <div className="primary-image-wrapper">
