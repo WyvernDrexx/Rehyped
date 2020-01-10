@@ -11,6 +11,11 @@ const fetchShippingDetails = _ => async (dispatch, getState) => {
     token: { token }
   } = getState();
 
+  if (!token) {
+    dispatch(showAlert("Please login to continue.", "failure"));
+    return;
+  }
+
   dispatch(setRequestStatus("fetchShippingDetails", true));
 
   await api
@@ -28,7 +33,7 @@ const fetchShippingDetails = _ => async (dispatch, getState) => {
       }
     })
     .catch(err => {
-      dispatch(showAlert("Please try again later."))
+      dispatch(showAlert("Please try again later."));
     });
 
   dispatch(setRequestStatus("fetchShippingDetails"));
@@ -51,8 +56,13 @@ const onUserSubmit = (target, route) => async (dispatch, getState) => {
     token: { token }
   } = getState();
 
-  dispatch(setRequestStatus("onUserSubmit", true));
+  if (!token) {
+    dispatch(showAlert("Please login to continue.", "failure"));
+    return;
+  }
   
+  dispatch(setRequestStatus("onUserSubmit", true));
+
   await api
     .post(
       route,
@@ -83,7 +93,7 @@ const onUserSubmit = (target, route) => async (dispatch, getState) => {
         }
       });
     });
-    
+
   dispatch(setRequestStatus("onUserSubmit"));
 };
 

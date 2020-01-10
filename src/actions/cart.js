@@ -9,8 +9,19 @@ const addToCart = () => async (dispatch, getState) => {
     selectedProduct
   } = getState();
 
+  if (!token) {
+    dispatch(showAlert("Please login to continue.", "failure"));
+    return;
+  }
   const product = selectedProduct;
-
+  if (!product.size || !product.color) {
+    dispatch(
+      showAlert(
+        "Please select the color and size of the product you are ordering."
+      )
+    );
+    return;
+  }
   dispatch(setRequestStatus("addToCart", true));
 
   await api
@@ -80,7 +91,7 @@ const removeFromCart = id => async (dispatch, getState) => {
 
   if (!token)
     dispatch(showAlert("Please login in order to remove.", "failure"));
-    
+
   dispatch(setRequestStatus("removeFromCart", true));
   await api
     .post(

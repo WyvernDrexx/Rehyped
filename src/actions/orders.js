@@ -9,8 +9,25 @@ import history from "../history";
 import api from "../api";
 import { showAlert, setRequestStatus } from ".";
 
-const buyNow = product => {
+const buyNow = product => (dispatch, getState) => {
+  const {
+    token: { token }
+  } = getState();
+  if (!token) {
+    dispatch(showAlert("Please login to continue.", "failure"));
+    return;
+  }
+
+  if (!product.size || !product.color) {
+    dispatch(
+      showAlert(
+        "Please select the color and size of the product you are ordering."
+      )
+    );
+    return;
+  }
   history.push("/buy-product");
+
   return { type: BUY_NOW, payload: product };
 };
 
@@ -22,6 +39,10 @@ const placeOrder = _ => async (dispatch, getState) => {
     token: { token }
   } = getState();
 
+  if (!token) {
+    dispatch(showAlert("Please login to continue.", "failure"));
+    return;
+  }
   dispatch(setRequestStatus("placeOrder", true));
 
   await api
@@ -56,6 +77,10 @@ const getOrders = _ => async (dispatch, getState) => {
     token: { token }
   } = getState();
   dispatch(setRequestStatus("getOrders", true));
+  if (!token) {
+    dispatch(showAlert("Please login to continue.", "failure"));
+    return;
+  }
   await api
     .get("/orders", {
       headers: {
@@ -78,6 +103,12 @@ const placeOrders = _ => async (dispatch, getState) => {
     cart,
     token: { token }
   } = getState();
+
+  if (!token) {
+    dispatch(showAlert("Please login to continue.", "failure"));
+    return;
+  }
+
   if (!cart || cart.length === 0) {
     dispatch(
       showAlert("Your Cart is empty! Please add some items in order to buy.")

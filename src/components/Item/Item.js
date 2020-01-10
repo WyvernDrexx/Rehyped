@@ -33,7 +33,6 @@ const Featured = props => {
     selectedColor: state.selectedProduct.color
   }));
 
-
   useEffect(
     _ => {
       if (product._id !== productIdRef.current) {
@@ -65,27 +64,11 @@ const Featured = props => {
   );
 
   const onAddToCartClick = _ => {
-    if (product.size && product.color) {
-      dispatch(addToCart(product));
-    } else {
-      dispatch(
-        showAlert(
-          "Please select the color and size of the product you are ordering."
-        )
-      );
-    }
+    dispatch(addToCart(product));
   };
 
   const onBuyItNowClick = _ => {
-    if (product.size && product.color) {
-      dispatch(buyNow(product));
-    } else {
-      dispatch(
-        showAlert(
-          "Please select the color and size of the product you are ordering."
-        )
-      );
-    }
+    dispatch(buyNow(product));
   };
 
   if (Object.values(product).length === 0) {

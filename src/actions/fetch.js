@@ -92,6 +92,11 @@ const removeProduct = id => async (dispatch, getState) => {
     token: { token }
   } = getState();
 
+  if (!token) {
+    dispatch(showAlert("Please login to continue.", "failure"));
+    return;
+  }
+  
   await api
     .post(
       "/products/remove",
