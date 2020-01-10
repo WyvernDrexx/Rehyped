@@ -25,7 +25,8 @@ import {
   FETCH_SHIPPING_DETAILS,
   USER_INPUT_CHANGE,
   UPDATE_USER_RESPONSE,
-  CLOSE_ALERT
+  CLOSE_ALERT,
+  IS_ONLINE
 } from "../actions/types";
 
 const productsReducer = (state = [], action) => {
@@ -176,6 +177,17 @@ const userReducer = (state = {}, action) => {
   }
 };
 
+
+const isOnlineReducer = (state=true, action) => {
+  switch (action.type) {
+    case IS_ONLINE:
+      return action.payload;
+    default:
+      return state;
+  }
+}
+
+
 export default combineReducers({
   products: productsReducer,
   selectedProduct: productReducer,
@@ -186,5 +198,6 @@ export default combineReducers({
   token: tokenReducer,
   requestStatus: requestStatusReducer,
   orders: ordersReducer,
-  user: userReducer
+  user: userReducer,
+  isOnline: isOnlineReducer
 });

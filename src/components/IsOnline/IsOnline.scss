@@ -1,0 +1,42 @@
+.browser-status {
+  padding: 10px;
+  background-color: crimson;
+  color: white;
+  z-index: 100;
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  left: 0;
+  right: 0;
+  transform: translateY(100px);
+  p {
+    color: white;
+  }
+}
+
+.isOnline{
+  animation: animate-isOnline 500ms linear 1 forwards;
+}
+
+.isOffline{
+  animation: animate-isOffline 500ms linear 1 forwards;
+}
+
+@keyframes animate-isOffline {
+  0% {
+    transform: translateY(100px);
+  }
+  100% {
+    transform: translateY(-0px);
+  }
+}
+
+
+@keyframes animate-isOnline {
+  0% {
+    transform: translateY(-0px);
+  }
+  100% {
+    transform: translateY(100px);
+  }
+}

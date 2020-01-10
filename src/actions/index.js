@@ -6,6 +6,7 @@ import requestStatus from "./requestStatus";
 import orders from "./orders";
 import user from "./user";
 import alert from "./alert";
+import misc from "./misc";
 
 export const {
   fetchProduct,
@@ -23,3 +24,4 @@ export const { setToken, getToken, verifyToken, removeToken } = token;
 export const { setRequestStatus } = requestStatus;
 export const { buyNow, placeOrder, getOrders, placeOrders } = orders;
 export const { fetchShippingDetails, onUserInputChange, onUserSubmit } = user;
+export const { setIsOnline } = misc;

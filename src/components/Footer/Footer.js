@@ -6,6 +6,7 @@ import {
   faInstagram,
   faFacebook
 } from "@fortawesome/free-brands-svg-icons";
+import IsOnline from '../IsOnline';
 
 import { Row, Col } from "react-bootstrap";
 
@@ -54,6 +55,7 @@ const Header = props => {
           </Row>
         </Col>
       </div>
+      <IsOnline />
     </div>
   );
 };
