@@ -30,7 +30,7 @@ const QuadShowcase = props => {
           className={`quadshowcase `}
         >
           <Col lg={true} className="primary-image px-0">
-            <div className="image-wrapper">
+            <div className="primary-image-wrapper">
               <img
                 alt="This is null"
                 className=""

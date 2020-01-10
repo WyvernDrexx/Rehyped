@@ -20,7 +20,7 @@ $quadHeight: 100%;
   }
 }
 
-.image-wrapper{
+.primary-image-wrapper{
   height: 0;
   position: relative;
   padding-top: 120%;
@@ -34,8 +34,11 @@ $quadHeight: 100%;
 }
 
 .secondary-image {
-  border: 1px solid $lightColor;
+  position: relative;
+  border: 1px solid rgb(199, 197, 197);
   width: 20%;
+  height: 0;
+  padding-top: 23.4%;
   margin-top: 5px;
   margin-right: 5px;
   display: inline-block;
@@ -43,6 +46,7 @@ $quadHeight: 100%;
     margin-top: 0px;
     margin-bottom: 6px;
     width: 25%;
+    padding-top: 38.5%;
     // height: 6rem;
   }
   @include lg{
@@ -52,5 +56,10 @@ $quadHeight: 100%;
   }
   img{
     width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    max-width: 100%;
+    height: auto;
   }
 }
