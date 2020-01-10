@@ -1,3 +1,4 @@
+@import "../../assets/styles/mixins";
 $leftBorderWidth: 12px;
 $failureColor: #ff2638;
 $successColor: #28a745;
@@ -20,7 +21,9 @@ $neutralColor: black;
   top: 0;
   left: 0;
   right: 0;
-
+  @include md{
+    width: 50vw;
+  }
   p {
     letter-spacing: 1.3px;
     font-size: 14.7px;
@@ -39,7 +42,9 @@ $neutralColor: black;
   border-radius: 5px;
   background-color: black;
   margin-top: 14px;
-  animation: timer-bar 3.5s linear 1 forwards;
+  animation: timer-bar 3.2s linear 1;
+  animation-delay: 300ms;
+  width: 0%;
 }
 .alert-failure {
   border-left: $leftBorderWidth solid $failureColor !important;
