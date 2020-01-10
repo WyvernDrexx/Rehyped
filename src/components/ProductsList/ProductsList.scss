@@ -6,12 +6,29 @@
 }
 
 .product-item{
+  position: relative;
+  padding-top: 56%;
   cursor: pointer;
   padding-left: 15px;
   padding-right: 15px;
   transition-duration: 300ms;
   border-bottom: 3px solid white;
   padding-bottom: 15px;
+
+  @include sm{
+    padding-top: 39%;
+  }
+  @include md{
+    padding-top: 40%;
+  }
+  @include lg{
+    padding-top: 30%;
+  }
+  .image-row{
+    position: absolute;
+    top: 0;
+  }
+
   img{
     width: 100%;
   }
@@ -27,18 +44,7 @@
     align-items: center;
     margin: 0px;
   }
-  &:nth-child(even) {
-    padding-left: 8px;
-    @include md{
-      padding: 10px;
-    }
-  }
-  &:nth-child(odd) {
-    padding-right: 8px;
-    @include md{
-      padding: 10px;
-    }
-  }
+
   &:hover{
     border-bottom: 3px solid #ec4f4f;
     img{
