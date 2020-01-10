@@ -15,7 +15,7 @@ const IsOnline = props => {
 
   return (
     <div className="pt-3">
-      <div className={`browser-status ${true?"isOffline":"isOnline"}`}>
+      <div className={`browser-status ${!isOnline?"isOffline":"isOnline"}`}>
         <p className="sub-header">NO NETWORK ACCESS</p>
       </div>
     </div>
