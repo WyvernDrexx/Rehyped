@@ -2,47 +2,50 @@ import React, { useEffect, useState, useRef } from "react";
 import { useSelector } from "react-redux";
 import ReactDOM from "react-dom";
 import "./Alert.scss";
-import { showAlert } from "../../actions";
+import { closeAlert } from "../../actions";
 import { useDispatch } from "react-redux";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { Col, Row } from "react-bootstrap";
 // 50 chars allowed
 const Alert = props => {
-  const { message, status } = useSelector(state => state.alert);
-  const [isCrossedClick, setIsCrossedClick] = useState(false);
+  const alerts = useSelector(state => state.alert);
+  const [messageState, setMessageState] = useState({
+    message: "Welcome!",
+    status: "neutral",
+    dialog: "INFO"
+  });
+  const [alertState, setAlertState] = useState("");
+  const [timerState, setTimerState] = useState("");
+  const [isAlertRunning, setIsAlertRunning] = useState(false);
   const dispatch = useDispatch();
-
-  const isCrossedClickRef = useRef(isCrossedClick);
-  isCrossedClickRef.current = isCrossedClick;
 
   useEffect(
     _ => {
-      console.log("Effect");
-      if (message && message !== "") {
-        document.getElementById("alert").classList.add("alert-fadein");
-        document.getElementById("timer").classList.add("bottom-timer-bar");
-        setIsCrossedClick(false);
+      if (alerts && alerts.length > 0 && !isAlertRunning) {
+        setMessageState(alerts[0]);
         setTimeout(_ => {
-          if (!isCrossedClickRef.current) {
-            document.getElementById("alert").classList.add("alert-fadeout");
-            setTimeout(_ => {
-              dispatch(showAlert(""));
-              document
-                .getElementById("alert")
-                .classList.remove("alert-fadeout", "alert-fadein");
-              document
-                .getElementById("timer")
-                .classList.remove("bottom-timer-bar");
-            }, 500);
-          }
-        }, 3500);
+          setAlertState("alert-fadein");
+          setTimerState("bottom-timer-bar");
+          setIsAlertRunning(true);
+        }, 400);
+        setTimeout(_ => {
+          setIsAlertRunning(false);
+          setAlertState("alert-fadeout");
+          setTimerState("");
+          dispatch(closeAlert());
+        }, 3900);
       }
     },
-    [message, dispatch]
+    [alerts]
   );
 
-  const renderClassStatus = _ => {
+  useEffect(
+    _ => {
+      console.log("IS ALERT RUNNING?:", isAlertRunning);
+    },
+    [isAlertRunning]
+  );
+
+  const renderClassStatus = status => {
     switch (status) {
       case "neutral":
         return " alert-neutral ";
@@ -51,11 +54,11 @@ const Alert = props => {
       case "success":
         return " alert-success ";
       default:
-        return "";
+        return "alert-neutral";
     }
   };
 
-  const renderStatusDialog = _ => {
+  const renderStatusDialog = status => {
     switch (status) {
       case "neutral":
         return "INFO";
@@ -68,38 +71,26 @@ const Alert = props => {
     }
   };
 
-  const onCrossClick = _ => {
-    setIsCrossedClick(true);
-    document.getElementById("alert").classList.add("alert-fadeout");
-    dispatch(showAlert(""));
-    document
-      .getElementById("alert")
-      .classList.remove("alert-fadeout", "alert-fadein");
-    document.getElementById("timer").classList.remove("bottom-timer-bar");
-  };
-
   return ReactDOM.createPortal(
-    <div id="alert" className={`alert-snackbar  ${renderClassStatus()}`}>
+    <div
+      id="alert"
+      className={`alert-snackbar ${renderClassStatus(
+        messageState.status
+      )} ${alertState}`}
+    >
       <Col>
         <Row>
           <Col className="">
             <Row>
-              <span>{renderStatusDialog()}</span>
+              <span>{renderStatusDialog(messageState.status)}</span>
             </Row>
             <Row>
-              <p className="">{message ? message : "NULL"}</p>
+              <p className="">{messageState.message}</p>
             </Row>
-          </Col>
-          <Col
-            onClick={onCrossClick}
-            xs={1}
-            className="flex-center pr-0 cursor-pointer alert-close"
-          >
-            <FontAwesomeIcon icon={faTimes} />
           </Col>
         </Row>
       </Col>
-      <div id="timer" className=""></div>
+      <div id="timer" className={timerState}></div>
     </div>,
     document.getElementById("alert-root")
   );

@@ -24,7 +24,8 @@ import {
   PLACE_ORDERS,
   FETCH_SHIPPING_DETAILS,
   USER_INPUT_CHANGE,
-  UPDATE_USER_RESPONSE
+  UPDATE_USER_RESPONSE,
+  CLOSE_ALERT
 } from "../actions/types";
 
 const productsReducer = (state = [], action) => {
@@ -79,14 +80,17 @@ const cartReducers = (state = [], action) => {
   }
 };
 
-const alertReducer = (state = {}, action) => {
+const alertReducer = (state = [], action) => {
   switch (action.type) {
     case ALERT_SHOW:
-      return {...action.payload};
+      return [...state,action.payload];
+    case CLOSE_ALERT:
+      return action.payload;
     default:
       return state;
   }
 };
+
 const INITIAL_FORM_STATE = _ => {
   return {
     stock: 10,

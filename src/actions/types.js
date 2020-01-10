@@ -17,6 +17,7 @@ export const FETCH_CART = "FETCH_CART";
 
 //
 export const ALERT_SHOW = "ALERT_SHOW";
+export const CLOSE_ALERT = "CLOSE_ALERT";
 // FORMS ACTIONS
 export const INPUT_CHANGE = "INPUT_CHANGE";
 export const FORM_SUBMIT = "FORM_SUBMIT";
