@@ -25,13 +25,14 @@
   }
 
   @include lg {
-    padding-top: 30%;
+    padding-top: 33%;
   }
 
   .carousel-root {
     position: absolute;
     top: 0;
     left: 0;
+    padding-left: 22px;
   }
   .item {
     max-width: 15rem;
@@ -39,11 +40,11 @@
     display: inline-block;
     cursor: pointer;
     @include lg {
-      margin-right: 6.5rem;
+      margin-right: 7.8rem;
     }
     @include lmd {
       &:last-child {
-        margin-right: 3rem;
+        margin-right: 2.5rem;
       }
     }
   }

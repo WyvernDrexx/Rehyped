@@ -24,6 +24,9 @@ $quadHeight: 100%;
   height: 0;
   position: relative;
   padding-top: 120%;
+  @include md{
+    padding-top: 122%;
+  }
   img{
     position: absolute;
     top: 0;
@@ -46,12 +49,12 @@ $quadHeight: 100%;
     margin-top: 0px;
     margin-bottom: 6px;
     width: 25%;
-    padding-top: 38.5%;
+    padding-top: 29.5%;
     // height: 6rem;
   }
   @include lg{
     // height: 7.34rem;
-    width: 33.335%;
+    width: 25.335%;
     display: block;
   }
   img{
