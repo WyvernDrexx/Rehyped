@@ -17,7 +17,6 @@ const SlideShow = props => {
   }
 
   const showSlides = n => {
-    console.log("hit");
     var i;
     var slides = document.getElementsByClassName("slide-image");
     var dots = document.getElementsByClassName("dot");
@@ -42,7 +41,7 @@ const SlideShow = props => {
   }, []);
 
   return (
-    <Container className="mt-5">
+    <Container className="px-0">
       <div className="slideshow-container">
         <div className="slide-image slide-fade">
           <img src="/imgs/wide1.jpg" alt="Slide Number 1" />

@@ -1,11 +1,16 @@
+@import '../../assets/styles/mixins';
+
 .slideshow-container {
   position: relative;
   margin: auto;
+  @include lg{
+    margin-top: 3rem;
+  }
   .slide-image {
     display: none;
     img {
+      // 1920x600
       width: 100%;
-      border-radius: 3px;
       background-color: black;
     }
   }
@@ -16,14 +21,19 @@
     position: absolute;
     top: 50%;
     width: auto;
-    margin-top: -22px;
-    padding: 16px;
+    margin-top: -10px;
+    padding: 6px;
     color: white;
     font-weight: bold;
-    font-size: 18px;
+    font-size: 8px;
     transition: 0.6s ease;
     border-radius: 0 3px 3px 0;
     user-select: none;
+    @include lg{
+      margin-top: -22px;
+      padding: 16px;
+      font-size: 18px;
+    }
   }
   .next {
     right: 0;
@@ -67,17 +77,25 @@
   left: 0;
   right: 0;
   margin: auto;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
+  @include lg{
+    margin-bottom: 20px;
+  }
 }
 .dot {
   cursor: pointer;
-  height: 15px;
-  width: 15px;
-  margin-right: 8px;
+  height: 8px;
+  width: 8px;
+  margin-right: 4px;
   background-color: rgb(117, 116, 116);
   border-radius: 50%;
   display: inline-block;
   transition: background-color 0.6s ease;
+  @include lg{
+
+    height: 15px;
+    width: 15px;
+  }
 }
 
 .active,
