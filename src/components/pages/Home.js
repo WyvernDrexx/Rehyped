@@ -10,11 +10,13 @@ import Media from "../Media";
 import TriShowCase from "../TriShowcase";
 import ProductItem from "../Item";
 import Subscribe from "../Subscribe";
+import SlideShow from "../SlideShow";
 
 const Home = props => {
   return (
     <>
-      <Container className="mt-6 mb-4">
+    <SlideShow />
+      <Container className="mt-5 mb-4">
         <CommonHeader
           header="NEW ARRIVALS"
           subheader="CHECKOUT OUR LATEST CREATIONS"
