@@ -7,7 +7,7 @@ const SlideShow = props => {
   var slideIndex = 1;
 
   // Next/previous controls
-  function plusSlides(n) {
+  function plusSlides(n=1) {
     showSlides((slideIndex += n));
   }
 
@@ -34,6 +34,8 @@ const SlideShow = props => {
     }
     slides[slideIndex - 1].style.display = "block";
     dots[slideIndex - 1].className += " active";
+    setTimeout(plusSlides,3000);
+
   };
 
   useEffect(_ => {
@@ -44,7 +46,7 @@ const SlideShow = props => {
     <Container className="px-0">
       <div className="slideshow-container">
         <div className="slide-image slide-fade">
-          <img src="/imgs/wide1.jpg" alt="Slide Number 1" />
+          <img src="/imgs/wide0.jpg" alt="Slide Number 1" />
         </div>
         <div className="slide-image slide-fade">
           <img src="/imgs/wide2.jpg" alt="Slide Number 1" />

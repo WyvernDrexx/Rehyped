@@ -4,13 +4,16 @@
   position: relative;
   margin: auto;
   @include lg{
-    margin-top: 3rem;
+    margin-top: 1.7rem;
   }
   .slide-image {
     display: none;
     img {
-      // 1920x600
+      // 1920x1000
       width: 100%;
+      max-width: 1000px;
+      display: block;
+      margin: auto;
       background-color: black;
     }
   }
@@ -21,11 +24,11 @@
     position: absolute;
     top: 50%;
     width: auto;
-    margin-top: -10px;
+    margin-top: -19px;
     padding: 6px;
     color: white;
     font-weight: bold;
-    font-size: 8px;
+    font-size: 16px;
     transition: 0.6s ease;
     border-radius: 0 3px 3px 0;
     user-select: none;
@@ -84,13 +87,14 @@
 }
 .dot {
   cursor: pointer;
-  height: 8px;
-  width: 8px;
+  height: 10px;
+  width: 10px;
   margin-right: 4px;
   background-color: rgb(117, 116, 116);
   border-radius: 50%;
   display: inline-block;
   transition: background-color 0.6s ease;
+  opacity: 0.7;
   @include lg{
 
     height: 15px;
