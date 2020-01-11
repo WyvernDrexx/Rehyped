@@ -36,6 +36,12 @@ const Featured = props => {
     _ => {
       if (product._id !== productIdRef.current) {
         dispatch(fetchProduct(productIdRef.current));
+        if (productIdRef.current !== "featured") {
+          window.scrollTo({
+            top: 97,
+            left: 0
+          });
+        }
       }
       if (productIdRef.current === "featured") {
         productIdRef.current = product._id;

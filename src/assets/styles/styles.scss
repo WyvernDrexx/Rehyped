@@ -2,11 +2,6 @@
 @import "./breakpoints";
 @import "./mixins";
 @import "./text";
-/* Colors related */
-
-html {
-  scroll-behavior: smooth;
-}
 
 * {
   transition-duration: 300ms;
