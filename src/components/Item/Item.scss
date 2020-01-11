@@ -1,27 +1,35 @@
 @import "../../assets/styles/mixins";
 
-.item-wrapper{
+.item-wrapper {
   height: 0;
   margin-top: 1rem;
   position: relative;
   padding-top: 300%;
-  @include md{
+  @include md {
     padding-top: 40%;
+  }
+  .spinner-border {
+    z-index: 100;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: auto;
+
   }
 }
 
-.item-root{
+.item-root {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   max-width: 100%;
   height: auto;
-  .item-name{
+  .item-name {
     font-size: 12px;
     letter-spacing: 6px;
   }
-  .item-price{
+  .item-price {
     font-size: 12px;
     letter-spacing: 6px;
   }
