@@ -5,7 +5,19 @@
   margin-top: 1rem;
   position: relative;
   padding-top: 300%;
-  @include md {
+
+  @include xs{
+    padding-top: 280%;
+  }
+  @include sm{
+    padding-top: 240%;
+  }
+
+  @include md{
+    padding-top: 200%;
+  }
+
+  @include lg{
     padding-top: 40%;
   }
   .spinner-border {
