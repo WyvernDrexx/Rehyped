@@ -10,22 +10,29 @@ const Carousel = props => {
   const dispatch = useDispatch();
   const relatedItem = useSelector(state => state.relatedItem);
 
-  useEffect(_ => {
-    dispatch(fetchRelated());
-  }, [dispatch]);
-  
-  if (!relatedItem ||  relatedItem.length === 0) {
-    return <Spinner animation="border" className="block-center" />;
-  }
+  useEffect(
+    _ => {
+      dispatch(fetchRelated());
+    },
+    [dispatch]
+  );
 
-
-  return (
-    <>
-      <div className="carousel-custom container">
+  const renderItemList = _ => {
+    if (!relatedItem || relatedItem.length === 0) {
+      return <Spinner animation="border" />;
+    }
+    return (
+      <div className="carousel-root">
         {relatedItem.map((item, index) => {
           return <CarouselItem key={index} item={item} />;
         })}
       </div>
+    );
+  };
+
+  return (
+    <>
+      <div className="carousel-custom container">{renderItemList()}</div>
     </>
   );
 };
@@ -51,7 +58,7 @@ const CarouselItem = props => {
 
   return (
     <div className="d-inline" onClick={onClick}>
-      <div className="item position-relative">
+      <div className="item">
         <div className="position-relative" onLoad={onLoad}>
           {isImgLoaded ? null : (
             <Spinner className="absolute-center" animation="border" />

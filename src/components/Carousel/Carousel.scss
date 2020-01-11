@@ -1,5 +1,5 @@
 @import "../../assets/styles/mixins";
-@import "../../assets/styles/variables";;
+@import "../../assets/styles/variables";
 
 .carousel-custom {
   width: 100%;
@@ -7,17 +7,43 @@
   white-space: nowrap;
   padding-bottom: 2rem;
   padding-left: 7.5%;
+  position: relative;
+  padding-top: 100%;
+  
+  .spinner-border {
+    z-index: 100;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: auto;
+  }
+  @include sm {
+    padding-top: 55%;
+  }
 
+  @include md {
+    padding-top: 50%;
+  }
+
+  @include lg {
+    padding-top: 30%;
+  }
+
+  .carousel-root {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
   .item {
     max-width: 15rem;
     margin: 15px;
     display: inline-block;
     cursor: pointer;
-    @include lg{
+    @include lg {
       margin-right: 6.5rem;
     }
-    @include lmd{
-      &:last-child{
+    @include lmd {
+      &:last-child {
         margin-right: 3rem;
       }
     }
