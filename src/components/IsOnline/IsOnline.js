@@ -11,7 +11,7 @@ const IsOnline = props => {
     setInterval(_ => {
       dispatch(setIsOnline());
     }, 1500);
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="pt-3">

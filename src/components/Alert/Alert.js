@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import ReactDOM from "react-dom";
 import "./Alert.scss";
@@ -35,14 +35,7 @@ const Alert = props => {
         }, 3900);
       }
     },
-    [alerts]
-  );
-
-  useEffect(
-    _ => {
-      console.log("IS ALERT RUNNING?:", isAlertRunning);
-    },
-    [isAlertRunning]
+    [alerts, dispatch]
   );
 
   const renderClassStatus = status => {

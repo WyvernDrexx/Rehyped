@@ -3,7 +3,7 @@ import { Container, CommonHeader, ErrorBlock, SuccessBlock } from "../stateless"
 import { DarkButton, PrimaryButton } from "../stateless/Buttons";
 import { Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { onFormSubmit, onInputChange, showAlert } from "../../actions";
+import { onFormSubmit, onInputChange } from "../../actions";
 import { useDispatch, useSelector } from "react-redux";
 
 const ContactUs = props => {
@@ -12,8 +12,7 @@ const ContactUs = props => {
   const dispatch = useDispatch();
   
   const onSubmit = _ => {
-    // dispatch(onFormSubmit("/contact-us"));
-    dispatch(showAlert("Test Message"))
+    dispatch(onFormSubmit("/contact-us"));
   };
   
   const onChange = ({name, value}) => {

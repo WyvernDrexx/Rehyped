@@ -8,7 +8,6 @@ import {
   addToCart,
   clearSelected,
   setSelected,
-  showAlert,
   buyNow
 } from "../../actions";
 import QuadShowcase from "../QuadShowcase";
