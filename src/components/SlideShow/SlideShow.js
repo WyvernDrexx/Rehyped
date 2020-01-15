@@ -20,6 +20,7 @@ const SlideShow = props => {
     var i;
     var slides = document.getElementsByClassName("slide-image");
     var dots = document.getElementsByClassName("dot");
+    if(slides || slides.length < 1) return
     if (n > slides.length) {
       slideIndex = 1;
     }
@@ -35,7 +36,6 @@ const SlideShow = props => {
     slides[slideIndex - 1].style.display = "block";
     dots[slideIndex - 1].className += " active";
     setTimeout(plusSlides,3000);
-
   };
 
   useEffect(_ => {

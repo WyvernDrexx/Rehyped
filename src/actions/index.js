@@ -15,7 +15,8 @@ export const {
   removeProduct,
   clearSelected,
   setSelected,
-  fetchMore
+  fetchMore,
+  sendRequest
 } = fetch;
 export const { showAlert, closeAlert } = alert;
 export const { addToCart, fetchCartItems, removeFromCart } = cart;

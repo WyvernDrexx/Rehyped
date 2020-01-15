@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Card, Button, Spinner } from "react-bootstrap";
-import { removeProduct } from "../../../actions";
+import { removeProduct, sendRequest, fetchProducts } from "../../../actions";
 import { Link } from "react-router-dom";
 import AddImages from "../AddImages";
 
@@ -9,10 +9,12 @@ import "./ListProducts.scss";
 
 const SingleItem = props => {
   const dispatch = useDispatch();
+  const isActionRunning = useSelector(state => state.requestStatus.productAction);
   const [showConfirmation, setshowConfirmation] = useState(false);
   const [showAddImages, setShowAddImages] = useState(false);
-
+  const [confirmation, setConfirmation] = useState({});
   const [showSpinner, setShowSpinner] = useState(false);
+  const imageSrc = process.env.REACT_APP_IMAGES_SRC;
 
   const toggleConfirmation = _ => {
     setshowConfirmation(!showConfirmation);
@@ -23,13 +25,37 @@ const SingleItem = props => {
     dispatch(removeProduct(_id));
   };
 
-  const { name, _id, image } = props.item;
+
+  const { name, _id, image, isPublished } = props.item;
+
+  const onAction = _ => {
+    setShowSpinner(true);
+    dispatch(sendRequest("GET", `/products/publish/${_id}`));
+  }
+
+  useEffect(_ => {
+    if(typeof isActionRunning !== 'undefined')
+      dispatch(fetchProducts());
+  }, [isActionRunning])
+
+  useEffect(
+    _ => {
+      if (confirmation.message) {
+        setshowConfirmation(true);
+      }
+    },
+    [confirmation.message]
+  );
 
   const renderConfirmation = _ => {
     return showConfirmation ? (
       <div className="confirm-remove">
-        <p className="text-white">Are you sure you want to delete?</p>
-        <Button onClick={onRemove} className="mt-3" variant="danger">
+        <p className="text-white">{confirmation.message}</p>
+        <Button
+          onClick={confirmation.onClickHandler}
+          className="mt-3"
+          variant="danger"
+        >
           YES
           {showSpinner ? (
             <Spinner className="ml-2" animation="border" size="sm" />
@@ -44,6 +70,13 @@ const SingleItem = props => {
         </Button>
       </div>
     ) : null;
+  };
+
+  const setConfirmationData = (message, onClickHandler) => {
+    setConfirmation({
+      message,
+      onClickHandler
+    });
   };
 
   const renderAddImages = _ => {
@@ -65,17 +98,16 @@ const SingleItem = props => {
       className="mb-5 mr-3 m-auto d-sm-inline-block m-sm-3"
       style={{ width: "15rem" }}
     >
-      <Card.Img
-        variant="top"
-        src={
-          image
-            ? `http://localhost:8000/images/products/${image}`
-            : "http://localhost:8000/images/products/IMAGE-1577517957411.jpg"
-        }
-      />
+      <Card.Img variant="top" src={`${imageSrc}/${image}`} />
       <Card.Body>
         <Card.Title>{name}</Card.Title>
-        <Button onClick={toggleConfirmation} className="mt-3" variant="danger">
+        <Button
+          onClick={_ =>
+            setConfirmationData("Are you sure you want to delete?", onRemove)
+          }
+          className="mt-3"
+          variant="danger"
+        >
           Remove
         </Button>
         <Button
@@ -90,7 +122,17 @@ const SingleItem = props => {
             Edit
           </Button>
         </Link>
-
+        <Button
+          onClick={_ =>
+            setConfirmationData(
+              `Are you sure you want to ${isPublished?"unpublish":"publish"} this item?`, onAction
+            )
+          }
+          className="mt-3 ml-2 bg-danger"
+          variant="info"
+        >
+          {isPublished ? "UNPUBLISH" : "PUBLISH"}
+        </Button>
         {renderConfirmation()}
         {renderAddImages()}
       </Card.Body>

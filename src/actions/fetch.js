@@ -9,7 +9,7 @@ import {
 import api from "../api";
 import { showAlert, setRequestStatus } from ".";
 
-const fetchProducts = _ => async dispatch => {
+const fetchProducts = (param = "") => async dispatch => {
   await api
     .get("/products")
     .then(resp => {
@@ -96,7 +96,7 @@ const removeProduct = id => async (dispatch, getState) => {
     dispatch(showAlert("Please login to continue.", "failure"));
     return;
   }
-  
+
   await api
     .post(
       "/products/remove",
@@ -144,6 +144,37 @@ const fetchMore = (slot = 1) => async (dispatch, getState) => {
   dispatch(setRequestStatus("fetchMore"));
 };
 
+const sendRequest = (method, url, data = {}) => async (dispatch, getState) => {
+  const {
+    token: { token }
+  } = getState();
+
+  if (!token) {
+    dispatch(showAlert("Please login to continue.", "failure"));
+    return;
+  }
+  dispatch(setRequestStatus("productAction", true));
+  await api
+    .get(url, {
+      method,
+      data,
+      headers: {
+        Authorization: "Bearer " + token
+      }
+    })
+    .then(resp => {
+      if (resp.data.message && resp.data.status !== 200) {
+        dispatch(showAlert(resp.data.message, "failure"));
+      } else {
+        dispatch(showAlert(resp.data.message, "success"));
+      }
+    })
+    .catch(_ => {
+      dispatch(showAlert("Unable to send requests!", "failure"));
+    });
+  dispatch(setRequestStatus("productAction"));
+};
+
 export default {
   removeProduct,
   fetchProduct,
@@ -151,5 +182,6 @@ export default {
   fetchRelated,
   clearSelected,
   setSelected,
-  fetchMore
+  fetchMore,
+  sendRequest
 };

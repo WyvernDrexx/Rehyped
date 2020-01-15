@@ -22,7 +22,7 @@ const Products = props => {
         <CommonHeader
           className=""
           header="MERCH"
-          subheader="ANDROCRUNCH ORIGINALS"
+          subheader="REHYPED ORIGINALS"
         />
         <SearchBar className="mt-5 mb-5" />
         <ProductsList />
