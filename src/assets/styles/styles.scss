@@ -189,6 +189,10 @@ button {
   border-bottom: 1px solid lightgray;
 }
 
+.divider-dark{
+  border-bottom: 1px solid rgb(133, 132, 132);
+}
+
 .footer-link {
   color: $secondaryColor;
   letter-spacing: $defaultLetterSpacing;

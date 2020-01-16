@@ -1,0 +1,27 @@
+.order-details{
+  position: fixed;
+  background-color: rgba(216, 216, 216, 0.877);
+  width: 100vw;
+  height: 100vh;
+  padding: 20px 30px;
+  border-radius: 5px;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.2);
+  .details-head{
+    color: rgb(71, 71, 71);
+    text-align: center;
+    letter-spacing: 0.5px;
+    font-size: 20px;
+  }
+  p{
+    color: rgb(7, 7, 7);
+    font-weight: bold;
+    margin: 3px 0px;
+    span{
+      font-weight: normal;
+      color: rgb(47, 120, 255);
+    }
+  }
+}

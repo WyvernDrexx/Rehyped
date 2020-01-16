@@ -21,7 +21,7 @@ import MyAccount from "../pages/MyAccount";
 import OrdersComplete from '../OrdersComplete';
 
 import { useDispatch, useSelector } from "react-redux";
-import { adminPanel, addProduct, ListProducts } from '../adminComponents';
+import { adminPanel, addProduct, ListProducts, ListOrders } from '../adminComponents';
 import { getToken, verifyToken, removeToken, fetchCartItems } from "../../actions";
 import { useEffect } from "react";
 
@@ -72,6 +72,7 @@ const App = _ => {
       <Route exact path="/admin-pannexa" component={adminPanel} />
       <Route exact path="/admin-pannexa/add-product" component={addProduct} />
       <Route exact path="/admin-pannexa/add-product/:id" component={addProduct} />
+      <Route exact path="/admin-pannexa/list-orders" component={ListOrders} />
       <Route exact path="/admin-pannexa/list-products/:section" component={ListProducts} />
       <Footer />
     </Router>
