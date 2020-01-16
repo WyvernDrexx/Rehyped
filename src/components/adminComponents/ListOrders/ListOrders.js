@@ -38,16 +38,48 @@ const ListOrders = props => {
     [token.isAdmin, token.token]
   );
 
+  const onProductDeliveredClick = async id => {
+    await api
+      .post(
+        "/orders/totalrecall/delivered",
+        { _id: id },
+        {
+          headers: {
+            Authorization: "Bearer " + token.token
+          }
+        }
+      )
+      .then(resp => {
+        if(resp.data.status === 200){
+          dispatch(showAlert("Item is now DELIVERED.", "success"));
+          const newOrders = orders.map(item => {
+            if(item._id === resp.data.item._id){
+              return { ...item, ...resp.data.item };
+            }
+            return item;
+          });
+          setOrders(newOrders);
+        }
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
   if (!token.isAdmin) {
     return null;
   }
   return (
     <Container className="mt-5 mb-5">
-      {
-        orders.map((item,index) => {
-          return <OrderItem key={index} item={item} />
-        })
-      }
+      {orders.map((item, index) => {
+        return (
+          <OrderItem
+            onProductDelivered={onProductDeliveredClick}
+            key={index}
+            item={item}
+          />
+        );
+      })}
     </Container>
   );
 };
