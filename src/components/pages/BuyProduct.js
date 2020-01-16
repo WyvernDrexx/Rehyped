@@ -10,13 +10,13 @@ export default _ => {
     state => state.requestStatus.placeOrder
   );
   const dispatch = useDispatch();
-
+  const imgSrc = process.env.REACT_APP_IMAGES_SRC;
   const onPlacingOrder = _ => {
     dispatch(placeOrder());
   };
 
   useEffect(_ => {
-    window.scrollTo(0, 550);
+    window.scrollTo(0, 310);
   }, []);
 
   if (toBuyProduct && toBuyProduct._id) {
@@ -26,7 +26,7 @@ export default _ => {
           <Card className="block-center" style={{ width: "18rem" }}>
             <Card.Img
               variant="top"
-              src={`http://localhost:8000/images/products/${toBuyProduct.image}`}
+              src={`${imgSrc}/${toBuyProduct.image}`}
             />
             <Card.Body>
               <Card.Title>{toBuyProduct.name}</Card.Title>

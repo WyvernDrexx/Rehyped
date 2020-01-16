@@ -38,7 +38,7 @@ const Featured = props => {
         dispatch(fetchProduct(productIdRef.current));
         if (productIdRef.current !== "featured") {
           window.scrollTo({
-            top: 97,
+            top: 147,
             left: 0
           });
         }

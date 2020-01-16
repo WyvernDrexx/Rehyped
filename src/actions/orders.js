@@ -27,8 +27,7 @@ const buyNow = product => (dispatch, getState) => {
     return;
   }
   history.push("/buy-product");
-
-  return { type: BUY_NOW, payload: product };
+  dispatch({ type: BUY_NOW, payload: product });
 };
 
 const placeOrder = _ => async (dispatch, getState) => {

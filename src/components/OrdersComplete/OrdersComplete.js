@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 const OrdersComplete = props => {
 
   useEffect(_ => {
-    
+    window.scrollTo(0,0);
   }, [])
 
   return (
