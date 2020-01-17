@@ -74,7 +74,7 @@ const CarouselItem = props => {
           className={`product-details ${isLoaded ? "" : "visibility-hidden"}`}
         >
           <p className="product-name">{item.name}</p>
-          <p className="product-price">${item.price}</p>
+          <p className="product-price">₹{item.price}</p>
         </div>
       </div>
     </div>
