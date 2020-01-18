@@ -99,9 +99,8 @@ const Featured = props => {
       return (
         <Row className="mx-0 item-root">
           <Col className="px-0 flex-center">
-            <QuadShowcase image={product.image} />
+            <QuadShowcase image={product.image} secondaryImages={product.secondaryImages} />
           </Col>
-
           <Col className="mt-5  mt-lg-0 px-0" lg={true}>
             <div className="">
               <p className="item-name font-weight-bold text-left">
