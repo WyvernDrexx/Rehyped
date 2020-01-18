@@ -107,6 +107,7 @@ const SingleItem = props => {
           }
           className="mt-3"
           variant="danger"
+          disabled
         >
           Remove
         </Button>
