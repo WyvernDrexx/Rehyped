@@ -98,7 +98,7 @@ const SingleItem = props => {
       className="mb-5 mr-3 m-auto d-sm-inline-block m-sm-3"
       style={{ width: "15rem" }}
     >
-      <Card.Img variant="top" src={`${imageSrc}/${image}`} />
+      <Card.Img variant="top" src={`${imageSrc}${image}`} />
       <Card.Body>
         <Card.Title>{name}</Card.Title>
         <Button
