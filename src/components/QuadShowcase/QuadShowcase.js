@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Col, Row } from "react-bootstrap";
 import "./QuadShowcase.scss";
 
@@ -12,7 +12,7 @@ const QuadShowcase = props => {
     setCurrentImage(image);
     setSecondaryImages(
       secondaryImages.map(secImage => {
-        if (secImage === image && secImage !== "default.jpg") {
+        if (secImage === image) {
           return temp;
         }
         return secImage;
@@ -20,10 +20,28 @@ const QuadShowcase = props => {
     );
   };
 
+  useEffect(
+    _ => {
+      document.getElementById("primary-image").classList.add("slide-fade");
+    },
+    [currentImage]
+  );
+
+  const renderPrimaryImage = _ => {
+    return (
+      <div className="primary-image-wrapper">
+        <img
+          alt="This is null"
+          id="primary-image"
+          src={`${imagesSrc + currentImage}`}
+        />
+      </div>
+    );
+  };
+
   const renderSecondaryImages = _ => {
     if (secondaryImages) {
       return secondaryImages.map((image, index) => {
-        if (image === "default.jpg") return null;
         return (
           <div key={index} className="secondary-image">
             <img
@@ -44,13 +62,7 @@ const QuadShowcase = props => {
       <>
         <Row className={`quadshowcase`}>
           <Col lg={true} className="primary-image px-0">
-            <div className="primary-image-wrapper">
-              <img
-                alt="This is null"
-                className=""
-                src={`${imagesSrc + currentImage}`}
-              />
-            </div>
+            {renderPrimaryImage()}
           </Col>
           <Col md={6} lg={4} className="sm-0 px-0 pl-md-2">
             {renderSecondaryImages()}
