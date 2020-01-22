@@ -56,8 +56,10 @@ const placeOrder = _ => async (dispatch, getState) => {
     )
     .then(resp => {
       if (resp.data.status === 200) {
-        dispatch(showAlert(resp.data.message, "success"));
-        window.location = resp.data.message;
+        dispatch(showAlert("You will be redirected to our payment gateway portal shortly.", "success"));
+        setTimeout(_ => {
+          window.location = resp.data.message;
+        },3500);
         dispatch({ type: ORDER_SUCCESS });
       } else if (resp.data.status === 406) {
         dispatch(showAlert(resp.data.message, "failure"));
