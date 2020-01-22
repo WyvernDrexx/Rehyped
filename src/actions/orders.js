@@ -56,7 +56,6 @@ const placeOrder = _ => async (dispatch, getState) => {
     )
     .then(resp => {
       if (resp.data.status === 200) {
-        history.push("/orders-succesfull");
         dispatch(showAlert(resp.data.message, "success"));
         window.location = resp.data.message;
         dispatch({ type: ORDER_SUCCESS });

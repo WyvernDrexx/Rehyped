@@ -29,9 +29,9 @@ const OrdersComplete = props => {
             className="w-100 w-md-40 d-block mx-auto"
           />
         </Link>
-        <Link to="/my-account">
+        <Link to="/my-account/orders">
           <PrimaryButton
-            title="MY ACCOUNT"
+            title="VIEW YOUR ORDERS"
             className="w-100 w-md-40 d-block mx-auto mt-3 mb-5"
           />
         </Link>
