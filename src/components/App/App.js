@@ -19,6 +19,7 @@ import ForgotPassword from "../pages/ForgotPassword";
 import BuyProduct from "../pages/BuyProduct";
 import MyAccount from "../pages/MyAccount";
 import OrdersComplete from '../OrdersComplete';
+import PaymentRedirect from "../PaymentRedirect";
 
 import { useDispatch, useSelector } from "react-redux";
 import { adminPanel, addProduct, ListProducts, ListOrders } from '../adminComponents';
@@ -69,6 +70,7 @@ const App = _ => {
       <Route exact path="/my-account/:section" component={MyAccount} />
       <Route exact path="/buy-product" component={BuyProduct} />
       <Route exact path="/orders-succesfull" component={OrdersComplete} />
+      <Route exact path="/payment" component={PaymentRedirect} />
       <Route exact path="/admin-pannexa" component={adminPanel} />
       <Route exact path="/admin-pannexa/add-product" component={addProduct} />
       <Route exact path="/admin-pannexa/add-product/:id" component={addProduct} />
