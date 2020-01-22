@@ -129,11 +129,11 @@ const placeOrders = _ => async (dispatch, getState) => {
       }
     )
     .then(resp => {
-      dispatch(showAlert(resp.data.message));
       if (resp.data.status === 200) {
-        history.push("/orders-succesfull");
-        dispatch({ type: PLACE_ORDERS, payload: resp.data.orders });
-        dispatch({ type: REMOVE_FROM_CART, payload: [] });
+        dispatch(showAlert("You will be redirected to our payment gateway portal shortly.", "success"));
+        setTimeout(_ => {
+          window.location = resp.data.message;
+        },3500);
       } else if (resp.data.status === 406) {
         dispatch(showAlert(resp.data.message));
         history.push("/my-account/shipping-details");
