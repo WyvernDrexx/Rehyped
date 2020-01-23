@@ -17,6 +17,7 @@ import ItemColors from "./ItemColors";
 import ItemSizes from "./ItemSizes";
 
 import "./Item.scss";
+import Loader from "../Loader/Loader";
 
 const Featured = props => {
   let { productId } = useParams();
@@ -80,10 +81,7 @@ const Featured = props => {
     if (Object.values(product).length === 0) {
       return (
         <>
-          <Spinner
-            variant="dark"
-            animation="border"
-            className="block-center mt-5 mb-5"
+          <Loader
           />
         </>
       );
@@ -99,7 +97,10 @@ const Featured = props => {
       return (
         <Row className="mx-0 item-root">
           <Col className="px-0 flex-center">
-            <QuadShowcase image={product.image} secondaryImages={product.secondaryImages} />
+            <QuadShowcase
+              image={product.image}
+              secondaryImages={product.secondaryImages}
+            />
           </Col>
           <Col className="mt-5  mt-lg-0 px-0" lg={true}>
             <div className="">
@@ -171,7 +172,9 @@ const Featured = props => {
         subheader="BEST SELLING DESIGNS OF THE WEEK"
       />
       <Container>
-        <div className="item-wrapper">{renderItem()}</div>
+        <div className="item-wrapper">
+          {renderItem()}
+        </div>
         <div className="mb-6 mt-6">
           <h4 className="sub-header mb-4 text-left font-weight-bold">
             Est. delivery in 7-10 business days via preferred courier.

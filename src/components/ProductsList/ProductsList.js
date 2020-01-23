@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import ListItem from "./ListItem";
 import { Container, ErrorBlock } from "../stateless";
 import "./ProductsList.scss";
+import Loader from "../Loader/Loader";
 
 const ProductsList = props => {
   const products = useSelector(state => state.products);
@@ -37,11 +38,7 @@ const ProductsList = props => {
     return (
       <>
         <div className="mt-4 mb-4">
-          <Spinner
-            variant="dark"
-            animation="border"
-            className="d-block mx-auto"
-          />
+          <Loader />
         </div>
       </>
     );
