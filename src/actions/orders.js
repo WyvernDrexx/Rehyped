@@ -1,10 +1,4 @@
-import {
-  BUY_NOW,
-  ORDER_SUCCESS,
-  FETCH_ORDERS,
-  PLACE_ORDERS,
-  REMOVE_FROM_CART
-} from "./types";
+import { BUY_NOW, ORDER_SUCCESS, FETCH_ORDERS } from "./types";
 import history from "../history";
 import api from "../api";
 import { showAlert, setRequestStatus } from ".";
@@ -30,6 +24,57 @@ const buyNow = product => (dispatch, getState) => {
   dispatch({ type: BUY_NOW, payload: product });
 };
 
+const placeOrders = _ => async (dispatch, getState) => {
+  const {
+    cart,
+    token: { token }
+  } = getState();
+
+  if (!token) {
+    dispatch(showAlert("Please login to continue.", "failure"));
+    return;
+  }
+
+  if (!cart || cart.length === 0) {
+    dispatch(
+      showAlert("Your Cart is empty! Please add some items in order to buy.")
+    );
+    return;
+  }
+
+  dispatch(setRequestStatus("placeOrders", true));
+  await api
+    .post(
+      "/orders",
+      { cart },
+      {
+        headers: {
+          Authorization: "Bearer " + token
+        }
+      }
+    )
+    .then(resp => {
+      if (resp.data.status === 200) {
+        dispatch(
+          showAlert(
+            "You will be redirected to our payment gateway portal shortly.",
+            "success"
+          )
+        );
+        setTimeout(_ => {
+          window.location = resp.data.message;
+        }, 3500);
+      } else if (resp.data.status === 406) {
+        dispatch(showAlert(resp.data.message));
+        history.push("/my-account/shipping-details");
+      }
+    })
+    .catch(err => {
+      dispatch(showAlert("Error, please check your internet connection."));
+    });
+  dispatch(setRequestStatus("placeOrders"));
+};
+
 const placeOrder = _ => async (dispatch, getState) => {
   const {
     orders: {
@@ -47,7 +92,7 @@ const placeOrder = _ => async (dispatch, getState) => {
   await api
     .post(
       "/orders",
-      { _id, size, color },
+      { cart: [{ _id, size, color }] },
       {
         headers: {
           Authorization: "Bearer " + token
@@ -56,10 +101,15 @@ const placeOrder = _ => async (dispatch, getState) => {
     )
     .then(resp => {
       if (resp.data.status === 200) {
-        dispatch(showAlert("You will be redirected to our payment gateway portal shortly.", "success"));
+        dispatch(
+          showAlert(
+            "You will be redirected to our payment gateway portal shortly.",
+            "success"
+          )
+        );
         setTimeout(_ => {
           window.location = resp.data.message;
-        },3500);
+        }, 3500);
         dispatch({ type: ORDER_SUCCESS });
       } else if (resp.data.status === 406) {
         dispatch(showAlert(resp.data.message, "failure"));
@@ -99,51 +149,6 @@ const getOrders = _ => async (dispatch, getState) => {
   dispatch(setRequestStatus("getOrders"));
 };
 
-const placeOrders = _ => async (dispatch, getState) => {
-  const {
-    cart,
-    token: { token }
-  } = getState();
-
-  if (!token) {
-    dispatch(showAlert("Please login to continue.", "failure"));
-    return;
-  }
-
-  if (!cart || cart.length === 0) {
-    dispatch(
-      showAlert("Your Cart is empty! Please add some items in order to buy.")
-    );
-    return;
-  }
-
-  dispatch(setRequestStatus("placeOrders", true));
-  await api
-    .post(
-      "/orders/all",
-      { cart },
-      {
-        headers: {
-          Authorization: "Bearer " + token
-        }
-      }
-    )
-    .then(resp => {
-      if (resp.data.status === 200) {
-        dispatch(showAlert("You will be redirected to our payment gateway portal shortly.", "success"));
-        setTimeout(_ => {
-          window.location = resp.data.message;
-        },3500);
-      } else if (resp.data.status === 406) {
-        dispatch(showAlert(resp.data.message));
-        history.push("/my-account/shipping-details");
-      }
-    })
-    .catch(err => {
-      dispatch(showAlert("Error, please check your internet connection."));
-    });
-  dispatch(setRequestStatus("placeOrders"));
-};
 
 export default {
   buyNow,
