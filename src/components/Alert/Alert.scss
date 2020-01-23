@@ -1,6 +1,6 @@
 @import "../../assets/styles/mixins";
 $leftBorderWidth: 12px;
-$failureColor: #fd8d96;
+$failureColor: #f87e88;
 $successColor: #5dc054;
 $neutralColor: rgb(250, 249, 249);
 
@@ -69,18 +69,18 @@ $neutralColor: rgb(250, 249, 249);
 
   }
   100% {
-    transform: translateY(-20px);
+    transform: translateY(-30px);
   }
 }
 
 @keyframes alert-fadeout {
   0% {
-    transform: translateY(-20px);
+    transform: translateY(-30px);
     z-index: 600;
 
   }
   50%{
-    transform: translateY(-40px);
+    transform: translateY(-50px);
     z-index: 600;
   }
   100% {
