@@ -17,7 +17,7 @@ const addToCart = () => async (dispatch, getState) => {
   if (!product.size || !product.color) {
     dispatch(
       showAlert(
-        "Please select the color and size of the product you are ordering."
+        "Please select the color and size of the product."
       )
     );
     return;
@@ -75,7 +75,7 @@ const fetchCartItems = _ => async (dispatch, getState) => {
       .catch(err => {
         dispatch(
           showAlert(
-            "Unable to remove item. Make sure you are connected to the internet.",
+            "Unable to get cart items.",
             "failure"
           )
         );
@@ -120,7 +120,7 @@ const removeFromCart = id => async (dispatch, getState) => {
     .catch(err => {
       dispatch(
         showAlert(
-          "Unable to remove item. Make sure you are connected to the internet.",
+          "Unable to remove item.",
           "failure"
         )
       );

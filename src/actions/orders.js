@@ -15,7 +15,7 @@ const buyNow = product => (dispatch, getState) => {
   if (!product.size || !product.color) {
     dispatch(
       showAlert(
-        "Please select the color and size of the product you are ordering."
+        "Please select the color and size of the product."
       )
     );
     return;
@@ -37,7 +37,7 @@ const placeOrders = _ => async (dispatch, getState) => {
 
   if (!cart || cart.length === 0) {
     dispatch(
-      showAlert("Your Cart is empty! Please add some items in order to buy.")
+      showAlert("Your Cart is empty! Please add some items.")
     );
     return;
   }
