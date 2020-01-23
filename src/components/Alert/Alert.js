@@ -5,7 +5,7 @@ import "./Alert.scss";
 import { closeAlert } from "../../actions";
 import { useDispatch } from "react-redux";
 import { Col, Row } from "react-bootstrap";
-// 50 chars allowed
+
 const Alert = props => {
   const alerts = useSelector(state => state.alert);
   const [messageState, setMessageState] = useState({

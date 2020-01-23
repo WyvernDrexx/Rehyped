@@ -18,7 +18,6 @@ import Login from "../pages/Login";
 import ForgotPassword from "../pages/ForgotPassword";
 import BuyProduct from "../pages/BuyProduct";
 import MyAccount from "../pages/MyAccount";
-import OrdersComplete from '../OrdersComplete';
 import PaymentRedirect from "../PaymentRedirect";
 
 import { useDispatch, useSelector } from "react-redux";

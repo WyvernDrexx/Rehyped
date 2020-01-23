@@ -3,7 +3,7 @@ import { Container } from "../../stateless";
 import { PrimaryButton, DarkButton } from "../../stateless/Buttons";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { Table, Button } from "react-bootstrap";
+import { Table } from "react-bootstrap";
 
 export default _ => {
   const token = useSelector(state => state.token);

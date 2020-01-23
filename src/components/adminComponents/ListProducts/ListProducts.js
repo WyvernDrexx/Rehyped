@@ -28,6 +28,7 @@ export default _ => {
             {products.map((item, index) => {
               if (item.isPublished)
                 return <SingleItem key={index} item={item} />;
+              return null;
             })}
           </Container>
         );
@@ -37,6 +38,7 @@ export default _ => {
             {products.map((item, index) => {
               if (!item.isPublished)
                 return <SingleItem key={index} item={item} />;
+              return null;
             })}
           </Container>
         );

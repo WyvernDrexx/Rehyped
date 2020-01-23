@@ -54,7 +54,7 @@ const Home = props => {
         <CommonHeader
           className="mt-6"
           header="MERCH"
-          subheader="ANDROCRUNCH ORIGINALS"
+          subheader="REHYPED ORIGINALS"
         />
         <Divider className="mt-4 mb-4" />
       </Container>
