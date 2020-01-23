@@ -54,6 +54,7 @@ const QuadShowcase = props => {
             </div>
           );
         }
+
         return (
           <div key={index} className="secondary-image">
             <img
@@ -66,6 +67,7 @@ const QuadShowcase = props => {
         );
       });
     }
+
     return null;
   };
 
