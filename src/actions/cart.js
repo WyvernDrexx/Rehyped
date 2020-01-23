@@ -45,7 +45,7 @@ const addToCart = () => async (dispatch, getState) => {
       } else dispatch(showAlert(resp.data.message, "failure"));
     })
     .catch(err => {
-      dispatch(showAlert("Please try again!", "failure"));
+      dispatch(showAlert("Error sending request!", "failure"));
     });
 
   dispatch(setRequestStatus("addToCart"));

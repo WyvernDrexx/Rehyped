@@ -7,23 +7,16 @@ $neutralColor: rgb(250, 249, 249);
 .alert-snackbar {
   position: fixed;
   padding: 15px;
-  overflow: hidden;
   border-radius: 6px;
-
   background-color: rgb(22, 22, 22);
   width: 95vw;
-  height: auto;
   font-size: 1rem;
   z-index: 600;
+  transform: translateY(200px);
   margin: auto;
-  box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.2);
-  transform: translateY(100px);
   bottom: 0;
   left: 0;
   right: 0;
-  @include sm {
-    width: 95vw;
-  }
   @include md {
     width: 50vw;
   }
@@ -31,13 +24,6 @@ $neutralColor: rgb(250, 249, 249);
     letter-spacing: 1.3px;
     font-size: 14.7px;
     color: rgb(253, 251, 251);
-  }
-  svg {
-    font-size: 25px;
-  }
-  span {
-    font-weight: bold;
-    font-size: 20px;
   }
 }
 
@@ -50,15 +36,6 @@ $neutralColor: rgb(250, 249, 249);
 .alert-success {
   p {
     color: $successColor;
-  }
-}
-
-@keyframes timer-bar {
-  0% {
-    width: 0%;
-  }
-  100% {
-    width: 100%;
   }
 }
 
@@ -89,7 +66,7 @@ $neutralColor: rgb(250, 249, 249);
 }
 
 .alert-fadein {
-  animation: alert-fadein 300ms 1 ease forwards;
+  animation: alert-fadein 200ms 1 ease forwards;
 }
 
 .alert-fadeout {
