@@ -42,6 +42,18 @@ const QuadShowcase = props => {
   const renderSecondaryImages = _ => {
     if (secondaryImages) {
       return secondaryImages.map((image, index) => {
+        if(image === "default.jpg"){
+          return (
+            <div key={index} className="secondary-image visibility-hidden">
+              <img
+                onClick={_ => onSecondaryImageClick(image)}
+                alt="This is null"
+                className=""
+                src={`${imagesSrc + image}`}
+              />
+            </div>
+          );
+        }
         return (
           <div key={index} className="secondary-image">
             <img
