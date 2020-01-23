@@ -72,9 +72,6 @@ const Alert = props => {
         <Row>
           <Col className="">
             <Row>
-              <span>{renderStatusDialog(messageState.status)}</span>
-            </Row>
-            <Row>
               <p className="">{messageState.message}</p>
             </Row>
           </Col>

@@ -1,15 +1,17 @@
 @import "../../assets/styles/mixins";
 $leftBorderWidth: 12px;
-$failureColor: #ff2638;
-$successColor: #28a745;
+$failureColor: #fd8d96;
+$successColor: #5dc054;
 $neutralColor: black;
 
 .alert-snackbar {
   position: fixed;
-  padding: 8px 15px;
+  padding: 15px;
   overflow: hidden;
+  border-radius: 2px;
+
   background-color: rgb(252, 250, 250);
-  width: 100vw;
+  width: 95vw;
   height: auto;
   font-size: 1rem;
   z-index: 600;
@@ -19,11 +21,10 @@ $neutralColor: black;
   top: 0;
   left: 0;
   right: 0;
-  @include sm{
+  @include sm {
     width: 95vw;
-    border-radius: 2px;
   }
-  @include md{
+  @include md {
     width: 50vw;
   }
   p {
@@ -41,11 +42,15 @@ $neutralColor: black;
 }
 
 .alert-failure {
-  color: $failureColor;
+  p {
+    color: $failureColor;
+  }
 }
 
 .alert-success {
-  color: $successColor;
+  p {
+    color: $successColor;
+  }
 }
 
 @keyframes timer-bar {
