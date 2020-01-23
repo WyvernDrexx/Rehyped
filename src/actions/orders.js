@@ -13,11 +13,7 @@ const buyNow = product => (dispatch, getState) => {
   }
 
   if (!product.size || !product.color) {
-    dispatch(
-      showAlert(
-        "Please select the color and size of the product."
-      )
-    );
+    dispatch(showAlert("Please select the color and size of the product."));
     return;
   }
   history.push("/buy-product");
@@ -36,9 +32,7 @@ const placeOrders = _ => async (dispatch, getState) => {
   }
 
   if (!cart || cart.length === 0) {
-    dispatch(
-      showAlert("Your Cart is empty! Please add some items.")
-    );
+    dispatch(showAlert("Your Cart is empty! Please add some items."));
     return;
   }
 
@@ -103,13 +97,13 @@ const placeOrder = _ => async (dispatch, getState) => {
       if (resp.data.status === 200) {
         dispatch(
           showAlert(
-            "You will be redirected to our payment gateway portal shortly.",
+            "You will be redirected to our payment gateway portal shortly. Complete the payment to get the order",
             "success"
           )
         );
         setTimeout(_ => {
           window.location = resp.data.message;
-        }, 3500);
+        }, 4500);
         dispatch({ type: ORDER_SUCCESS });
       } else if (resp.data.status === 406) {
         dispatch(showAlert(resp.data.message, "failure"));
@@ -148,7 +142,6 @@ const getOrders = _ => async (dispatch, getState) => {
     });
   dispatch(setRequestStatus("getOrders"));
 };
-
 
 export default {
   buyNow,

@@ -4,6 +4,8 @@ import { Card, Row, Col } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { PrimaryButton } from "../stateless/Buttons";
 import { placeOrder } from "../../actions";
+import history from "../../history";
+
 export default _ => {
   const toBuyProduct = useSelector(state => state.orders.buyNow);
   const isPlaceOrderRunning = useSelector(
@@ -24,10 +26,7 @@ export default _ => {
       <div className="mt-5 mb-5">
         <Container>
           <Card className="block-center" style={{ width: "18rem" }}>
-            <Card.Img
-              variant="top"
-              src={`${imgSrc}/${toBuyProduct.image}`}
-            />
+            <Card.Img variant="top" src={`${imgSrc}/${toBuyProduct.image}`} />
             <Card.Body>
               <Card.Title>{toBuyProduct.name}</Card.Title>
             </Card.Body>
@@ -94,5 +93,5 @@ export default _ => {
       </div>
     );
   }
-  return <div className="mt-6 mb-5">No products to order!</div>;
+  return <div>{history.push("/mycart")}</div>;
 };
