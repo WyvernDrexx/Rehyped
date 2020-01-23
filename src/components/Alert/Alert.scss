@@ -2,7 +2,7 @@
 $leftBorderWidth: 12px;
 $failureColor: #fd8d96;
 $successColor: #5dc054;
-$neutralColor: black;
+$neutralColor: rgb(250, 249, 249);
 
 .alert-snackbar {
   position: fixed;
@@ -10,15 +10,15 @@ $neutralColor: black;
   overflow: hidden;
   border-radius: 2px;
 
-  background-color: rgb(252, 250, 250);
+  background-color: rgb(22, 22, 22);
   width: 95vw;
   height: auto;
   font-size: 1rem;
   z-index: 600;
   margin: auto;
   box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.2);
-  transform: translateY(-200px);
-  top: 0;
+  transform: translateY(100px);
+  bottom: 0;
   left: 0;
   right: 0;
   @include sm {
@@ -30,7 +30,7 @@ $neutralColor: black;
   p {
     letter-spacing: 1.3px;
     font-size: 14.7px;
-    color: rgb(37, 37, 37);
+    color: rgb(253, 251, 251);
   }
   svg {
     font-size: 25px;
@@ -64,19 +64,27 @@ $neutralColor: black;
 
 @keyframes alert-fadein {
   0% {
-    transform: translateY(-200px);
+    transform: translateY(200px);
+    z-index: 600;
+
   }
   100% {
-    transform: translateY(24px);
+    transform: translateY(-10px);
   }
 }
 
 @keyframes alert-fadeout {
   0% {
-    transform: translateY(24px);
+    transform: translateY(-10px);
+    z-index: 600;
+
+  }
+  50%{
+    transform: translateY(-30px);
+    z-index: 600;
   }
   100% {
-    transform: translateY(-200px);
+    transform: translateY(200px);
   }
 }
 
@@ -85,5 +93,5 @@ $neutralColor: black;
 }
 
 .alert-fadeout {
-  animation: alert-fadeout 300ms 1 ease forwards;
+  animation: alert-fadeout 300ms 1 ease-in-out forwards;
 }
