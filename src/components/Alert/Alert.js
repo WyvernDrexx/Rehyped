@@ -20,11 +20,11 @@ const Alert = props => {
   useEffect(
     _ => {
       if (alerts && alerts.length > 0 && !isAlertRunning) {
-        setMessageState(alerts[0]);
         setTimeout(_ => {
+          setMessageState(alerts[0]);
           setAlertState("alert-fadein");
           setIsAlertRunning(true);
-        }, 250);
+        }, 300);
         setTimeout(_ => {
           setIsAlertRunning(false);
           setAlertState("alert-fadeout");
@@ -48,18 +48,6 @@ const Alert = props => {
     }
   };
 
-  const renderStatusDialog = status => {
-    switch (status) {
-      case "neutral":
-        return "INFO";
-      case "failure":
-        return "ERROR";
-      case "success":
-        return "SUCCESS";
-      default:
-        return "";
-    }
-  };
 
   return ReactDOM.createPortal(
     <div
