@@ -5,7 +5,7 @@ import './test.scss'
 const AboutUs = props => {
   return (
     <>
-      <Container className="mt-6">
+      <Container className="mt-5">
         <CommonHeader
           header="ABOUT US"
           subheader="WANNA KNOW MORE?"

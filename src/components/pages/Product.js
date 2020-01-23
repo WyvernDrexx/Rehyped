@@ -7,11 +7,11 @@ import Subscribe from "../Subscribe";
 const Product = props => {
   return (
     <>
-      <div className="pt-6">
+      <div className="pt-5">
         <SingleProduct />
       </div>
 
-      <Container className="px-0 mb-6 mt-6">
+      <Container className="px-0 mb-6 mt-5">
         <CommonHeader
           header="RELATED"
           subheader="PRODUCTS YOU MAY LIKE"

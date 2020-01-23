@@ -21,7 +21,7 @@ export default _ => {
 
   if (toBuyProduct && toBuyProduct._id) {
     return (
-      <div className="mt-6 mb-5">
+      <div className="mt-5 mb-5">
         <Container>
           <Card className="block-center" style={{ width: "18rem" }}>
             <Card.Img

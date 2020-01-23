@@ -109,7 +109,7 @@ const CreateAccount = props => {
 
   return (
     <>
-      <div className="text-center mt-6">
+      <div className="text-center mt-5">
         <h1 className="header mb-5">SIGN UP</h1>
         <div className="secondary-background-color pt-5 pb-5 mb-5 mt-5">
           <Container className="">

@@ -44,7 +44,7 @@ const ContactUs = props => {
 
   return (
     <>
-      <div className="pt-6">
+      <div className="pt-5">
         <CommonHeader
           header="CONTACT US"
           subheader="HIT US UP WITH YOUR QUERIES"
