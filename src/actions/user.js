@@ -49,7 +49,7 @@ const onUserInputChange = (target, data) => {
   };
 };
 
-const onUserSubmit = (target, route) => async (dispatch, getState) => {
+const onUserSubmit = (target, route,onSuccess) => async (dispatch, getState) => {
   const { user } = getState();
   const data = user[target];
   const {
@@ -60,7 +60,7 @@ const onUserSubmit = (target, route) => async (dispatch, getState) => {
     dispatch(showAlert("Please login to continue.", "failure"));
     return;
   }
-  
+  onSuccess = onSuccess || (() => {});
   dispatch(setRequestStatus("onUserSubmit", true));
 
   await api
@@ -82,6 +82,9 @@ const onUserSubmit = (target, route) => async (dispatch, getState) => {
           status: resp.data.status || 500
         }
       });
+      if(resp.data.status && resp.data.status === 200){
+        onSuccess();
+      }
     })
     .catch(err => {
       dispatch({

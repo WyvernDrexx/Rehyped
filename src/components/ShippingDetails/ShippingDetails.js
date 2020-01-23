@@ -17,15 +17,16 @@ import {
 } from "../../actions";
 
 import { useDispatch, useSelector } from "react-redux";
+import history from "../../history";
 
 const ShippingDetails = props => {
   const dispatch = useDispatch();
   const formState = useSelector(state => state.user.shippingDetails);
-  
+
   const isFetching = useSelector(
     state => state.requestStatus.fetchShippingDetails
   );
-  
+
   const isSubmitting = useSelector(state => state.requestStatus.onUserSubmit);
 
   const onChange = ({ name, value }) => {
@@ -33,7 +34,11 @@ const ShippingDetails = props => {
   };
 
   const onSubmit = _ => {
-    dispatch(onUserSubmit("shippingDetails", "/user/shipping-details"));
+    dispatch(
+      onUserSubmit("shippingDetails", "/user/shipping-details", () =>
+        history.goBack()
+      )
+    );
   };
 
   const renderResponse = _ => {
@@ -51,27 +56,35 @@ const ShippingDetails = props => {
 
   useEffect(
     _ => {
-      if( typeof isSubmitting !== "undefined" && !isSubmitting){
-        window.scrollTo(0,400);
+      if (typeof isSubmitting !== "undefined" && !isSubmitting) {
+        window.scrollTo(0, 400);
       }
     },
     [isSubmitting]
   );
 
-  useEffect(_ => {
-    if(!isFetching || !isSubmitting){
-      window.scrollTo(0,250);
-    }
-  }, [isSubmitting, isFetching])
+  useEffect(
+    _ => {
+      if (!isFetching || !isSubmitting) {
+        window.scrollTo(0, 250);
+      }
+    },
+    [isSubmitting, isFetching]
+  );
 
-  useEffect(_ => {
-    dispatch(fetchShippingDetails());
-  }, [dispatch]);
+  useEffect(
+    _ => {
+      dispatch(fetchShippingDetails());
+    },
+    [dispatch]
+  );
 
-  if(typeof isFetching === 'undefined' || isFetching){
-    return (<div className="bg-white pt-3 pb-3">
-      <Spinner className="block-center" animation="border" />
-    </div>);
+  if (typeof isFetching === "undefined" || isFetching) {
+    return (
+      <div className="bg-white pt-3 pb-3">
+        <Spinner className="block-center" animation="border" />
+      </div>
+    );
   }
 
   if (formState) {
@@ -157,7 +170,9 @@ const ShippingDetails = props => {
           <PrimaryButton
             onClick={onSubmit}
             title="SUBMIT"
-            className={`w-100 mb-4 w-md-40 d-block mx-auto ${isSubmitting?"status-running":""}`}
+            className={`w-100 mb-4 w-md-40 d-block mx-auto ${
+              isSubmitting ? "status-running" : ""
+            }`}
           />
         </Container>
       </div>

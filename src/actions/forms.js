@@ -7,12 +7,13 @@ const onInputChange = target => {
   return { type: INPUT_CHANGE, payload: target };
 };
 
-const onFormSubmit = route => async (dispatch, getState) => {
+const onFormSubmit = (route,onSuccess) => async (dispatch, getState) => {
   const {
     form,
     token: { token }
   } = getState();
   dispatch(setRequestStatus("onFormSubmit", true));
+  onSuccess = onSuccess || (() => {});
   await api
     .post(route, form, {
       headers: {
@@ -21,6 +22,9 @@ const onFormSubmit = route => async (dispatch, getState) => {
     })
     .then(resp => {
       dispatch({ type: FORM_SUBMIT, payload: resp.data });
+      if(resp.data.status && resp.data.status === 200){
+        onSuccess();
+      }
     })
     .catch(err => {
       dispatch(showAlert("Unable to send request."));
