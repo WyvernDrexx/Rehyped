@@ -14,7 +14,6 @@ const Alert = props => {
     dialog: "INFO"
   });
   const [alertState, setAlertState] = useState("");
-  const [timerState, setTimerState] = useState("");
   const [isAlertRunning, setIsAlertRunning] = useState(false);
   const dispatch = useDispatch();
 
@@ -24,13 +23,11 @@ const Alert = props => {
         setMessageState(alerts[0]);
         setTimeout(_ => {
           setAlertState("alert-fadein");
-          setTimerState("bottom-timer-bar");
           setIsAlertRunning(true);
         }, 200);
         setTimeout(_ => {
           setIsAlertRunning(false);
           setAlertState("alert-fadeout");
-          setTimerState("");
           dispatch(closeAlert());
         }, 3900);
       }
@@ -83,7 +80,6 @@ const Alert = props => {
           </Col>
         </Row>
       </Col>
-      <div id="timer" className={timerState}></div>
     </div>,
     document.getElementById("alert-root")
   );
