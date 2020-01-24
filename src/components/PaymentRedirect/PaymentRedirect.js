@@ -3,9 +3,9 @@ import qs from "query-string";
 import api from "../../api";
 import history from "../../history";
 import { useSelector, useDispatch } from "react-redux";
-import { Spinner } from "react-bootstrap";
 import { showAlert } from "../../actions";
 import OrderComplete from "../OrdersComplete";
+import Loader from "../Loader";
 
 const PaymentRedirect = props => {
   const paymentDetails = qs.parse(props.location.search, {
@@ -62,7 +62,11 @@ const PaymentRedirect = props => {
     return <OrderComplete />;
   }
   if (!token || isRunning) {
-    return <Spinner animation="border" className="block-center mt-5 mb-5" />;
+    return (
+      <div>
+        <Loader className="block-center mt-5 mb-5" />
+      </div>
+    );
   }
 
   if (Object.keys(paymentDetails).length === 0) {

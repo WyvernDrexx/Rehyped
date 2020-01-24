@@ -18,8 +18,16 @@
 
 .cart-item-image {
   width: 100%;
-  img {
-    width: 100% !important;
+  position: relative;
+  .img-wrapper {
+    padding-top: 12rem;
+    padding-right: 10rem;
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100% !important;
+    }
   }
 }
 

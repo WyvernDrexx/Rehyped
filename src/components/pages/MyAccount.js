@@ -17,7 +17,7 @@ import OrdersList from "../Orders";
 import ShippingDetails from "../ShippingDetails";
 
 import "./MyAccount.scss";
-import { Spinner } from "react-bootstrap";
+import Loader from "../Loader";
 
 const MyAccount = props => {
   const fullName = useSelector(state => state.token.fullName);
@@ -58,7 +58,7 @@ const MyAccount = props => {
       if (typeof isOrderFetching === "undefined" || isOrderFetching) {
         return (
           <div className="pt-4 pb-4">
-            <Spinner animation="border" className="block-center" />
+            <Loader animation="border" className="block-center" />
           </div>
         );
       }

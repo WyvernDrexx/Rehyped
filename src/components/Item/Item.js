@@ -171,7 +171,7 @@ const Featured = props => {
         subheader="BEST SELLING DESIGNS OF THE WEEK"
       />
       <Container>
-        <div className="item-wrapper">{renderItem()}</div>
+        <div className="item-wrapper mt-5">{renderItem()}</div>
         <div className="mb-6 mt-6">
           <h4 className="sub-header mb-4 text-left font-weight-bold">
             Est. delivery in 7-10 business days via preferred courier.
