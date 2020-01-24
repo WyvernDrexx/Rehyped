@@ -9,7 +9,7 @@ import {
   fetchProduct
 } from "../../../actions";
 import { useParams } from "react-router-dom";
-import { Spinner } from "react-bootstrap";
+import { Spinner, InputGroup, FormControl } from "react-bootstrap";
 
 export default props => {
   const dispatch = useDispatch();
@@ -109,6 +109,112 @@ export default props => {
             onChange={({ target }) => onChange(target)}
             name="stock"
           />
+          <div>
+            <p className="header mt-2 mb-3">Available Sizes:</p>
+            <InputGroup>
+              <InputGroup.Prepend>
+                <InputGroup.Radio
+                  name="S"
+                  onChange={({ target }) =>
+                    onChange({ name: target.name, value: "S" })
+                  }
+                  aria-label="Radio button for following text input"
+                />
+              </InputGroup.Prepend>
+              <FormControl value="S" />
+            </InputGroup>
+            <InputGroup className="mt-3">
+              <InputGroup.Prepend>
+                <InputGroup.Radio
+                  name="M"
+                  aria-label="Radio button for following text input"
+                  onChange={({ target }) =>
+                    onChange({ name: target.name, value: "M" })
+                  }
+                />
+              </InputGroup.Prepend>
+              <FormControl value="M" />
+            </InputGroup>
+            <InputGroup className="mt-3">
+              <InputGroup.Prepend>
+                <InputGroup.Radio
+                  name="L"
+                  aria-label="Radio button for following text input"
+                  onChange={({ target }) =>
+                    onChange({ name: target.name, value: "L" })
+                  }
+                />
+              </InputGroup.Prepend>
+              <FormControl value="L" />
+            </InputGroup>
+            <InputGroup className="mt-3">
+              <InputGroup.Prepend>
+                <InputGroup.Radio
+                  name="XL"
+                  aria-label="Radio button for following text input"
+                  onChange={({ target }) =>
+                    onChange({ name: target.name, value: "XL" })
+                  }
+                />
+              </InputGroup.Prepend>
+              <FormControl value="XL" />
+            </InputGroup>
+            <InputGroup className="mt-3">
+              <InputGroup.Prepend>
+                <InputGroup.Radio
+                  name="XXL"
+                  aria-label="Radio button for following text input"
+                  onChange={({ target }) =>
+                    onChange({ name: target.name, value: "XXL" })
+                  }
+                />
+              </InputGroup.Prepend>
+              <FormControl value="XXL" />
+            </InputGroup>
+          </div>
+
+          {/*  */}
+          <div>
+            <p className="header mt-2 mb-3">Available Colors:</p>
+            <InputGroup>
+              <InputGroup.Prepend>
+                <InputGroup.Radio
+                  name="white"
+                  onChange={({ target }) =>
+                    onChange({ name: target.name, value: "#ffffff" })
+                  }
+                  aria-label="Radio button for following text input"
+                />
+              </InputGroup.Prepend>
+              <FormControl value="WHITE" />
+            </InputGroup>
+            <InputGroup className="mt-3">
+              <InputGroup.Prepend>
+                <InputGroup.Radio
+                  name="wine"
+                  aria-label="Radio button for following text input"
+                  onChange={({ target }) =>
+                    onChange({ name: target.name, value: "#520d24" })
+                  }
+                />
+              </InputGroup.Prepend>
+              <FormControl value="WINE" />
+            </InputGroup>
+            <InputGroup className="mt-3">
+              <InputGroup.Prepend>
+                <InputGroup.Radio
+                  name="black"
+                  aria-label="Radio button for following text input"
+                  onChange={({ target }) =>
+                    onChange({ name: target.name, value: "#000000" })
+                  }
+                />
+              </InputGroup.Prepend>
+              <FormControl value="BLACK" />
+            </InputGroup>
+           
+            
+          </div>
           <div className="input-group mb-4 mt-4">
             <div className="input-group-prepend">
               <label className="input-group-text" for="inputGroupSelect01">

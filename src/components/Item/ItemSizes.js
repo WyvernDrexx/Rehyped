@@ -4,7 +4,7 @@ import "./ItemSizes.scss";
 import { setSelected } from "../../actions";
 
 const ItemSizes = props => {
-  const _SIZES = ["S", "M", "L", "XL", "XXL"];
+  const _SIZES = props.sizes ||  ["S", "M", "L", "XL", "XXL"];
   const dispatch = useDispatch();
   const selectedSize = useSelector(state => state.selectedProduct.size);
   const _renderSizes = _ => {

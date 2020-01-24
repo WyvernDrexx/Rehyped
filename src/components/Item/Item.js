@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { LightButton, PrimaryButton } from "../stateless/Buttons";
-import { Row, Col, Spinner, Alert } from "react-bootstrap";
+import { Row, Col, Alert } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import {
   fetchProduct,
@@ -118,7 +118,7 @@ const Featured = props => {
               <h4 className="sub-header mb-1 text-left font-weight-bold">
                 SIZE
               </h4>
-              <ItemSizes className="mt-2 mb-3" />
+              <ItemSizes sizes={product.sizes} className="mt-2 mb-3" />
               <h4 className="sub-header mt-2 text-left font-weight-bold">
                 COLOURS
               </h4>
@@ -128,6 +128,7 @@ const Featured = props => {
                   dispatch(setSelected({ [name]: value }))
                 }
                 selectedColor={selectedColor}
+                colors={product.colors}
                 className=""
               />
 

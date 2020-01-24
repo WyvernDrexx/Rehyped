@@ -61,6 +61,8 @@ const placeOrders = _ => async (dispatch, getState) => {
       } else if (resp.data.status === 406) {
         dispatch(showAlert(resp.data.message));
         history.push("/my-account/shipping-details");
+      }else{
+        dispatch(showAlert(resp.data.message, "failure"));
       }
     })
     .catch(err => {
@@ -108,6 +110,8 @@ const placeOrder = _ => async (dispatch, getState) => {
       } else if (resp.data.status === 406) {
         dispatch(showAlert(resp.data.message, "failure"));
         history.push("/my-account/shipping-details");
+      }else{
+        dispatch(showAlert(resp.data.message, "failure"));
       }
     })
     .catch(err => {
