@@ -173,7 +173,7 @@ const Featured = props => {
       />
       <Container>
         <div className="item-wrapper mt-5">{renderItem()}</div>
-        <div className="mb-6 mt-6">
+        <div className="mb-5 mt-5">
           <h4 className="sub-header mb-4 text-left font-weight-bold">
             Est. delivery in 7-10 business days via preferred courier.
           </h4>
@@ -183,7 +183,7 @@ const Featured = props => {
         </div>
       </Container>
       {props.instructions ? (
-        <div className="secondary-background-color mt-6">
+        <div className="secondary-background-color mt-5">
           <CommonHeader
             className="pt-6"
             header="DETAILS"
