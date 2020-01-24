@@ -101,7 +101,7 @@ const Featured = props => {
               secondaryImages={product.secondaryImages}
             />
           </Col>
-          <Col className="mt-5  mt-lg-0 px-0" lg={true}>
+          <Col className="mt-lg-0 px-0" lg={true}>
             <div className="">
               <p className="item-name font-weight-bold text-left">
                 {product.name}
