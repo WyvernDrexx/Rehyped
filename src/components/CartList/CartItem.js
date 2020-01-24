@@ -24,10 +24,9 @@ const CartItem = props => {
           xs={6}
           className="cursor-pointer flex-center cart-item-image pl-0"
         >
-          <img
-            alt="placeholder text"
-            src={`${imagesSrc + item.image}`}
-          />
+          <div className="img-wrapper">
+            <img alt="placeholder text" src={`${imagesSrc + item.image}`} />
+          </div>
         </Col>
         <Col className="cart-item-info ml-2">
           <Row className="cart-item-details">

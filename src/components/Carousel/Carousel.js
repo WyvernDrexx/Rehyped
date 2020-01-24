@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchRelated, clearSelected } from "../../actions";
-import { Spinner } from "react-bootstrap";
 import history from "../../history";
 import Loader from '../Loader';
 import "./Carousel.scss";

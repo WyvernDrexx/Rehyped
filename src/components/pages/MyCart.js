@@ -9,7 +9,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { DarkButton, PrimaryButton } from "../stateless/Buttons";
 import { Row, Col, Spinner } from "react-bootstrap";
 import { placeOrders } from "../../actions";
-
+import Loader from '../Loader';
 import CartList from "../CartList";
 
 const MyCart = props => {
@@ -33,8 +33,8 @@ const MyCart = props => {
 
   if (typeof isRunning === "undefined" || isRunning) {
     return (
-      <div className="mt-6 mb-5">
-        <Spinner animation="border" className="block-center" />
+      <div className="mt-5 mb-5">
+        <Loader  className="block-center" />
       </div>
     );
   } else if (!isVerified) {
@@ -91,7 +91,7 @@ const MyCart = props => {
                 </p>
               </Col>
               <Col className="px-0">
-                <p className="sub-header text-right">${totalMRP}</p>
+                <p className="sub-header text-right">₹{totalMRP}</p>
               </Col>
             </Row>
             <Row className="mb-3">
@@ -110,7 +110,7 @@ const MyCart = props => {
               </Col>
               <Col className="px-0">
                 <p className="sub-header text-right text-success font-weight-bold">
-                  {totalDiscount - totalMRP}
+                -₹{totalMRP -totalDiscount}
                 </p>
               </Col>
             </Row>
@@ -122,7 +122,7 @@ const MyCart = props => {
               </Col>
               <Col className="px-0">
                 <p className="sub-header text-right font-weight-bold">
-                  ${totalDiscount}
+                ₹{totalDiscount}
                 </p>
               </Col>
             </Row>

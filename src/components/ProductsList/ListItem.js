@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Row, Col, Spinner } from "react-bootstrap";
 import history from "../../history";
+import Loader from '../Loader';
 import './ProductsList.scss';
 const ListItem = props => {
   const { index, item } = props;
@@ -23,9 +24,8 @@ const ListItem = props => {
       onLoad={divIsLoaded}
     >
       {isLoaded ? null : (
-        <Spinner
+        <Loader
           className="absolute-center"
-          animation="border"
         />
       )}
 
