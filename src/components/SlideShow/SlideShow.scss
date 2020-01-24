@@ -3,11 +3,16 @@
 .slideshow-container {
   position: relative;
   margin: auto;
+  width: 100%;
+  padding-top:45% ;
   @include lg{
     margin-top: 1.7rem;
+    width: 87.7%;
   }
   .slide-image {
+    position: absolute;
     display: none;
+    top: 0;
     img {
       // 1920x1000
       width: 100%;
