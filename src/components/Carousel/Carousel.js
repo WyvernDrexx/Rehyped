@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchRelated, clearSelected } from "../../actions";
 import { Spinner } from "react-bootstrap";
 import history from "../../history";
-
+import Loader from '../Loader';
 import "./Carousel.scss";
 
 const Carousel = props => {
@@ -19,7 +19,7 @@ const Carousel = props => {
 
   const renderItemList = _ => {
     if (!relatedItem || relatedItem.length === 0) {
-      return <Spinner animation="border" />;
+      return <Loader className="absolute-center" animation="border" />;
     }
     return (
       <div className="carousel-root">
@@ -61,7 +61,7 @@ const CarouselItem = props => {
       <div className="item">
         <div className="position-relative" onLoad={onLoad}>
           {isImgLoaded ? null : (
-            <Spinner className="absolute-center" animation="border" />
+            <Loader className="absolute-center" />
           )}
           <img
             onLoad={onImgLoad}

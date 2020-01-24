@@ -66,9 +66,8 @@ const fetchProduct = id => async (dispatch, getState) => {
   }
 
   if (!product) {
-    product = {
-      error: "Product not found!"
-    };
+    dispatch(showAlert("Unable to send request try again later.", "failure"));
+    return;
   }
   dispatch({ type: FETCH_PRODUCT, payload: product });
 };
