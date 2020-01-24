@@ -1,0 +1,13 @@
+@import '../../assets/styles/mixins';
+
+.new-arrival-img-wrapper{
+  position: relative;
+  padding-top: 120%;
+  img{
+    position: absolute;
+    top: 0;
+  }
+  @include md{
+    padding-top: 90%;
+  }
+}

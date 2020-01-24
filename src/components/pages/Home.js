@@ -12,10 +12,12 @@ import ProductItem from "../Item";
 import Subscribe from "../Subscribe";
 import SlideShow from "../SlideShow";
 
+import "./Home.scss";
+
 const Home = props => {
   return (
     <>
-    <SlideShow />
+      <SlideShow />
       <Container className="mt-5 mb-4">
         <CommonHeader
           header="NEW ARRIVALS"
@@ -24,11 +26,13 @@ const Home = props => {
         <Divider className="mt-4 mb-5" />
         <Row className="mt-5">
           <Col md>
-            <img
-              alt="This is null"
-              className="w-100 w-sm-75"
-              src="/imgs/500x600.jpeg"
-            />
+            <div className="new-arrival-img-wrapper">
+              <img
+                alt="This is null"
+                className="w-100 w-md-75"
+                src="/imgs/500x600.jpeg"
+              />
+            </div>
           </Col>
           <Col className="position-relative" md>
             <div>
@@ -62,7 +66,7 @@ const Home = props => {
         <Carousel />
       </div>
       <Container className="mt-6">
-        <ProductItem productId={"featured"} instructions={false}/>
+        <ProductItem productId={"featured"} instructions={false} />
       </Container>
       <Container>
         <CommonHeader

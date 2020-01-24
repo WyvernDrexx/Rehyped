@@ -106,7 +106,7 @@ button {
 }
 .w-md-75 {
   @include md {
-    width: 75%;
+    width: 75% !important;
   }
 }
 

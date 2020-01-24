@@ -5,14 +5,18 @@
   margin: auto;
   width: 100%;
   padding-top:45% ;
+  @include md{
+    padding-top: 50%;
+  }
   @include lg{
     margin-top: 1.7rem;
-    width: 87.7%;
+    padding-top: 45%;
   }
   .slide-image {
     position: absolute;
     display: none;
     top: 0;
+    width: 100%;
     img {
       // 1920x1000
       width: 100%;
