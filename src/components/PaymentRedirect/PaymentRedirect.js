@@ -12,7 +12,6 @@ const PaymentRedirect = props => {
     ignoreQueryPrefix: true
   });
   const token = useSelector(state => state.token);
-  const [isRunning, setIsRunning] = useState(false);
   const [paymentStatus, setPaymentStatus] = useState({ status: "Pending" });
   const dispatch = useDispatch();
   useEffect(
@@ -27,7 +26,6 @@ const PaymentRedirect = props => {
         paymentDetails.payment_request_id
       ) {
         const getPaymentDetails = async _ => {
-          setIsRunning(true);
           await api
             .post(
               "/payment/getstatus",
@@ -50,7 +48,6 @@ const PaymentRedirect = props => {
             .catch(err => {
               console.log(err);
             });
-          setIsRunning(false);
         };
         getPaymentDetails();
       }
@@ -59,9 +56,13 @@ const PaymentRedirect = props => {
   );
 
   if (paymentStatus.status === "success") {
-    return <OrderComplete />;
+    return (
+      <div>
+        <OrderComplete />
+      </div>
+    );
   }
-  if (!token || isRunning) {
+  if (token.token === null) {
     return (
       <div>
         <Loader className="block-center mt-5 mb-5" />
@@ -69,11 +70,17 @@ const PaymentRedirect = props => {
     );
   }
 
+  if (!token.token) {
+    return (
+      <p className="header mt-5 mb-5">Please login to check your payment.</p>
+    );
+  }
+
   if (Object.keys(paymentDetails).length === 0) {
     return <>{history.push("/products")}</>;
   }
 
-  return null;
+  return <Loader className="block-center mt-5 mb-5" />;
 };
 
 export default PaymentRedirect;

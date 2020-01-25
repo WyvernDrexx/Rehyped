@@ -114,7 +114,7 @@ const formReducer = (state = INITIAL_FORM_STATE(), action) => {
   }
 };
 
-const tokenReducer = (state = {}, action) => {
+const tokenReducer = (state = {token: null}, action) => {
   switch (action.type) {
     case SET_TOKEN:
       return { ...state, token: action.payload };
