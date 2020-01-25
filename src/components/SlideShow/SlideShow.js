@@ -7,7 +7,7 @@ const SlideShow = props => {
   var slideIndex = 1;
 
   // Next/previous controls
-  function plusSlides(n=1) {
+  function plusSlides(n = 1) {
     showSlides((slideIndex += n));
   }
 
@@ -29,11 +29,14 @@ const SlideShow = props => {
     for (i = 0; i < slides.length; i++) {
       slides[i].style.display = "none";
     }
+    slides[slideIndex - 1].style.display = "block";
     for (i = 0; i < dots.length; i++) {
       dots[i].className = dots[i].className.replace(" active", "");
     }
-    slides[slideIndex - 1].style.display = "block";
     dots[slideIndex - 1].className += " active";
+    setTimeout(_ => {
+      plusSlides(1);
+    }, 2500)
   };
 
   useEffect(_ => {
@@ -41,30 +44,33 @@ const SlideShow = props => {
   }, []);
 
   return (
-    <Container className="px-0">
+    <div className="px-0">
       <div className="slideshow-container">
-        <div className="slide-image slide-fade">
-          <img src="/imgs/wide0.jpg" alt="Slide Number 1" />
-        </div>
-        <div className="slide-image slide-fade">
-          <img src="/imgs/wide2.jpg" alt="Slide Number 1" />
-        </div>
-        <div className="slide-image slide-fade">
-          <img src="/imgs/wide3.jpg" alt="Slide Number 1" />
-        </div>
-        <span onClick={_ => plusSlides(1)} className="next">
-          &#10095;
-        </span>
-        <span onClick={_ => plusSlides(-1)} className="prev">
-          &#10094;
-        </span>
+        <div
+          style={{
+            background: `url(${"/imgs/wide0.jpg"}) no-repeat center center `
+          }}
+          className="slide-image slide-fade"
+        ></div>
+        <div
+          style={{
+            background: `url(${"/imgs/wide1.jpg"}) no-repeat center center`
+          }}
+          className="slide-image slide-fade"
+        ></div>
+        <div
+          style={{
+            background: `url(${"/imgs/wide2.jpg"}) no-repeat center center`
+          }}
+          className="slide-image slide-fade"
+        ></div>
         <div className="text-center the-dots">
           <span className="dot" onClick={_ => currentSlide(1)}></span>
           <span className="dot" onClick={_ => currentSlide(2)}></span>
           <span className="dot" onClick={_ => currentSlide(3)}></span>
         </div>
       </div>
-    </Container>
+    </div>
   );
 };
 

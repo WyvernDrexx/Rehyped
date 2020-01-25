@@ -3,28 +3,20 @@
 .slideshow-container {
   position: relative;
   margin: auto;
-  width: 100%;
-  padding-top:45% ;
+  height: 100vh;
   @include md{
     padding-top: 50%;
   }
   @include lg{
-    margin-top: 1.7rem;
+    // margin-top: 1.7rem;
     padding-top: 45%;
   }
   .slide-image {
     position: absolute;
-    display: none;
     top: 0;
     width: 100%;
-    img {
-      // 1920x1000
-      width: 100%;
-      max-width: 1000px;
-      display: block;
-      margin: auto;
-      background-color: black;
-    }
+    height: 100%;
+    background-size: cover;
   }
   .prev,
   .next {
@@ -60,7 +52,7 @@
     -webkit-animation-name: fade;
     -webkit-animation-duration: 1.5s;
     animation-name: fade;
-    animation-duration: 2s;
+    animation-duration: 2.5s;
   }
 
   @-webkit-keyframes fade {
@@ -74,7 +66,7 @@
 
   @keyframes fade {
     from {
-      opacity: 0.8;
+      opacity: 0.6;
       filter: grayscale(0.6);
     }
     to {
