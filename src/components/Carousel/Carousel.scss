@@ -57,13 +57,13 @@
   .product-name {
     text-align: center;
     font-weight: bold;
-    letter-spacing: $defaultLetterSpacing;
+    letter-spacing: 6px;
     font-size: $secondaryFontSize;
   }
   .product-price {
     font-size: $secondaryFontSize;
     padding-top: 10px;
-    letter-spacing: $defaultLetterSpacing;
+    letter-spacing: 6px;
   }
   .product-details {
     padding-top: 2rem;

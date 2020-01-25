@@ -29,6 +29,7 @@ const SlideShow = props => {
     for (i = 0; i < slides.length; i++) {
       slides[i].style.display = "none";
     }
+    if(!slides[slideIndex -1]) return;
     slides[slideIndex - 1].style.display = "block";
     for (i = 0; i < dots.length; i++) {
       dots[i].className = dots[i].className.replace(" active", "");
