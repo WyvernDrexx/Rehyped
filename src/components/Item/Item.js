@@ -114,7 +114,7 @@ const Featured = props => {
               </p>
             </div>
 
-            <div className="position-lg-absolute bottom-0 mt-4">
+            <div className="position-lg-absolute bottom-0 mt-4 w-100">
               <h4 className="sub-header mb-1 text-left font-weight-bold">
                 SIZE
               </h4>

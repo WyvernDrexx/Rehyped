@@ -38,23 +38,27 @@ $quadHeight: 100%;
 
 .secondary-image {
   position: relative;
-  border: 1px solid rgb(199, 197, 197);
   width: 20%;
   height: 0;
-  padding-top: 23.4%;
+  padding-top: 23.2%;
   margin-top: 5px;
   margin-right: 5px;
   display: inline-block;
+  @include sm{
+    padding-top: 40%;
+  }
   @include md{
     margin-top: 0px;
     margin-bottom: 6px;
     width: 25%;
-    padding-top: 29.5%;
+    padding-top: 29.4%;
     // height: 6rem;
   }
   @include lg{
     // height: 7.34rem;
-    width: 25.335%;
+    width: 45.335%;
+    padding-top: 40%;
+
     display: block;
   }
   img{
@@ -64,5 +68,6 @@ $quadHeight: 100%;
     left: 0;
     max-width: 100%;
     height: auto;
+    border: 1px solid rgb(199, 197, 197);
   }
 }

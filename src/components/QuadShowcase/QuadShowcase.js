@@ -74,7 +74,7 @@ const QuadShowcase = props => {
           <Col lg={true} className="primary-image px-0">
             {renderPrimaryImage()}
           </Col>
-          <Col md={6} lg={4} className="sm-0 px-0 pl-md-2">
+          <Col md={6} lg={2} className="sm-0 px-0 pl-lg-2">
             {renderSecondaryImages()}
           </Col>
         </Row>
