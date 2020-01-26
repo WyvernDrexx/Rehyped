@@ -22,9 +22,11 @@ const cookies = {
     d.setTime(d.getTime() + expiresAfter * 24 * 60 * 60 * 1000);
     options.expires = options.expires || d;
     options.path = "/";
+    if (process.env.NODE_ENV === "production") options.domain = "rehyped.com";
+
     if (typeof value === "object")
       cookie.set(name, JSON.stringify(value), options);
-    else cookie.set(name, value, options);
+    else cookie.set(name, value, { options });
     return { name, value };
   },
   remove: (name = "") => {
