@@ -49,19 +49,19 @@ const SlideShow = props => {
       <div className="slideshow-container">
         <div
           style={{
-            background: `url(${"/imgs/wide0.jpg"}) no-repeat center center `
+            background: `url(${"/imgs/wide0.webp"}) no-repeat center center `
           }}
           className="slide-image slide-fade"
         ></div>
         <div
           style={{
-            background: `url(${"/imgs/wide1.jpg"}) no-repeat center center`
+            background: `url(${"/imgs/wide1.webp"}) no-repeat center center`
           }}
           className="slide-image slide-fade"
         ></div>
         <div
           style={{
-            background: `url(${"/imgs/wide2.jpg"}) no-repeat center center`
+            background: `url(${"/imgs/wide2.webp"}) no-repeat center center`
           }}
           className="slide-image slide-fade"
         ></div>

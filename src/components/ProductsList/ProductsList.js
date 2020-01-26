@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Row, Spinner } from "react-bootstrap";
+import { Row } from "react-bootstrap";
 import { fetchMore } from "../../actions";
 import { useDispatch, useSelector } from "react-redux";
 import ListItem from "./ListItem";
@@ -14,9 +14,7 @@ const ProductsList = props => {
   useEffect(_ => {
     if (Object.values(products).length === 0) dispatch(fetchMore());
     window.onload = _ => {
-      if (window.pageYOffset > 1650) {
         window.scrollTo(0, 0);
-      }
     };
   }, [products, dispatch]);
 
