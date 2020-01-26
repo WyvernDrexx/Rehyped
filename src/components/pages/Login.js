@@ -39,9 +39,12 @@ const Login = props => {
     [formState.token, dispatch]
   );
 
-  useEffect(_ => {
-    return _ => dispatch(clearForm());
-  }, [dispatch]);
+  useEffect(
+    _ => {
+      return _ => dispatch(clearForm());
+    },
+    [dispatch]
+  );
 
   const renderResponse = _ => {
     return (
@@ -91,7 +94,6 @@ const Login = props => {
       </form>
     );
   };
-
 
   if (isVerified) {
     return <UnauthorizedError to="/products" isVerified={isVerified} />;

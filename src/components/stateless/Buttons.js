@@ -40,7 +40,6 @@ export const PrimaryButton = props => {
       className={`no-radius  button-default  primary-background-color text-light ${props.className ||
         ""}`}
       variant="light"
-      type={props.type || ""}
     >
       {props.title || "Primary Button"}
       {props.children}
