@@ -1,0 +1,88 @@
+@import "../../assets/styles/variables";
+
+.notification {
+  position: fixed;
+  top: 50%;
+  z-index: 600;
+  width: 100%;
+
+  .notification-main {
+    width: 100%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    height: 20px;
+    background-color: rgb(66, 66, 66);
+    border-left: 10px solid $primaryColor;
+    border-right: 10px solid $primaryColor;
+    padding: 15px;
+    overflow: hidden;
+    transform: scale(0);
+  }
+
+  p {
+    color: rgb(199, 198, 198);
+    position: absolute;
+    text-align: center;
+    top: 10%;
+    left: 0;
+    right: 0;
+    letter-spacing: 1px;
+    margin: auto;
+    word-wrap: none;
+    opacity: 0;
+  }
+}
+
+.animate-show {
+  animation: notification-show 300ms linear 1 forwards;
+}
+
+.animate-hide {
+  animation: notification-hide 500ms linear 1 forwards;
+}
+
+.animate-text{
+  animation: text-animation-start 500ms linear 1 forwards;
+}
+
+.animate-text-end{
+  animation: text-animation-end 300ms linear 1 forwards;
+}
+
+@keyframes text-animation-start{
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+}
+
+@keyframes text-animation-end{
+  0%{
+    opacity: 1;
+  }
+  100%{
+    opacity: 0;
+  }
+}
+
+
+@keyframes notification-show {
+  0% {
+    transform: scale(0, 2);
+  }
+  100% {
+    transform: scale(1, 2);
+  }
+}
+
+@keyframes notification-hide {
+  0% {
+    transform: scale(1, 2);
+  }
+  100% {
+    transform: scale(0, 2);
+  }
+}

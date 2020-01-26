@@ -24,7 +24,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { adminPanel, addProduct, ListProducts, ListOrders } from '../adminComponents';
 import { getToken, verifyToken, removeToken, fetchCartItems } from "../../actions";
 import { useEffect } from "react";
-import Loader from "../Loader";
+import Test from "../pages/Test";
 
 const App = _ => {
   const dispatch = useDispatch();
@@ -58,7 +58,7 @@ const App = _ => {
       <Header />
       <Route exact path="/" component={Home} />
       <Route exact path="/products" component={Products} />
-      <Route exact path="/test-me" component={Loader} />
+      <Route exact path="/test-me" component={Test} />
       <Route exact path="/products/:productId" component={Product} />
       <Route exact path="/mycart" component={MyCart} />
       <Route exact path="/about-us" component={AboutUs} />

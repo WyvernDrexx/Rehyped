@@ -10,6 +10,7 @@ import { Row, Col, Container } from "react-bootstrap";
 import TopBanner from "../TopBanner";
 import Sidebar from "../Sidebar";
 import Alert from '../Alert';
+import Notification from '../Notification';
 import "./Header.scss";
 
 const Header = props => {
@@ -40,6 +41,7 @@ const Header = props => {
     <>
       <TopBanner />
       <Alert />
+      <Notification />
       <div className="z-index-max">
         <Sidebar
           isOpen={sidebarOpen}
