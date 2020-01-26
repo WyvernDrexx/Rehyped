@@ -22,7 +22,7 @@ import PaymentRedirect from "../PaymentRedirect";
 
 import { useDispatch, useSelector } from "react-redux";
 import { adminPanel, addProduct, ListProducts, ListOrders } from '../adminComponents';
-import { getToken, verifyToken, removeToken, fetchCartItems } from "../../actions";
+import { getToken, verifyToken, fetchCartItems } from "../../actions";
 import { useEffect } from "react";
 import Test from "../pages/Test";
 
@@ -43,9 +43,6 @@ const App = _ => {
 
   useEffect(
     _ => {
-      if (typeof isVerified !== "undefined" && !isVerified) {
-        dispatch(removeToken());
-      }
       if(isVerified){
         dispatch(fetchCartItems());
       }
