@@ -4,7 +4,7 @@ import './SuccessBlock.scss';
 const SuccessBlock = props => {
   return (
     <>
-      <div className="success-block">
+      <div className={`success-block ${props.className}`}>
         <p>{props.message}</p>
       </div>
     </>

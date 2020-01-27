@@ -20,8 +20,11 @@
   width: 100%;
   position: relative;
   .img-wrapper {
-    padding-top: 12rem;
+    padding-top: 12.4rem;
     padding-right: 10rem;
+    @include md{
+      padding-top: 12rem;
+    }
     img {
       position: absolute;
       top: 0;

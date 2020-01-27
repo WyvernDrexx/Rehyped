@@ -74,6 +74,17 @@ export default _ => {
                   </Link>
                 </td>
               </tr>
+              <tr>
+                <td><p className="flex-center pt-2">2</p></td>
+                <td>
+                  <h2 className="text-center text-info  mb-0">Coupon Manage</h2>
+                </td>
+                <td className="p-0">
+                  <Link to="/admin-pannexa/coupon">
+                  <DarkButton className="w-100 pb-4 bg-primary" title="COUPONS" />
+                  </Link>
+                </td>
+              </tr>
             </tbody>
           </Table>
         </Container>

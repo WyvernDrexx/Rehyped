@@ -95,7 +95,7 @@ button {
 
 .w-md-50 {
   @include md {
-    width: 50%;
+    width: 50% !important;
   }
 }
 .w-md-25 {
@@ -119,6 +119,15 @@ button {
   @include sm {
     width: 75% !important;
   }
+}
+
+
+.w-35{
+  width: 35%;
+}
+
+.w-45{
+  width: 45%;
 }
 
 .px-sm-0 {
@@ -182,6 +191,10 @@ button {
 
 .no-radius {
   border-radius: 0px;
+}
+
+.border-radius-sm{
+  border-radius:  5px;
 }
 
 button {

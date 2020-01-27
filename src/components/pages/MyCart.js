@@ -7,7 +7,7 @@ import {
 } from "../stateless";
 import { useSelector, useDispatch } from "react-redux";
 import { DarkButton, PrimaryButton } from "../stateless/Buttons";
-import { Row, Col, Spinner } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 import { placeOrders } from "../../actions";
 import Loader from '../Loader';
 import CartList from "../CartList";
@@ -31,7 +31,7 @@ const MyCart = props => {
     });
   }
 
-  if (typeof isRunning === "undefined" || isRunning) {
+  if (typeof isRunning === "undefined" && isRunning) {
     return (
       <div className="mt-5 mb-5">
         <Loader  className="block-center" />

@@ -3,7 +3,7 @@
 .notification {
   position: fixed;
   top: 50%;
-  z-index: 600;
+  z-index: -600;
   width: 100%;
 
   .notification-main {

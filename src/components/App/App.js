@@ -21,7 +21,7 @@ import MyAccount from "../pages/MyAccount";
 import PaymentRedirect from "../PaymentRedirect";
 
 import { useDispatch, useSelector } from "react-redux";
-import { adminPanel, addProduct, ListProducts, ListOrders } from '../adminComponents';
+import { adminPanel, addProduct, ListProducts, ListOrders, CouponManage } from '../adminComponents';
 import { getToken, verifyToken, fetchCartItems } from "../../actions";
 import { useEffect } from "react";
 import Test from "../pages/Test";
@@ -70,6 +70,7 @@ const App = _ => {
       <Route exact path="/payment" component={PaymentRedirect} />
       <Route exact path="/admin-pannexa" component={adminPanel} />
       <Route exact path="/admin-pannexa/add-product" component={addProduct} />
+      <Route exact path="/admin-pannexa/coupon" component={CouponManage} />
       <Route exact path="/admin-pannexa/add-product/:id" component={addProduct} />
       <Route exact path="/admin-pannexa/list-orders" component={ListOrders} />
       <Route exact path="/admin-pannexa/list-products/:section" component={ListProducts} />
