@@ -4,7 +4,7 @@ import api from "../api";
 
 const setToken = token => {
   cookies.remove("token");
-  cookies.set("token", token);
+  cookies.set("token", String(token));
   // localStorage.setItem("token", token);
   return { type: SET_TOKEN, payload: token };
 };
