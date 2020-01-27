@@ -22,6 +22,9 @@ const cookies = {
     d.setTime(d.getTime() + expiresAfter * 24 * 60 * 60 * 1000);
     options.expires = options.expires || d;
     options.path = "/";
+    if(options.isSession){
+      options = {}
+    }
     if (typeof value === "object")
       cookie.set(name, JSON.stringify(value), options);
     else cookie.set(name, value, options);

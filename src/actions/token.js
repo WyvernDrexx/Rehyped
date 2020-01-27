@@ -2,9 +2,9 @@ import { SET_TOKEN, REMOVE_TOKEN, GET_TOKEN, VERIFY_TOKEN } from "./types";
 import cookies from "../utils/Cookies";
 import api from "../api";
 
-const setToken = token => {
+const setToken = (token, options) => {
   cookies.remove("token");
-  cookies.set("token", String(token));
+  cookies.set("token", String(token), options);
   // localStorage.setItem("token", token);
   return { type: SET_TOKEN, payload: token };
 };

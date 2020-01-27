@@ -1,10 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Container,
   CommonHeader,
   ErrorBlock,
   SuccessBlock,
-  UnauthorizedError
+  UnauthorizedError,
+  Checkbox
 } from "../stateless";
 import { DarkButton, PrimaryButton } from "../stateless/Buttons";
 import { Link } from "react-router-dom";
@@ -18,6 +19,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 const Login = props => {
   const dispatch = useDispatch();
+  const [rememberMe, setRememberMe] = useState(true);
   const formState = useSelector(state => state.form);
   const isRunning = useSelector(state => state.requestStatus.onFormSubmit);
   const onChange = ({ name, value }) => {
@@ -33,7 +35,9 @@ const Login = props => {
   useEffect(
     _ => {
       if (formState.token) {
-        dispatch(setToken(formState.token));
+        let options = {};
+        if (!rememberMe) options.isSession = true;
+        dispatch(setToken(formState.token, options));
       }
     },
     [formState.token, dispatch]
@@ -78,6 +82,26 @@ const Login = props => {
           value={formState.password}
           onChange={({ target }) => onChange(target)}
         />
+        <div className="mt-4">
+          {rememberMe ? (
+            <Checkbox
+              name="checkbox"
+              content="Remember Me"
+              checked
+              onClick={_ => {
+                setRememberMe(!rememberMe);
+              }}
+            />
+          ) : (
+            <Checkbox
+              name="checkbox"
+              content="Remember Me"
+              onClick={_ => {
+                setRememberMe(!rememberMe);
+              }}
+            />
+          )}
+        </div>
         <PrimaryButton
           className={`mt-4 mx-auto d-block w-100 font-weight-bold ${
             isRunning ? "status-running" : ""

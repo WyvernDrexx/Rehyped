@@ -81,7 +81,7 @@ const CreateAccount = props => {
               onChange(target);
             }}
           />
-          <div className="mt-5">
+          <div className="mt-5 w-100 w-md-40 mx-auto">
             <Checkbox
               name="checkbox"
               content="Keep me updated with news and exclusive offers."
