@@ -64,19 +64,7 @@ p {
 
 /* Headers/Text related classes */
 
-.header {
-  text-align: center;
-  font-size: 24px;
-  letter-spacing: 9px;
-  font-weight: bold;
-}
 
-.sub-header {
-  text-align: center;
-  font-size: 12px;
-  letter-spacing: 5px;
-  color: rgb(68, 67, 67);
-}
 
 /* Inputs related */
 

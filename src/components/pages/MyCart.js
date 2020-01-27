@@ -1,21 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   CommonHeader,
   Container,
   Divider,
-  UnauthorizedError
+  UnauthorizedError,
+  ErrorBlock,
+  SuccessBlock
 } from "../stateless";
 import { useSelector, useDispatch } from "react-redux";
 import { DarkButton, PrimaryButton } from "../stateless/Buttons";
 import { Row, Col } from "react-bootstrap";
-import { placeOrders } from "../../actions";
-import Loader from '../Loader';
+import { placeOrders, validateCoupon } from "../../actions";
+import Loader from "../Loader";
 import CartList from "../CartList";
 
 const MyCart = props => {
   const cartItems = useSelector(state => state.cart);
+  const coupon = useSelector(state => state.coupon);
   const isRunning = useSelector(state => state.requestStatus.fetchCartItems);
   const isVerified = useSelector(state => state.token.isVerified);
+  const [code, setCode] = useState("");
   const dispatch = useDispatch();
   const isPlaceOrdersRunning = useSelector(
     state => state.requestStatus.placeOrders
@@ -34,7 +38,7 @@ const MyCart = props => {
   if (typeof isRunning === "undefined" && isRunning) {
     return (
       <div className="mt-5 mb-5">
-        <Loader  className="block-center" />
+        <Loader className="block-center" />
       </div>
     );
   } else if (!isVerified) {
@@ -43,6 +47,19 @@ const MyCart = props => {
 
   const onCheckoutClick = _ => {
     dispatch(placeOrders());
+  };
+
+  const onCouponCheck = _ => {
+    dispatch(validateCoupon(code));
+  };
+
+  const renderCouponStatus = _ => {
+    if (coupon.error) {
+      return <ErrorBlock message={coupon.error} />;
+    }
+    if (coupon.message) {
+      return <SuccessBlock message={coupon.message} />;
+    }
   };
 
   return (
@@ -64,14 +81,18 @@ const MyCart = props => {
             header="COUPON"
             subheader="USE THE CODE TO GET DISCOUNTS"
           />
-          <div>
+          <div className="w-100 w-md-40 mx-auto mt-5">
+            {renderCouponStatus()}
             <input
-              className="d-block mx-auto primary-input mt-5 w-100 w-md-40"
+              className="d-block mx-auto primary-input mt-4 w-100"
               placeholder="ENTER COUPON CODE"
+              value={code}
+              onChange={({ target }) => setCode(target.value)}
             />
             <DarkButton
-              className="mt-4 d-block mx-auto font-weight-bold w-100 w-md-40"
+              className="mt-4 d-block mx-auto font-weight-bold w-100"
               title="CHECK"
+              onClick={onCouponCheck}
             />
           </div>
         </Container>
@@ -110,19 +131,47 @@ const MyCart = props => {
               </Col>
               <Col className="px-0">
                 <p className="sub-header text-right text-success font-weight-bold">
-                -₹{totalMRP -totalDiscount}
+                  -₹{totalMRP - totalDiscount}
                 </p>
               </Col>
             </Row>
+            {coupon.coupon ? (
+              <Row className="mb-3">
+                <Col xs={8} className="px-0">
+                  <p className="sub-header text-left font-weight-bold text-underline">Coupon Discount</p>
+                </Col>
+
+                <Col className="px-0">
+                  <p className="sub-header text-right text-danger font-weight-bold">
+                    -₹{(totalMRP / 100) * coupon.coupon.discount || 1}
+                  </p>
+                </Col>
+              </Row>
+            ) : (
+              <Row className="mb-3">
+                <Col title="Enter coupon code on the above filed to get big discounts." xs={8} className="px-0">
+                  <p className="sub-header text-left font-weight-bold text-underline">Coupon Discount</p>
+                </Col>
+
+                <Col className="px-0">
+                  <p className="sub-header text-right text-danger font-weight-bold">
+                    No Coupons
+                  </p>
+                </Col>
+              </Row>
+            )}
+
             <Row className="mb-3">
               <Col xs={8} className="px-0">
-                <p className="sub-header  font-weight-bold text-left">
+                <p className="sub-header text-underline  font-weight-bold text-left">
                   PAYABLE AMOUNT
                 </p>
               </Col>
               <Col className="px-0">
-                <p className="sub-header text-right font-weight-bold">
-                ₹{totalDiscount}
+                <p className="sub-header text-right font-weight-bold text-underline text-primary">
+                ₹{coupon.coupon
+                    ? totalDiscount - (totalMRP / 100) * coupon.coupon.discount
+                    : totalDiscount}
                 </p>
               </Col>
             </Row>

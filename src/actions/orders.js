@@ -23,7 +23,8 @@ const buyNow = product => (dispatch, getState) => {
 const placeOrders = _ => async (dispatch, getState) => {
   const {
     cart,
-    token: { token }
+    token: { token },
+    coupon: { coupon }
   } = getState();
 
   if (!token) {
@@ -40,7 +41,7 @@ const placeOrders = _ => async (dispatch, getState) => {
   await api
     .post(
       "/orders",
-      { cart },
+      { cart, coupon },
       {
         headers: {
           Authorization: "Bearer " + token
@@ -61,7 +62,7 @@ const placeOrders = _ => async (dispatch, getState) => {
       } else if (resp.data.status === 406) {
         dispatch(showAlert(resp.data.message));
         history.push("/my-account/shipping-details");
-      }else{
+      } else {
         dispatch(showAlert(resp.data.message, "failure"));
       }
     })
@@ -110,7 +111,7 @@ const placeOrder = _ => async (dispatch, getState) => {
       } else if (resp.data.status === 406) {
         dispatch(showAlert(resp.data.message, "failure"));
         history.push("/my-account/shipping-details");
-      }else{
+      } else {
         dispatch(showAlert(resp.data.message, "failure"));
       }
     })

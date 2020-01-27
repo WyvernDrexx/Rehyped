@@ -7,6 +7,7 @@ import orders from "./orders";
 import user from "./user";
 import alert from "./alert";
 import misc from "./misc";
+import coupons from './coupon';
 
 export const {
   fetchProduct,
@@ -26,3 +27,4 @@ export const { setRequestStatus } = requestStatus;
 export const { buyNow, placeOrder, getOrders, placeOrders } = orders;
 export const { fetchShippingDetails, onUserInputChange, onUserSubmit } = user;
 export const { setIsOnline } = misc;
+export const { validateCoupon } = coupons;

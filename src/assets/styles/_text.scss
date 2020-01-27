@@ -24,11 +24,13 @@
 .sub-header {
   text-align: center;
   font-size: $secondaryFontSize;
-  letter-spacing: $subLetterSpacing;
+  letter-spacing: 4px;
   color: rgb(68, 67, 67);
   font-family: 'Roboto', sans-serif;
 }
-
+.text-underline{
+  text-decoration: underline;
+}
 /* Inputs related */
 
 .placeholder-center::-webkit-input-placeholder {

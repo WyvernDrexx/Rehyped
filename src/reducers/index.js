@@ -26,7 +26,9 @@ import {
   USER_INPUT_CHANGE,
   UPDATE_USER_RESPONSE,
   CLOSE_ALERT,
-  IS_ONLINE
+  IS_ONLINE,
+  COUPON_CODE_SUCCESS,
+  COUPON_CODE_FAILURE
 } from "../actions/types";
 
 const productsReducer = (state = [], action) => {
@@ -187,6 +189,16 @@ const isOnlineReducer = (state=true, action) => {
   }
 }
 
+const couponReducer = (state={}, action) => {
+  switch (action.type) {
+    case COUPON_CODE_SUCCESS:
+      return {coupon: action.payload.coupon, message: action.payload.message};
+    case COUPON_CODE_FAILURE:
+      return {error: action.payload};
+    default:
+      return state;
+  }
+}
 
 export default combineReducers({
   products: productsReducer,
@@ -199,5 +211,6 @@ export default combineReducers({
   requestStatus: requestStatusReducer,
   orders: ordersReducer,
   user: userReducer,
-  isOnline: isOnlineReducer
+  isOnline: isOnlineReducer,
+  coupon: couponReducer
 });
