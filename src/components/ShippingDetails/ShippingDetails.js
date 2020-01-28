@@ -9,7 +9,7 @@ import {
 } from "../stateless";
 
 import { PrimaryButton } from "../stateless/Buttons";
-import { Spinner, FormGroup, Form } from "react-bootstrap";
+import { Spinner, Form } from "react-bootstrap";
 import {
   onUserInputChange,
   onUserSubmit,
@@ -35,9 +35,10 @@ const ShippingDetails = props => {
 
   const onSubmit = _ => {
     dispatch(
-      onUserSubmit("shippingDetails", "/user/shipping-details", () =>
-        history.goBack()
-      )
+      onUserSubmit("shippingDetails", "/user/shipping-details", () => {
+        if (history.location.pathname === "/my-account/shipping-details")
+          history.goBack();
+      })
     );
   };
 
