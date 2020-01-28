@@ -20,7 +20,7 @@ const ListItem = props => {
       xs={6}
       sm={4}
       lg={3}
-      className="product-item mb-5 px-2"
+      className="product-item mb-4 px-2"
       onLoad={divIsLoaded}
     >
       {isLoaded ? null : (
