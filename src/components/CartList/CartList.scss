@@ -3,7 +3,7 @@
 .cart-item {
   width: 100%;
   @include md {
-    max-width: 20rem;
+    max-width: 21rem;
     display: inline-block;
     margin: auto;
   }
@@ -20,7 +20,7 @@
   width: 100%;
   position: relative;
   .img-wrapper {
-    padding-top: 12.4rem;
+    padding-top: 10.4rem;
     padding-right: 10rem;
     img {
       position: absolute;

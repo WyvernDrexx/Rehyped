@@ -8,7 +8,7 @@ const CartList = props => {
   if (cartItems && cartItems.length === 0) {
     return (
       <div className="cartList">
-        <p className="text-center sub-header">
+        <p className="text-center sub-header mb-5">
           YOUR CART IS EMPTY! GO SHOPPING NOW!
         </p>
       </div>

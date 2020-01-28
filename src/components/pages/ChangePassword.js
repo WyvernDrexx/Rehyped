@@ -87,7 +87,7 @@ const ChangePassword = props => {
               onChange={({ target }) => onChange(target)}
             />
             <input
-              className="primary-input mt-2 mb-4 w-100 w-md-40 d-block mx-auto"
+              className="primary-input mt-4 mb-4 w-100 w-md-40 d-block mx-auto"
               placeholder="CONFIRM PASSWORD"
               name="confirmPassword"
               value={confirmPassword}

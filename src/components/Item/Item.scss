@@ -39,10 +39,11 @@
   height: auto;
   .item-name {
     font-size: 12px;
-    letter-spacing: 6px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
   }
   .item-price {
     font-size: 12px;
-    letter-spacing: 6px;
+    letter-spacing: 4px;
   }
 }

@@ -35,16 +35,6 @@ const MyCart = props => {
     });
   }
 
-  if (typeof isRunning === "undefined" && isRunning) {
-    return (
-      <div className="mt-5 mb-5">
-        <Loader className="block-center" />
-      </div>
-    );
-  } else if (!isVerified) {
-    return <UnauthorizedError />;
-  }
-
   const onCheckoutClick = _ => {
     dispatch(placeOrders());
   };
@@ -62,9 +52,26 @@ const MyCart = props => {
     }
   };
 
+  if(typeof isVerified === "undefined"){
+    return (
+      <div className="mt-5 mb-5">
+        <Loader className="block-center" />
+      </div>
+    );
+  }
+  else if (!isVerified) {
+    return <UnauthorizedError />;
+  } else if (typeof isRunning === "undefined" || isRunning) {
+    return (
+      <div className="mt-5 mb-5">
+        <Loader className="block-center" />
+      </div>
+    );
+  }
+
   return (
     <>
-      <Container className="pt-5 pb-5">
+      <Container className="pt-5">
         <CommonHeader
           header="ITEMS"
           subheader="TOTAL PRODUCTS"
@@ -75,7 +82,7 @@ const MyCart = props => {
           <CartList cartItems={cartItems} />
         </div>
       </Container>
-      <div className="secondary-background-color pt-5 pb-5 mt-5">
+      <div className="secondary-background-color pt-5 pb-5">
         <Container>
           <CommonHeader
             header="COUPON"
@@ -138,19 +145,30 @@ const MyCart = props => {
             {coupon.coupon ? (
               <Row className="mb-3">
                 <Col xs={8} className="px-0">
-                  <p className="sub-header text-left font-weight-bold text-underline">Coupon Discount</p>
+                  <p className="sub-header text-left font-weight-bold text-underline">
+                    Coupon Discount
+                  </p>
                 </Col>
 
                 <Col className="px-0">
                   <p className="sub-header text-right text-danger font-weight-bold">
-                    -₹{((totalMRP / 100) * coupon.coupon.discount || 1).toFixed(2)}
+                    -₹
+                    {((totalMRP / 100) * coupon.coupon.discount || 1).toFixed(
+                      2
+                    )}
                   </p>
                 </Col>
               </Row>
             ) : (
               <Row className="mb-3">
-                <Col title="Enter coupon code on the above filed to get big discounts." xs={8} className="px-0">
-                  <p className="sub-header text-left font-weight-bold text-underline">Coupon Discount</p>
+                <Col
+                  title="Enter coupon code on the above filed to get big discounts."
+                  xs={8}
+                  className="px-0"
+                >
+                  <p className="sub-header text-left font-weight-bold text-underline">
+                    Coupon Discount
+                  </p>
                 </Col>
 
                 <Col className="px-0">
@@ -169,8 +187,12 @@ const MyCart = props => {
               </Col>
               <Col className="px-0">
                 <p className="sub-header text-right font-weight-bold text-underline text-primary">
-                ₹{coupon.coupon
-                    ? (totalDiscount - (totalMRP / 100) * coupon.coupon.discount).toFixed(2)
+                  ₹
+                  {coupon.coupon
+                    ? (
+                        totalDiscount -
+                        (totalMRP / 100) * coupon.coupon.discount
+                      ).toFixed(2)
                     : totalDiscount}
                 </p>
               </Col>

@@ -11,14 +11,15 @@ const Product = props => {
         <SingleProduct />
       </div>
 
-      <Container className="px-0 mb-6 mt-5">
-        <CommonHeader
+      <CommonHeader
           header="RELATED"
           subheader="PRODUCTS YOU MAY LIKE"
           className="mb-5"
         />
-        <Carousel />
-      </Container>
+      <div className="mt-5 mb-5">
+      <Carousel />
+
+      </div>
       <Subscribe />
     </>
   );

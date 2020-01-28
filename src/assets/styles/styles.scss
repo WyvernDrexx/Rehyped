@@ -147,7 +147,9 @@ button {
 .small {
   font-size: 8px;
 }
-
+.text-transform-uppercase{
+  text-transform: uppercase;
+}
 .default-line-height {
   line-height: $defaultLineHeight;
 }

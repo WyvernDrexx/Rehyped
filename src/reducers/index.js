@@ -86,7 +86,7 @@ const cartReducers = (state = [], action) => {
 const alertReducer = (state = [], action) => {
   switch (action.type) {
     case ALERT_SHOW:
-      return [...state,action.payload];
+      return [...state, action.payload];
     case CLOSE_ALERT:
       return action.payload;
     default:
@@ -116,7 +116,7 @@ const formReducer = (state = INITIAL_FORM_STATE(), action) => {
   }
 };
 
-const tokenReducer = (state = {token: null}, action) => {
+const tokenReducer = (state = { token: { isVerified: null } }, action) => {
   switch (action.type) {
     case SET_TOKEN:
       return { ...state, token: action.payload };
@@ -125,7 +125,7 @@ const tokenReducer = (state = {token: null}, action) => {
     case VERIFY_TOKEN:
       return { ...state, ...action.payload };
     case REMOVE_TOKEN:
-      return { };
+      return {};
     default:
       return state;
   }
@@ -179,26 +179,25 @@ const userReducer = (state = {}, action) => {
   }
 };
 
-
-const isOnlineReducer = (state=true, action) => {
+const isOnlineReducer = (state = true, action) => {
   switch (action.type) {
     case IS_ONLINE:
       return action.payload;
     default:
       return state;
   }
-}
+};
 
-const couponReducer = (state={}, action) => {
+const couponReducer = (state = {}, action) => {
   switch (action.type) {
     case COUPON_CODE_SUCCESS:
-      return {coupon: action.payload.coupon, message: action.payload.message};
+      return { coupon: action.payload.coupon, message: action.payload.message };
     case COUPON_CODE_FAILURE:
-      return {error: action.payload};
+      return { error: action.payload };
     default:
       return state;
   }
-}
+};
 
 export default combineReducers({
   products: productsReducer,

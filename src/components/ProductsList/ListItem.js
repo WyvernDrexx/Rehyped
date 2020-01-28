@@ -38,7 +38,7 @@ const ListItem = props => {
       </Row>
       <Row className={`${isLoaded ? "" : "visibility-hidden"}`}>
         <div className="w-100 mt-4">
-          <p className="sub-header font-weight-bold text-left">
+          <p className="sub-header text-transform-uppercase font-weight-bold text-left">
             {item.name.length > 23 ? item.name.slice(0, 23) + "..." : item.name}
           </p>
           <p className="mt-4 mr-4">

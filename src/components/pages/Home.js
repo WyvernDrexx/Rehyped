@@ -7,7 +7,6 @@ import { DarkButton } from "../stateless/Buttons";
 
 import Carousel from "../Carousel";
 import Media from "../Media";
-import TriShowCase from "../TriShowcase";
 import ProductItem from "../Item";
 import Subscribe from "../Subscribe";
 import SlideShow from "../SlideShow";
@@ -23,7 +22,7 @@ const Home = props => {
           header="NEW ARRIVALS"
           subheader="CHECKOUT OUR LATEST CREATIONS"
         />
-        <Divider className="mt-4 mb-5" />
+        <Divider className="mt-4" />
         <Row className="mt-5">
           <Col md>
             <div className="new-arrival-img-wrapper">
@@ -55,37 +54,26 @@ const Home = props => {
             </Link>
           </Col>
         </Row>
-        <CommonHeader
-          className="mt-6"
-          header="MERCH"
-          subheader="REHYPED ORIGINALS"
-        />
-        <Divider className="mt-4 mb-4" />
       </Container>
+      <CommonHeader
+        className="mt-5"
+        header="MERCH"
+        subheader="REHYPED ORIGINALS"
+      />
+      <Divider className="mt-4 mb-4" />
       <div>
         <Carousel />
       </div>
-      <Container className="mt-6">
+      <Container className="mt-5">
         <ProductItem productId={"featured"} instructions={false} />
       </Container>
-      <Container>
-        <CommonHeader
-          className="mt-6"
+      <CommonHeader
+          className="mt-5"
           header="ABILITIES"
           subheader="WHAT MAKES US UNIQUE"
         />
         <Divider className="mt-4 mb-4" />
-      </Container>
-      <Media className="mt-4 mb-6 mx-auto" />
-      <Container className="mb-5 pb-3">
-        <CommonHeader
-          className="mb-3"
-          header="INSTAGRAM"
-          subheader="FOLLOW US FOR GIVEAWAYS"
-        />
-        <Divider />
-        <TriShowCase className="mt-6" />
-      </Container>
+      <Media className="mx-auto" />
       <Subscribe />
     </>
   );

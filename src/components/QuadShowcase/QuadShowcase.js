@@ -46,13 +46,13 @@ const QuadShowcase = props => {
           return (
             <div
               key={index}
-              className="secondary-image pt-0 visibility-hidden"
+              className="secondary-image pt-0 d-inline-block visibility-hidden"
             ></div>
           );
         }
 
         return (
-          <div key={index} className="secondary-image mb-3">
+          <div key={index} className="secondary-image d-inline-block mb-3">
             <img
               onClick={_ => onSecondaryImageClick(image)}
               alt="This is null"

@@ -21,7 +21,7 @@ const CartItem = props => {
       <Row md={"true"} className="mx-0 mb-5">
         <Col
           onClick={_ => history.push(`/products/${item._id}`)}
-          xs={6}
+          xs={5}
           className="cursor-pointer flex-center cart-item-image pl-0"
         >
           <div className="img-wrapper">
@@ -30,17 +30,15 @@ const CartItem = props => {
         </Col>
         <Col className="cart-item-info ml-2">
           <Row className="cart-item-details">
-            <Row>
-              <Col>
-                <h5 className="sub-header text-left font-weight-bold">
-                  {item.name}
-                </h5>
-                <p className="sub-header text-left">
-                  <span className="strikethrough pr-2">₹{item.price}</span>₹
-                  {item.discount}
-                </p>
-              </Col>
-            </Row>
+            <Col className="px-0">
+              <h5 className="sub-header text-left font-weight-bold">
+                {item.name}
+              </h5>
+              <p className="sub-header text-left">
+                <span className="strikethrough pr-2">₹{item.price}</span>₹
+                {item.discount}
+              </p>
+            </Col>
           </Row>
           <Row className="">
             <Col className="px-0">
