@@ -49,7 +49,10 @@ export default props => {
       dispatch(onFormSubmit("/products"));
     }
   };
-
+  const { isAdmin } = useSelector(state => state.token);
+  if(!isAdmin){
+    return null;
+  }
   const renderResponse = _ => {
     return (
       <div className="block-center mt-4">
@@ -62,6 +65,12 @@ export default props => {
       </div>
     );
   };
+
+  if(!isAdmin){
+    return null;
+  }
+
+
   return (
     <div className="mt-5 pt-5 pb-5">
       <Container>

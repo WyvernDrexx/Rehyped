@@ -20,7 +20,7 @@ export default _ => {
     [dispatch]
   );
 
-  if (token.isVerified) {
+  if (token.isVerified && token.isAdmin) {
     if (products && products.length > 0) {
       if (section === "published") {
         return (

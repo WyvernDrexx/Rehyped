@@ -18,6 +18,7 @@ const CouponManage = _ => {
   const onChange = ({ name, value }) => {
     setCoupon({ ...coupon, [name]: value });
   };
+  const { isAdmin } = token;
 
   useEffect(
     _ => {
@@ -106,48 +107,52 @@ const CouponManage = _ => {
     );
   };
 
-  return (
-    <Container className="mt-5 mb-5">
-      <p className="header text-left mb-3">AVAILABE COUPONS</p>
-      <div className="gray-border p-3 px-0">{renderCoupons()}</div>
-      <p className="header text-left mt-5">GENERATE COUPONS</p>
-      <form className="gray-border p-3 px-0 mt-3">
-        <InputGroup className="mb-3 mt-3">
-          <InputGroup.Prepend>
-            <InputGroup.Text id="basic-addon1">CODE</InputGroup.Text>
-          </InputGroup.Prepend>
-          <FormControl
-            placeholder="COUPON CODE"
-            aria-label="COUPON CODE"
-            aria-describedby="basic-addon1"
-            name="code"
-            value={coupon.code}
-            onChange={({ target }) => onChange(target)}
-            required
+  if (!isAdmin) {
+    return null;
+  } else {
+    return (
+      <Container className="mt-5 mb-5">
+        <p className="header text-left mb-3">AVAILABE COUPONS</p>
+        <div className="gray-border p-3 px-0">{renderCoupons()}</div>
+        <p className="header text-left mt-5">GENERATE COUPONS</p>
+        <form className="gray-border p-3 px-0 mt-3">
+          <InputGroup className="mb-3 mt-3">
+            <InputGroup.Prepend>
+              <InputGroup.Text id="basic-addon1">CODE</InputGroup.Text>
+            </InputGroup.Prepend>
+            <FormControl
+              placeholder="COUPON CODE"
+              aria-label="COUPON CODE"
+              aria-describedby="basic-addon1"
+              name="code"
+              value={coupon.code}
+              onChange={({ target }) => onChange(target)}
+              required
+            />
+          </InputGroup>
+          <InputGroup className="mb-3 mt-3">
+            <InputGroup.Prepend>
+              <InputGroup.Text id="basic-addon1">%</InputGroup.Text>
+            </InputGroup.Prepend>
+            <FormControl
+              placeholder="DISCOUNT"
+              aria-label="DISCOUNT"
+              aria-describedby="basic-addon1"
+              name="discount"
+              value={coupon.discount}
+              onChange={({ target }) => onChange(target)}
+              required
+            />
+          </InputGroup>
+          <PrimaryButton
+            className={isPushing ? "status-running" : ""}
+            onClick={onSubmit}
+            title="GENERATE"
           />
-        </InputGroup>
-        <InputGroup className="mb-3 mt-3">
-          <InputGroup.Prepend>
-            <InputGroup.Text id="basic-addon1">%</InputGroup.Text>
-          </InputGroup.Prepend>
-          <FormControl
-            placeholder="DISCOUNT"
-            aria-label="DISCOUNT"
-            aria-describedby="basic-addon1"
-            name="discount"
-            value={coupon.discount}
-            onChange={({ target }) => onChange(target)}
-            required
-          />
-        </InputGroup>
-        <PrimaryButton
-          className={isPushing ? "status-running" : ""}
-          onClick={onSubmit}
-          title="GENERATE"
-        />
-      </form>
-    </Container>
-  );
+        </form>
+      </Container>
+    );
+  }
 };
 
 export default CouponManage;

@@ -7,7 +7,9 @@ import { Table } from "react-bootstrap";
 
 export default _ => {
   const token = useSelector(state => state.token);
-  if (token.isVerified)
+  const { isAdmin } = useSelector(state => state.token);
+
+  if (token.isVerified && isAdmin)
     return (
       <div className="mt-6 mb-5">
         <Container>

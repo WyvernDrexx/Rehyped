@@ -3,24 +3,23 @@ import { ProgressBar } from "react-bootstrap";
 import { ErrorBlock, SuccessBlock } from "../../stateless";
 import api from "../../../api";
 import "./AddImages.scss";
+import { useSelector } from "react-redux";
 
 const AddImages = props => {
   const [selectedFile, setSelectedFile] = useState({});
   const [uploadProgress, setUploadProgress] = useState(0);
   const [uploadResponse, setUploadResponse] = useState(null);
 
+  const { isAdmin } = useSelector(state => state.token);
+
   const onInputChange = (target, zone) => {
     setSelectedFile({
       ...selectedFile,
       [zone]: target.files[0]
     });
-    console.log(selectedFile);
   };
 
-  const onFileUpload = async (
-    route,
-    zone
-  ) => {
+  const onFileUpload = async (route, zone) => {
     const fd = new FormData();
     console.log(selectedFile, zone);
     if (!selectedFile || !selectedFile[zone]) return;
@@ -71,6 +70,11 @@ const AddImages = props => {
     }
   };
 
+
+  if(!isAdmin){
+    return null;
+  }
+
   return (
     <div className="add-images">
       {renderResponse()}
@@ -91,12 +95,16 @@ const AddImages = props => {
               className="custom-file-label overflow-hidden"
               htmlFor="inputGroupFile04"
             >
-              {selectedFile["primary"] ? selectedFile["primary"].name : "Choose file"}
+              {selectedFile["primary"]
+                ? selectedFile["primary"].name
+                : "Choose file"}
             </label>
           </div>
           <div className="input-group-append">
             <button
-              onClick={_ => onFileUpload(`/products/image/upload/${props.id}/0`,"primary")}
+              onClick={_ =>
+                onFileUpload(`/products/image/upload/${props.id}/0`, "primary")
+              }
               className="btn btn-secondary"
               type="button"
             >
@@ -128,7 +136,10 @@ const AddImages = props => {
           <div className="input-group-append">
             <button
               onClick={_ =>
-                onFileUpload(`/products/image/upload/${props.id}/1`, "secondaryOne")
+                onFileUpload(
+                  `/products/image/upload/${props.id}/1`,
+                  "secondaryOne"
+                )
               }
               className="btn btn-secondary"
               type="button"
@@ -157,7 +168,10 @@ const AddImages = props => {
           <div className="input-group-append">
             <button
               onClick={_ =>
-                onFileUpload(`/products/image/upload/${props.id}/2`, "secondaryTwo")
+                onFileUpload(
+                  `/products/image/upload/${props.id}/2`,
+                  "secondaryTwo"
+                )
               }
               className="btn btn-secondary"
               type="button"
@@ -186,7 +200,10 @@ const AddImages = props => {
           <div className="input-group-append">
             <button
               onClick={_ =>
-                onFileUpload(`/products/image/upload/${props.id}/3`,"secondaryThree")
+                onFileUpload(
+                  `/products/image/upload/${props.id}/3`,
+                  "secondaryThree"
+                )
               }
               className="btn btn-secondary"
               type="button"
