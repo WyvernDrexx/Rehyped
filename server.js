@@ -11,12 +11,12 @@ const helmet = require("helmet");
 let PORT = process.env.PORT || 3000;
 
 app.use(helmet());
-app.use(express.static(path.join(__dirname, "build-bak")));
+app.use(express.static(path.join(__dirname, "build")));
 app.use(compression())
 
 
 app.get("/*", function(req, res) {
-  res.sendFile(path.join(__dirname, "build-bak", "index.html"));
+  res.sendFile(path.join(__dirname, "build", "index.html"));
 });
 
 if (process.env.NODE_ENV && process.env.NODE_ENV === "production") {
