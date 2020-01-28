@@ -11,7 +11,7 @@ const helmet = require("helmet");
 let PORT = process.env.PORT || 3000;
 
 app.use(helmet());
-app.use(express.static(path.join(__dirname, "build")));
+app.use(express.static(path.join(__dirname, "build-bak")));
 app.use(compression())
 
 
