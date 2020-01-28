@@ -137,11 +137,9 @@ const MyAccount = props => {
             </div>
             <div className="options">
               <Container>
-                <Link to="/change-password">
-                  <p className="pb-3 pt-3 sub-header font-weight-bolder text-left">
+                  <p onClick={() => history.push("/change-password")} className="pb-3 pt-3 sub-header font-weight-bolder text-left">
                     CHANGE PASSWORD <FontAwesomeIcon icon={faChevronRight} />
                   </p>
-                </Link>
               </Container>
             </div>
             <div className="options">

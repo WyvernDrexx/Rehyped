@@ -21,9 +21,14 @@ const ChangePassword = props => {
   const isRunning = useSelector(state => state.requestStatus.onFormSubmit);
   const dispatch = useDispatch();
 
-  useEffect(_ => {
-    return dispatch(clearForm());
-  }, [dispatch]);
+  useEffect(
+    _ => {
+      return () => {
+        dispatch(clearForm());
+      };
+    },
+    [dispatch]
+  );
 
   if (!isVerified) {
     return <UnauthorizedError />;
