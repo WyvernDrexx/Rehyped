@@ -5,11 +5,11 @@ import { showAlert, setRequestStatus } from "../actions";
 
 const addToCart = () => async (dispatch, getState) => {
   const {
-    token: { token },
+    token: { token, isVerified },
     selectedProduct
   } = getState();
 
-  if (!token) {
+  if (!isVerified) {
     dispatch(showAlert("Please login to continue.", "failure"));
     return;
   }
