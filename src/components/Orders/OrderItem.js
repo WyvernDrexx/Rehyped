@@ -54,7 +54,7 @@ const CartItem = props => {
           <Row className="cart-item-action">
             <PrimarySlimButton
               title="TRACK"
-              tooltip="Comming Soon!"
+              tooltip="Coming Soon!"
               className={`sub-header pointer-disabled pt-2 pb-2 w-100 mr-3 ${
                 isRunning ? "status-running" : ""
               }`}

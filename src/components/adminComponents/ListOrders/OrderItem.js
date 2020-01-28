@@ -13,7 +13,8 @@ const OrderItem = props => {
       product,
       isDelivered,
       user,
-      user: { shippingDetails }
+      user: { shippingDetails },
+      paymentDetails
     }
   } = props;
   const [showDetails, setShowDetails] = useState(false);
@@ -80,6 +81,27 @@ const OrderItem = props => {
           <p className="details">
             Locality: <span>{shippingDetails.locality}</span>
           </p>
+          <p className="details-head mt-4"> PAYMENT DETAILS</p>
+          <Divider className="mt-3 mb-3 divider-dark" />
+          <p className="details">
+           Buyer Phone: <span>{paymentDetails.buyer_phone}</span>
+          </p>
+          <p className="details">
+            Buyer Name: <span>{paymentDetails.buyer_name}</span>
+          </p>
+          <p className="details">
+            PaymentID: <span>{paymentDetails.payment_id}</span>
+          </p>
+          <p className="details">
+            Amount Paid: <span>{paymentDetails.amount}</span>
+          </p>
+          <p className="details">
+            Fees: <span>{paymentDetails.fees}</span>
+          </p>
+          <p className="details">
+            PaymentRequestId: <span>{paymentDetails.payment_request_id}</span>
+          </p>
+          
           {isDelivered ? (
             <div className="text-center  bg-danger text-white mt-3 p-3">
             PRODUCT HAS BEEN DELIVERED
