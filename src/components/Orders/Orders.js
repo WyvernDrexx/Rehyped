@@ -7,13 +7,9 @@ const Orders = props => {
   const orders = props.orders || [];
 
   useEffect(_ => {
-    window.scrollTo({
-      top: 205,
-      left:0,
-      behavior: "smooth"
-    });
+    window.scrollTo(0, 205);
   });
-
+  
   if (!orders || orders.length === 0) {
     return (
       <div className="mt-3 mb-3">
