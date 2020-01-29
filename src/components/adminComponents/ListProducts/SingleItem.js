@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Card, Button, Spinner } from "react-bootstrap";
 import { removeProduct, sendRequest, fetchProducts } from "../../../actions";
 import { Link } from "react-router-dom";
 import AddImages from "../AddImages";
-
+import ComingSoon from '../../ProductsList/ComingSoon';
 import "./ListProducts.scss";
 
 const SingleItem = props => {
   const dispatch = useDispatch();
-  const isActionRunning = useSelector(state => state.requestStatus.productAction);
   const [showConfirmation, setshowConfirmation] = useState(false);
   const [showAddImages, setShowAddImages] = useState(false);
   const [confirmation, setConfirmation] = useState({});
@@ -17,6 +16,7 @@ const SingleItem = props => {
   const imageSrc = process.env.REACT_APP_IMAGES_SRC;
 
   const toggleConfirmation = _ => {
+    setShowSpinner(false);
     setshowConfirmation(!showConfirmation);
   };
 
@@ -25,18 +25,21 @@ const SingleItem = props => {
     dispatch(removeProduct(_id));
   };
 
-
-  const { name, _id, image, isPublished } = props.item;
+  const { name, _id, image, isPublished, isComingSoon } = props.item;
 
   const onAction = _ => {
     setShowSpinner(true);
     dispatch(sendRequest("GET", `/products/publish/${_id}`));
-  }
+  };
 
-  useEffect(_ => {
-    if(typeof isActionRunning !== 'undefined')
-      dispatch(fetchProducts());
-  }, [isActionRunning])
+  useEffect(
+    _ => {
+      if(!showSpinner){
+        dispatch(fetchProducts());
+      }
+    },
+    [showSpinner]
+  );
 
   useEffect(
     _ => {
@@ -79,6 +82,11 @@ const SingleItem = props => {
     });
   };
 
+  const toogleComingSoonHandler = _ => {
+    setShowSpinner(true);
+    dispatch(sendRequest("GET", "/products/toogle-coming-soon/" + _id));
+  };
+
   const renderAddImages = _ => {
     if (showAddImages) {
       return (
@@ -98,8 +106,12 @@ const SingleItem = props => {
       className="mb-5 mr-3 m-auto d-sm-inline-block m-sm-3"
       style={{ width: "15rem" }}
     >
+      
       <Card.Img variant="top" src={`${imageSrc}${image}`} />
       <Card.Body>
+        <div className="position-relative">
+        {isComingSoon?(<ComingSoon />):null}
+        </div>
         <Card.Title>{name}</Card.Title>
         <Button
           onClick={_ =>
@@ -126,13 +138,32 @@ const SingleItem = props => {
         <Button
           onClick={_ =>
             setConfirmationData(
-              `Are you sure you want to ${isPublished?"unpublish":"publish"} this item?`, onAction
+              `Are you sure you want to ${
+                isPublished ? "unpublish" : "publish"
+              } this item?`,
+              onAction
             )
           }
           className="mt-3 ml-2 bg-danger"
           variant="info"
         >
           {isPublished ? "UNPUBLISH" : "PUBLISH"}
+        </Button>
+        <Button
+          onClick={_ =>
+            setConfirmationData(
+              `Are you sure you want to ${
+                isComingSoon
+                  ? "REMOVE MARK [COMING SOON]"
+                  : "MARK [COMING SOON]"
+              } from this item?`,
+              toogleComingSoonHandler
+            )
+          }
+          className="mt-3 ml-2"
+          variant={isComingSoon ? "info" : "warning"}
+        >
+          {isComingSoon ? "REMOVE MARK [COMING SOON]" : "MARK [COMING SOON]"}
         </Button>
         {renderConfirmation()}
         {renderAddImages()}
