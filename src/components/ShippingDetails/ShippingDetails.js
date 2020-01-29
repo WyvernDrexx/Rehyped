@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 
 import {
   Container,
@@ -20,6 +20,7 @@ import { useDispatch, useSelector } from "react-redux";
 import history from "../../history";
 
 const ShippingDetails = props => {
+  const refShippingDetails = useRef(null);
   const dispatch = useDispatch();
   const formState = useSelector(state => state.user.shippingDetails);
 
@@ -142,7 +143,11 @@ const ShippingDetails = props => {
 
   if (formState) {
     return (
-      <div className="bg-white pb-3">
+      <div
+        ref={refShippingDetails}
+        id="shipping-details"
+        className="bg-white pb-3"
+      >
         <div className="pt-4">
           <Container className="">
             {renderResponse()}

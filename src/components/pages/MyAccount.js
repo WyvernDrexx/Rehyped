@@ -81,13 +81,13 @@ const MyAccount = props => {
   };
 
   const onShippingDetailsClick = _ => {
-    if (shippingVisibility) setShippingVisibility(false);
-    else setShippingVisibility(true);
+    setOrdersVisibility(false);
+    setShippingVisibility(!shippingVisibility);
   };
 
   const onOrdersClick = _ => {
-    if (ordersVisibility) setOrdersVisibility(false);
-    else setOrdersVisibility(true);
+    setShippingVisibility(false);
+    setOrdersVisibility(!ordersVisibility);
   };
 
   const renderArrow = val => {
