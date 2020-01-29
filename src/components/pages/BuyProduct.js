@@ -4,8 +4,9 @@ import { Card, Row, Col } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { PrimaryButton } from "../stateless/Buttons";
 import { placeOrder } from "../../actions";
+import Item from "../Item";
 import history from "../../history";
-
+import QuadShowcase from "../QuadShowcase/QuadShowcase";
 export default _ => {
   const toBuyProduct = useSelector(state => state.orders.buyNow);
   const isPlaceOrderRunning = useSelector(
@@ -25,15 +26,16 @@ export default _ => {
     return (
       <div className="mt-5 mb-5">
         <Container>
-          <Card className="block-center" style={{ width: "18rem" }}>
-            <Card.Img variant="top" src={`${imgSrc}/${toBuyProduct.image}`} />
-            <Card.Body>
-              <Card.Title>{toBuyProduct.name}</Card.Title>
-            </Card.Body>
-          </Card>
+        <CommonHeader className="mt-5 mb-5" header={toBuyProduct.name} subheader="BUY NOW!" />
+          <div className="w-100 w-md-40 mx-auto">
+            <QuadShowcase
+              image={toBuyProduct.image}
+              secondaryImages={toBuyProduct.secondaryImages}
+            />
+          </div>
           <CommonHeader className="mt-5" header="ORDER" subheader="SUMMARY" />
           <Divider className="mt-3 mb-5" />
-          <Row className="mx-0">
+          <Row className="mx-0 w-100 w-md-40 mx-auto">
             <Col>
               <Row className="mb-3">
                 <Col className="px-0" xs={8}>
