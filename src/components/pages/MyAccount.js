@@ -82,7 +82,11 @@ const MyAccount = props => {
 
   const onShippingDetailsClick = _ => {
     setOrdersVisibility(false);
+    
     setShippingVisibility(!shippingVisibility);
+    if(shippingVisibility){
+      window.scrollTo(0, 205);
+    }
   };
 
   const onOrdersClick = _ => {
