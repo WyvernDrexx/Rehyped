@@ -122,7 +122,6 @@ const Featured = props => {
               <h4 className="sub-header mt-2 text-left font-weight-bold">
                 COLOURS
               </h4>
-
               <ItemColors
                 onClickFunc={(name, value) =>
                   dispatch(setSelected({ [name]: value }))

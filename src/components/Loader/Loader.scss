@@ -4,12 +4,20 @@
 }
 
 $outerSize:3rem;
-.loader-center-align{
-  width: 5%;
-  margin: auto;
+.item-wrapper .loader-center-align {
+	z-index: 100;
+	position: absolute;
+	top: 45%;
+	left: 47.4%;
+	margin: auto;
+	width: 100px;
+	justify-content: center;
+	display: flex;
 }
 .loader-root {
-  display: inline-block;
+  width: 100%;
+  display: flex;
+  justify-content: center;
   position: relative;
   .loader-outer {
     border: 4px solid red;
@@ -20,11 +28,11 @@ $outerSize:3rem;
   }
   .loader-inner {
     @extend .loader;
-    width:  ($outerSize*82/100);
-    height: ($outerSize*82/100);
+    width:  2rem;
+    height: 2rem;
     position: absolute;
-    top: 0;
-    bottom: 12%;
+    top: 00;
+    bottom: 0;
     left: 0;
     right: 0;
     margin: auto;
@@ -54,7 +62,7 @@ $outerSize:3rem;
 }
 
 .loader-inner-animate {
-  animation: loader-inner-animation 2s linear infinite;
+  animation: loader-inner-animation 700ms linear infinite;
 }
 
 .loader-outer-animate {

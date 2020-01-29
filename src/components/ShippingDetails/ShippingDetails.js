@@ -7,7 +7,7 @@ import {
   ErrorBlock,
   SuccessBlock
 } from "../stateless";
-
+import  Loader from "../Loader";
 import { PrimaryButton } from "../stateless/Buttons";
 import { Spinner, Form } from "react-bootstrap";
 import {
@@ -83,8 +83,8 @@ const ShippingDetails = props => {
 
   if (typeof isFetching === "undefined" || isFetching) {
     return (
-      <div className="bg-white pt-3 pb-3">
-        <Spinner className="block-center" animation="border" />
+      <div className="bg-white pt-4 pb-4">
+        <Loader />
       </div>
     );
   }
