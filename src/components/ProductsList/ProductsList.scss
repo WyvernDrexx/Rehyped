@@ -1,57 +1,65 @@
-@import '../../assets/styles/mixins';
-@import '../../assets/styles/variables';
+@import "../../assets/styles/mixins";
+@import "../../assets/styles/variables";
 
-.products-list{
+.products-list {
   width: 100%;
 }
 
-.product-item{
+.product-details{
+  border-radius: 2px;
+  border-bottom: 3px solid white;
+  padding-bottom: 5px;
+}
+.product-item {
   position: relative;
   padding-top: 56%;
   cursor: pointer;
   padding-left: 15px;
   padding-right: 15px;
   transition-duration: 300ms;
-  border-bottom: 3px solid white;
   padding-bottom: 15px;
 
-  @include sm{
+  @include sm {
     padding-top: 39%;
   }
-  @include md{
+  @include md {
     padding-top: 40%;
   }
-  @include lg{
+  @include lg {
     padding-top: 30%;
   }
-  .image-row{
+  .image-row {
     position: absolute;
     top: 0;
   }
 
-  img{
+  img {
+    width: 100%;
+    display: block;
+    margin-left: auto;
+  }
+  .spin {
     width: 100%;
   }
-  .spin{
-    width: 100%;
-  }
-  @include lsm{
+  @include lsm {
     padding-left: 0px;
     padding-right: 0px;
   }
-  .row{
+  .row {
     justify-content: center;
     align-items: center;
     margin: 0px;
   }
 
-  &:hover{
-    border-bottom: 3px solid #ec4f4f;
-    img{
+  &:hover {
+    .product-details {
+      border-bottom: 3px solid #ec4f4f;
+    }
+    img {
       filter: grayscale(0.6);
     }
   }
-  &:active{
+  &:active {
     border-bottom: 3px solid black;
   }
 }

@@ -20,7 +20,7 @@ const ListItem = props => {
       xs={6}
       sm={4}
       lg={3}
-      className="product-item mb-4 px-2"
+      className="product-item mb-2"
       onLoad={divIsLoaded}
     >
       {isLoaded ? null : (
@@ -29,14 +29,14 @@ const ListItem = props => {
         />
       )}
 
-      <Row className={`image-row ${isLoaded ? "" : "visibility-hidden"}`}>
+      <Row className={`image-row mx-2 ${isLoaded ? "" : "visibility-hidden"}`}>
         <img alt="This is null" src={
           item.image
           ? `${imagesSrc + item.image}`
           : `${imagesSrc + ""}`
         } />
       </Row>
-      <Row className={`${isLoaded ? "" : "visibility-hidden"}`}>
+      <Row className={`mx-2 product-details ${isLoaded ? "" : "visibility-hidden"}`}>
         <div className="w-100 mt-4">
           <p className="sub-header text-transform-uppercase font-weight-bold text-left">
             {item.name.length > 23 ? item.name.slice(0, 23) + "..." : item.name}

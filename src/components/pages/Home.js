@@ -64,7 +64,7 @@ const Home = props => {
       <div>
         <Carousel />
       </div>
-      <Container className="mt-5">
+      <Container className="mt-5 px-0">
         <ProductItem productId={"featured"} instructions={false} />
       </Container>
       <CommonHeader

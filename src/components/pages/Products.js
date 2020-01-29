@@ -17,19 +17,24 @@ const Products = props => {
 
   return (
     <>
-      <Container className="mt-5 pb-5">
+      <Container className="mt-5">
         <CommonHeader
           className="mb-5"
           header="MERCH"
           subheader="REHYPED ORIGINALS"
         />
-        <ProductsList />
-        <DarkButton
-          className={`mt-5 pt-3 pb-3 d-block mx-auto mb-5 ${isFetching?"status-running":""}`}
-          title="LOAD MORE"
-          onClick={onLoadMoreClick}
-        />
       </Container>
+      <Container className="px-2">
+      <ProductsList />
+
+      </Container>
+      <DarkButton
+        className={`mt-5 pt-3 pb-3 d-block mx-auto mb-5 ${
+          isFetching ? "status-running" : ""
+        }`}
+        title="LOAD MORE"
+        onClick={onLoadMoreClick}
+      />
     </>
   );
 };

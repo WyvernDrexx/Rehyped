@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, CommonHeader } from "../stateless";
+import { CommonHeader } from "../stateless";
 import SingleProduct from "../Item";
 import Carousel from "../Carousel";
 import Subscribe from "../Subscribe";
@@ -7,19 +7,20 @@ import Subscribe from "../Subscribe";
 const Product = props => {
   return (
     <>
-      <div className="pt-5">
+      <div className="pt-1">
         <SingleProduct />
       </div>
 
       <CommonHeader
-          header="RELATED"
-          subheader="PRODUCTS YOU MAY LIKE"
-          className="mb-5"
-        />
-      <div className="mt-5 mb-5">
-      <Carousel />
+        header="RELATED"
+        subheader="PRODUCTS YOU MAY LIKE"
+        className="mb-5"
+      />
 
+      <div className="mt-5 mb-5">
+        <Carousel />
       </div>
+
       <Subscribe />
     </>
   );

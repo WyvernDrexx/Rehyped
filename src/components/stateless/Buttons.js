@@ -24,7 +24,7 @@ export const LightButton = props => {
   return (
     <Button
       onClick={_ => onButtonClick(props.onClick)}
-      className={`no-radius gray-border  button-default  ${props.className ||
+      className={`no-radius bg-white gray-border  button-default  ${props.className ||
         ""}`}
       variant="light"
     >
