@@ -27,6 +27,11 @@ const Sidebar = props => {
           My Account
         </Link>
       ) : null}
+      {token.isVerified ? (
+        <Link onClick={props.toggleMenu} to="/my-account/orders" className="menu-item">
+          MY ORDERS
+        </Link>
+      ) : null}
       {!token.isVerified ? (
         <Link
           onClick={props.toggleMenu}

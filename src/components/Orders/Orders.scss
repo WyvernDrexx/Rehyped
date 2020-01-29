@@ -1,6 +1,6 @@
 @import "../../assets/styles/mixins";
 
-.cart-item {
+.order-item {
   width: 100%;
   @include md {
     max-width: 20rem;
@@ -9,21 +9,21 @@
   }
 }
 
-.cart-list {
+.order-list {
   @include md {
     position: relative;
     display: inline-block;
   }
 }
 
-.cart-item-image {
+.order-item-image {
   width: 100%;
   position: relative;
   .img-wrapper {
     padding-top: 10.4rem;
     padding-right: 10rem;
     @include md{
-      padding-top: 10rem;
+      padding-top: 12rem;
     }
     img {
       position: absolute;
@@ -34,7 +34,7 @@
   }
 }
 
-.cart-item-info {
+.order-item-info {
   display: flex;
   flex-direction: column;
   justify-content: space-between;

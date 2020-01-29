@@ -12,12 +12,12 @@ const CartItem = props => {
   const imagesSrc = process.env.REACT_APP_IMAGES_SRC;
 
   return (
-    <div className="cart-item">
+    <div className="order-item">
       <Row md={"true"} className="mx-0 mb-5">
         <Col
           onClick={_ => history.push(`/products/${item._id}`)}
           xs={6}
-          className="cursor-pointer flex-center cart-item-image pl-0"
+          className="cursor-pointer flex-center order-item-image pl-0"
         >
           <div className="img-wrapper">
           <img
@@ -26,8 +26,8 @@ const CartItem = props => {
           />
           </div>
         </Col>
-        <Col className="cart-item-info ml-2">
-          <Row className="cart-item-details">
+        <Col className="order-item-info ml-2">
+          <Row className="order-item-details">
             <Row>
               <Col>
                 <h5 className="sub-header text-left font-weight-bold">
@@ -51,7 +51,7 @@ const CartItem = props => {
               </p>
             </Col>
           </Row>
-          <Row className="cart-item-action">
+          <Row className="order-item-action">
             <PrimarySlimButton
               title="TRACK"
               tooltip="Coming Soon!"
