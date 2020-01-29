@@ -72,15 +72,18 @@
 
 
 .primary-input {
-  padding: $defaultInputPadding;
-  padding-top: $defaultInputPadding;
-  padding-bottom: $defaultInputPadding;
+  padding: 20px;
   background-color: white;
   @extend .gray-border;
-  font-size: $primaryFontSize;
+  font-size: 16px;
+  transition: 50ms;
+  &:focus{
+    border-style: outset;
+    border-color: $infoColor;
+  }
   &::placeholder {
     font-weight: bold;
-    letter-spacing: $defaultLetterSpacing;
-    font-size: $secondaryFontSize;
+    letter-spacing: 4px;
+    font-size: 16px;
   }
 }

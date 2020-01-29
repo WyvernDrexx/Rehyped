@@ -1,4 +1,5 @@
-import { IS_ONLINE } from "./types";
+import { IS_ONLINE, CLEAR_CART, CLEAR_ORDERS } from "./types";
+import { removeToken } from "./";
 
 const setIsOnline = _ => (dispatch, getState) => {
   const { isOnline } = getState();
@@ -7,6 +8,13 @@ const setIsOnline = _ => (dispatch, getState) => {
   }
 };
 
+const onLogout = _ => (dispatch) => {
+  dispatch(removeToken());
+  dispatch({type: CLEAR_CART});
+  dispatch({type: CLEAR_ORDERS});
+}
+
 export default {
-  setIsOnline
+  setIsOnline,
+  onLogout
 };

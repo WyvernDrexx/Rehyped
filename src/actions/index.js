@@ -26,5 +26,5 @@ export const { setToken, getToken, verifyToken, removeToken } = token;
 export const { setRequestStatus } = requestStatus;
 export const { buyNow, placeOrder, getOrders, placeOrders } = orders;
 export const { fetchShippingDetails, onUserInputChange, onUserSubmit } = user;
-export const { setIsOnline } = misc;
+export const { setIsOnline, onLogout } = misc;
 export const { validateCoupon } = coupons;

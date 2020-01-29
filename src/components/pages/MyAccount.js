@@ -10,7 +10,7 @@ import { Container, UnauthorizedError } from "../stateless";
 import { PrimaryButton, DarkButton } from "../stateless/Buttons";
 import { Link, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { removeToken, getOrders } from "../../actions";
+import { onLogout, getOrders } from "../../actions";
 
 import history from "../../history";
 import OrdersList from "../Orders";
@@ -30,7 +30,7 @@ const MyAccount = props => {
   const { section } = useParams();
 
   const logout = _ => {
-    dispatch(removeToken());
+    dispatch(onLogout());
     history.push("/products");
   };
 

@@ -14,7 +14,7 @@ export const SET_SELECTED = "SET_SELECTED";
 export const ADD_TO_CART = "ADD_TO_CART";
 export const REMOVE_FROM_CART = "REMOVE_FROM_CART";
 export const FETCH_CART = "FETCH_CART";
-
+export const CLEAR_CART = "CLEAR_CART";
 //
 export const ALERT_SHOW = "ALERT_SHOW";
 export const CLOSE_ALERT = "CLOSE_ALERT";
@@ -37,6 +37,7 @@ export const BUY_NOW = "BUY_NOW";
 export const ORDER_SUCCESS = "ORDER_SUCCESS";
 export const FETCH_ORDERS = "FETCH_ORDERS";
 export const PLACE_ORDERS = "PLACE_ORDERS";
+export const CLEAR_ORDERS = "CLEAR_ORDERS";
 
 export const FETCH_SHIPPING_DETAILS = "FETCH_SHIPPING_DETAILS";
 export const USER_INPUT_CHANGE = "USER_INPUT_CHANGE";

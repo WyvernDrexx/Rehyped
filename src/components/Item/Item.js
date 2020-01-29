@@ -39,7 +39,7 @@ const Featured = props => {
         dispatch(fetchProduct(productIdRef.current));
         if (productIdRef.current !== "featured") {
           window.scrollTo({
-            top: 90,
+            top: 110,
             left: 0
           });
         }
@@ -166,13 +166,8 @@ const Featured = props => {
 
   return (
     <>
-      <CommonHeader
-        className=""
-        header="FEATURED"
-        subheader="BEST SELLING DESIGNS OF THE WEEK"
-      />
       <Container>
-        <div className="item-wrapper mt-5">{renderItem()}</div>
+        <div className="item-wrapper mt-4">{renderItem()}</div>
         <div className="mb-5 mt-5">
           <h4 className="sub-header mb-4 text-left font-weight-bold">
             Est. delivery in 7-10 business days via preferred courier.

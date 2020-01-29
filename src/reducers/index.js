@@ -28,7 +28,9 @@ import {
   CLOSE_ALERT,
   IS_ONLINE,
   COUPON_CODE_SUCCESS,
-  COUPON_CODE_FAILURE
+  COUPON_CODE_FAILURE,
+  CLEAR_CART,
+  CLEAR_ORDERS
 } from "../actions/types";
 
 const productsReducer = (state = [], action) => {
@@ -78,6 +80,8 @@ const cartReducers = (state = [], action) => {
       } else {
         return state;
       }
+    case CLEAR_CART:
+      return [];
     default:
       return state;
   }
@@ -148,6 +152,8 @@ const ordersReducer = (state = {}, action) => {
       return { ...state, list: action.payload.orders };
     case PLACE_ORDERS:
       return { list: action.payload, buyNow: {} };
+    case CLEAR_ORDERS:
+      return {list:[], buyNow: {}};
     default:
       return state;
   }
