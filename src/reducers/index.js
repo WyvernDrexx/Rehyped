@@ -30,7 +30,8 @@ import {
   COUPON_CODE_SUCCESS,
   COUPON_CODE_FAILURE,
   CLEAR_CART,
-  CLEAR_ORDERS
+  CLEAR_ORDERS,
+  PRODUCTS_END
 } from "../actions/types";
 
 const productsReducer = (state = [], action) => {
@@ -205,6 +206,16 @@ const couponReducer = (state = {}, action) => {
   }
 };
 
+const productsEndReducer = (state=false, action) => {
+  switch (action.type) {
+    case PRODUCTS_END:
+      return true;
+    default:
+      return state;
+  }
+}
+
+
 export default combineReducers({
   products: productsReducer,
   selectedProduct: productReducer,
@@ -217,5 +228,6 @@ export default combineReducers({
   orders: ordersReducer,
   user: userReducer,
   isOnline: isOnlineReducer,
-  coupon: couponReducer
+  coupon: couponReducer,
+  productsEnd: productsEndReducer
 });

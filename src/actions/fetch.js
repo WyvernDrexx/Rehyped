@@ -4,7 +4,8 @@ import {
   FETCH_RELATED,
   REMOVE_PRODUCT,
   CLEAR_SELECTED,
-  SET_SELECTED
+  SET_SELECTED,
+  PRODUCTS_END
 } from "./types";
 import api from "../api";
 import { showAlert, setRequestStatus } from ".";
@@ -129,6 +130,9 @@ const fetchMore = (slot = 1) => async (dispatch, getState) => {
     .get(`/products/more/${slot}`)
     .then(resp => {
       if (resp.data.status && resp.data.status === 200) {
+        if(resp.data.end){
+          dispatch({type: PRODUCTS_END});
+        }
         dispatch({
           type: FETCH_PRODUCTS,
           payload: [...products, ...resp.data.products]

@@ -11,12 +11,15 @@ const ProductsList = props => {
   const products = useSelector(state => state.products);
   const dispatch = useDispatch();
 
-  useEffect(_ => {
-    if (Object.values(products).length === 0) dispatch(fetchMore());
-    window.onload = _ => {
+  useEffect(
+    _ => {
+      if (products.length === 0) dispatch(fetchMore());
+      window.onload = _ => {
         window.scrollTo(0, 0);
-    };
-  }, [products, dispatch]);
+      };
+    },
+    [products.length, dispatch]
+  );
 
   const renderList = (list = []) => {
     return list.map((item, index) => {

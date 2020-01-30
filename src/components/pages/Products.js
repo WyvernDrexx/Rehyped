@@ -9,7 +9,7 @@ const Products = props => {
   const [slot, setSlot] = useState(2);
   const dispatch = useDispatch();
   const isFetching = useSelector(state => state.requestStatus.fetchMore);
-
+  const productsEnd = useSelector(state => state.productsEnd);
   const onLoadMoreClick = _ => {
     dispatch(fetchMore(slot));
     setSlot(slot + 1);
@@ -25,16 +25,17 @@ const Products = props => {
         />
       </Container>
       <Container className="px-2">
-      <ProductsList />
-
+        <ProductsList />
       </Container>
-      <DarkButton
-        className={`mt-5 pt-3 pb-3 d-block mx-auto mb-5 ${
-          isFetching ? "status-running" : ""
-        }`}
-        title="LOAD MORE"
-        onClick={onLoadMoreClick}
-      />
+      {!productsEnd ? (
+        <DarkButton
+          className={`mt-5 pt-3 pb-3 d-block mx-auto mb-5 ${
+            isFetching ? "status-running" : ""
+          }`}
+          title="LOAD MORE"
+          onClick={onLoadMoreClick}
+        />
+      ) : (<div className="mt-3"></div>)}
     </>
   );
 };
