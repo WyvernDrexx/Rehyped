@@ -17,7 +17,7 @@ import ItemColors from "./ItemColors";
 import ItemSizes from "./ItemSizes";
 
 import "./Item.scss";
-import Loader from "../Loader/Loader";
+import Loader from "../Loader";
 
 const Featured = props => {
   let { productId } = useParams();
@@ -94,6 +94,7 @@ const Featured = props => {
       );
     } else {
       return (
+        <>
         <Row className="mx-0 item-root">
           <Col className="px-0 flex-center">
             <QuadShowcase
@@ -159,6 +160,7 @@ const Featured = props => {
             </div>
           </Col>
         </Row>
+        </>
       );
     }
   };
