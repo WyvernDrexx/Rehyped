@@ -35,7 +35,7 @@ export default props => {
         }
       }
     },
-    [id, selectedProduct._id, dispatch, selectedProduct]
+    [id, selectedProduct._id, dispatch]
   );
 
   const onChange = ({ name, value }) => {
@@ -69,7 +69,7 @@ export default props => {
   if(!isAdmin){
     return null;
   }
-
+console.log(productForm);
 
   return (
     <div className="mt-5 pt-5 pb-5">
@@ -89,7 +89,7 @@ export default props => {
               <span className="input-group-text">₹</span>
             </div>
             <input
-              type="number"
+              type="text"
               name="price"
               className="form-control primary-input"
               placeholder="PRICE"
@@ -102,7 +102,7 @@ export default props => {
               <span className="input-group-text text-danger">₹</span>
             </div>
             <input
-              type="number"
+              type="text"
               name="discount"
               className="form-control primary-input"
               placeholder="DISCOUNT PRICE"
@@ -226,7 +226,7 @@ export default props => {
           </div>
           <div className="input-group mb-4 mt-4">
             <div className="input-group-prepend">
-              <label className="input-group-text" for="inputGroupSelect01">
+              <label className="input-group-text" htmlFor="inputGroupSelect01">
                 CATEGORY
               </label>
             </div>
