@@ -1,0 +1,20 @@
+.not-found{
+  width: 100%;
+  background-color: rgb(0, 0, 0);
+  padding: 10rem 5rem;
+  position: relative;
+  .not-found-body{
+    margin: auto;
+    margin-top: 8rem;
+    padding: 45px 20px;
+    border-radius: 5px;
+    background-color: rgb(31, 30, 30);
+    p{
+      font-size: 20px;
+      color: #fdf7f7cc;
+      text-align: center;
+      letter-spacing: 3px;
+      user-select: none;
+    }
+  }
+}

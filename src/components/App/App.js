@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Router } from "react-router-dom";
+import { Route, Router, Switch } from "react-router-dom";
 import history from "../../history";
 import "..//..//assets/styles/bootstrap.min.css";
 import "..//../assets/styles/styles.scss";
@@ -19,12 +19,12 @@ import ForgotPassword from "../pages/ForgotPassword";
 import BuyProduct from "../pages/BuyProduct";
 import MyAccount from "../pages/MyAccount";
 import PaymentRedirect from "../PaymentRedirect";
-
 import { useDispatch, useSelector } from "react-redux";
 import { adminPanel, addProduct, ListProducts, ListOrders, CouponManage } from '../adminComponents';
 import { getToken, verifyToken, fetchCartItems } from "../../actions";
 import { useEffect } from "react";
 import Test from "../pages/Test";
+import NotFound from "../pages/NotFound";
 
 const App = _ => {
   const dispatch = useDispatch();
@@ -53,6 +53,7 @@ const App = _ => {
   return (
     <Router history={history}>
       <Header />
+      <Switch>
       <Route exact path="/" component={Home} />
       <Route exact path="/products" component={Products} />
       <Route exact path="/test-me" component={Test} />
@@ -74,6 +75,8 @@ const App = _ => {
       <Route exact path="/admin-pannexa/add-product/:id" component={addProduct} />
       <Route exact path="/admin-pannexa/list-orders" component={ListOrders} />
       <Route exact path="/admin-pannexa/list-products/:section" component={ListProducts} />
+      <Route component={NotFound} />
+      </Switch>
       <Footer />
     </Router>
   );
