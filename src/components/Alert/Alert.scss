@@ -57,7 +57,7 @@ $neutralColor: rgb(250, 249, 249);
 
   }
   50%{
-    transform: translateY(-50px);
+    transform: translateY(-70px);
     z-index: 600;
   }
   100% {
@@ -66,9 +66,9 @@ $neutralColor: rgb(250, 249, 249);
 }
 
 .alert-fadein {
-  animation: alert-fadein 200ms 1 ease forwards;
+  animation: alert-fadein 400ms 1 ease forwards;
 }
 
 .alert-fadeout {
-  animation: alert-fadeout 300ms 1 ease-in-out forwards;
+  animation: alert-fadeout 400ms 1 ease-in-out forwards;
 }
