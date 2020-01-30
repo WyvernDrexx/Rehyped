@@ -58,7 +58,7 @@ const ChangePassword = props => {
   return (
     <>
       <div className="text-center">
-        <Container className="mt-5 mb-5">
+        <Container className="mt-6 mb-5">
           <h5 className="default-letter-spacing font-weight-bolder text-left text-md-center">
             CHANGE PASSWORD
           </h5>

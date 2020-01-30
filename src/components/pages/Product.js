@@ -7,7 +7,7 @@ import Subscribe from "../Subscribe";
 const Product = props => {
   return (
     <>
-      <div className="pt-1">
+      <div className="pt-5">
         <SingleProduct />
       </div>
 

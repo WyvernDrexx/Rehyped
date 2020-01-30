@@ -22,7 +22,7 @@ export default _ => {
 
   if (toBuyProduct && toBuyProduct._id) {
     return (
-      <div className="mt-5 mb-5">
+      <div className="mt-6 mb-5">
         <Container>
         <CommonHeader className="mt-5 mb-5" header={toBuyProduct.name} subheader="BUY NOW!" />
           <div className="w-100 w-md-40 mx-auto">

@@ -54,7 +54,7 @@ const MyCart = props => {
 
   if(typeof isVerified === "undefined"){
     return (
-      <div className="mt-5 mb-5">
+      <div className="mt-6 mb-5">
         <Loader className="block-center" />
       </div>
     );
@@ -63,15 +63,15 @@ const MyCart = props => {
     return <UnauthorizedError />;
   } else if (typeof isRunning === "undefined" || isRunning) {
     return (
-      <div className="mt-5 mb-5">
-        <Loader className="block-center" />
+      <div className="pt-6 mb-5">
+        <Loader />
       </div>
     );
   }
 
   return (
     <>
-      <Container className="pt-5">
+      <Container className="pt-6">
         <CommonHeader
           header="ITEMS"
           subheader="TOTAL PRODUCTS"

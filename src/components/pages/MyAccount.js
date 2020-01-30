@@ -109,7 +109,7 @@ const MyAccount = props => {
   return (
     <>
       <div>
-        <Container className="mt-5 mb-5">
+        <Container className="mt-6 mb-5">
           <h1 className="header text-left">HEY, {fullName}</h1>
           <p className="sub-header text-left">HERE'S ALL THE DETAILS</p>
         </Container>

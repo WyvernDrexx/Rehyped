@@ -17,7 +17,7 @@ const Products = props => {
 
   return (
     <>
-      <Container className="mt-5">
+      <Container className="mt-6">
         <CommonHeader
           className="mb-5"
           header="MERCH"

@@ -125,7 +125,7 @@ const Login = props => {
 
   return (
     <>
-      <div className="text-center mt-5">
+      <div className="text-center mt-6">
         <CommonHeader
           header="LOGIN"
           subheader="WELCOME BACK"
