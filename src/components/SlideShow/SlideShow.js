@@ -66,9 +66,9 @@ const SlideShow = props => {
           className="slide-image slide-fade"
         ></div>
         <div className="text-center the-dots">
-          <span className="dot" onClick={_ => currentSlide(1)}></span>
-          <span className="dot" onClick={_ => currentSlide(2)}></span>
-          <span className="dot" onClick={_ => currentSlide(3)}></span>
+          <span className="dot"></span>
+          <span className="dot"></span>
+          <span className="dot"></span>
         </div>
       </div>
     </div>
