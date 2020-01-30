@@ -1,10 +1,9 @@
 import React, { useEffect } from "react";
 import { Container, CommonHeader, Divider } from "../stateless";
-import { Card, Row, Col } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { PrimaryButton } from "../stateless/Buttons";
 import { placeOrder } from "../../actions";
-import Item from "../Item";
 import history from "../../history";
 import QuadShowcase from "../QuadShowcase/QuadShowcase";
 export default _ => {
@@ -13,7 +12,6 @@ export default _ => {
     state => state.requestStatus.placeOrder
   );
   const dispatch = useDispatch();
-  const imgSrc = process.env.REACT_APP_IMAGES_SRC;
   const onPlacingOrder = _ => {
     dispatch(placeOrder());
   };

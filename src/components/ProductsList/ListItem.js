@@ -4,13 +4,10 @@ import history from "../../history";
 import Loader from "../Loader";
 import "./ProductsList.scss";
 import ComingSoon from "./ComingSoon";
-import { useDispatch } from "react-redux";
-import { showAlert } from "../../actions";
 
 const ListItem = props => {
   const { index, item } = props;
   const [isLoaded, setIsLoaded] = useState(false);
-  const dispatch = useDispatch();
 
   const divIsLoaded = _ => {
     setIsLoaded(true);
@@ -21,12 +18,11 @@ const ListItem = props => {
   if (item.isComingSoon) {
     return (
       <Col
-        onClick={_ => dispatch(showAlert("Product Coming Soon!", "success"))}
         key={index}
         xs={6}
         sm={4}
         lg={3}
-        className="product-item user-select-none cursor-pointer mb-2"
+        className="product-item product-coming-soon user-select-none cursor-pointer mb-2"
         onLoad={divIsLoaded}
       >
         {isLoaded ? null : <Loader className="absolute-center" />}

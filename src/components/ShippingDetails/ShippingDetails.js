@@ -9,7 +9,7 @@ import {
 } from "../stateless";
 import  Loader from "../Loader";
 import { PrimaryButton } from "../stateless/Buttons";
-import { Spinner, Form } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 import {
   onUserInputChange,
   onUserSubmit,

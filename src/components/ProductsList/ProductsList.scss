@@ -49,10 +49,6 @@
     align-items: center;
     margin: 0px;
   }
-
-
-
-  
 }
 .coming-soon{
   width: 100%;
@@ -72,10 +68,17 @@
     margin: auto;
     p{
       color: white !important;
-
+      user-select: none;
     }
   }
 }
+
+.product-coming-soon{
+  .sub-header{
+    color: rgb(122, 122, 122) !important;
+  }
+}
+
 .product-item.hover{
   &:hover {
     .product-details {

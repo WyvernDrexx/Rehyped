@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Card } from "react-bootstrap";
-import { PrimaryButton, DarkButton } from "../../stateless/Buttons";
+import { PrimaryButton } from "../../stateless/Buttons";
 import { Divider } from "../../stateless";
 import { Button } from "react-bootstrap";
 import "./ListOrders.scss";
