@@ -20,7 +20,7 @@ export default _ => {
     window.scrollTo(0, 310);
   }, []);
 
-  if (toBuyProduct && toBuyProduct._id) {
+  if (toBuyProduct && toBuyProduct.uniqueUrl) {
     return (
       <div className="mt-6 mb-5">
         <Container>

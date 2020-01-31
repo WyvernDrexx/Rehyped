@@ -35,7 +35,7 @@ const Featured = props => {
 
   useEffect(
     _ => {
-      if (product._id !== productIdRef.current) {
+      if (product.uniqueUrl !== productIdRef.current) {
         dispatch(fetchProduct(productIdRef.current));
         if (productIdRef.current !== "featured") {
           window.scrollTo({
@@ -45,10 +45,10 @@ const Featured = props => {
         }
       }
       if (productIdRef.current === "featured") {
-        productIdRef.current = product._id;
+        productIdRef.current = product.uniqueUrl;
       }
     },
-    [dispatch, product._id]
+    [dispatch, product.uniqueUrl]
   );
 
   useEffect(
@@ -60,7 +60,7 @@ const Featured = props => {
 
   useEffect(
     _ => {
-      if (cartItems.some(item => item._id === productIdRef.current)) {
+      if (cartItems.some(item => item.uniqueUrl === productIdRef.current)) {
         setItemOnCart(true);
       } else {
         setItemOnCart(false);

@@ -84,7 +84,7 @@ const fetchCartItems = _ => async (dispatch, getState) => {
   dispatch(setRequestStatus("fetchCartItems"));
 };
 
-const removeFromCart = id => async (dispatch, getState) => {
+const removeFromCart = uniqueUrl => async (dispatch, getState) => {
   const {
     token: { token }
   } = getState();
@@ -97,7 +97,7 @@ const removeFromCart = id => async (dispatch, getState) => {
     .post(
       "/cart",
       {
-        id
+        uniqueUrl
       },
       {
         headers: {

@@ -75,7 +75,7 @@ const placeOrders = _ => async (dispatch, getState) => {
 const placeOrder = _ => async (dispatch, getState) => {
   const {
     orders: {
-      buyNow: { _id, size, color }
+      buyNow: { uniqueUrl, size, color }
     },
     token: { token }
   } = getState();
@@ -89,7 +89,7 @@ const placeOrder = _ => async (dispatch, getState) => {
   await api
     .post(
       "/orders",
-      { cart: [{ _id, size, color }] },
+      { cart: [{ uniqueUrl, size, color }] },
       {
         headers: {
           Authorization: "Bearer " + token

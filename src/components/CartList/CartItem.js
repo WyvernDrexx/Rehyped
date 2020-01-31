@@ -11,7 +11,7 @@ const CartItem = props => {
   const { item } = props;
   const isRunning = useSelector(state => state.requestStatus.removeFromCart);
   const onRemoveClick = _ => {
-    dispatch(removeFromCart(item._id));
+    dispatch(removeFromCart(item.uniqueUrl));
   };
 
   const imagesSrc = process.env.REACT_APP_IMAGES_SRC;
@@ -20,7 +20,7 @@ const CartItem = props => {
     <div className="cart-item">
       <Row md={"true"} className="mx-0 mb-5">
         <Col
-          onClick={_ => history.push(`/products/${item._id}`)}
+          onClick={_ => history.push(`/products/${item.uniqueUrl}`)}
           xs={5}
           className="cursor-pointer flex-center cart-item-image pl-0"
         >

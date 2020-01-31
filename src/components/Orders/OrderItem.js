@@ -15,7 +15,7 @@ const CartItem = props => {
     <div className="order-item">
       <Row md={"true"} className="mx-0 mb-5">
         <Col
-          onClick={_ => history.push(`/products/${item._id}`)}
+          onClick={_ => history.push(`/products/${item.uniqueUrl}`)}
           xs={6}
           className="cursor-pointer flex-center order-item-image pl-0"
         >

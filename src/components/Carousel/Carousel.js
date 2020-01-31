@@ -41,7 +41,7 @@ const CarouselItem = props => {
   const dispatch = useDispatch();
   const onClick = _ => {
     dispatch(clearSelected());
-    history.push(`/products/${item._id}`);
+    history.push(`/products/${item.uniqueUrl}`);
   };
   const { item } = props;
   const [isLoaded, setIsLoaded] = useState(false);
