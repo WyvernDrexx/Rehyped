@@ -61,7 +61,7 @@ const ListItem = props => {
 
   return (
     <Col
-      onClick={_ => history.push(`/products/${item._id}`)}
+      onClick={_ => history.push(`/products/${item.uniqueUrl}`)}
       key={index}
       xs={6}
       sm={4}

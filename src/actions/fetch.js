@@ -9,6 +9,7 @@ import {
 } from "./types";
 import api from "../api";
 import { showAlert, setRequestStatus } from ".";
+import history from "../history";
 
 const fetchProducts = (param = "") => async dispatch => {
   await api
@@ -37,40 +38,43 @@ const fetchProducts = (param = "") => async dispatch => {
     });
 };
 
-const fetchProduct = id => async (dispatch, getState) => {
+const fetchProduct = uniqueUrl => async (dispatch, getState) => {
   const { products } = getState();
   let product;
   if (
     Object.values(products).length > 0 &&
     Object.values(products).length < 100
   ) {
-    product = products.filter(elem => elem._id === id)[0];
+    product = products.filter(elem => elem.uniqueUrl === uniqueUrl)[0];
     if (!product) {
       await api
-        .get(`/products/${id}`)
+        .get(`/products/${uniqueUrl}`)
         .then(resp => {
-          if (resp.data) {
+          if (resp.data[0]) {
             product = resp.data[0];
+          } else if (resp.data.message && resp.data.status !== 200) {
+            history.push("/products");
+
+            dispatch(showAlert(resp.data.message, "failure"));
           }
         })
         .catch(err => {});
     }
   } else {
     await api
-      .get(`/products/${id}`)
+      .get(`/products/${uniqueUrl}`)
       .then(resp => {
-        if (resp.data) {
+        if (resp.data[0]) {
           product = resp.data[0];
+        } else if (resp.data.message && resp.data.status !== 200) {
+          history.push("/products");
+          dispatch(showAlert(resp.data.message, "failure"));
         }
       })
       .catch(err => {});
   }
 
-  if (!product) {
-    dispatch(showAlert("Unable to send request try again later.", "failure"));
-    return;
-  }
-  dispatch({ type: FETCH_PRODUCT, payload: product });
+  dispatch({ type: FETCH_PRODUCT, payload: product || [] });
 };
 const fetchRelated = _ => async dispatch => {
   await api
@@ -130,8 +134,8 @@ const fetchMore = (slot = 1) => async (dispatch, getState) => {
     .get(`/products/more/${slot}`)
     .then(resp => {
       if (resp.data.status && resp.data.status === 200) {
-        if(resp.data.end){
-          dispatch({type: PRODUCTS_END});
+        if (resp.data.end) {
+          dispatch({ type: PRODUCTS_END });
         }
         dispatch({
           type: FETCH_PRODUCTS,
