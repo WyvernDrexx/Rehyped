@@ -71,7 +71,7 @@ const cartReducers = (state = [], action) => {
   switch (action.type) {
     case ADD_TO_CART:
       if (action.payload.status === 200)
-        return [action.payload.product, ...state];
+        return [action.payload.selectedProduct, ...state];
       else return state;
     case REMOVE_FROM_CART:
       return [...action.payload];

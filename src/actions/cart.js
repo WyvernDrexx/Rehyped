@@ -3,7 +3,7 @@ import { ADD_TO_CART, REMOVE_FROM_CART, FETCH_CART } from "./types";
 import api from "../api";
 import { showAlert, setRequestStatus } from "../actions";
 
-const addToCart = () => async (dispatch, getState) => {
+const addToCart = _ => async (dispatch, getState) => {
   const {
     token: { token, isVerified },
     selectedProduct
@@ -13,21 +13,18 @@ const addToCart = () => async (dispatch, getState) => {
     dispatch(showAlert("Please login to continue.", "failure"));
     return;
   }
-  const product = selectedProduct;
-  if (!product.size || !product.color) {
-    dispatch(
-      showAlert(
-        "Please select the color and size of the product."
-      )
-    );
+
+  if (!selectedProduct.size || !selectedProduct.color) {
+    dispatch(showAlert("Please select the color and size of the product."));
     return;
   }
+
   dispatch(setRequestStatus("addToCart", true));
 
   await api
     .post(
       "/cart",
-      { product },
+      { selectedProduct },
       {
         headers: {
           Authorization: "Bearer " + token
@@ -38,14 +35,15 @@ const addToCart = () => async (dispatch, getState) => {
     .then(resp => {
       if (resp.data.status === 200) {
         dispatch(showAlert(resp.data.message, "success"));
+        console.log(selectedProduct);
         dispatch({
           type: ADD_TO_CART,
-          payload: { product, status: resp.data.status }
+          payload: { selectedProduct, status: resp.data.status }
         });
       } else dispatch(showAlert(resp.data.message, "failure"));
     })
     .catch(err => {
-      dispatch(showAlert("Error sending request!", "failure"));
+      dispatch(showAlert("Network Failure, refresh and try again", "failure"));
     });
 
   dispatch(setRequestStatus("addToCart"));
@@ -73,12 +71,7 @@ const fetchCartItems = _ => async (dispatch, getState) => {
         else dispatch({ type: FETCH_CART, payload: resp.data });
       })
       .catch(err => {
-        dispatch(
-          showAlert(
-            "Unable to get cart items.",
-            "failure"
-          )
-        );
+        dispatch(showAlert("Items on cart couldn't be loaded", "failure"));
       });
   }
   dispatch(setRequestStatus("fetchCartItems"));
@@ -107,7 +100,7 @@ const removeFromCart = uniqueUrl => async (dispatch, getState) => {
       }
     )
     .then(resp => {
-      if (!resp.data || resp.data.status !== 200)
+      if (!resp.data.cartItems || resp.data.status !== 200)
         dispatch(showAlert(resp.data.message, "failure"));
       else {
         dispatch({
@@ -118,12 +111,7 @@ const removeFromCart = uniqueUrl => async (dispatch, getState) => {
       }
     })
     .catch(err => {
-      dispatch(
-        showAlert(
-          "Unable to remove item.",
-          "failure"
-        )
-      );
+      dispatch(showAlert("Unable to remove item.", "failure"));
     });
   dispatch(setRequestStatus("removeFromCart"));
 };
