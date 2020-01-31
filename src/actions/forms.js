@@ -7,7 +7,7 @@ const onInputChange = target => {
   return { type: INPUT_CHANGE, payload: target };
 };
 
-const onFormSubmit = (route,onSuccess) => async (dispatch, getState) => {
+const onFormSubmit = (route, onSuccess) => async (dispatch, getState) => {
   const {
     form,
     token: { token }
@@ -22,7 +22,7 @@ const onFormSubmit = (route,onSuccess) => async (dispatch, getState) => {
     })
     .then(resp => {
       dispatch({ type: FORM_SUBMIT, payload: resp.data });
-      if(resp.data.status && resp.data.status === 200){
+      if (resp.data.status && resp.data.status === 200) {
         onSuccess();
       }
     })
@@ -36,8 +36,11 @@ const onFormSubmit = (route,onSuccess) => async (dispatch, getState) => {
   dispatch(setRequestStatus("onFormSubmit"));
 };
 
-const clearForm = _ => {
-  return { type: CLEAR_FORM };
+const clearForm = _ => (dispatch, getState) => {
+  const { form } = getState();
+  Object.keys(form).forEach(k => form[k] = "");
+  console.log("clearForm", form);
+  dispatch({ type: CLEAR_FORM, payload: form });
 };
 
 export default {

@@ -66,7 +66,7 @@ const Sidebar = props => {
       ) : null}
 
       {!token.isVerified ? (
-        <Link onClick={props.toggleMenu} to="/sign-up" className="menu-item">
+        <Link onClick={props.toggleMenu} to="/sign-up" className="menu-item primary-color">
           CREATE AN ACCOUNT
         </Link>
       ) : null}

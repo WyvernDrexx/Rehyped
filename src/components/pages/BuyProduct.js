@@ -4,8 +4,10 @@ import { Row, Col } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { PrimaryButton } from "../stateless/Buttons";
 import { placeOrder } from "../../actions";
+
 import history from "../../history";
 import QuadShowcase from "../QuadShowcase/QuadShowcase";
+
 export default _ => {
   const toBuyProduct = useSelector(state => state.orders.buyNow);
   const isPlaceOrderRunning = useSelector(

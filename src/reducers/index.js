@@ -115,7 +115,7 @@ const formReducer = (state = INITIAL_FORM_STATE(), action) => {
     case REQUEST_STATUS:
       return { ...state, requestStatus: action.payload };
     case CLEAR_FORM:
-      return {};
+      return {...state,...action.payload};
     default:
       return state;
   }

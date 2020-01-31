@@ -24,13 +24,16 @@ const CreateAccount = props => {
     dispatch(onFormSubmit("/signup"));
   };
 
-  useEffect(_ => {
-    dispatch(clearForm());
-  }, [dispatch]);
+  useEffect(
+    _ => {
+      return _ => {dispatch(clearForm())};
+    },
+    [dispatch]
+  );
 
   useEffect(
     _ => {
-      dispatch(onInputChange({ isChecked}));
+      dispatch(onInputChange({ isChecked }));
     },
     [isChecked, dispatch]
   );
@@ -56,7 +59,7 @@ const CreateAccount = props => {
             className="primary-input w-100 w-md-40 d-block mx-auto"
             placeholder="FULL NAME"
             name="fullName"
-            value={formState.fullName}
+            value={formState.fullName || ""}
             onChange={({ target }) => {
               onChange(target);
             }}
@@ -66,7 +69,7 @@ const CreateAccount = props => {
             placeholder="EMAIL"
             type="email"
             name="email"
-            value={formState.email}
+            value={formState.email || ""}
             onChange={({ target }) => {
               onChange(target);
             }}
@@ -76,7 +79,7 @@ const CreateAccount = props => {
             placeholder="PASSWORD"
             type="password"
             name="password"
-            value={formState.password}
+            value={formState.password || ""}
             onChange={({ target }) => {
               onChange(target);
             }}
@@ -86,6 +89,7 @@ const CreateAccount = props => {
               name="checkbox"
               content="Keep me updated with news and exclusive offers."
               onClick={_ => onCheckboxChange()}
+              defaultChecked
             />
           </div>
 

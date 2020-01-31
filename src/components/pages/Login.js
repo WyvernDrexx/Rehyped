@@ -21,6 +21,7 @@ const Login = props => {
   const dispatch = useDispatch();
   const [rememberMe, setRememberMe] = useState(true);
   const formState = useSelector(state => state.form);
+  console.log(formState);
   const isRunning = useSelector(state => state.requestStatus.onFormSubmit);
   const onChange = ({ name, value }) => {
     dispatch(onInputChange({ [name]: value }));
@@ -45,7 +46,7 @@ const Login = props => {
 
   useEffect(
     _ => {
-      return _ => dispatch(clearForm());
+      return _ => {dispatch(clearForm())};
     },
     [dispatch]
   );
@@ -87,7 +88,7 @@ const Login = props => {
             <Checkbox
               name="checkbox"
               content="Remember Me"
-              checked
+              defaultChecked
               onClick={_ => {
                 setRememberMe(!rememberMe);
               }}
