@@ -17,7 +17,7 @@ export default _ => {
   };
 
   useEffect(_ => {
-    window.scrollTo(0, 310);
+    window.scrollTo(0, 680);
   }, []);
 
   if (toBuyProduct && toBuyProduct.uniqueUrl) {
@@ -93,5 +93,5 @@ export default _ => {
       </div>
     );
   }
-  return <div>{history.push("/mycart")}</div>;
+  return <div>{history.push("/products")}</div>;
 };
