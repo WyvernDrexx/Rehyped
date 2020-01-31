@@ -80,7 +80,7 @@ const PaymentRedirect = props => {
     return <>{history.push("/products")}</>;
   }
 
-  return <Loader className="block-center mt-5 mb-5" />;
+  return <Loader className="block-center mt-6 mb-5" />;
 };
 
 export default PaymentRedirect;

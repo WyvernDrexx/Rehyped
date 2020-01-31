@@ -7,13 +7,14 @@ const https = require("https");
 const fs = require("fs");
 const compression = require("compression");
 const helmet = require("helmet");
+const bodyParser = require("body-parser");
 
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 let PORT = process.env.PORT || 3000;
-
 app.use(helmet());
 app.use(express.static(path.join(__dirname, "build")));
 app.use(compression())
-
 
 app.get("/*", function(req, res) {
   res.sendFile(path.join(__dirname, "build", "index.html"));
