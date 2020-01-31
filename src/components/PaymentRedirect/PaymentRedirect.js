@@ -46,7 +46,6 @@ const PaymentRedirect = props => {
               }
             })
             .catch(err => {
-              console.log(err);
             });
         };
         getPaymentDetails();

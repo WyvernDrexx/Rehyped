@@ -21,7 +21,6 @@ const AddImages = props => {
 
   const onFileUpload = async (route, zone) => {
     const fd = new FormData();
-    console.log(selectedFile, zone);
     if (!selectedFile || !selectedFile[zone]) return;
     fd.append("image", selectedFile[zone], selectedFile[zone].name);
     setUploadProgress(0);

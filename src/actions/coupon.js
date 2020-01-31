@@ -6,7 +6,6 @@ const validateCoupon = code => async (dispatch, getState) => {
   const {
     token: { token }
   } = getState();
-  console.log(code);
   if (!code || code.length === 0) {
     dispatch(showAlert("Please provide a coupon code to validate."));
     return;

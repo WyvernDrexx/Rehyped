@@ -21,7 +21,6 @@ const Login = props => {
   const dispatch = useDispatch();
   const [rememberMe, setRememberMe] = useState(true);
   const formState = useSelector(state => state.form);
-  console.log(formState);
   const isRunning = useSelector(state => state.requestStatus.onFormSubmit);
   const onChange = ({ name, value }) => {
     dispatch(onInputChange({ [name]: value }));
@@ -74,7 +73,9 @@ const Login = props => {
           name="email"
           value={formState.email}
           onChange={({ target }) => onChange(target)}
+          autoComplete="email"
         />
+        <input className="d-none" defaultValue="prayer" />
         <input
           className="primary-input mt-4 mb-3 w-100 d-block mx-auto"
           placeholder="PASSWORD"

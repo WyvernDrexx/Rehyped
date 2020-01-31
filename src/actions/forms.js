@@ -39,7 +39,6 @@ const onFormSubmit = (route, onSuccess) => async (dispatch, getState) => {
 const clearForm = _ => (dispatch, getState) => {
   const { form } = getState();
   Object.keys(form).forEach(k => form[k] = "");
-  console.log("clearForm", form);
   dispatch({ type: CLEAR_FORM, payload: form });
 };
 

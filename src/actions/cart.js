@@ -35,7 +35,6 @@ const addToCart = _ => async (dispatch, getState) => {
     .then(resp => {
       if (resp.data.status === 200) {
         dispatch(showAlert(resp.data.message, "success"));
-        console.log(selectedProduct);
         dispatch({
           type: ADD_TO_CART,
           payload: { selectedProduct, status: resp.data.status }

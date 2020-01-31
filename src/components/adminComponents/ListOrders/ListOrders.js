@@ -72,7 +72,6 @@ const ListOrders = props => {
   return (
     <Container className="mt-5 mb-5">
       {orders.map((item, index) => {
-        console.log(item)
         return (
           <OrderItem
             onProductDelivered={onProductDeliveredClick}
