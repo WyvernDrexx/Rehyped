@@ -14,6 +14,7 @@ const CancelOrder = props => {
   const dispatch = useDispatch();
   const [isRunning, setIsRunning] = useState(true);
   const [cancelOrder, setCancelOrder] = useState(false);
+  const [renderSuccess, setRenderSuccess] = useState(false);
 
   useEffect(
     _ => {
@@ -21,16 +22,21 @@ const CancelOrder = props => {
         const cancelOrderHandler = async _ => {
           setIsRunning(true);
           await api
-            .post(`/orders/${orderId}`,{}, {
-              headers: {
-                Authorization: "Bearer " + token.token,
+            .post(
+              `/orders/${order.orderId}`,
+              {},
+              {
+                headers: {
+                  Authorization: "Bearer " + token.token
+                }
               }
-            })
+            )
             .then(resp => {
               if (resp.data.status === 200) {
-                
+                setRenderSuccess(true);                
               } else if (resp.data.status === 600) {
-                
+                dispatch(showAlert(resp.data.message, "failure"));
+                history.push("/my-account/orders");
               } else {
                 dispatch(showAlert(resp.data.message, "failure"));
               }
@@ -40,9 +46,10 @@ const CancelOrder = props => {
             });
         };
         cancelOrderHandler();
+        
       }
     },
-    [cancelOrder, token.token, orderId]
+    [cancelOrder, token.token, order.orderId]
   );
 
   useEffect(
@@ -62,6 +69,7 @@ const CancelOrder = props => {
             if (resp.data.status === 200) {
               setIsRunning(false);
               setOrder(resp.data.order);
+              console.log(resp.data.order);
             } else if (resp.data.status === 600) {
               setIsRunning(false);
               history.push("/my-account/orders");
@@ -78,9 +86,24 @@ const CancelOrder = props => {
     [orderId, token]
   );
 
+  const renderSuccessResponse = _ => {
+    return (
+      <div className="bg-black pt-6 pb-6">
+        <Container>
+          <h4 className="default-letter-spacing text-center text-light pt-6">
+            YOUR ORDER IS <strong className="text-info">CANCELLED</strong> AND{" "}
+            <strong className="text-success">REFUND</strong> IS ON THE WAY!
+            <br />
+            <span className="primary-color">LETS' GO SHOPPING NOW!</span>
+          </h4>
+        </Container>
+      </div>
+    );
+  };
+
   const renderConfirmation = _ => {
     return (
-      <Container className="w-100 mx-auto pb-5">
+      <Container className="mx-auto pb-5">
         <h4 className="default-letter-spacing text-center text-light pt-6">
           ARE YOU SURE YOU WANT TO{" "}
           <strong className="primary-color">CANCEL</strong> THIS ORDER?
@@ -91,11 +114,19 @@ const CancelOrder = props => {
             className="px-4 px-md-5 float-left"
             title="GO BACK"
           />
-          <DarkButton onClick={_ => setCancelOrder(true)} className="px-4 px-md-5 float-right" title="CANCEL!" />
+          <DarkButton
+            onClick={_ => setCancelOrder(true)}
+            className="px-4 px-md-5 float-right"
+            title="CANCEL!"
+          />
         </div>
       </Container>
     );
   };
+
+  if (renderSuccess) {
+    return renderSuccessResponse();
+  }
 
   return (
     <div className="pt-6 pb-6 bg-black">
