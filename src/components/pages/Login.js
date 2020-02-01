@@ -75,7 +75,6 @@ const Login = props => {
           onChange={({ target }) => onChange(target)}
           autoComplete="email"
         />
-        <input className="d-none" defaultValue="prayer" />
         <input
           className="primary-input mt-4 mb-3 w-100 d-block mx-auto"
           placeholder="PASSWORD"

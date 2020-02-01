@@ -25,6 +25,7 @@ import { getToken, verifyToken, fetchCartItems } from "../../actions";
 import { useEffect } from "react";
 import Test from "../pages/Test";
 import NotFound from "../pages/NotFound";
+import CancelOrder from "../pages/CancelOrder";
 
 const App = _ => {
   const dispatch = useDispatch();
@@ -65,6 +66,7 @@ const App = _ => {
       <Route exact path="/sign-up" component={CreateAccount} />
       <Route exact path="/login" component={Login} />
       <Route exact path="/forgot-password" component={ForgotPassword} />
+      <Route exact path="/order/cancel/:orderId" component={CancelOrder} />
       <Route exact path="/my-account" component={MyAccount} />
       <Route exact path="/my-account/:section" component={MyAccount} />
       <Route exact path="/buy-product" component={BuyProduct} />

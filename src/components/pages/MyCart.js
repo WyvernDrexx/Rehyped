@@ -153,9 +153,9 @@ const MyCart = props => {
                 <Col className="px-0">
                   <p className="sub-header text-right text-danger font-weight-bold">
                     -₹
-                    {((totalMRP / 100) * coupon.coupon.discount || 1).toFixed(
+                    {((totalDiscount / 100) * coupon.coupon.discount || 1).toFixed(
                       2
-                    )}
+                    )}({`₹${totalDiscount}%${coupon.coupon.discount}`})
                   </p>
                 </Col>
               </Row>
@@ -191,7 +191,7 @@ const MyCart = props => {
                   {coupon.coupon
                     ? (
                         totalDiscount -
-                        (totalMRP / 100) * coupon.coupon.discount
+                        (totalDiscount / 100) * coupon.coupon.discount
                       ).toFixed(2)
                     : totalDiscount}
                 </p>

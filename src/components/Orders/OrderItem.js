@@ -53,9 +53,9 @@ const CartItem = props => {
           </Row>
           <Row className="order-item-action">
             <PrimarySlimButton
-              title="TRACK"
-              tooltip="Coming Soon!"
-              className={`sub-header pointer-disabled pt-2 pb-2 w-100 mr-3 ${
+            onClick={_ => history.push("/order/cancel/" + item.orderId)}
+              title="CANCEL"
+              className={`sub-header pt-2 pb-2 w-100 mr-3 ${
                 isRunning ? "status-running" : ""
               }`}
             />
