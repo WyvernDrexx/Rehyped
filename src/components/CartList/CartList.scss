@@ -2,6 +2,7 @@
 
 .cart-item {
   width: 100%;
+  display: inline-block;
   @include md {
     max-width: 20rem;
     display: inline-block;
@@ -10,23 +11,27 @@
 }
 
 .cart-list {
-  @include md {
-    position: relative;
-    display: inline-block;
-  }
+  text-align: center;
 }
 
 .cart-item-image {
   width: 100%;
+  padding-top: 10.4rem;
   position: relative;
   .img-wrapper {
-    padding-top: 10rem;
     padding-right: 10rem;
+    @include sm{
+      padding-top: 12.5rem;
+    }
+    @include md{
+      padding-top: 0rem;
+    }
     img {
       position: absolute;
       top: 0;
       left: 0;
       width: 100% !important;
+      max-height: auto;
     }
   }
 }

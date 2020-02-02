@@ -7,7 +7,7 @@ const CartList = props => {
   
   if (cartItems && cartItems.length === 0) {
     return (
-      <div className="cartList">
+      <div className="cart-list">
         <p className="text-center sub-header mb-5">
           YOUR CART IS EMPTY! GO SHOPPING NOW!
         </p>
@@ -17,7 +17,7 @@ const CartList = props => {
 
   return (
     <>
-      <div className="cartList">
+      <div className="cart-list">
         {cartItems.map((item, index) => {
           return <CartItem item={item} key={index} />;
         })}

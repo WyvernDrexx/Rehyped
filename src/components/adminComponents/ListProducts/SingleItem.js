@@ -25,7 +25,7 @@ const SingleItem = props => {
     dispatch(removeProduct(_id));
   };
 
-  const { name, _id, image, isPublished, isComingSoon } = props.item;
+  const { name, _id, image, isPublished, isComingSoon, uniqueUrl } = props.item;
 
   const onAction = _ => {
     setShowSpinner(true);
@@ -130,7 +130,7 @@ const SingleItem = props => {
         >
           {!showAddImages ? "Add Images" : "Close"}
         </Button>
-        <Link to={`/admin-pannexa/add-product/${_id}`}>
+        <Link to={`/admin-pannexa/add-product/${uniqueUrl}`}>
           <Button className="mt-3" variant="success">
             Edit
           </Button>

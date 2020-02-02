@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { PrimaryButton } from "../../stateless/Buttons";
 import { Container, ErrorBlock, SuccessBlock } from "../../stateless";
 import { useDispatch, useSelector } from "react-redux";
@@ -15,7 +15,8 @@ export default props => {
   const dispatch = useDispatch();
   const productForm = useSelector(state => state.form);
   const selectedProduct = useSelector(state => state.selectedProduct);
-  const { id } = useParams();
+  const [renderResponseView, setRenderResponseView] = useState(false);
+  const { uniqueUrl } = useParams();
 
   useEffect(
     _ => {
@@ -28,14 +29,14 @@ export default props => {
 
   useEffect(
     _ => {
-      if (id) {
-        dispatch(fetchProduct(id));
+      if (uniqueUrl) {
+        dispatch(fetchProduct(uniqueUrl));
         if (selectedProduct) {
           dispatch(onInputChange(selectedProduct));
         }
       }
     },
-    [id, selectedProduct._id, dispatch]
+    [uniqueUrl, selectedProduct._id, dispatch]
   );
 
   const onChange = ({ name, value }) => {
@@ -43,17 +44,23 @@ export default props => {
   };
 
   const onSubmit = _ => {
-    if (id) {
-      dispatch(onFormSubmit(`/products/${id}`));
+    setRenderResponseView(true);
+    dispatch(onInputChange({ message: "", status: null }));
+    if (uniqueUrl) {
+      dispatch(onFormSubmit(`/products/${uniqueUrl}`));
     } else {
       dispatch(onFormSubmit("/products"));
     }
   };
   const { isAdmin } = useSelector(state => state.token);
-  if(!isAdmin){
+  if (!isAdmin) {
     return null;
   }
   const renderResponse = _ => {
+    if (!renderResponseView) return null;
+    setTimeout(_ => {
+      setRenderResponseView(false);
+    },3000);
     return (
       <div className="block-center mt-4">
         {productForm.status && productForm.status !== 200 ? (
@@ -66,14 +73,13 @@ export default props => {
     );
   };
 
-  if(!isAdmin){
+  if (!isAdmin) {
     return null;
   }
 
   return (
     <div className="mt-5 pt-5 pb-5">
       <Container>
-        {renderResponse()}
         <form>
           <input
             className="primary-input w-100 d-block mx-auto"
@@ -220,8 +226,6 @@ export default props => {
               </InputGroup.Prepend>
               <FormControl value="BLACK" />
             </InputGroup>
-           
-            
           </div>
           <div className="input-group mb-4 mt-4">
             <div className="input-group-prepend">
@@ -242,6 +246,14 @@ export default props => {
               <option value="t-shirt">T-SHIRT</option>
             </select>
           </div>
+          <input
+            className="primary-input w-100 d-block mx-auto"
+            placeholder="PRODUCT TAG (default aesthetics)"
+            type="text"
+            name="tag"
+            value={productForm.tag}
+            onChange={({ target }) => onChange(target)}
+          />
           <PrimaryButton
             className="mt-4 mx-auto d-block w-100 font-weight-bold"
             title="ADD PRODUCT"
@@ -252,6 +264,7 @@ export default props => {
               <Spinner className="ml-2" animation="border" size="sm" />
             ) : null}
           </PrimaryButton>
+          {renderResponse()}
         </form>
       </Container>
     </div>

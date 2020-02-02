@@ -72,7 +72,9 @@ const CarouselItem = props => {
         <div
           className={`product-details ${isLoaded ? "" : "visibility-hidden"}`}
         >
-          <p className="product-name">{item.name}</p>
+          <p className="product-name">
+            {item.name.length > 23?(item.name.substring(0,20) + "..."): item.name}
+            </p>
           <p className="product-price">₹{item.price}</p>
         </div>
       </div>

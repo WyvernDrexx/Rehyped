@@ -83,7 +83,7 @@ const ListItem = props => {
       >
         <div className="w-100 mt-4">
           <p className="sub-header text-transform-uppercase font-weight-bold text-left">
-            {item.name.length > 23 ? item.name.slice(0, 23) + "..." : item.name}
+            {item.name.length > 23 ? item.name.slice(0, 20) + "..." : item.name}
           </p>
           <p className="mt-4 mr-4">
             <span className="strikethrough sub-header mr-4">₹{item.price}</span>
