@@ -75,7 +75,7 @@ const CarouselItem = props => {
           <p className="product-name">
             {item.name.length > 23?(item.name.substring(0,20) + "..."): item.name}
             </p>
-          <p className="product-price">₹{item.price}</p>
+          <p className="product-price">₹{item.discount}</p>
         </div>
       </div>
     </div>
