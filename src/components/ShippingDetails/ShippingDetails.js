@@ -13,7 +13,8 @@ import { Form } from "react-bootstrap";
 import {
   onUserInputChange,
   onUserSubmit,
-  fetchShippingDetails
+  fetchShippingDetails,
+  showAlert
 } from "../../actions";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -37,8 +38,10 @@ const ShippingDetails = props => {
   const onSubmit = _ => {
     dispatch(
       onUserSubmit("shippingDetails", "/user/shipping-details", () => {
-        if (history.location.pathname === "/my-account/shipping-details")
+        if (history.location.pathname === "/my-account/shipping-details"){
           history.goBack();
+          dispatch(showAlert("Shipping Details has been saved!", "success"));
+        }
       })
     );
   };
@@ -59,7 +62,7 @@ const ShippingDetails = props => {
   useEffect(
     _ => {
       if (typeof isSubmitting !== "undefined" && !isSubmitting) {
-        window.scrollTo(0, 400);
+        window.scrollTo(0, 300);
       }
     },
     [isSubmitting]
@@ -67,11 +70,11 @@ const ShippingDetails = props => {
 
   useEffect(
     _ => {
-      if (!isFetching || !isSubmitting) {
+      if (!isFetching) {
         window.scrollTo(0, 250);
       }
     },
-    [isSubmitting, isFetching]
+    [isFetching]
   );
 
   useEffect(
@@ -214,13 +217,6 @@ const ShippingDetails = props => {
                 onChange={({ target }) => onChange(target)}
                 value={formState.pin || ""}
               />
-              {/* <input
-                name="state"
-                className="primary-input mb-4 w-100"
-                placeholder="STATE"
-                onChange={({ target }) => onChange(target)}
-                value={formState.state || ""}
-              /> */}
               {renderStatesList()}
             </form>
           </Container>
