@@ -33,7 +33,7 @@ const CancelOrder = props => {
             )
             .then(resp => {
               if (resp.data.status === 200) {
-                setRenderSuccess(true);                
+                setRenderSuccess(true);
               } else if (resp.data.status === 600) {
                 dispatch(showAlert(resp.data.message, "failure"));
                 history.push("/my-account/orders");
@@ -46,7 +46,6 @@ const CancelOrder = props => {
             });
         };
         cancelOrderHandler();
-        
       }
     },
     [cancelOrder, token.token, order.orderId]
@@ -69,12 +68,12 @@ const CancelOrder = props => {
             if (resp.data.status === 200) {
               setIsRunning(false);
               setOrder(resp.data.order);
-              console.log(resp.data.order);
             } else if (resp.data.status === 600) {
               setIsRunning(false);
               history.push("/my-account/orders");
             } else {
               dispatch(showAlert(resp.data.message, "failure"));
+              history.push("/my-account/orders");
             }
           })
           .catch(err => {
@@ -90,12 +89,17 @@ const CancelOrder = props => {
     return (
       <div className="bg-black pt-6 pb-6">
         <Container>
-          <h4 className="default-letter-spacing text-center text-light pt-6">
+          <h5 className="default-letter-spacing text-center text-light pt-6">
             YOUR ORDER IS <strong className="text-info">CANCELLED</strong> AND{" "}
             <strong className="text-success">REFUND</strong> IS ON THE WAY!
             <br />
             <span className="primary-color">LETS' GO SHOPPING NOW!</span>
-          </h4>
+          </h5>
+          <PrimaryButton
+            onClick={_ => history.push("/my-account/orders")}
+            className="px-4 px-md-5  block-center mt-5"
+            title="GO SHOPPING!"
+          />
         </Container>
       </div>
     );
