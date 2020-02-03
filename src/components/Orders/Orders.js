@@ -7,8 +7,8 @@ const Orders = props => {
   const orders = props.orders || [];
 
   useEffect(_ => {
-    window.scrollTo(0, 205);
-  });
+    window.scrollTo(0, 95);
+  },[]);
   
   if (!orders || orders.length === 0) {
     return (

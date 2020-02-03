@@ -82,11 +82,7 @@ const MyAccount = props => {
 
   const onShippingDetailsClick = _ => {
     setOrdersVisibility(false);
-    
     setShippingVisibility(!shippingVisibility);
-    if(shippingVisibility){
-      window.scrollTo(0, 205);
-    }
   };
 
   const onOrdersClick = _ => {
@@ -109,11 +105,7 @@ const MyAccount = props => {
   return (
     <>
       <div>
-        <Container className="mt-6 mb-5">
-          <h1 className="header text-left">HEY, {fullName}</h1>
-          <p className="sub-header text-left">HERE'S ALL THE DETAILS</p>
-        </Container>
-        <div className="secondary-background-color">
+        <div className="secondary-background-color mt-6">
           <div className="my-account pt-2 pb-2">
             <div className=" options">
               <Container>

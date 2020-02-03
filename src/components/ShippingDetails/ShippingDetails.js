@@ -7,7 +7,7 @@ import {
   ErrorBlock,
   SuccessBlock
 } from "../stateless";
-import  Loader from "../Loader";
+import Loader from "../Loader";
 import { PrimaryButton } from "../stateless/Buttons";
 import { Form } from "react-bootstrap";
 import {
@@ -38,7 +38,7 @@ const ShippingDetails = props => {
   const onSubmit = _ => {
     dispatch(
       onUserSubmit("shippingDetails", "/user/shipping-details", () => {
-        if (history.location.pathname === "/my-account/shipping-details"){
+        if (history.location.pathname === "/my-account/shipping-details") {
           history.goBack();
           dispatch(showAlert("Shipping Details has been saved!", "success"));
         }
@@ -62,7 +62,7 @@ const ShippingDetails = props => {
   useEffect(
     _ => {
       if (typeof isSubmitting !== "undefined" && !isSubmitting) {
-        window.scrollTo(0, 300);
+        window.scrollTo(0, 230);
       }
     },
     [isSubmitting]
@@ -71,7 +71,7 @@ const ShippingDetails = props => {
   useEffect(
     _ => {
       if (!isFetching) {
-        window.scrollTo(0, 250);
+        window.scrollTo(0, 148);
       }
     },
     [isFetching]
@@ -80,6 +80,9 @@ const ShippingDetails = props => {
   useEffect(
     _ => {
       dispatch(fetchShippingDetails());
+      return _ => {
+        window.scrollTo(0, 95);
+      };
     },
     [dispatch]
   );
