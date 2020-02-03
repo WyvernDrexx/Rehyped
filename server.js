@@ -8,12 +8,14 @@ const fs = require("fs");
 const compression = require("compression");
 const helmet = require("helmet");
 const bodyParser = require("body-parser");
+const favicon = require('serve-favicon');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 let PORT = process.env.PORT || 3000;
 app.use(helmet());
 app.use(express.static(path.join(__dirname, "build")));
+app.use(favicon(path.join(__dirname,"build", "favicon.ico")));
 app.use(compression())
 
 app.get("/*", function(req, res) {
