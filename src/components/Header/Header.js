@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import history from "../../history";
+import {ReactComponent as Bag } from './bag.svg'
 
 import { useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faShoppingBag } from "@fortawesome/free-solid-svg-icons";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { Row, Col, Container } from "react-bootstrap";
 
 import TopBanner from "../TopBanner";
 import Sidebar from "../Sidebar";
-import Alert from '../Alert';
-import Notification from '../Notification';
+import Alert from "../Alert";
+import Notification from "../Notification";
 import "./Header.scss";
 
 const Header = props => {
-
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [isCartEmpty, setIsCartEmpty] = useState(true);
   const cart = useSelector(state => state.cart);
@@ -23,7 +23,7 @@ const Header = props => {
       if (sidebarOpen) {
         setSidebarOpen(false);
       } else setSidebarOpen(true);
-    },100)
+    }, 100);
   };
 
   useEffect(
@@ -73,7 +73,8 @@ const Header = props => {
                   onClick={_ => history.push("/mycart")}
                   className="float-right border-none bg-transparent text-white primary-font-size"
                 >
-                  <FontAwesomeIcon icon={faShoppingBag} />
+                  
+                  <Bag color="red" width="25px" fill="white" />
                   {isCartEmpty ? null : (
                     <span className="cart-item-number"></span>
                   )}
