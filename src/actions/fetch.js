@@ -127,25 +127,34 @@ const clearSelected = _ => {
   };
 };
 
-const fetchMore = (slot = 1) => async (dispatch, getState) => {
-  let { products } = getState();
+const fetchMore = (slot = 1, tag="all") => async (dispatch, getState) => {
   dispatch(setRequestStatus("fetchMore", true));
+  const {products} = getState();
   await api
-    .get(`/products/more/${slot}`)
+    .get(`/products/more/${slot}/${tag}`)
     .then(resp => {
       if (resp.data.status && resp.data.status === 200) {
-        if (resp.data.end) {
-          dispatch({ type: PRODUCTS_END });
+        if ( typeof resp.data.end !== "undefined") {
+          dispatch({ type: PRODUCTS_END, payload: resp.data.end});
         }
-        dispatch({
-          type: FETCH_PRODUCTS,
-          payload: [...products, ...resp.data.products]
-        });
+        if(slot > 1){
+          dispatch({
+            type: FETCH_PRODUCTS,
+            payload: [...products,...resp.data.products]
+          });
+        }else{
+          dispatch({
+            type: FETCH_PRODUCTS,
+            payload: [...resp.data.products]
+          });
+        }
+        
       } else {
         dispatch(showAlert(resp.data.message, "failure"));
       }
     })
     .catch(err => {
+      console.log(err);
       dispatch(showAlert("Unable to send requests."));
     });
   dispatch(setRequestStatus("fetchMore"));

@@ -207,9 +207,10 @@ const couponReducer = (state = {}, action) => {
 };
 
 const productsEndReducer = (state=false, action) => {
+  console.log(action)
   switch (action.type) {
     case PRODUCTS_END:
-      return true;
+      return action.payload;
     default:
       return state;
   }

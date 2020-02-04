@@ -1,27 +1,26 @@
 import React, { useEffect } from "react";
 import { Row } from "react-bootstrap";
-import { fetchMore } from "../../actions";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import ListItem from "./ListItem";
 import { Container, ErrorBlock } from "../stateless";
 import "./ProductsList.scss";
 import Loader from "../Loader/Loader";
 
-const ProductsList = props => {
+const ProductsList = ({slot,tag}) => {
   const products = useSelector(state => state.products);
-  const dispatch = useDispatch();
 
   useEffect(
     _ => {
-      if (products.length === 0) dispatch(fetchMore());
       window.onload = _ => {
         window.scrollTo(0, 0);
       };
     },
-    [products.length, dispatch]
+    [products.length, tag]
   );
 
   const renderList = (list = []) => {
+    if (tag !== "all")
+      list = list.filter(item => item.tag === tag);
     return list.map((item, index) => {
       return <ListItem key={index} item={item} index={index} />;
     });

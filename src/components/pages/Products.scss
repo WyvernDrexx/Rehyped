@@ -1,0 +1,23 @@
+@import '../../assets/styles/variables';
+
+.products-tags{
+  margin-bottom: 55px;
+  text-align: center;
+  .product-tag{
+    width: auto;
+    border-radius: 45px;
+    margin-left:5px;
+    margin-right:5px;
+    margin-top: 5px;
+    display: inline-block;
+  }
+  .product-tag.active{
+    background-color: $primaryColor !important;
+    border: 1px solid $primaryColor !important;
+    cursor: auto;
+    opacity: 1;
+    :hover{
+      background-color: $primaryColor !important;
+    }
+  }
+}
