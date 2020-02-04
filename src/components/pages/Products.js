@@ -79,7 +79,7 @@ const Products = props => {
       </div>
 
       {isFetching && slot === 1 ? (
-        <div className="mt-4 mb-4">
+        <div className="mt-4 mb-5">
           <Loader />
         </div>
       ) : (
