@@ -4,11 +4,9 @@ import { useSelector } from "react-redux";
 import ListItem from "./ListItem";
 import { Container, ErrorBlock } from "../stateless";
 import "./ProductsList.scss";
-import Loader from "../Loader/Loader";
 
 const ProductsList = ({slot,tag}) => {
   const products = useSelector(state => state.products);
-
   useEffect(
     _ => {
       window.onload = _ => {
@@ -31,16 +29,6 @@ const ProductsList = ({slot,tag}) => {
       <Container>
         <ErrorBlock message={products.message} />
       </Container>
-    );
-  }
-
-  if (Object.values(products).length === 0) {
-    return (
-      <>
-        <div className="mt-4 mb-4">
-          <Loader />
-        </div>
-      </>
     );
   }
 

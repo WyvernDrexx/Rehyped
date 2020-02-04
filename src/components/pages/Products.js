@@ -4,6 +4,7 @@ import { DarkButton } from "../stateless/Buttons";
 import { useSelector, useDispatch } from "react-redux";
 import ProductsList from "../ProductsList";
 import { fetchMore } from "../../actions";
+import Loader from "../Loader/Loader";
 
 import "./Products.scss";
 
@@ -76,9 +77,17 @@ const Products = props => {
           title="ALL"
         />
       </div>
-      <Container className="px-2">
-        <ProductsList slot={1} tag={tagSelect} />
-      </Container>
+
+      {isFetching && slot === 1 ? (
+        <div className="mt-4 mb-4">
+          <Loader />
+        </div>
+      ) : (
+        <Container className="px-2">
+          <ProductsList slot={1} tag={tagSelect} />
+        </Container>
+      )}
+
       {!productsEnd ? (
         <DarkButton
           className={`mt-5 pt-3 pb-3 d-block mx-auto mb-5 ${
