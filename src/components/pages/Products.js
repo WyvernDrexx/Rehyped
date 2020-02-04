@@ -66,11 +66,6 @@ const Products = props => {
           title="MERCH"
         />
         <DarkButton
-          onClick={_ => setTagSelect("nasa")}
-          className={`product-tag ${renderActive("nasa")}`}
-          title="NASA"
-        />
-        <DarkButton
           onClick={_ => setTagSelect("vintage")}
           className={`product-tag ${renderActive("vintage")}`}
           title="VINTAGE"
