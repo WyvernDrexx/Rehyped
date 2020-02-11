@@ -15,7 +15,7 @@ import "./Home.scss";
 
 const Home = props => {
   return (
-    <div className="pt-5">
+    <div>
       <SlideShow />
       <Container className="mt-5 mb-4">
         <CommonHeader
@@ -65,6 +65,11 @@ const Home = props => {
         <Carousel />
       </div>
       <Container className="mt-5 px-0">
+      <CommonHeader
+          header="FEATURED"
+          subheader="BEST SELLING DESIGN OF THE WEEK"
+          className="mb-4"
+        />
         <ProductItem productId={"featured"} instructions={false} />
       </Container>
       <CommonHeader

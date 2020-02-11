@@ -34,7 +34,7 @@ const CartItem = props => {
               <h5 className="sub-header text-left font-weight-bold">
                 {item.name}
               </h5>
-              <p className="sub-header text-left">
+              <p className="cart-item-price text-left">
                 <span className="strikethrough pr-2">₹{item.price}</span>₹
                 {item.discount}
               </p>

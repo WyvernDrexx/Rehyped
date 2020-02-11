@@ -41,7 +41,7 @@ const Products = props => {
       <Container className="mt-6">
         <CommonHeader
           className="mb-5"
-          header="MERCH"
+          header="PRODUCTS"
           subheader="REHYPED ORIGINALS"
         />
       </Container>
