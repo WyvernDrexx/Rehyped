@@ -25,6 +25,7 @@ const ListOrders = props => {
               if (resp.data.status === 200) {
                 setOrders(resp.data.orders);
               } else {
+                console.log(resp.data);
                 dispatch(showAlert("Unable to retrieve orders.", "failure"));
               }
             })
@@ -70,7 +71,7 @@ const ListOrders = props => {
     return null;
   }
   return (
-    <Container className="mt-5 mb-5">
+    <Container className="mt-6 mb-5">
       {orders.map((item, index) => {
         return (
           <OrderItem

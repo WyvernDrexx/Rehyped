@@ -12,6 +12,7 @@ const OrderItem = props => {
       _id,
       product,
       isDelivered,
+      isCancelled,
       user,
       user: { shippingDetails },
       paymentDetails
@@ -26,7 +27,10 @@ const OrderItem = props => {
     if (showDetails) {
       return (
         <div className="order-details">
-          <Button onClick={onShowDetailsClick} className="bg-danger float-right">
+          <Button
+            onClick={onShowDetailsClick}
+            className="bg-danger float-right"
+          >
             {" "}
             x
           </Button>
@@ -84,7 +88,7 @@ const OrderItem = props => {
           <p className="details-head mt-4"> PAYMENT DETAILS</p>
           <Divider className="mt-3 mb-3 divider-dark" />
           <p className="details">
-           Buyer Phone: <span>{paymentDetails.buyer_phone}</span>
+            Buyer Phone: <span>{paymentDetails.buyer_phone}</span>
           </p>
           <p className="details">
             Buyer Name: <span>{paymentDetails.buyer_name}</span>
@@ -101,11 +105,10 @@ const OrderItem = props => {
           <p className="details">
             PaymentRequestId: <span>{paymentDetails.payment_request_id}</span>
           </p>
-          
-          {isDelivered ? (
+          {isCancelled ? null : isDelivered ? (
             <div className="text-center  bg-danger text-white mt-3 p-3">
-            PRODUCT HAS BEEN DELIVERED
-          </div>
+              PRODUCT HAS BEEN DELIVERED
+            </div>
           ) : (
             <PrimaryButton
               onClick={_ => props.onProductDelivered(_id)}
@@ -113,6 +116,7 @@ const OrderItem = props => {
               title="IS THE PRODUCT DELIVERED?"
             />
           )}
+          {}
         </div>
       );
     }
@@ -120,16 +124,18 @@ const OrderItem = props => {
   };
 
   return (
-    <Card className="d-inline-block mx-3 mb-3" style={{ width: "15.2rem" }}>
+    <Card className={`d-inline-block mx-3 mb-3`} style={{ width: "15.2rem" }}>
       <Card.Img variant="top" src={`${imgSrc}/${product.image}`} />
       <Card.Body>
         <Card.Title>{product.name}</Card.Title>
-        {isDelivered ? (
+        {isCancelled ? (
+          <div className="text-center  bg-warning  mt-3 p-3">CANCELLED!</div>
+        ) : isDelivered ? (
           <div className="text-center  bg-light text-success mt-3 p-3">
             DELIVERED
           </div>
         ) : (
-          <div className="text-center  bg-info text-white mt-3 p-3">
+          <div className="text-center  bg-dark text-white mt-3 p-3">
             UNDELIVERED
           </div>
         )}
