@@ -154,7 +154,6 @@ const fetchMore = (slot = 1, tag="all") => async (dispatch, getState) => {
       }
     })
     .catch(err => {
-      console.log(err);
       dispatch(showAlert("Unable to send requests."));
     });
   dispatch(setRequestStatus("fetchMore"));

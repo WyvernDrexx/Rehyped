@@ -14,7 +14,6 @@ const Products = props => {
   const dispatch = useDispatch();
   const isFetching = useSelector(state => state.requestStatus.fetchMore);
   const productsEnd = useSelector(state => state.productsEnd);
-  console.log(productsEnd);
 
   const onLoadMoreClick = _ => {
     setSlot(slot + 1);

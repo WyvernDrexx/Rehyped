@@ -25,7 +25,6 @@ const ListOrders = props => {
               if (resp.data.status === 200) {
                 setOrders(resp.data.orders);
               } else {
-                console.log(resp.data);
                 dispatch(showAlert("Unable to retrieve orders.", "failure"));
               }
             })
@@ -63,7 +62,6 @@ const ListOrders = props => {
         }
       })
       .catch(err => {
-        console.log(err);
       });
   };
 

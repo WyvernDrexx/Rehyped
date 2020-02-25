@@ -207,7 +207,6 @@ const couponReducer = (state = {}, action) => {
 };
 
 const productsEndReducer = (state=false, action) => {
-  console.log(action)
   switch (action.type) {
     case PRODUCTS_END:
       return action.payload;

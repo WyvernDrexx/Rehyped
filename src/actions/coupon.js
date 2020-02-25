@@ -35,7 +35,6 @@ const validateCoupon = code => async (dispatch, getState) => {
       }
     })
     .catch(err => {
-      console.log(err);
     });
 };
 
