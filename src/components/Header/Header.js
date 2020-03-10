@@ -16,7 +16,6 @@ import "./Header.scss";
 const Header = props => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [isCartEmpty, setIsCartEmpty] = useState(true);
-  const location = history.location.pathname;
   const cart = useSelector(state => state.cart);
   const toggleSideBar = _ => {
     setTimeout(_ => {
@@ -36,14 +35,6 @@ const Header = props => {
     },
     [cart]
   );
-
-  useEffect(_ => {
-    if(location === "/"){
-      document.getElementById("header").classList.add("bg-transparent");
-    }else{
-      document.getElementById("header").classList.remove("bg-transparent");
-    }
-  }, [location]);
 
   return ReactDOM.createPortal(
     <>
