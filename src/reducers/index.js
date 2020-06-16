@@ -121,7 +121,7 @@ const formReducer = (state = INITIAL_FORM_STATE(), action) => {
   }
 };
 
-const tokenReducer = (state = { token: { isVerified: null } }, action) => {
+const tokenReducer = (state = { token: "", isVerified: null }, action) => {
   switch (action.type) {
     case SET_TOKEN:
       return { ...state, token: action.payload };

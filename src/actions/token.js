@@ -1,5 +1,5 @@
 import { SET_TOKEN, REMOVE_TOKEN, GET_TOKEN, VERIFY_TOKEN } from "./types";
-import cookies from "../utils/Cookies";
+// import cookies from "../utils/Cookies";
 import api from "../api";
 
 const setToken = (token, options) => {
@@ -10,7 +10,7 @@ const setToken = (token, options) => {
 
 const getToken = _ => {
   // const token = cookies.get("token");
-  const token = localStorage.getItem("token");
+  let token = localStorage.getItem("token");
   return { type: GET_TOKEN, payload: token };
 };
 

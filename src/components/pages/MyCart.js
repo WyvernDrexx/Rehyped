@@ -5,7 +5,7 @@ import {
   Divider,
   UnauthorizedError,
   ErrorBlock,
-  SuccessBlock
+  SuccessBlock,
 } from "../stateless";
 import { useSelector, useDispatch } from "react-redux";
 import { DarkButton, PrimaryButton } from "../stateless/Buttons";
@@ -14,36 +14,36 @@ import { placeOrders, validateCoupon } from "../../actions";
 import Loader from "../Loader";
 import CartList from "../CartList";
 
-const MyCart = props => {
-  const cartItems = useSelector(state => state.cart);
-  const coupon = useSelector(state => state.coupon);
-  const isRunning = useSelector(state => state.requestStatus.fetchCartItems);
-  const isVerified = useSelector(state => state.token.isVerified);
+const MyCart = (props) => {
+  const cartItems = useSelector((state) => state.cart);
+  const coupon = useSelector((state) => state.coupon);
+  const isRunning = useSelector((state) => state.requestStatus.fetchCartItems);
+  const {isVerified, token} = useSelector((state) => state.token);
   const [code, setCode] = useState("");
   const dispatch = useDispatch();
   const isPlaceOrdersRunning = useSelector(
-    state => state.requestStatus.placeOrders
+    (state) => state.requestStatus.placeOrders
   );
 
   let totalMRP = 0;
   let totalDiscount = 0;
 
   if (cartItems && cartItems.length > 0) {
-    cartItems.forEach(item => {
+    cartItems.forEach((item) => {
       totalMRP += Number(item.price);
       totalDiscount += Number(item.discount);
     });
   }
 
-  const onCheckoutClick = _ => {
+  const onCheckoutClick = (_) => {
     dispatch(placeOrders());
   };
 
-  const onCouponCheck = _ => {
+  const onCouponCheck = (_) => {
     dispatch(validateCoupon(code));
   };
 
-  const renderCouponStatus = _ => {
+  const renderCouponStatus = (_) => {
     if (coupon.error) {
       return <ErrorBlock message={coupon.error} />;
     }
@@ -51,23 +51,25 @@ const MyCart = props => {
       return <SuccessBlock message={coupon.message} />;
     }
   };
-
-  if(typeof isVerified === "undefined"){
+  if (isVerified === null && token === null) {
+    return <UnauthorizedError />;
+  }
+  if (typeof isVerified === "undefined") {
     return (
-      <div className="mt-6 mb-5">
+      <div className="mt-6 mb-4">
         <Loader className="block-center" />
       </div>
     );
   }
-  else if (!isVerified) {
-    return <UnauthorizedError />;
-  } else if (typeof isRunning === "undefined" || isRunning) {
+  if (typeof isRunning === "undefined" || isRunning) {
     return (
-      <div className="pt-6 mb-5">
-        <Loader />
+      <div className="pt-6 mb-4">
+        <Loader className="block-center" />
       </div>
     );
   }
+
+
 
   return (
     <>
@@ -153,9 +155,10 @@ const MyCart = props => {
                 <Col className="px-0">
                   <p className="sub-header text-right text-danger font-weight-bold">
                     -₹
-                    {((totalDiscount / 100) * coupon.coupon.discount || 1).toFixed(
-                      2
-                    )}({`₹${totalDiscount}%${coupon.coupon.discount}`})
+                    {(
+                      (totalDiscount / 100) * coupon.coupon.discount || 1
+                    ).toFixed(2)}
+                    ({`₹${totalDiscount}%${coupon.coupon.discount}`})
                   </p>
                 </Col>
               </Row>
