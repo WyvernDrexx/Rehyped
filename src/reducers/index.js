@@ -31,7 +31,7 @@ import {
   COUPON_CODE_FAILURE,
   CLEAR_CART,
   CLEAR_ORDERS,
-  PRODUCTS_END
+  PRODUCTS_END,
 } from "../actions/types";
 
 const productsReducer = (state = [], action) => {
@@ -99,10 +99,10 @@ const alertReducer = (state = [], action) => {
   }
 };
 
-const INITIAL_FORM_STATE = _ => {
+const INITIAL_FORM_STATE = (_) => {
   return {
     stock: 10,
-    category: "shirt"
+    category: "shirt",
   };
 };
 
@@ -115,7 +115,7 @@ const formReducer = (state = INITIAL_FORM_STATE(), action) => {
     case REQUEST_STATUS:
       return { ...state, requestStatus: action.payload };
     case CLEAR_FORM:
-      return {...state,...action.payload};
+      return { ...state, ...action.payload };
     default:
       return state;
   }
@@ -130,7 +130,7 @@ const tokenReducer = (state = { token: "", isVerified: null }, action) => {
     case VERIFY_TOKEN:
       return { ...state, ...action.payload };
     case REMOVE_TOKEN:
-      return {};
+      return { token: null, isVerified: null };
     default:
       return state;
   }
@@ -154,7 +154,7 @@ const ordersReducer = (state = {}, action) => {
     case PLACE_ORDERS:
       return { list: action.payload, buyNow: {} };
     case CLEAR_ORDERS:
-      return {list:[], buyNow: {}};
+      return { list: [], buyNow: {} };
     default:
       return state;
   }
@@ -169,7 +169,7 @@ const userReducer = (state = {}, action) => {
       const targetPrevData = state[target];
       return {
         ...state,
-        [target]: { ...targetPrevData, ...data }
+        [target]: { ...targetPrevData, ...data },
       };
     case UPDATE_USER_RESPONSE:
       let { message, status } = action.payload;
@@ -178,8 +178,8 @@ const userReducer = (state = {}, action) => {
         [action.payload.target]: {
           ...state[action.payload.target],
           message,
-          status
-        }
+          status,
+        },
       };
     default:
       return state;
@@ -206,15 +206,14 @@ const couponReducer = (state = {}, action) => {
   }
 };
 
-const productsEndReducer = (state=false, action) => {
+const productsEndReducer = (state = false, action) => {
   switch (action.type) {
     case PRODUCTS_END:
       return action.payload;
     default:
       return state;
   }
-}
-
+};
 
 export default combineReducers({
   products: productsReducer,
@@ -229,5 +228,5 @@ export default combineReducers({
   user: userReducer,
   isOnline: isOnlineReducer,
   coupon: couponReducer,
-  productsEnd: productsEndReducer
+  productsEnd: productsEndReducer,
 });

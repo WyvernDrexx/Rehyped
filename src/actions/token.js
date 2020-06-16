@@ -15,6 +15,7 @@ const getToken = _ => {
 };
 
 const verifyToken = _ => async (dispatch, getState) => {
+  console.log("hit")
   const {
     token: { token }
   } = getState();
