@@ -13,7 +13,7 @@ const buyNow = product => (dispatch, getState) => {
   }
 
   if (!product.size || !product.color) {
-    dispatch(showAlert("Please select the color and size of the product."));
+    dispatch(showAlert("Please select the size for the product."));
     return;
   }
   history.push("/buy-product");

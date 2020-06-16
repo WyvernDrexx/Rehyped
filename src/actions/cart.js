@@ -15,7 +15,7 @@ const addToCart = _ => async (dispatch, getState) => {
   }
 
   if (!selectedProduct.size || !selectedProduct.color) {
-    dispatch(showAlert("Please select the color and size of the product."));
+    dispatch(showAlert("Please select the size for the product."));
     return;
   }
 

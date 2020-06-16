@@ -124,7 +124,7 @@ const Featured = props => {
                 COLOURS
               </h4>
               <ItemColors
-                onClickFunc={(name, value) =>
+                selectColor={(name, value) =>
                   dispatch(setSelected({ [name]: value }))
                 }
                 selectedColor={selectedColor}

@@ -15,7 +15,7 @@ import "./Home.scss";
 
 const Home = props => {
   return (
-    <div>
+    <div className="mt-5">
       <SlideShow />
       <Container className="mt-5 mb-4">
         <CommonHeader
