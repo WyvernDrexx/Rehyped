@@ -13,7 +13,7 @@ const UnauthorizedError = props => {
   };
   if (!isVerified) {
     return (
-      <div className="pt-5 bg-black pb-3">
+      <div className="pt-6 bg-black pb-3">
         <div className="w-75 w-md-40 mx-auto bg-white pt-4 pb-4 px-3 border-radius-sm">
           <ErrorBlock className="w-100 d-block mx-auto" message={message} />
           <Link to={to}>
