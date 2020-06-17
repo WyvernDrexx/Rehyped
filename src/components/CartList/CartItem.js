@@ -16,9 +16,9 @@ const CartItem = (props) => {
     if (isRemoved) {
       setTimeout(() => {
         dispatch(removeFromCart(item.uniqueUrl));
-      }, 1000);
+      }, 550);
     }
-  }, [isRemoved, item.uniqueUrl, dispatch]);
+  }, [isRemoved]);
 
   const onRemoveClick = (_) => {
     setIsRemoved(true);
