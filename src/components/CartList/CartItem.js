@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./CartList.scss";
 import { Col, Row } from "react-bootstrap";
 import { PrimarySlimButton } from "../stateless/Buttons";
@@ -6,21 +6,31 @@ import { useDispatch, useSelector } from "react-redux";
 import { removeFromCart } from "../../actions";
 import history from "../../history";
 
-const CartItem = props => {
+const CartItem = (props) => {
   const dispatch = useDispatch();
   const { item } = props;
-  const isRunning = useSelector(state => state.requestStatus.removeFromCart);
-  const onRemoveClick = _ => {
-    dispatch(removeFromCart(item.uniqueUrl));
+  const [isRemoved, setIsRemoved] = useState(false);
+  const isRunning = useSelector((state) => state.requestStatus.removeFromCart);
+
+  useEffect(() => {
+    if (isRemoved) {
+      setTimeout(() => {
+        dispatch(removeFromCart(item.uniqueUrl));
+      }, 1000);
+    }
+  }, [isRemoved, item.uniqueUrl, dispatch]);
+
+  const onRemoveClick = (_) => {
+    setIsRemoved(true);
   };
 
   const imagesSrc = process.env.REACT_APP_IMAGES_SRC;
 
   return (
-    <div className="cart-item">
+    <div className={`cart-item ${isRemoved?("item-fadeout"):""}`}>
       <Row md={"true"} className="mx-0 mb-5">
         <Col
-          onClick={_ => history.push(`/products/${item.uniqueUrl}`)}
+          onClick={(_) => history.push(`/products/${item.uniqueUrl}`)}
           xs={5}
           className="cursor-pointer flex-center cart-item-image pl-0"
         >

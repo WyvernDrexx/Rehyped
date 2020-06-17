@@ -1,10 +1,23 @@
 @import "../../assets/styles/mixins";
 
+@keyframes item-fadeout-anim {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.item-fadeout {
+  animation: item-fadeout-anim 1000ms ease 1 forwards;
+}
+
 .cart-item {
   width: 100%;
   display: inline-block;
   @include md {
-    max-width: 20rem;
+    max-width: 19rem;
     display: inline-block;
     margin: auto;
   }
@@ -13,7 +26,7 @@
 .cart-list {
   text-align: center;
 }
-.cart-item-price{
+.cart-item-price {
   font-size: 14px;
   letter-spacing: 1px;
 }
@@ -24,10 +37,10 @@
   position: relative;
   .img-wrapper {
     padding-right: 10rem;
-    @include sm{
+    @include sm {
       padding-top: 12.5rem;
     }
-    @include md{
+    @include md {
       padding-top: 0rem;
     }
     img {
