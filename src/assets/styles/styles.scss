@@ -34,6 +34,11 @@ a {
 }
 button {
   @extend a;
+  &:hover{
+    -webkit-box-shadow: -4px 3px 5px -1px rgba(0,0,0,0.5);
+    -moz-box-shadow: -4px 3px 5px -1px rgba(0,0,0,0.5);
+    box-shadow: -4px 3px 5px -1px rgba(0,0,0,0.5);
+  }
 }
 
 .z-index-max {
@@ -69,6 +74,7 @@ button {
 .primary-font-size {
   font-size: $primaryFontSize;
 }
+
 
 .button-default {
   padding-top: $defaultButtonPadding;

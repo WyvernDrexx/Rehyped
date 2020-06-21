@@ -31,7 +31,7 @@ const SizeBox = props => {
       onClick={_ => props.onClickFunc("size", props.size)}
       className={`mr-2 item-size-box item-size-box-selected default-font-size ${
         props.selectedSize === props.size
-          ? "primary-background-color progress-bar-striped text-light"
+          ? "primary-background-color progress-bar-striped text-light item-selected"
           : ""
       }`}
     >

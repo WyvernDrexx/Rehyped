@@ -1,17 +1,17 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
 
-const onButtonClick = callback => {
+const onButtonClick = (callback) => {
   if (typeof callback === "function") {
     return callback();
   }
   return;
 };
 
-export const DarkButton = props => {
+export const DarkButton = (props) => {
   return (
     <Button
-      onClick={_ => onButtonClick(props.onClick)}
+      onClick={(_) => onButtonClick(props.onClick)}
       className={`no-radius  button-default  bg-black ${props.className || ""}`}
       variant="dark"
     >
@@ -20,12 +20,13 @@ export const DarkButton = props => {
   );
 };
 
-export const LightButton = props => {
+export const LightButton = (props) => {
   return (
     <Button
-      onClick={_ => onButtonClick(props.onClick)}
-      className={`no-radius bg-white gray-border  button-default  ${props.className ||
-        ""}`}
+      onClick={(_) => onButtonClick(props.onClick)}
+      className={`no-radius bg-white gray-border  button-default  ${
+        props.className || ""
+      }`}
       variant="light"
     >
       {props.title || "Light Button"}
@@ -33,12 +34,13 @@ export const LightButton = props => {
   );
 };
 
-export const PrimaryButton = props => {
+export const PrimaryButton = (props) => {
   return (
     <Button
-      onClick={_ => onButtonClick(props.onClick)}
-      className={`no-radius  button-default  primary-background-color text-light ${props.className ||
-        ""}`}
+      onClick={(_) => onButtonClick(props.onClick)}
+      className={`no-radius  button-default  primary-background-color text-light ${
+        props.className || ""
+      }`}
       variant="light"
     >
       {props.title || "Primary Button"}
@@ -47,12 +49,13 @@ export const PrimaryButton = props => {
   );
 };
 
-export const PrimarySlimButton = props => {
+export const PrimarySlimButton = (props) => {
   return (
     <Button
-      onClick={_ => onButtonClick(props.onClick)}
-      className={`no-radius button-default  primary-background-color text-light ${props.className ||
-        ""}`}
+      onClick={(_) => onButtonClick(props.onClick)}
+      className={`no-radius button-default  primary-background-color text-light ${
+        props.className || ""
+      }`}
       title={props.tooltip || ""}
       variant="light"
     >
