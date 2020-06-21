@@ -31,7 +31,6 @@ const Header = props => {
         </Link>
       </div>
       <div className="d-flex justify-content-between align-items-center mt-5 px-2">
-        {/* 173.3px width */}
         <Col>
           <Row>
             <Col>

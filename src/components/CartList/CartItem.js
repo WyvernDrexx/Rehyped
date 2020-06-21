@@ -5,6 +5,7 @@ import { PrimarySlimButton } from "../stateless/Buttons";
 import { useDispatch, useSelector } from "react-redux";
 import { removeFromCart } from "../../actions";
 import history from "../../history";
+import PropTypes from 'prop-types';
 
 const CartItem = (props) => {
   const dispatch = useDispatch();
@@ -76,5 +77,9 @@ const CartItem = (props) => {
     </div>
   );
 };
+
+CartItem.propTypes = {
+  item: PropTypes.object
+}
 
 export default CartItem;

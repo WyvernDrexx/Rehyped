@@ -6,7 +6,7 @@ import { closeAlert } from "../../actions";
 import { useDispatch } from "react-redux";
 import { Col, Row } from "react-bootstrap";
 
-const Alert = props => {
+const Alert = () => {
   const alerts = useSelector(state => state.alert);
   const [messageState, setMessageState] = useState({
     message: "Welcome!",

@@ -1,6 +1,6 @@
 import React from "react";
 import { Spinner } from "react-bootstrap";
-
+import PropTypes from 'prop-types';
 class ImageLoader extends React.Component {
   constructor(props) {
     super(props);
@@ -38,6 +38,13 @@ class ImageLoader extends React.Component {
       </>
     );
   }
+}
+
+ImageLoader.propTypes = {
+  src: PropTypes.string,
+  alt: PropTypes.string,
+  className: PropTypes.string,
+  variant: PropTypes.string
 }
 
 export default ImageLoader;

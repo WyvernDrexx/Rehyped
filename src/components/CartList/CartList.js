@@ -1,6 +1,7 @@
 import React from "react";
 import "./CartList.scss";
 import CartItem from "./CartItem";
+import PropTypes from 'prop-types';
 
 const CartList = props => {
   const cartItems = props.cartItems;
@@ -25,5 +26,9 @@ const CartList = props => {
     </>
   );
 };
+
+CartList.propTypes = {
+  cartItems: PropTypes.arrayOf(PropTypes.object)
+}
 
 export default CartList;
