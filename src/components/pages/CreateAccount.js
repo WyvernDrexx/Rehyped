@@ -5,40 +5,42 @@ import { Container, Checkbox, ErrorBlock, SuccessBlock } from "../stateless";
 import { onInputChange, onFormSubmit, clearForm } from "../../actions";
 import { Link } from "react-router-dom";
 
-const CreateAccount = props => {
+const CreateAccount = (props) => {
   const dispatch = useDispatch();
   const [isChecked, setIsChecked] = useState(false);
-  const formState = useSelector(state => state.form);
-  const isRunning = useSelector(state => state.requestStatus.onFormSubmit);
+  const formState = useSelector((state) => state.form);
+  const isRunning = useSelector((state) => state.requestStatus.onFormSubmit);
 
   const onChange = ({ name, value }) => {
     dispatch(onInputChange({ [name]: value }));
   };
 
-  const onCheckboxChange = _ => {
+  const onCheckboxChange = (_) => {
     dispatch(onInputChange({ isChecked: !isChecked }));
     setIsChecked(!isChecked);
   };
 
-  const onFormSubmitClick = _ => {
+  const onFormSubmitClick = (_) => {
     dispatch(onFormSubmit("/signup"));
   };
 
   useEffect(
-    _ => {
-      return _ => {dispatch(clearForm())};
+    (_) => {
+      return (_) => {
+        dispatch(clearForm());
+      };
     },
     [dispatch]
   );
 
   useEffect(
-    _ => {
+    (_) => {
       dispatch(onInputChange({ isChecked }));
     },
     [isChecked, dispatch]
   );
 
-  const renderResponse = _ => {
+  const renderResponse = (_) => {
     return (
       <div className="w-100 w-md-40 block-center mt-4">
         {formState.status && formState.status !== 200 ? (
@@ -51,7 +53,7 @@ const CreateAccount = props => {
     );
   };
 
-  const renderForm = _ => {
+  const renderForm = (_) => {
     if (formState.status !== 200)
       return (
         <form>
@@ -88,7 +90,7 @@ const CreateAccount = props => {
             <Checkbox
               name="checkbox"
               content="Keep me updated with news and exclusive offers."
-              onClick={_ => onCheckboxChange()}
+              onClick={(_) => onCheckboxChange()}
               defaultChecked
             />
           </div>
@@ -122,10 +124,12 @@ const CreateAccount = props => {
           </Container>
         </div>
         <Container className="mb-5">
-          <DarkButton
-            className="mt-4 mx-auto d-block w-100 w-md-40 font-weight-bold"
-            title="ALREADY HAVE AN ACCOUNT?"
-          />
+          <Link to="login">
+            <DarkButton
+              className="mt-4 mx-auto d-block w-100 w-md-40 font-weight-bold"
+              title="ALREADY HAVE AN ACCOUNT?"
+            />
+          </Link>
         </Container>
       </div>
     </>

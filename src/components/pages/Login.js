@@ -5,7 +5,7 @@ import {
   ErrorBlock,
   SuccessBlock,
   UnauthorizedError,
-  Checkbox
+  Checkbox,
 } from "../stateless";
 import { DarkButton, PrimaryButton } from "../stateless/Buttons";
 import { Link } from "react-router-dom";
@@ -13,27 +13,28 @@ import {
   onFormSubmit,
   onInputChange,
   setToken,
-  clearForm
+  clearForm,
 } from "../../actions";
 import { useDispatch, useSelector } from "react-redux";
+import history from "../../history";
 
-const Login = props => {
+const Login = (props) => {
   const dispatch = useDispatch();
   const [rememberMe, setRememberMe] = useState(true);
-  const formState = useSelector(state => state.form);
-  const isRunning = useSelector(state => state.requestStatus.onFormSubmit);
+  const formState = useSelector((state) => state.form);
+  const isRunning = useSelector((state) => state.requestStatus.onFormSubmit);
   const onChange = ({ name, value }) => {
     dispatch(onInputChange({ [name]: value }));
   };
 
-  const isVerified = useSelector(state => state.token.isVerified);
+  const isVerified = useSelector((state) => state.token.isVerified);
 
-  const onSubmit = _ => {
+  const onSubmit = (_) => {
     dispatch(onFormSubmit("/login"));
   };
 
   useEffect(
-    _ => {
+    (_) => {
       if (formState.token) {
         let options = {};
         if (!rememberMe) options.isSession = true;
@@ -44,13 +45,15 @@ const Login = props => {
   );
 
   useEffect(
-    _ => {
-      return _ => {dispatch(clearForm())};
+    (_) => {
+      return (_) => {
+        dispatch(clearForm());
+      };
     },
     [dispatch]
   );
 
-  const renderResponse = _ => {
+  const renderResponse = (_) => {
     return (
       <div className="block-center mt-4">
         {formState.status && formState.status !== 200 ? (
@@ -63,7 +66,7 @@ const Login = props => {
     );
   };
 
-  const renderForm = _ => {
+  const renderForm = (_) => {
     return (
       <form>
         <input
@@ -89,7 +92,7 @@ const Login = props => {
               name="checkbox"
               content="Remember Me"
               defaultChecked
-              onClick={_ => {
+              onClick={(_) => {
                 setRememberMe(!rememberMe);
               }}
             />
@@ -97,7 +100,7 @@ const Login = props => {
             <Checkbox
               name="checkbox"
               content="Remember Me"
-              onClick={_ => {
+              onClick={(_) => {
                 setRememberMe(!rememberMe);
               }}
             />
@@ -140,10 +143,12 @@ const Login = props => {
           </Container>
         </div>
         <Container className="mb-5 w-md-40">
-          <DarkButton
-            className="mt-4 mx-auto d-block w-100  font-weight-bold"
-            title="FIRST TIME HERE?"
-          />
+          <Link to="/sign-up">
+            <DarkButton
+              className="mt-4 mx-auto d-block w-100  font-weight-bold"
+              title="FIRST TIME HERE?"
+            />
+          </Link>
         </Container>
       </div>
     </>

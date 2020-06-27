@@ -5,7 +5,7 @@ import { ReactComponent as Bag } from "./bag.svg";
 
 import { useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faSignInAlt } from "@fortawesome/free-solid-svg-icons";
 import { Row, Col, Container } from "react-bootstrap";
 import TopBanner from "../TopBanner";
 import Sidebar from "../Sidebar";
@@ -17,6 +17,7 @@ const Header = props => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [isCartEmpty, setIsCartEmpty] = useState(true);
   const cart = useSelector(state => state.cart);
+  const isVerified = useSelector(state => state.token.isVerified);
   const toggleSideBar = _ => {
     setTimeout(_ => {
       if (sidebarOpen) {
@@ -67,7 +68,8 @@ const Header = props => {
                   <img className="w-100" src="/logo.png" alt="Rehyped Logo" />
                 </div>
               </Col>
-              <Col className="px-0">
+              {isVerified?(
+                <Col className="px-0">
                 <button
                   onClick={_ => history.push("/mycart")}
                   className="float-right border-none bg-transparent text-white primary-font-size"
@@ -78,6 +80,17 @@ const Header = props => {
                   )}
                 </button>
               </Col>
+              ):
+              (
+                <Col className="px-0">
+                <button
+                  onClick={_ => history.push("/login")}
+                  className="float-right border-none bg-transparent text-white primary-font-size"
+                >
+                  <FontAwesomeIcon icon={faSignInAlt} />
+                </button>
+              </Col>
+              )}
             </Row>
           </Col>
         </Container>
