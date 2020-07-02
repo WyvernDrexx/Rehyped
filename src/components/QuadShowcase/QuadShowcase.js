@@ -81,6 +81,7 @@ const QuadShowcase = props => {
       </>
     );
   }
+  return null;
 };
 
 export default QuadShowcase;
