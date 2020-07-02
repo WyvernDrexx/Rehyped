@@ -29,7 +29,7 @@ const Alert = () => {
           setIsAlertRunning(false);
           setAlertState("alert-fadeout");
           dispatch(closeAlert());
-        }, 3900);
+        }, 2000);
       }
     },
     [alerts, dispatch]

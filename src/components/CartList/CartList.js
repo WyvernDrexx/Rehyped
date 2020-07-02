@@ -20,7 +20,7 @@ const CartList = props => {
     <>
       <div className="cart-list">
         {cartItems.map((item, index) => {
-          return <CartItem item={item} key={index} />;
+          return <CartItem item={item} key={item.uniqueUrl} />;
         })}
       </div>
     </>
